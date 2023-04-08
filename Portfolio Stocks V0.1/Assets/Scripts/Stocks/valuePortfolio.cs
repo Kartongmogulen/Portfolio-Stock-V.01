@@ -9,10 +9,16 @@ public class valuePortfolio : MonoBehaviour
 
 	public float valueSector(List<float> companySharesOwned, List<stock> stockList)
 	{
+		totalValueSector = 0;
+
 		for (int i = 0; i < companySharesOwned.Count; i++)
 		{
+			
 			totalValueSector += stockList[i].StockPrice[stockList[i].StockPrice.Count-1] * companySharesOwned[i];
+			Debug.Log("ValueStock-script loop" + totalValueSector);
 		}
+
+		
 
 		//valuePortfolioText.text = "Value: " + totalValuePortfolio;
 

@@ -30,6 +30,7 @@ public class dividendRecieved : MonoBehaviour
 	public List<float> divRecPerYear = new List<float> ();
 
 	public float totalDivRecieved;
+	public float incomeDivFromPortfolioNow;
 
 	int year = 0; 
 	
@@ -94,4 +95,28 @@ public class dividendRecieved : MonoBehaviour
 		year++;
 
     }
+
+	public float divIncomeFromPortfolioNow()
+	{
+		incomeDivFromPortfolioNow = 0;
+
+		for (int i = 0; i < StockMarketManager.StockUtiList.Count; i++)
+		{
+			utiCompanyDivPayout[i] = StockMarketManager.StockUtiList[i].GetComponent<stock>().divPayout;
+			utiCompanySharesOwned[i] = PortfolioStock.utiCompanySharesOwned[i];
+			utiCompanyDivRecieved[i] = utiCompanyDivPayout[i] * utiCompanySharesOwned[i];
+			incomeDivFromPortfolioNow += utiCompanyDivRecieved[i];
+		}
+
+		for (int i = 0; i < StockMarketManager.StockTechList.Count; i++)
+		{
+			techCompanyDivPayout[i] = StockMarketManager.StockTechList[i].GetComponent<stock>().divPayout;
+			techCompanySharesOwned[i] = PortfolioStock.techCompanySharesOwned[i];
+			techCompanyDivRecieved[i] = techCompanyDivPayout[i] * techCompanySharesOwned[i];
+			incomeDivFromPortfolioNow += techCompanyDivRecieved[i];
+		}
+	
+
+		return incomeDivFromPortfolioNow;
+	}
 }

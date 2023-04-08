@@ -124,12 +124,13 @@ public class portfolio : MonoBehaviour
 		//finDivPerEcoClimate = MainCanvasGO.GetComponent<infoStockSector>().financeDiv[globalEcoClimate];
 		//techDivPerEcoClimate = MainCanvasGO.GetComponent<infoStockSector>().techDiv[globalEcoClimate];
 
+		/*
 		utiDivPortfolio = utiDivPerEcoClimate*utiAmount;
 		finDivPortfolio = finDivPerEcoClimate*finAmount;
 		techDivPortfolio = techDivPerEcoClimate*techAmount;
 		dividendPerYear = utiDivPortfolio + finDivPortfolio+techDivPortfolio;
 		incomeDivPerYear.text = "Dividend/year: " + dividendPerYear;
-
+		*/
 		//GAV ();
 
 	}

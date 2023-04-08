@@ -248,4 +248,14 @@ public class portfolioStock : MonoBehaviour
 
 	}
 
+	public void valuePortfolio()
+	{
+		totalValuePortfolio = 0; //Nollställer innan varje körning
+
+		totalValuePortfolio = GetComponent<valuePortfolio>().valueSector(utiCompanySharesOwned, stockListUti);
+		totalValuePortfolio += GetComponent<valuePortfolio>().valueSector(techCompanySharesOwned, stockListTech);
+
+		valuePortfolioText.text = "Value: " + totalValuePortfolio;
+	}
+
 }

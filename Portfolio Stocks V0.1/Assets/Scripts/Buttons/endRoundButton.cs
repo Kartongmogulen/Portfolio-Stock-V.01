@@ -79,8 +79,12 @@ public class endRoundButton : MonoBehaviour
 		playerGO.GetComponent<totalCash>().incomeWork();
 
 		//Portfölj
-		playerPanelGO.GetComponent<portfolio>().updatePortfolio(); //Uppdaterar utd för portföljen
+		//playerPanelGO.GetComponent<portfolio>().updatePortfolio(); //Uppdaterar utd för portföljen
+		playerScriptsGO.GetComponent<portfolioStock>().valuePortfolio();
 																   //StockScriptGO.GetComponent<portfolioStock> ().returnPortfolio(); //Avkastning på portföljen
+
+		//Utdelning
+		playerGO.GetComponent<incomeDividends>().incomeDivFromPortfolioNow();
 
 		//Spelaren
 		managerScriptsGO.GetComponent<actionPointsManager>().endRound();
@@ -99,8 +103,8 @@ public class endRoundButton : MonoBehaviour
 			//Utdelningar från föregående år innan värden uppdateras för bolagen
 			StockScriptGO.GetComponent<dividendRecieved>().recievedDividends();
 			playerGO.GetComponent<incomeDividends>().updateIncomeDividends();
-
-			//playerPanelGO.GetComponent<totalCash>().incomeDividend();
+			playerGO.GetComponent<totalCash>().incomeDividend(playerGO.GetComponent<incomeDividends>().incomeDividendPreviousYear);
+			
 			//playerPanelGO.GetComponent<totalCash>().incomeBonds();
 			//globalEcoClimate = MainCanvas.GetComponent<globalEcoClimate>().globalEcoClimateValueNow;
 			//MainCanvas.GetComponent<infoStockSector>().updateEarnings(globalEcoClimate); //Ändrar EPS för sektorn vid årets slut

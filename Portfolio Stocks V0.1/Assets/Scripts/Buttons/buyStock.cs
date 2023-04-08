@@ -120,8 +120,8 @@ public class buyStock : MonoBehaviour
 			//playerScriptsGO.GetComponent<portfolioStock>().GAVupdate();
 			//playerPanelGO.GetComponent<totalCash>().updateMoney();
 		}
-			
-		//stockGO.GetComponent<portfolioStock> ().valuePortfolio(); //Uppdaterar värdet av portfölj
+
+		playerScriptsGO.GetComponent<portfolioStock> ().valuePortfolio(); //Uppdaterar värdet av portfölj
 
 
 

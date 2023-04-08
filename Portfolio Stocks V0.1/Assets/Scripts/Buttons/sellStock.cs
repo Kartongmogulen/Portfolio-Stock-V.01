@@ -103,7 +103,8 @@ public class sellStock : MonoBehaviour
 				playerScriptsGO.GetComponent<portfolioStock> ().sellTechShares (amountOrder, activeCompany);
 
 			}
-
+			playerScriptsGO.GetComponent<portfolioStock>().valuePortfolio();//Uppdaterar värdet av portfölj
+																			 
 			//playerScriptsGO.GetComponent<portfolioStock>().GAVupdateSell();
 		}
 	}

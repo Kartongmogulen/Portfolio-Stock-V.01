@@ -54,11 +54,6 @@ public class totalCash : MonoBehaviour
 		moneyNow = moneyBefore;
 	}
 
-	/*public void addMoney(float moneyToAdd){
-		moneyNow += moneyToAdd;
-		moneyText.text = "Money: " + moneyNow;
-	}*/
-
 	public void updateMoney(){
 	
 		moneyText.text = "Money: " + moneyNow;
