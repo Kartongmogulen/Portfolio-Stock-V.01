@@ -141,11 +141,13 @@ public class portfolioStock : MonoBehaviour
 
 		//Total investering i sektorn
 		for (int i = 0; i < utiTotalInvest.Length; i++) {
+			//Debug.Log("Uti Längd: " + i);
 			utiTotalInvestAmount = utiTotalInvestAmount + utiGAV [i]*utiCompanySharesOwned [i];
 		}
 
 		for (int i = 0; i < techTotalInvest.Length; i++) {
 			techTotalInvestAmount = techTotalInvestAmount + techGAV [i]*techCompanySharesOwned [i];
+			//Debug.Log("Tech Längd: " + i);
 		}
 
 		totalInvestAmountPortfolio = utiTotalInvestAmount + techTotalInvestAmount;
@@ -193,7 +195,7 @@ public class portfolioStock : MonoBehaviour
 		{
 			techTotalValue += (techCompanySharesOwned[i] * stockListTech[i].StockPrice[stockListTech[i].StockPrice.Count - 1]);
 			//techSharePortfolio += techTotalValue;
-			Debug.Log("UtiShare: " + techSharePortfolio);
+			//Debug.Log("UtiShare: " + techSharePortfolio);
 		}
 
 		totalValuePortfolio = utiTotalValue + techTotalValue;

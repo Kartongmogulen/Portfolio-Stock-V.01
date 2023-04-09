@@ -6,6 +6,7 @@ public class stockMarketInventory : MonoBehaviour
 {
 
 	public List<stock> Stock;
+    //public List<priceStock> StockPrefab;
 
     // Start is called before the first frame update
     void Start()

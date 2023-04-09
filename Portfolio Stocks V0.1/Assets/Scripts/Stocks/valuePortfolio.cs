@@ -15,7 +15,7 @@ public class valuePortfolio : MonoBehaviour
 		{
 			
 			totalValueSector += stockList[i].StockPrice[stockList[i].StockPrice.Count-1] * companySharesOwned[i];
-			Debug.Log("ValueStock-script loop" + totalValueSector);
+			//Debug.Log("ValueStock-script loop" + totalValueSector);
 		}
 
 		

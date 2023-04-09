@@ -23,7 +23,7 @@ public class incomeWork : MonoBehaviour
 
     public void incomeNowUpdate() { 
 
-    incomeWorkText.text = "Work/month: " + incomeWorkPerMonth;
+    incomeWorkText.text = " Work/month: " + incomeWorkPerMonth;
 
     }
 }

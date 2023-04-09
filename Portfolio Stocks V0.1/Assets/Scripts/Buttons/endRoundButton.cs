@@ -81,7 +81,8 @@ public class endRoundButton : MonoBehaviour
 		//Portfölj
 		//playerPanelGO.GetComponent<portfolio>().updatePortfolio(); //Uppdaterar utd för portföljen
 		playerScriptsGO.GetComponent<portfolioStock>().valuePortfolio();
-																   //StockScriptGO.GetComponent<portfolioStock> ().returnPortfolio(); //Avkastning på portföljen
+		playerScriptsGO.GetComponent<portfolioStock>().showPortfolioData();
+		//StockScriptGO.GetComponent<portfolioStock> ().returnPortfolio(); //Avkastning på portföljen
 
 		//Utdelning
 		playerGO.GetComponent<incomeDividends>().incomeDivFromPortfolioNow();
@@ -92,6 +93,7 @@ public class endRoundButton : MonoBehaviour
 		//Debug/Övriga spelare
 		debugPanelGO.GetComponent<Bonds100> ().investBonds ();
 		debugPanelGO.GetComponent<Index100> ().investIndex ();
+		debugPanelGO.GetComponent<stockSpecificCompany100>().investCompany();
 
 		//MainCanvas.GetComponent<news>().randomNews(); //NYHETER
 
@@ -130,7 +132,7 @@ public class endRoundButton : MonoBehaviour
 		
 			//StockScriptGO.GetComponent<dividendRecieved> ().recievedDividends ();
 
-			EconomyScriptGO.GetComponent<EconomicClimate> ().updateEcoClimate ();
+			EconomyScriptGO.GetComponent<economicClimate> ().updateEcoClimate ();
 
 			//Uppdaterar aktie-sektorer
 			/*StockScriptGO.GetComponent<utilitiesInfoStock>().updateDataYearEnd();

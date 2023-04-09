@@ -98,7 +98,7 @@ public class materialsInfoStock : MonoBehaviour
 	public void updateDataYearEnd()
 	{
 
-		bnpYearBefore = economicClimateGO.GetComponent<EconomicClimate> ().yearlyBNPGrowthRate;
+		bnpYearBefore = economicClimateGO.GetComponent<economicClimate> ().yearlyBNPGrowthRate;
 
 		oneCompanyDivHist.Add(divPayout[0]);
 		twoCompanyDivHist.Add(divPayout[1]);

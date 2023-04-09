@@ -32,7 +32,7 @@ public class returnPortfolio : MonoBehaviour
 			{
 				priceNow = stockList[i].StockPrice[stockList[i].StockPrice.Count - 1];
 				totalReturnAmount += (sharesOwned[i] * priceNow) - (sharesOwned[i]*stockListGAV[i]);
-				Debug.Log("Total return: " + totalReturnAmount);
+				//Debug.Log("Total return: " + totalReturnAmount);
 		}
 
 		return totalReturnAmount;

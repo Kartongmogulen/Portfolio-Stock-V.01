@@ -96,6 +96,7 @@ public class chooseUtiCompany : MonoBehaviour
 	public void companyThree()
 	{
 		companyNumber (2);
+		
 	}
 
 }

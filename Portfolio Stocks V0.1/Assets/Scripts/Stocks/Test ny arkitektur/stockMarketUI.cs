@@ -62,7 +62,7 @@ public class stockMarketUI : MonoBehaviour
 
 	public virtual void UIClicked(stockUI iui){
 
-		stockSectorText.text = "Sector: " + iui.Stock.sectorName;
+		stockSectorText.text = "Sector: " + iui.Stock.SectorNameEnum;
 
 		//Utdelningspolicy
 		if (iui.Stock.companyPaysDividend == true)

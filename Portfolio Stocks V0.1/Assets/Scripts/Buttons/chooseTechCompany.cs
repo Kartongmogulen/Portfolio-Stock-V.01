@@ -75,7 +75,7 @@ public class chooseTechCompany : MonoBehaviour
 
 		if (StocksUnlockInfo.techDivPolicyUnlocked[i] == 0)
 		{
-			Debug.Log("Unlock Div NO");
+			//Debug.Log("Unlock Div NO");
 			divPolicyText.text = "Div.Policy: LOCKED. Cost (Time Points): " + StocksUnlockInfo.divPolicyUnlockCost;
 		}
 

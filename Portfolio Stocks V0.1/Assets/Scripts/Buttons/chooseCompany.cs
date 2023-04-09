@@ -39,11 +39,18 @@ public class chooseCompany : MonoBehaviour
 		}
 	}
 
-	public void chooseCompanyInt()
+	public void chooseCompanyInt(int activeCompany)
 	{
 		activeSector = ChooseStockSector.activeSector;
 		deactivateAll();
 		companyOneButton.GetComponent<Image>().color = Color.green;
+
+		if (activeSector == 1)
+		{
+			activeCompany = 3;
+			ChooseUtiCompany.companyThree();
+
+		}
 	}
 
 	public void chosenCompanyOne(){

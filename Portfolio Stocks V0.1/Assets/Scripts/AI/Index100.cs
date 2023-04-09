@@ -38,7 +38,7 @@ public class Index100 : MonoBehaviour
 		public void investIndex(){
 
 		indexFundNAV = StockScriptGO.GetComponent<indexFunds> ().NAVIndexFund;
-
+		//Debug.Log("Index NAV: " + indexFundNAV);
 		//valuePortfolioText.text = "Value portfolio: " + valueIndexPortfolio;
 		//incomeFromWork = playerPanelGO.GetComponent<incomeWork> ().workIncomeStart;
 		moneyNow = moneyNow + incomeFromWork;

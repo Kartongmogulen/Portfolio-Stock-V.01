@@ -14,6 +14,8 @@ public class priceChange : MonoBehaviour
 	public float minEPSGrowth;
 	public float maxEPSGrowth;
 	public float EPSnow;
+	[Tooltip("Om bolaget ej är lönsamt. Vad värderar marknaden det till.")]
+	public float ifEPSNegativeMarketEPSValue; //Om bolaget ej är lönsamt. Vad värderar marknaden det till.
 
 	public float valueDCFMin;
 	public float valueDCFMax;
@@ -35,6 +37,7 @@ public class priceChange : MonoBehaviour
 
 	//Steg 3.1
 	public float discountRate; //Ska ha formen 0.01 = 1 %. Borde ändars i något övergripande script kring marknadsförhållande
+	public float discountRateVolatility; //Hur mycket diskonteringsräntan kan ändras
 	public int period;
 
 	public techInfoStock TechInfoStock;
@@ -168,14 +171,31 @@ public class priceChange : MonoBehaviour
 			Debug.Log("EPSnow: " + StockList[i].EPSnow);
 			*/
 
+		//Debug.Log("Diskonteringsränta Volla: " + (discountRate + Random.Range(-discountRateVolatility, discountRateVolatility)));
+
 		//Min värdering
-		dcf.DCFCalculation(discountRate, Stock.EPSnow, Stock.EPSGrowthMin, period);
-		valueDCFMin = Mathf.RoundToInt(dcf.valueDCF);
+		if (Stock.EPSnow < 0)
+		{
+			dcf.DCFCalculation(discountRate + Random.Range(-discountRateVolatility, discountRateVolatility), ifEPSNegativeMarketEPSValue, Stock.EPSGrowthMin, period);
+			valueDCFMin = Mathf.RoundToInt(dcf.valueDCF);
+		}
+		else
+		{
+			dcf.DCFCalculation(discountRate + Random.Range(-discountRateVolatility, discountRateVolatility), Stock.EPSnow, Stock.EPSGrowthMin, period);
+			valueDCFMin = Mathf.RoundToInt(dcf.valueDCF);
+		}
 
 		//Max värdering
-		dcf.DCFCalculation(discountRate, Stock.EPSnow, Stock.EPSGrowthMax, period);
-		valueDCFMax = Mathf.RoundToInt(dcf.valueDCF);
-
+		if (Stock.EPSnow < 0)
+		{
+			dcf.DCFCalculation(discountRate + Random.Range(-discountRateVolatility, discountRateVolatility), ifEPSNegativeMarketEPSValue, Stock.EPSGrowthMax, period);
+			valueDCFMax = Mathf.RoundToInt(dcf.valueDCF);
+		}
+		else
+		{
+			dcf.DCFCalculation(discountRate + Random.Range(-discountRateVolatility, discountRateVolatility), Stock.EPSnow, Stock.EPSGrowthMax, period);
+			valueDCFMax = Mathf.RoundToInt(dcf.valueDCF);
+		}
 		//Spara priset för bolaget
 		stockPriceNow = Mathf.RoundToInt(Random.Range(valueDCFMin, valueDCFMax));
 		

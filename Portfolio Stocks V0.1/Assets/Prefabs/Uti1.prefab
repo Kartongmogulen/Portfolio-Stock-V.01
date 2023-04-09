@@ -44,11 +44,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sectorName: Utilities
-  divPolicyChange: 3
+  divPolicyChangeDiv: 0
+  divPolicyMaxPayouRatio: 0
   companyPaysDividend: 1
+  startPayDividendWhenEPS: 0
   divPayout: 10
   EPSnow: 15
-  EPSGrowthMin: 1
-  EPSGrowthMax: 3
+  EPSHistory: []
+  EPSGrowthMin: 2
+  EPSGrowthMax: 2
   StockPrice: []
   priceNow: 0

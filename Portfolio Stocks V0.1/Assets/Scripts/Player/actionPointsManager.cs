@@ -17,7 +17,7 @@ public class actionPointsManager : MonoBehaviour
     {
         remainingAP = startAP;
         baseAP = startAP;
-        actionPointsText.text = "AP: " + remainingAP;
+        actionPointsText.text = " AP: " + remainingAP;
     }
 
     public void actionPointSub(int amountAP)

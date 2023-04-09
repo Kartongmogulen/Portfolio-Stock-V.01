@@ -5,7 +5,8 @@ using UnityEngine;
 public class stock : MonoBehaviour
 {
 
-	public string sectorName;
+	//public string sectorName;
+	public sectorNameEnum SectorNameEnum;
 
 	public float divPolicyChangeDiv;
 	public float divPolicyMaxPayouRatio;
