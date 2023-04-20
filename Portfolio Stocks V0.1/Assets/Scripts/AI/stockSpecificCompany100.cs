@@ -5,21 +5,24 @@ using UnityEngine;
 public class stockSpecificCompany100 : MonoBehaviour
 {
 	public GameObject playerPanelGO;
-	public float startMoney;
-	public float incomeFromWork;
-	public float moneyNow;
-	public int companyIndex;
+	float startMoney;
+	float incomeFromWork;
+	float moneyNow;
+	//public int companyIndex;
 
 	public GameObject StockScriptGO;
 	public stockMarketInventory StockMarketInventory;
-	public float priceStock;
+	float priceStock;
 
-	public float amountToInvestThisRound;
+	float amountToInvestThisRound;
 	//public float valueIndexPortfolio;
-	public float newSharesThisRound;
+	float newSharesThisRound;
 	public float totalSharesPortfolio;
 	public List<float> totalValuePortfolio;
 	public float totalInvestment;
+	public List<float> returnOnInvestment;
+	public List<float> dividendsRecieved;
+	public float totalDividendsRecieved;
 
 	//public Text strategyName;
 	//public Text valuePortfolioText;
@@ -38,7 +41,7 @@ public class stockSpecificCompany100 : MonoBehaviour
 		//investCompany();
 	}
 
-	public void investCompany()
+	public void investCompany(int companyIndex)
 	{
 		
 		priceStock = StockMarketInventory.Stock[companyIndex].StockPrice[i];
@@ -51,7 +54,30 @@ public class stockSpecificCompany100 : MonoBehaviour
 		moneyNow = moneyNow + incomeFromWork;
 
 		totalValuePortfolio.Add(totalSharesPortfolio * priceStock);
-
+		//returnOnInvestment.Add((totalSharesPortfolio * priceStock) / totalInvestment-1);
+		returnOnInvestment.Add(Mathf.Round((totalValuePortfolio[i] / totalInvestment - 1) * 10000) / 100);
 		i++;
+
+		totalDividendsrecieved();
+	}
+
+	public void recieveDividens(int companyIndex)
+	{
+		dividendsRecieved.Add(totalSharesPortfolio * StockMarketInventory.Stock[companyIndex].lastDivPayout);
+		Debug.Log("Pengar INNAN Utdelning: " + moneyNow);
+		moneyNow += dividendsRecieved[dividendsRecieved.Count-1];
+		Debug.Log("Pengar EFTER Utdelning: " + moneyNow);
+	}
+
+	public float totalDividendsrecieved()
+	{
+		totalDividendsRecieved = 0; //Nollställer
+		//int result = 0;
+		foreach (float itm in dividendsRecieved)
+		{
+			totalDividendsRecieved += itm;
+		}
+
+		return totalDividendsRecieved;
 	}
 }

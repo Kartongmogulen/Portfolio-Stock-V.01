@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4471696381777332498}
   - component: {fileID: 2773773203410686542}
+  - component: {fileID: 8142389932202983004}
+  - component: {fileID: -1338333447919414845}
   m_Layer: 0
-  m_Name: Tech1
+  m_Name: stockCompanyBasicOne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,15 +45,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caf8d83697af9840801750f1f99deed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sectorName: Technology
-  divPolicyChangeDiv: 8
-  divPolicyMaxPayouRatio: 40
+  SectorNameEnum: 0
+  divPolicyChangeDiv: 0
+  divPolicyMaxPayouRatio: 0
   companyPaysDividend: 1
-  divPayout: 2
-  EPSnow: 10
+  startPayDividendWhenEPS: 0
+  divPayout: 0
+  EPSnow: 0
   EPSHistory: []
-  EPSGrowthMin: 6
-  EPSGrowthMax: 12
-  StockPrice:
-  - 0
+  EPSGrowthMin: 0
+  EPSGrowthMax: 0
+  StockPrice: []
   priceNow: 0
+--- !u!114 &8142389932202983004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3471436335729396843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abb0283ec09d984c9596433874dbb33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPanelGO: {fileID: 0}
+  StockScriptGO: {fileID: 0}
+  StockMarketInventory: {fileID: 0}
+  totalSharesPortfolio: 0
+  totalValuePortfolio: []
+  totalInvestment: 0
+  returnOnInvestment: []
+  dividendsRecieved: []
+--- !u!114 &-1338333447919414845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3471436335729396843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2004453dd3cb9545bb81c8d3221d7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dividendPaid: []

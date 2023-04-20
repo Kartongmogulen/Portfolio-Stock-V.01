@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9208037321073837137}
   - component: {fileID: 4898406765420978490}
   m_Layer: 0
-  m_Name: stockCompanyBasic
+  m_Name: stockCompanyBasicTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

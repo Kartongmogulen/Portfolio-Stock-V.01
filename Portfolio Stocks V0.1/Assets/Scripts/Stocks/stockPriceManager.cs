@@ -16,9 +16,14 @@ public class stockPriceManager : MonoBehaviour
 
     public List<float> StockPriceUtiOne;
 
-    private void Start()
+    private void Awake()
     {
         StockMarketManager = StockMarketGO.GetComponent<stockMarketManager>();
+        
+    }
+
+    public void Start()
+    {
         updateStockMarketPrice();
     }
 

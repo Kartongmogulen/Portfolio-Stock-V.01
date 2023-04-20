@@ -13,6 +13,7 @@ public class stock : MonoBehaviour
 	public bool companyPaysDividend;
 	public float startPayDividendWhenEPS;
 	public float divPayout;
+	public float lastDivPayout;
 
 	public float EPSnow;
 	public List<float> EPSHistory;
@@ -26,6 +27,12 @@ public class stock : MonoBehaviour
 	{
 		StockPrice.Add(priceNew);
 		//priceNow = StockPrice[StockPrice.Count - 1];
+	}
+
+	public void saveDividendHistory()
+	{
+		GetComponent<dividendHistory>().dividendPaid.Add(divPayout);
+		lastDivPayout = GetComponent<dividendHistory>().dividendPaid[GetComponent<dividendHistory>().dividendPaid.Count - 1];
 	}
 
 }

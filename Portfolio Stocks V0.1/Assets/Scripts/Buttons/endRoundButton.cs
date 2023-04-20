@@ -10,6 +10,8 @@ public class endRoundButton : MonoBehaviour
 	public Text DateNowText;
 	public int year;
 	public int month;
+	[Tooltip("Antal månader som ska simuleras vid varje aktivering")]
+	public int multiMonthSim;
 
 	public GameObject playerScriptsGO;
 	public GameObject managerScriptsGO;
@@ -93,7 +95,7 @@ public class endRoundButton : MonoBehaviour
 		//Debug/Övriga spelare
 		debugPanelGO.GetComponent<Bonds100> ().investBonds ();
 		debugPanelGO.GetComponent<Index100> ().investIndex ();
-		debugPanelGO.GetComponent<stockSpecificCompany100>().investCompany();
+		
 
 		//MainCanvas.GetComponent<news>().randomNews(); //NYHETER
 
@@ -129,6 +131,7 @@ public class endRoundButton : MonoBehaviour
 			StockScriptGO.GetComponent<yearsDivIncrease>().updateDivYearStreak();
 
 			debugPanelGO.GetComponent<Bonds100> ().dividendBonds ();
+			debugPanelGO.GetComponent<endRoundButtonDebugg>().recieveDividends();
 		
 			//StockScriptGO.GetComponent<dividendRecieved> ().recievedDividends ();
 
@@ -163,13 +166,14 @@ public class endRoundButton : MonoBehaviour
 
 			countMultiMonthSim++;
 			endTurn(); //Kallar funktionen som körs varje gång man avslutar en runda
-
-			if (countMultiMonthSim == 12){
+			debugPanelGO.GetComponent<endRoundButtonDebugg>().investInOnlyOneCompany();
+			if (countMultiMonthSim == multiMonthSim)
+			{
 				stop12MonthSim = true;
 
 			}
 
-			if (countMultiMonthSim == 15){
+			if (countMultiMonthSim == 150){
 				break;
 
 			}

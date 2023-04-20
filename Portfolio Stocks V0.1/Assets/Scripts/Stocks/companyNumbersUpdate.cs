@@ -10,7 +10,7 @@ public class companyNumbersUpdate : MonoBehaviour
 
 	public float newDividend;
 
-	private void Start()
+	private void Awake()
 	{
 		StockMarketManager = StockMarketGO.GetComponent<stockMarketManager>();
 	}
@@ -26,6 +26,10 @@ public class companyNumbersUpdate : MonoBehaviour
 
 		for (int i = 0; i < StockMarketManager.StockMarketListGO.GetComponent<stockMarketInventory>().Stock.Count; i++)
 		{
+			//Spara utdelning för historik
+			StockMarketManager.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i].saveDividendHistory();
+
+			//Uppdatera värden vid årets slut
 			ScriptsStockGO.GetComponent<divPolicy>().endOfYearUpdate(StockMarketManager.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i]);
 		}
 
