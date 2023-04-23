@@ -9,8 +9,6 @@ public class dividendRecieved : MonoBehaviour
 	 * Gå igenom portföljen för att få ut utdelnignen
 	 */
 
-	//public GameObject playerPanelGO;
-
 	public GameObject StockMarketGO;
 	public stockMarketManager StockMarketManager;
 	public GameObject playerScriptsGO;
@@ -34,7 +32,6 @@ public class dividendRecieved : MonoBehaviour
 
 	int year = 0; 
 	
-    // Start is called before the first frame update
     void Awake()
     {
 		PortfolioStock = playerScriptsGO.GetComponent<portfolioStock> ();
@@ -46,26 +43,20 @@ public class dividendRecieved : MonoBehaviour
 			utiCompanySharesOwned.Add(0);
 			utiCompanyDivPayout.Add(StockMarketManager.StockUtiList[i].divPayout);
 			utiCompanyDivRecieved.Add(0);
-
 		}
 
 		//SKAPAR STORLEK PÅ LISTA EFTER ANTALET BOLAG
 		for (int i = 0; i < StockMarketManager.StockTechList.Count; i++)
 		{
-
 			techCompanySharesOwned.Add(0);
 			techCompanyDivPayout.Add(StockMarketManager.StockTechList[i].divPayout);
 			techCompanyDivRecieved.Add(0);
 		}
-
 	}
 
-    // Update is called once per frame
 	public void recievedDividends()
     {
-		
 		divRecPerYear.Add (0);
-		
 		//GÅR IGENOM SEKTOR FÖR SEKTOR
 
 		//Gå igenom alla utilites-bolag
@@ -76,7 +67,6 @@ public class dividendRecieved : MonoBehaviour
 			divRecPerYear[year] += utiCompanyDivRecieved[i];
 		}
 
-
 		//Gå igenom alla tech-bolag
 		for (int i = 0; i < StockMarketManager.StockTechList.Count; i++)
 		{
@@ -85,15 +75,7 @@ public class dividendRecieved : MonoBehaviour
 			techCompanyDivRecieved[i] = techCompanyDivPayout[i] * techCompanySharesOwned[i];
 			divRecPerYear[year] += techCompanyDivRecieved[i];
 		}
-
-		//playerPanelGO.GetComponent <totalCash> ().addMoney(divRecPerYear [year]);
-
-
-
-		//Debug.Log("UTD: " + (utiCompanyDivPayout[0] * utiCompanySharesOwned [0]));
-
 		year++;
-
     }
 
 	public float divIncomeFromPortfolioNow()
@@ -115,8 +97,6 @@ public class dividendRecieved : MonoBehaviour
 			techCompanyDivRecieved[i] = techCompanyDivPayout[i] * techCompanySharesOwned[i];
 			incomeDivFromPortfolioNow += techCompanyDivRecieved[i];
 		}
-	
-
 		return incomeDivFromPortfolioNow;
 	}
 }

@@ -35,7 +35,6 @@ public class divPolicy : MonoBehaviour
 		if (divPayoutRatioAfter <= Stock.divPolicyMaxPayouRatio / 100 && Stock.divPolicyMaxPayouRatio >= 0) //Utrymme att höja utdelning
 		{
 			Stock.divPayout = newDividend;
-
 		}
 
 		if (divPayoutRatioAfter > Stock.divPolicyMaxPayouRatio/100)
@@ -44,9 +43,7 @@ public class divPolicy : MonoBehaviour
 			Stock.divPayout = newDividend;
 		}
 	}
-
 	/*
-
 		//Utdelningsgolv
 		if (utiDivPayoutRatioAfter < utiDivPolMin*100)
 		{
@@ -72,5 +69,4 @@ public class divPolicy : MonoBehaviour
 		techDivPayoutBefore = techDivPayoutAfter;
 	}
 	*/
-
 }

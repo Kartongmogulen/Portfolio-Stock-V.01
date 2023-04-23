@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GAV : MonoBehaviour
 {
-	//Beräkning av GAV
+	//Beräkning av GAV, Genomsnittligt inköpspris
 	public GameObject playerScriptsGO;
 	public portfolioStock PortfolioStock;
 
@@ -38,9 +38,7 @@ public class GAV : MonoBehaviour
 			{
 				utiCompanyGAVPlayer[i] = utiTotalInvest[i] / utiCompanySharesOwned[i];
 			}
-
 		}
-
 		PortfolioStock.utiGAV = utiCompanyGAVPlayer;
 	}
 
@@ -61,9 +59,7 @@ public class GAV : MonoBehaviour
 			{
 				techCompanyGAVPlayer[i] = techTotalInvest[i] / techCompanySharesOwned[i];
 			}
-
 		}
-
 		PortfolioStock.techGAV = techCompanyGAVPlayer;
 	}
 
@@ -84,7 +80,6 @@ public class GAV : MonoBehaviour
 	{
 		for (int i = 0; i < techCompanySharesOwned.Count; i++)
 		{
-
 			if (techCompanySharesOwned[i] == 0)
 			{
 				techCompanyGAVPlayer[i] = 0;

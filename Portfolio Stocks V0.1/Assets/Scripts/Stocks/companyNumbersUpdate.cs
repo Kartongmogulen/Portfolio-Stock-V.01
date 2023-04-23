@@ -42,5 +42,4 @@ public class companyNumbersUpdate : MonoBehaviour
 			ScriptsStockGO.GetComponent<earningsUpdate>().updateEarnings(StockMarketManager.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i]);
 		}
 	}
-
 }

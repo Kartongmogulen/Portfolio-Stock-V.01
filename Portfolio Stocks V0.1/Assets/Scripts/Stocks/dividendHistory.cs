@@ -5,7 +5,5 @@ using UnityEngine;
 public class dividendHistory : MonoBehaviour
 {
     //Utdelning bolaget gett ut 
-    public List<float> dividendPaid;
-
-    
+    public List<float> dividendPaid;   
 }

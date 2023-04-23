@@ -17,25 +17,23 @@ public class orderValue : MonoBehaviour
 	public int amountOrder;
 	public float stockPrice;
 
-	void Awake() {
+	void Awake()
+	{
 		ChooseStockSector = buttonGO.GetComponent<chooseStockSector>();
 		BuyStock = buttonGO.GetComponent<buyStock>();
 	}
 
-	// Update is called once per frame
 	public void onChangeInput()
 	{
-
 		if (inputOrderAmount.text != "")
 		{
 			activeSector = ChooseStockSector.activeSector;
 
-			//Identifera vilket fÃ¶retag (nr)
+			//Identifera vilket företag (nr)
 			if (activeSector == 1)
 			{
 				activeCompany = stockGO.GetComponent<chooseUtiCompany>().activeCompany;
 				stockPrice = stockGO.GetComponent<chooseUtiCompany>().activeCompanyPrice;
-
 			}
 
 			if (activeSector == 2)
@@ -53,14 +51,11 @@ public class orderValue : MonoBehaviour
 			if (orderValueText.text == "")
 			{
 				amountOrder = 0;
-				Debug.Log("Empty");
 			}
 			else
 				amountOrder = int.Parse(inputOrderAmount.text);
 
 			orderValueText.text = "Value order: " + amountOrder * stockPrice;
 		}
-
 	}
-
 }

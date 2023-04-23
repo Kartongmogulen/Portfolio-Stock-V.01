@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PEG : MonoBehaviour
 {
 	//Beräkning av PEG-talet
-    
+
 	public float EPSNow;
 	public float EPSxYearsAgo;
 	public float EPSGrowth;
@@ -15,8 +15,7 @@ public class PEG : MonoBehaviour
 
 	public Text PEGtext;
 	public GameObject MainCanvasGO;
-	//public GameObject StockScriptGO;
-
+	
 	public void calculatePEG(){
 
 		year = MainCanvasGO.GetComponent<infoStockSector> ().year;
@@ -31,6 +30,5 @@ public class PEG : MonoBehaviour
 		price = MainCanvasGO.GetComponent<infoStockSector>().utiStockPrice;
 
 		PEGtext.text = "PEG: " + Mathf.Round((price/EPSGrowth)*100)/100;
-
 	}
 }
