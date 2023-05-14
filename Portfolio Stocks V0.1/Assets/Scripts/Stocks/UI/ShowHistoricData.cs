@@ -12,6 +12,16 @@ public class ShowHistoricData : MonoBehaviour
 
     private int yearNow;
 
+    public int year;
+
+    [SerializeField]
+    private int startingYearToRevealData;//Första året spelaren kan se data
+
+    private void Start()
+    {
+        startingYearToRevealData = GamePlayScopeManager.yearsToGetHistoricData - yearsHeader.Count;
+    }
+
     public void updateAllHistoricData(stock Stock)
     {
         yearNow = EndRoundButton.year; //År i dagsläget
@@ -31,7 +41,24 @@ public class ShowHistoricData : MonoBehaviour
     {
         for (int i = 0; i < EPSText.Count; i++)
         {
-            EPSText[i].text = " " + (Stock.EPSHistory[(GamePlayScopeManager.yearsToGetHistoricData + yearNow + i - EPSText.Count)]);
+            //if (stockPrefab.GetComponent<stockDataPlayerKnow>().EPSdata[Mathf.Abs(yearNow + i)] == false)
+            if(Stock.GetComponent<stockDataPlayerKnow>().EPSdata[Mathf.Abs(startingYearToRevealData + yearNow + i)] == true)
+            {
+                //Debug.Log(Stock.EPSHistory[(startingYearToRevealData + yearNow + i)]);
+                EPSText[i].text = " " + (Stock.EPSHistory[(startingYearToRevealData + yearNow + i)]);
+
+            }
+            else
+            {
+                //EPSText[i].text = " " + (Stock.EPSHistory[(GamePlayScopeManager.yearsToGetHistoricData + yearNow + i - EPSText.Count)]);
+                EPSText[i].text = "???";
+            }
         }
     }
+
+    public int getStartingYear()
+    {
+        return startingYearToRevealData;
+    }
+
 }

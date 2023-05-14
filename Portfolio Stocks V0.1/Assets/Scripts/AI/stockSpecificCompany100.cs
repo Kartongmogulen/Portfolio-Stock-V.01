@@ -64,9 +64,9 @@ public class stockSpecificCompany100 : MonoBehaviour
 	public void recieveDividens(int companyIndex)
 	{
 		dividendsRecieved.Add(totalSharesPortfolio * StockMarketInventory.Stock[companyIndex].lastDivPayout);
-		Debug.Log("Pengar INNAN Utdelning: " + moneyNow);
+		//Debug.Log("Pengar INNAN Utdelning: " + moneyNow);
 		moneyNow += dividendsRecieved[dividendsRecieved.Count-1];
-		Debug.Log("Pengar EFTER Utdelning: " + moneyNow);
+		//Debug.Log("Pengar EFTER Utdelning: " + moneyNow);
 	}
 
 	public float totalDividendsrecieved()

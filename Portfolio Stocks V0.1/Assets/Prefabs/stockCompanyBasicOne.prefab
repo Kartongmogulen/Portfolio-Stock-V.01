@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2773773203410686542}
   - component: {fileID: 8142389932202983004}
   - component: {fileID: -1338333447919414845}
+  - component: {fileID: 2154981163000740535}
   m_Layer: 0
   m_Name: stockCompanyBasicOne
   m_TagString: Untagged
@@ -45,16 +46,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caf8d83697af9840801750f1f99deed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SectorNameEnum: 0
-  divPolicyChangeDiv: 0
-  divPolicyMaxPayouRatio: 0
+  SectorNameEnum: 1
+  divPolicyChangeDiv: 2
+  divPolicyMaxPayouRatio: 80
   companyPaysDividend: 1
   startPayDividendWhenEPS: 0
-  divPayout: 0
-  EPSnow: 0
+  divPayout: 10
+  lastDivPayout: 0
+  EPSnow: 15
   EPSHistory: []
-  EPSGrowthMin: 0
-  EPSGrowthMax: 0
+  EPSGrowthMin: 2
+  EPSGrowthMax: 2
   StockPrice: []
   priceNow: 0
 --- !u!114 &8142389932202983004
@@ -77,6 +79,7 @@ MonoBehaviour:
   totalInvestment: 0
   returnOnInvestment: []
   dividendsRecieved: []
+  totalDividendsRecieved: 0
 --- !u!114 &-1338333447919414845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,3 +93,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dividendPaid: []
+--- !u!114 &2154981163000740535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3471436335729396843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d52d96dd16c17a44baca56c3934298fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EPSdata: 
+  GamePlayScopeManager: {fileID: 0}

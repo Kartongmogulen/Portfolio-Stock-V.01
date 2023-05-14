@@ -7,6 +7,7 @@ public class chooseUtiCompany : MonoBehaviour
 {
 	public GameObject stockMarketGO;
 	public GameObject playerScriptsGO;
+	public GameObject stocksUiScriptsGO;
 	public stockMarketManager StockMarketManager;
 
 	public priceChange PriceChange;
@@ -80,7 +81,11 @@ public class chooseUtiCompany : MonoBehaviour
 		activeCompanyPrice = StockMarketManager.StockUtiList[i].StockPrice[StockMarketManager.StockUtiList[i].StockPrice.Count - 1];
 		priceText.text = "Price: " + activeCompanyPrice;
 
-		
+		//Historisk data
+		stocksUiScriptsGO.GetComponent<ShowHistoricData>().updateAllHistoricData(StockMarketManager.StockUtiList[i]);
+
+		//Data spelaren känner till
+		buttonsScriptsGO.GetComponent<dataPlayerKnowsButtonUnlock>().chooseStock(StockMarketManager.StockUtiList[i]);
 	}
 
 	public void companyOne()
