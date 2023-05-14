@@ -136,4 +136,5 @@ public class gameEnd : MonoBehaviour
 		totalInvestAssets = stocksInvestmentTotAmount + bondsInvestmentTotAmount + realEstateInvestmentTotAmount + businessInvestmentTotAmount;
 	
 	}
+
 }

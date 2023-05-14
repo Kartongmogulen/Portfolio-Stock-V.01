@@ -7,6 +7,7 @@ public class chooseTechCompany : MonoBehaviour
 {
 	public GameObject stockMarketGO;
 	public GameObject playerScriptsGO;
+	public GameObject stocksUiScriptsGO;
 	public stockMarketManager StockMarketManager;
 
 	public priceChange PriceChange;
@@ -98,8 +99,14 @@ public class chooseTechCompany : MonoBehaviour
 		ownedStocks.text = "Owned: " + PortfolioStock.techCompanySharesOwned[i];
 
 		priceText.text = "Price: " + activeCompanyPrice;
-	
-}
+
+		//Historisk data
+		stocksUiScriptsGO.GetComponent<ShowHistoricData>().updateAllHistoricData(StockMarketManager.StockTechList[i]);
+
+		//Data spelaren känner till
+		buttonsScriptsGO.GetComponent<dataPlayerKnowsButtonUnlock>().chooseStock(StockMarketManager.StockTechList[i]);
+
+	}
 
 	public void companyOne()
 	{

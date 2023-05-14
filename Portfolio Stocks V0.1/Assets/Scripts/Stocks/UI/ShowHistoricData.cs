@@ -61,4 +61,9 @@ public class ShowHistoricData : MonoBehaviour
         return startingYearToRevealData;
     }
 
+    public int getYearNow()
+    {
+        return yearNow;
+    }
+
 }
