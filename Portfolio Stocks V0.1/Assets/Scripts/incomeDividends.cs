@@ -36,7 +36,7 @@ public class incomeDividends : MonoBehaviour
         incomeDivNow = ScriptsStockGO.GetComponent<dividendRecieved>().divIncomeFromPortfolioNow();
         //Debug.Log("Utdelning nu:" + incomeDivNow);
 
-        incomeDivText.text = "Div/year: " + incomeDivNow;
+        incomeDivText.text = "Div/year: " + Mathf.Round(incomeDivNow*100)/100;
     }
 
     

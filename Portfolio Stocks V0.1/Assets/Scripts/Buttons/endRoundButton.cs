@@ -87,7 +87,7 @@ public class endRoundButton : MonoBehaviour
 		//StockScriptGO.GetComponent<portfolioStock> ().returnPortfolio(); //Avkastning på portföljen
 
 		//Utdelning
-		playerGO.GetComponent<incomeDividends>().incomeDivFromPortfolioNow();
+		playerScriptsGO.GetComponent<incomeDividends>().incomeDivFromPortfolioNow();
 
 		//Spelaren
 		managerScriptsGO.GetComponent<actionPointsManager>().endRound();
@@ -146,7 +146,7 @@ public class endRoundButton : MonoBehaviour
 
 			if (year == yearsBeforeEndGame) //Vad som händer när spelet är slut
 			{
-				MainCanvas.GetComponent<gameEnd>().endOfGame();
+				StartCoroutine(waitSoOtherScriptsCanFinish());
 			}
 
 		}
@@ -155,7 +155,13 @@ public class endRoundButton : MonoBehaviour
 
 	}
 
-	public void endTurn12Mon() //Simulerar 12 månader i taget
+	IEnumerator waitSoOtherScriptsCanFinish()
+	{
+		yield return new WaitForSeconds(0.25f);
+		MainCanvas.GetComponent<gameEnd>().endOfGame();
+	}
+
+		public void endTurn12Mon() //Simulerar 12 månader i taget
 
 	{
 		

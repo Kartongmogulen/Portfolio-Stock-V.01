@@ -113,6 +113,26 @@ public class activatePanelButton : MonoBehaviour
 		}
 	}
 
+	public void activatePortfolioPanel()
+	{
+		//playerStockPanelGO
+
+		if (playerStockPanelActive == 0)
+		{
+			playerStockPanelGO.SetActive(true);
+			playerStockPanelActive = 1;
+
+			inactiveStockPanel();
+
+		}
+		else
+		{
+			playerStockPanelGO.SetActive(false);
+			playerStockPanelActive = 0;
+
+		}
+	}
+
 	public void activeRealEstatePanel(){
 
 		if (realEstatePanelActive == 0) {
@@ -193,7 +213,7 @@ public class activatePanelButton : MonoBehaviour
 		buttonsScriptsGO.GetComponent<playerStockPortfolio>().portfolioPanelStatus = 1;
 		buttonsScriptsGO.GetComponent<playerStockPortfolio>().activatePortPanel();
 		
-		//playerStockPanelActive = 0;
+		playerStockPanelActive = 0;
 	}
 
 	public void inactiveRealEstatePanel(){

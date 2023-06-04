@@ -18,33 +18,27 @@ public class compareStockReturn : MonoBehaviour
         //Debug.Log(StockMarketManager.StockPrefabUtiList[0].GetComponent<stockSpecificCompany100>().returnOnInvestment[StockMarketManager.StockPrefabUtiList[0].GetComponent<stockSpecificCompany100>().returnOnInvestment.Count]);
     }
 
-    public void highestReturn()
+    public float highestReturn()
     {
         for (int i = 1; i < StockMarketManager.StockPrefabAllList.Count; i++)
         {
-            Debug.Log("ForLoop");
-            //Debug.Log(StockMarketManager.StockPrefabUtiList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment[StockMarketManager.StockPrefabUtiList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment.Count-1]);
-            //StockMarketManager.StockPrefabUtiList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment.Count]);
-
-            if (StockMarketManager.StockPrefabAllList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment[StockMarketManager.StockPrefabAllList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment.Count - 1] > StockMarketManager.StockPrefabAllList[i - 1].GetComponent<stockSpecificCompany100>().returnOnInvestment[StockMarketManager.StockPrefabAllList[i - 1].GetComponent<stockSpecificCompany100>().returnOnInvestment.Count - 1])
+            if (StockMarketManager.StockPrefabAllList[highestReturnStockInt].GetComponent<stockSpecificCompany100>().returnOnInvestment[StockMarketManager.StockPrefabAllList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment.Count-1] < StockMarketManager.StockPrefabAllList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment[StockMarketManager.StockPrefabAllList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment.Count-1])
             {
                 highestReturnStockInt = i;
 
             }
-            else
-            {
-                highestReturnStockInt = i - 1;
-            }
-            Debug.Log("Bäst avkastning: " + highestReturnStockInt);
+            //Debug.Log("Bäst avkastning: " + highestReturnStockInt);
         }
+        
+        return StockMarketManager.StockPrefabAllList[highestReturnStockInt].GetComponent<stockSpecificCompany100>().returnOnInvestment[StockMarketManager.StockPrefabAllList[highestReturnStockInt].GetComponent<stockSpecificCompany100>().returnOnInvestment.Count-1];
     }
 
         public void highestReturnUti()
     {
         for (int i = 1; i < StockMarketManager.StockPrefabUtiList.Count; i++)
         {
-            Debug.Log("ForLoop");
-            //Debug.Log(StockMarketManager.StockPrefabUtiList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment[StockMarketManager.StockPrefabUtiList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment.Count-1]);
+            //Debug.Log("ForLoop");
+            Debug.Log(StockMarketManager.StockPrefabUtiList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment.Count - 1);
                 //StockMarketManager.StockPrefabUtiList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment.Count]);
 
             if (StockMarketManager.StockPrefabUtiList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment[StockMarketManager.StockPrefabUtiList[i].GetComponent<stockSpecificCompany100>().returnOnInvestment.Count-1] > StockMarketManager.StockPrefabUtiList[i-1].GetComponent<stockSpecificCompany100>().returnOnInvestment[StockMarketManager.StockPrefabUtiList[i-1].GetComponent<stockSpecificCompany100>().returnOnInvestment.Count-1])

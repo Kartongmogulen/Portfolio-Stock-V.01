@@ -65,7 +65,7 @@ public class chooseTechCompany : MonoBehaviour
 		{
 			divPolicyText.text = "Maximum payout ratio: " + StockMarketManager.StockTechList[i].divPolicyMaxPayouRatio + "% and aims to increase the dividend with " + StockMarketManager.StockTechList[i].divPolicyChangeDiv + "% per year.";
 			//return;
-			Debug.Log("Unlock Div");
+			//Debug.Log("Unlock Div");
 		}
 
 		if (StocksUnlockInfo.techDivPolicyUnlocked[i] == 1 && StockMarketManager.StockTechList[i].companyPaysDividend == false)

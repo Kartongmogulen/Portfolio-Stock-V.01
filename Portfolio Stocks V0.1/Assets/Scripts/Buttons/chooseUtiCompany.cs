@@ -52,7 +52,7 @@ public class chooseUtiCompany : MonoBehaviour
 		
 		divYieldText.text = "Div. yield: " + Mathf.Round(StockMarketManager.StockUtiList[i].divPayout / StockMarketManager.StockUtiList[i].StockPrice[StockMarketManager.StockUtiList[i].StockPrice.Count-1] * 10000)/100 + "%";
 
-		divPayoutText.text = "Annual dividend: " + StockMarketManager.StockUtiList[i].divPayout;
+		divPayoutText.text = "Annual dividend: " + Mathf.Round(StockMarketManager.StockUtiList[i].divPayout*100)/100;
 		divPayoutShare = StockMarketManager.StockUtiList[i].divPayout/ StockMarketManager.StockUtiList[i].EPSnow;
 
 		divUtiShareText.text = "Div.Share: " + Mathf.Round(divPayoutShare*100) + "%";

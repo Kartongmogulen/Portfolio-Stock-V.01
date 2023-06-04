@@ -26,6 +26,7 @@ public class gameEnd : MonoBehaviour
 	public Text capGainStockText;
 	public Text totalReturnAssets;
 	public Text playerReturnVsIndexText;
+	public Text playerReturnVsBestStockText;
 
 	public float incomeDuringLifeWork;
 	public float incomeDuringLifeDividend;
@@ -109,8 +110,8 @@ public class gameEnd : MonoBehaviour
 		incomeDivPerYear.text = "Income/year to live from: " + divPerYear;
 		capGainStockText.text = "Capital Gain from Stocks: " + capGainStockAmount + "(" + Mathf.Round(capGainStockPercent*10000)/100 + "%)";
 		totalReturnAssets.text = "Total Return Assets: " + Mathf.Round((assetsValue / totalInvestAssets-1)*100) + " %";
-		playerReturnVsIndexText.text = "Players return (%): " + Mathf.Round(capGainStockPercent * 10000) / 100 + " Vs Index (%): " + (EconomyScriptsGO.GetComponent<economicClimate>().totalBNPlist[EconomyScriptsGO.GetComponent<economicClimate>().totalBNPlist.Count-1]-100); 
-
+		playerReturnVsIndexText.text = "Players return (%): " + Mathf.Round(capGainStockPercent * 10000) / 100 + " Vs Index (%): " + (EconomyScriptsGO.GetComponent<economicClimate>().totalBNPlist[EconomyScriptsGO.GetComponent<economicClimate>().totalBNPlist.Count-1]-100);
+		playerReturnVsBestStockText.text = "Players return (%): " + Mathf.Round(capGainStockPercent * 10000) / 100 + " Vs Best stock (%): " + Mathf.Round(playerScriptsGO.GetComponent<compareStockReturn>().highestReturn() * 10000) / 10000;
 
 	}
 
