@@ -8,7 +8,6 @@ public class DCF : MonoBehaviour
 	//Script to calcuate Discounted Cashflow from estimated EPS growth
 	
 	public float valueDCF;
-	public float DR;
 	public float EPSNow;
 	public float EPSChange;
 

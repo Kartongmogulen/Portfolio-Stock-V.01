@@ -6,12 +6,16 @@ using UnityEngine.UI;
 public class economicClimate : MonoBehaviour
 {
 	//Script för att bestämma konjunkturcykel
+	public GameObject scriptsCalculationGO;
+	public gamePlayScopeManager GamePlayScopeManager;
+	public recessionOrExpanssionEnum RecessionOrExpanssionEnum;
 
+	//Globalt
 	public float totalBNPBefore;
 	public float totalBNPAfter;
 	public List<float> totalBNPlist = new List<float>();
-
-	public recessionOrExpanssionEnum RecessionOrExpanssionEnum;
+	public float normalizedPlayerStartBNP; //Normaliserar startvärdet så historisk värde ej inkluderas.
+	
 
 	[Header("Högkonjunktur")]
 	public int[] constantIntervallExpansion; //Olika fasta värden på expansionsfas
@@ -26,7 +30,6 @@ public class economicClimate : MonoBehaviour
 	public Text lengthCykelText;
 	public Text BNPText;
 
-	
 	int probExpansionShort; //Slh för expansion 
 	int probExpansionMediumStart; //Slh för expansion 
 	int probExpansionMedium; //Slh för expansion 
@@ -34,7 +37,6 @@ public class economicClimate : MonoBehaviour
 
 	public int probDepression;//Slh för recenssion
 	public int expOrRec; //Om det är expansion eller recenssion
-
 
 	public int a;
 	public int lengthCykelProb;
@@ -54,6 +56,13 @@ public class economicClimate : MonoBehaviour
 		//lengthPeriod();
 		lengthPeriodThreeConstant();
 		yearlyGrowthRate();
+		StartCoroutine(normalizeStartingBNP());
+	}
+
+	IEnumerator normalizeStartingBNP()
+	{
+		yield return new WaitForSeconds(0.05f);
+		normalizedPlayerStartBNP = scriptsCalculationGO.GetComponent<normalizeValue>().normalizeOneValue(totalBNPlist[GamePlayScopeManager.yearsToGetHistoricData - 1], totalBNPlist[0]);
 	}
 
 	public void updateEcoClimate() {

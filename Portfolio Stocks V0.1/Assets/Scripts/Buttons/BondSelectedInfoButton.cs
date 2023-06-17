@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class BondSelectedInfoButton : MonoBehaviour
 {
 	public GameObject playerPanelGO;
+	public bondMarketManager BondMarketManager;
 
 	//STEP 2
+	public Text durationText;
 	public Text bondCostText;
 	public Text bondRateText;
 	public Text bondCFText;
@@ -26,6 +28,14 @@ public class BondSelectedInfoButton : MonoBehaviour
 	public GameObject researchPanelGO;
 
 	public float rateIncrease;
+
+	public void showBondInfo(int bondNumb)
+	{
+		activeBond = bondNumb;
+		durationText.text = "Duration: " + BondMarketManager.bondMarketListGO[bondNumb].GetComponent<bondInfoPrefab>().duration + " (years)";
+		bondCostText.text = "Cost: " + BondMarketManager.bondMarketListGO[bondNumb].GetComponent<bondInfoPrefab>().costBond;
+		bondRateText.text = "Rate: " + BondMarketManager.bondMarketListGO[bondNumb].GetComponent<bondInfoPrefab>().rate + "%";
+	}
 
 	public void showInfoBondOne(int bondNum)
 	{

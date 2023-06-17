@@ -9,6 +9,8 @@ public class bondsPortfolio : MonoBehaviour
 	public GameObject bottomPanel;
 
 	public int[] bondsOwned;
+	public List<int> bondsOwned1Year;//Hur många räntepapper som ägs för denna duration
+	public int[] bondsOwned10Year;//Hur många räntepapper som ägs för denna duration
 	public float totalValueBonds;
 	public float totalBondsInvest;
 	public float bondsGAVOne;
@@ -17,11 +19,16 @@ public class bondsPortfolio : MonoBehaviour
 	public Text cashFlowBondsNowText;
 
 	public void addBonds(int nrBond){
-		nrBond--;
-		bondsOwned[nrBond] = bondsOwned[nrBond] + 1;
+		//nrBond--;
+		//bondsOwned[nrBond]++;
 
 		valueBondPort();
 
+	}
+
+	public void addPlaceInList()
+	{
+		bondsOwned1Year.Add(0);
 	}
 
 	public void sellBonds(int nrBond){

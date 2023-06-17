@@ -7,6 +7,11 @@ public class priceChange : MonoBehaviour
 {
 	public GameObject StockMarketGO;
 	public stockMarketManager StockMarketManager;
+	public bondMarketManager BondMarketManager;
+
+	public BondSelectedInfoButton bondSelectedInfoButton;
+	public float riskFreeRate;
+	public float stockMarketPremium;
 
 	//public stockMarketInventory ChooseStockPanel;
 
@@ -159,7 +164,8 @@ public class priceChange : MonoBehaviour
 
 	public float DCFbasedPriceTest(stock Stock)
 	{
-
+		riskFreeRate = BondMarketManager.bondMarketListGO[BondMarketManager.bondMarketListGO.Count-1].GetComponent<bondInfoPrefab>().rate/100;
+		discountRate = riskFreeRate + stockMarketPremium;
 		/*for (int i = 0; i < StockMarketInventory.Stock.Count; i++) {
 			minEPSGrowth = StockMarketInventory.Stock[i].EPSGrowthMin;
 			maxEPSGrowth = StockMarketInventory.Stock[i].EPSGrowthMax;
@@ -197,8 +203,9 @@ public class priceChange : MonoBehaviour
 			valueDCFMax = Mathf.RoundToInt(dcf.valueDCF);
 		}
 		//Spara priset för bolaget
-		stockPriceNow = Mathf.RoundToInt(Random.Range(valueDCFMin, valueDCFMax));
 		
+		stockPriceNow = Mathf.RoundToInt(Random.Range(valueDCFMin, valueDCFMax));
+
 		return stockPriceNow;
 		//StockMarketInventory.Stock[i].updatePriceNow();
 	

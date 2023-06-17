@@ -25,5 +25,15 @@ public class moneyManager : MonoBehaviour
 
     }
 
+    public bool enoughMoney(float money, float moneyTransaction)
+    {
+        if (money >= moneyTransaction)
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+
 
 }

@@ -15,7 +15,7 @@ public class endRoundButton : MonoBehaviour
 
 	public GameObject playerScriptsGO;
 	public GameObject managerScriptsGO;
-	public GameObject playerGO;
+	//public GameObject playerGO;
 
 	public int timePoints; //Research/Time poäng.
 
@@ -78,7 +78,7 @@ public class endRoundButton : MonoBehaviour
 
 		//Pengar
 		//playerPanelGO.GetComponent<totalCash>().cashflowFromBusiness();
-		playerGO.GetComponent<totalCash>().incomeWork();
+		playerScriptsGO.GetComponent<totalCash>().incomeWork();
 
 		//Portfölj
 		//playerPanelGO.GetComponent<portfolio>().updatePortfolio(); //Uppdaterar utd för portföljen
@@ -93,7 +93,7 @@ public class endRoundButton : MonoBehaviour
 		managerScriptsGO.GetComponent<actionPointsManager>().endRound();
 
 		//Debug/Övriga spelare
-		debugPanelGO.GetComponent<Bonds100> ().investBonds ();
+		//debugPanelGO.GetComponent<Bonds100> ().investBonds ();
 		debugPanelGO.GetComponent<Index100> ().investIndex ();
 		
 
@@ -106,8 +106,8 @@ public class endRoundButton : MonoBehaviour
 
 			//Utdelningar från föregående år innan värden uppdateras för bolagen
 			StockScriptGO.GetComponent<dividendRecieved>().recievedDividends();
-			playerGO.GetComponent<incomeDividends>().updateIncomeDividends();
-			playerGO.GetComponent<totalCash>().incomeDividend(playerGO.GetComponent<incomeDividends>().incomeDividendPreviousYear);
+			PlayerScriptsGO.GetComponent<incomeDividends>().updateIncomeDividends();
+			PlayerScriptsGO.GetComponent<totalCash>().incomeDividend(playerScriptsGO.GetComponent<incomeDividends>().incomeDividendPreviousYear);
 			
 			//playerPanelGO.GetComponent<totalCash>().incomeBonds();
 			//globalEcoClimate = MainCanvas.GetComponent<globalEcoClimate>().globalEcoClimateValueNow;
