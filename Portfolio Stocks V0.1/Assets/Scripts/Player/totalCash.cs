@@ -12,6 +12,14 @@ public class totalCash : MonoBehaviour
 
 	//==COMPONENTER
 	public moneyManager MoneyManager;
+	public bondMarketManager BondMarketManager;
+	public bondsPortfolio BondsPortfolio;
+
+	//==Variabler
+	[SerializeField] private float rate;
+	[SerializeField] private float amountBonds;
+
+	private int i;
 
 	//Step 3.1.1
 	public GameObject ScriptsGO;
@@ -88,12 +96,44 @@ public class totalCash : MonoBehaviour
 		incomeRealEstateLifetime = incomeRealEstateLifetime + panelRealEstateGO.GetComponent<buyRealEstate>().cashFlowRealEstateNow;
 	}
 
-	public void incomeBonds (){
+	public void incomeBonds (float income){
 		moneyBefore = moneyNow;
-		moneyNow = moneyBefore + playerPanelGo.GetComponent<bondsPortfolio>().cashFlowBondsNow;
+		moneyNow += income;
+		//moneyNow = moneyBefore + playerPanelGo.GetComponent<bondsPortfolio>().cashFlowBondsNow;
 		moneyText.text = "Money: " + moneyNow;
 		moneyBefore = moneyNow;
-		incomeBondsLifetime = incomeBondsLifetime + panelBonds.GetComponent<buyBonds>().cashFlowBondsNow;
+		incomeBondsLifetime += income;
+		//incomeBondsLifetime = incomeBondsLifetime + panelBonds.GetComponent<buyBonds>().cashFlowBondsNow;
+	}
+
+	//Räntor som betalar ut räntan var 12 månad
+	public void incomeBondsOncePerYear()
+	{
+		//Korta räntor, 1 år
+		rate = BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[0].GetComponent<bondInfoPrefab>().rate / 100;
+		Debug.Log("Ränta: " + rate);
+		amountBonds = BondsPortfolio.bondsOwned1Year[0];
+		Debug.Log("Antal: " + amountBonds);
+		moneyNow += rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[0].GetComponent<bondInfoPrefab>().costBond;
+		Debug.Log("Intäkt räntor: " + rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[0].GetComponent<bondInfoPrefab>().costBond);
+
+		//Långa räntor, 5 år
+		rate = BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[1].GetComponent<bondInfoPrefab>().rate / 100;
+		Debug.Log("Ränta: " + rate);
+		amountBonds = BondsPortfolio.bondsOwned5Year[0];
+		Debug.Log("Antal: " + amountBonds);
+		moneyNow += rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond;
+		Debug.Log("Intäkt räntor: " + rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond);
+		moneyText.text = "Money: " + moneyNow;
+
+
+		/*foreach (GameObject bondPrefab in BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO)
+		{
+
+			rate = bondPrefab.GetComponent<bondInfoPrefab>().rate/100;
+			Debug.Log("Ränta: " + rate);
+			//moneyNow += rate/100 * 
+		}*/
 	}
 
 	public void buyStockUti(int amount){

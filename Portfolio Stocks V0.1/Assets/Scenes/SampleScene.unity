@@ -7815,7 +7815,7 @@ PrefabInstance:
     - target: {fileID: 2199418306750456670, guid: f7a58edd969bb2241b274bde1ed1fff1,
         type: 3}
       propertyPath: duration
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5373884743299538216, guid: f7a58edd969bb2241b274bde1ed1fff1,
         type: 3}
@@ -10582,6 +10582,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 741300675}
+        m_TargetAssemblyTypeName: bondMaturityCheck, Assembly-CSharp
+        m_MethodName: checkFiveYearBonds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &602612600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11926,7 +11938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadab3ab4fb679d4d845aa38275845c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incomeWorkPerMonth: 500
+  incomeWorkPerMonth: 0
   totalIncomeFromWork: 0
   incomeWorkText: {fileID: 838729664}
 --- !u!114 &678885390
@@ -11943,6 +11955,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyStart: 10000
   MoneyManager: {fileID: 1774405548}
+  BondMarketManager: {fileID: 1985270149}
+  BondsPortfolio: {fileID: 678885393}
+  rate: 0
+  amountBonds: 0
   ScriptsGO: {fileID: 0}
   moneyBefore: 0
   moneyAfter: 0
@@ -12030,7 +12046,7 @@ MonoBehaviour:
   bottomPanel: {fileID: 1753404193}
   bondsOwned: 000000000000000000000000
   bondsOwned1Year: 
-  bondsOwned10Year: 
+  bondsOwned5Year: 
   totalValueBonds: 0
   totalBondsInvest: 0
   bondsGAVOne: 0
@@ -13210,6 +13226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 741300672}
   - component: {fileID: 741300674}
+  - component: {fileID: 741300675}
   - component: {fileID: 741300673}
   m_Layer: 0
   m_Name: Bonds
@@ -13285,6 +13302,23 @@ MonoBehaviour:
   realEstatePanel: {fileID: 2133971449}
   bondPanel: {fileID: 1468750903}
   bondPanelOnOff: 0
+--- !u!114 &741300675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741300671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e350fc4d64d2fc4ba37ec009113a531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BondsPortfolio: {fileID: 678885393}
+  TotalCash: {fileID: 678885390}
+  BondMarketManager: {fileID: 1985270149}
+  amountBonds: 0
+  valueBonds: 0
 --- !u!1 &744468114
 GameObject:
   m_ObjectHideFlags: 0
@@ -15408,6 +15442,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 741300675}
+        m_TargetAssemblyTypeName: bondMaturityCheck, Assembly-CSharp
+        m_MethodName: checkIfMaturePassed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -32589,7 +32635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d0d73e8619f3db43b118c4b25984467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yearsBeforeEndGameMaster: 2
+  yearsBeforeEndGameMaster: 3
   yearsToGetHistoricData: 10
 --- !u!114 &1774405552
 MonoBehaviour:

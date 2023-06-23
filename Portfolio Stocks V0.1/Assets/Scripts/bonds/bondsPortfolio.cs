@@ -10,7 +10,7 @@ public class bondsPortfolio : MonoBehaviour
 
 	public int[] bondsOwned;
 	public List<int> bondsOwned1Year;//Hur många räntepapper som ägs för denna duration
-	public int[] bondsOwned10Year;//Hur många räntepapper som ägs för denna duration
+	public List<int> bondsOwned5Year;//Hur många räntepapper som ägs för denna duration
 	public float totalValueBonds;
 	public float totalBondsInvest;
 	public float bondsGAVOne;
@@ -18,9 +18,18 @@ public class bondsPortfolio : MonoBehaviour
 
 	public Text cashFlowBondsNowText;
 
+	private void Start()
+	{
+		addPlaceInList();
+	}
+
 	public void addBonds(int nrBond){
 		//nrBond--;
 		//bondsOwned[nrBond]++;
+		if (nrBond == 0)
+		bondsOwned1Year[bondsOwned1Year.Count-1]++;
+		if(nrBond == 1)
+		bondsOwned5Year[bondsOwned1Year.Count - 1]++;
 
 		valueBondPort();
 
@@ -29,11 +38,21 @@ public class bondsPortfolio : MonoBehaviour
 	public void addPlaceInList()
 	{
 		bondsOwned1Year.Add(0);
+		bondsOwned5Year.Add(0);
+	}
+
+	public void removeBondsFromListWhenMature(int bondOrderNumb)
+	{
+		if (bondOrderNumb == 0)
+		bondsOwned1Year.RemoveAt(0);
+		if (bondOrderNumb == 1)
+		bondsOwned5Year.RemoveAt(0);
 	}
 
 	public void sellBonds(int nrBond){
-		nrBond--;
-		bondsOwned[nrBond] = bondsOwned[nrBond] - 1;
+		//nrBond--;
+		//bondsOwned[nrBond] = bondsOwned[nrBond] - 1;
+
 
 		valueBondPort();
 	}
@@ -50,9 +69,11 @@ public class bondsPortfolio : MonoBehaviour
 		}
 	}
 
-	public void cashFlowBondsAdd()
+	public void cashFlowBondsAdd(float addCashFlow)
 	{
-		cashFlowBondsNow = cashFlowBondsNow + bottomPanel.GetComponent<BondSelectedInfoButton>().cashflow[0];
+		Debug.Log("Utökar cashflow från räntor med: " + addCashFlow);
+		//cashFlowBondsNow = cashFlowBondsNow + bottomPanel.GetComponent<BondSelectedInfoButton>().cashflow[0];
+		cashFlowBondsNow += addCashFlow;
 
 		cashFlowBondsNowText.text = "Bonds/Year: " + cashFlowBondsNow;
 	}

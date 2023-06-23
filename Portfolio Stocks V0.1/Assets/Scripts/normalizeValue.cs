@@ -11,7 +11,6 @@ public class normalizeValue : MonoBehaviour
     public float normalizeOneValue(float valueToNomalize, float referenceValue)
     {
 
-        Debug.Log("normalized value");
         result = valueToNomalize / referenceValue;
 
         return result;

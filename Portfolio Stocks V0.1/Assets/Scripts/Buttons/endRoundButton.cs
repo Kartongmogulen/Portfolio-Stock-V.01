@@ -99,16 +99,17 @@ public class endRoundButton : MonoBehaviour
 
 		//MainCanvas.GetComponent<news>().randomNews(); //NYHETER
 
-		if (month > 11) {
+		if (month > 12) {
 			year++;
-			month = 0;
+			month = 1;
 			DateNowText.text = "Y: " + year + " M: " + month;
 
 			//Utdelningar från föregående år innan värden uppdateras för bolagen
 			StockScriptGO.GetComponent<dividendRecieved>().recievedDividends();
 			PlayerScriptsGO.GetComponent<incomeDividends>().updateIncomeDividends();
 			PlayerScriptsGO.GetComponent<totalCash>().incomeDividend(playerScriptsGO.GetComponent<incomeDividends>().incomeDividendPreviousYear);
-			
+			PlayerScriptsGO.GetComponent<totalCash>().incomeBondsOncePerYear();
+
 			//playerPanelGO.GetComponent<totalCash>().incomeBonds();
 			//globalEcoClimate = MainCanvas.GetComponent<globalEcoClimate>().globalEcoClimateValueNow;
 			//MainCanvas.GetComponent<infoStockSector>().updateEarnings(globalEcoClimate); //Ändrar EPS för sektorn vid årets slut
@@ -130,7 +131,7 @@ public class endRoundButton : MonoBehaviour
 			*/
 			StockScriptGO.GetComponent<yearsDivIncrease>().updateDivYearStreak();
 
-			debugPanelGO.GetComponent<Bonds100> ().dividendBonds ();
+			//debugPanelGO.GetComponent<Bonds100> ().dividendBonds ();
 			debugPanelGO.GetComponent<endRoundButtonDebugg>().recieveDividends();
 		
 			//StockScriptGO.GetComponent<dividendRecieved> ().recievedDividends ();

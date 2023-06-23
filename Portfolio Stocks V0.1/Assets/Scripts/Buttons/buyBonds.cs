@@ -44,6 +44,9 @@ public class buyBonds : MonoBehaviour
 
 			//Minskar spelaren pengar
 			TotalCash.buyBonds(costBond);
+
+			//Adderar till kassaflödet
+			//BondsPortfolio.cashFlowBondsAdd(BondMarketManager.bondMarketListGO[activeBond].GetComponent<bondInfoPrefab>().rate * costBond/100);
 		}
 	}
 
@@ -61,7 +64,7 @@ public void buyBondsOne (){
 			//playerPanelGO.GetComponent<totalCash>().buyBonds(costBond);
 
 			amountOwnedBondText.text = "Owned (amount): " + playerPanelGO.GetComponent<bondsPortfolio>().bondsOwned[activeBond-1];
-			playerPanelGO.GetComponent<bondsPortfolio>().cashFlowBondsAdd();
+			//playerPanelGO.GetComponent<bondsPortfolio>().cashFlowBondsAdd();
 		}
 	}
 
