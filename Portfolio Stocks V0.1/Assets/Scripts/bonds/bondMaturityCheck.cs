@@ -23,13 +23,13 @@ public class bondMaturityCheck : MonoBehaviour
     {
         if (BondsPortfolio.bondsOwned1Year.Count-1 < 12 * BondMarketManager.bondMarketListGO[0].GetComponent<bondInfoPrefab>().duration)
         {
-            Debug.Log("12 mån har ej passerat");
+            //Debug.Log("12 mån har ej passerat");
             return; 
         }
         else
         {
             amountBonds = BondsPortfolio.bondsOwned1Year[BondsPortfolio.bondsOwned1Year.Count - 13];
-            Debug.Log("Antal Korta räntor: " + amountBonds);
+            //Debug.Log("Antal Korta räntor: " + amountBonds);
             valueBonds = amountBonds * BondMarketManager.bondMarketListGO[0].GetComponent<bondInfoPrefab>().costBond;
             //TotalCash.incomeBonds(valueBonds * BondMarketManager.bondMarketListGO[0].GetComponent<bondInfoPrefab>().rate / 100);
             BondsPortfolio.removeBondsFromListWhenMature(0);
@@ -42,17 +42,17 @@ public class bondMaturityCheck : MonoBehaviour
     {
         if (BondsPortfolio.bondsOwned5Year.Count - 1 < 12 * BondMarketManager.bondMarketListGO[bondInt].GetComponent<bondInfoPrefab>().duration)
         {
-            Debug.Log("60 mån har ej passerat");
+            //Debug.Log("60 mån har ej passerat");
             return;
         }
 
         else
         {
-            Debug.Log("60 mån HAR passerat");
+            //Debug.Log("60 mån HAR passerat");
             amountBonds = BondsPortfolio.bondsOwned5Year[BondsPortfolio.bondsOwned5Year.Count - Mathf.RoundToInt(12 * BondMarketManager.bondMarketListGO[bondInt].GetComponent<bondInfoPrefab>().duration + 1)];
-            Debug.Log("Antal Långa räntor: " + amountBonds);
+            //Debug.Log("Antal Långa räntor: " + amountBonds);
             valueBonds = amountBonds * BondMarketManager.bondMarketListGO[bondInt].GetComponent<bondInfoPrefab>().costBond;
-            Debug.Log("Värde Långa räntor: " + valueBonds);
+            //Debug.Log("Värde Långa räntor: " + valueBonds);
             //TotalCash.incomeBonds(valueBonds * BondMarketManager.bondMarketListGO[bondInt].GetComponent<bondInfoPrefab>().rate / 100);
             BondsPortfolio.removeBondsFromListWhenMature(bondInt);
             TotalCash.sellBonds(valueBonds);

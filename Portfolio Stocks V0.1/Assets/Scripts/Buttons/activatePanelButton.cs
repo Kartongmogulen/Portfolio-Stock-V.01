@@ -24,6 +24,7 @@ public class activatePanelButton : MonoBehaviour
 
 	public GameObject playerStockPanelGO;
 	public int playerStockPanelActive;
+	public GameObject PortfolioChooseCategoriPanelGO;
 
 	public GameObject realEstatePanelGO;
 	public int realEstatePanelActive;
@@ -121,13 +122,16 @@ public class activatePanelButton : MonoBehaviour
 		{
 			playerStockPanelGO.SetActive(true);
 			playerStockPanelActive = 1;
+			PortfolioChooseCategoriPanelGO.SetActive(true);
 
 			inactiveStockPanel();
+			inactiveBondsPanel();
 
 		}
 		else
 		{
 			playerStockPanelGO.SetActive(false);
+			PortfolioChooseCategoriPanelGO.SetActive(false);
 			playerStockPanelActive = 0;
 
 		}
@@ -214,6 +218,7 @@ public class activatePanelButton : MonoBehaviour
 		buttonsScriptsGO.GetComponent<playerStockPortfolio>().activatePortPanel();
 		
 		playerStockPanelActive = 0;
+		PortfolioChooseCategoriPanelGO.SetActive(false);
 	}
 
 	public void inactiveRealEstatePanel(){

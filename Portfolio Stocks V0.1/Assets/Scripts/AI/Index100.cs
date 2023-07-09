@@ -31,7 +31,7 @@ public class Index100 : MonoBehaviour
 		strategyName.text = "Index: 100%";
 
 		//startMoney = playerPanelGO.GetComponent<totalCash> ().moneyStart;
-		incomeFromWork = playerPanelGO.GetComponent<incomeWork> ().incomeWorkPerMonth; //Hämtar inkomst
+		//incomeFromWork = playerPanelGO.GetComponent<incomeWork> ().incomeWorkPerMonth; //Hämtar inkomst
 		moneyNow = startMoney; //Hur mycket pengar spelaren har vid start
 	}
 

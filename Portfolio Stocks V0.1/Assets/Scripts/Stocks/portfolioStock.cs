@@ -50,6 +50,7 @@ public class portfolioStock : MonoBehaviour
 
 	
 	public float[] returnTech;
+	public List<float> returnPortfolioEachTurn;
 
 	//UTDELNINGAR
 	public float totalDivIncome;
@@ -247,7 +248,12 @@ public class portfolioStock : MonoBehaviour
 
 		totalInvest();
 		totalReturnPortfolioPercent = totalReturnPortfolioAmount / totalInvestAmountPortfolio;
+		savePortfolioReturnEachTurn();
+	}
 
+	public void savePortfolioReturnEachTurn()
+	{
+		returnPortfolioEachTurn.Add(totalReturnPortfolioPercent);
 	}
 
 	public void valuePortfolio()
