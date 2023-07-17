@@ -48,6 +48,7 @@ public class activatePanelButton : MonoBehaviour
 			inactiveBusinessPanel ();
 			inactiveStockPanel ();
 			inactiveRealEstatePanel ();
+			inactivePlayerStockPanel();
 
 		} else {
 			panelBondsGO.SetActive (false);
@@ -124,8 +125,7 @@ public class activatePanelButton : MonoBehaviour
 			playerStockPanelActive = 1;
 			PortfolioChooseCategoriPanelGO.SetActive(true);
 
-			inactiveStockPanel();
-			inactiveBondsPanel();
+			
 
 		}
 		else
@@ -135,6 +135,9 @@ public class activatePanelButton : MonoBehaviour
 			playerStockPanelActive = 0;
 
 		}
+
+		inactiveStockPanel();
+		inactiveBondsPanel();
 	}
 
 	public void activeRealEstatePanel(){
@@ -164,13 +167,14 @@ public class activatePanelButton : MonoBehaviour
 			//stockPanelGO.GetComponent<infoButton>().correctOnOff();
 
 			inactivePlayerStockPanel();
-			/*inactiveBondsPanel ();
-			inactiveBooksPanel ();
+			inactiveBondsPanel ();
+			/*inactiveBooksPanel ();
 			inactiveBusinessPanel ();
 			inactiveRealEstatePanel ();
 			inactiveSectorInfoPanel ();
 			*/
-		} else {
+		}
+		else {
 			stockPanelGO.SetActive (false);
 			stockPanelActive = 0;
 		}

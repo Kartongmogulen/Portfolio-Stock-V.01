@@ -13,6 +13,7 @@ public class bondsPortfolio : MonoBehaviour
 	public List<int> bondsOwned5Year;//Hur många räntepapper som ägs för denna duration
 	public float totalValueBonds;
 	public float totalBondsInvest;
+	[SerializeField] private float totalBondsInvestLifetime;
 	public float bondsGAVOne;
 	public float cashFlowBondsNow;
 
@@ -27,10 +28,12 @@ public class bondsPortfolio : MonoBehaviour
 		//nrBond--;
 		//bondsOwned[nrBond]++;
 		if (nrBond == 0)
-		bondsOwned1Year[bondsOwned1Year.Count-1]++;
-		if(nrBond == 1)
-		bondsOwned5Year[bondsOwned1Year.Count - 1]++;
+			bondsOwned1Year[bondsOwned1Year.Count - 1]++;
+		
+		if (nrBond == 1)
+			bondsOwned5Year[bondsOwned1Year.Count - 1]++;
 
+		bondsOwned[nrBond]++;
 		valueBondPort();
 
 	}
@@ -88,10 +91,18 @@ public class bondsPortfolio : MonoBehaviour
 	public void bondsTotalInvest(float cost){
 
 		totalBondsInvest = totalBondsInvest + cost;
-
+		Debug.Log("Totalt investerat i räntor, löpande: " + totalBondsInvestLifetime);
 		if (totalBondsInvest < 0) {
 			totalBondsInvest = 0;
 		}
 
+		if (cost > 0)
+			totalBondsInvestLifetime += cost;
+
+	}
+
+	public float getTotalBondsInvestedLifetime()
+	{
+		return totalBondsInvestLifetime;
 	}
 }

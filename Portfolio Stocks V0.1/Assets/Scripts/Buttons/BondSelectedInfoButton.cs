@@ -7,12 +7,14 @@ public class BondSelectedInfoButton : MonoBehaviour
 {
 	public GameObject playerPanelGO;
 	public bondMarketManager BondMarketManager;
+	public bondsPortfolio BondsPortfolio;
 
 	//STEP 2
 	public Text durationText;
 	public Text bondCostText;
 	public Text bondRateText;
 	public Text bondCFText;
+	public Text bondsOwned;
 
 	public float[] costBond; //Totalt kostnad
 	public float[] rate;
@@ -35,6 +37,15 @@ public class BondSelectedInfoButton : MonoBehaviour
 		durationText.text = "Duration: " + BondMarketManager.bondMarketListGO[bondNumb].GetComponent<bondInfoPrefab>().duration + " (years)";
 		bondCostText.text = "Cost: " + BondMarketManager.bondMarketListGO[bondNumb].GetComponent<bondInfoPrefab>().costBond;
 		bondRateText.text = "Rate: " + BondMarketManager.bondMarketListGO[bondNumb].GetComponent<bondInfoPrefab>().rate + "%";
+		bondsOwned.text = "Owned: " + BondsPortfolio.bondsOwned[bondNumb];
+	}
+
+	public void updateActiveBond()
+	{
+		durationText.text = "Duration: " + BondMarketManager.bondMarketListGO[activeBond].GetComponent<bondInfoPrefab>().duration + " (years)";
+		bondCostText.text = "Cost: " + BondMarketManager.bondMarketListGO[activeBond].GetComponent<bondInfoPrefab>().costBond;
+		bondRateText.text = "Rate: " + BondMarketManager.bondMarketListGO[activeBond].GetComponent<bondInfoPrefab>().rate + "%";
+		bondsOwned.text = "Owned: " + BondsPortfolio.bondsOwned[activeBond];
 	}
 
 	public void showInfoBondOne(int bondNum)

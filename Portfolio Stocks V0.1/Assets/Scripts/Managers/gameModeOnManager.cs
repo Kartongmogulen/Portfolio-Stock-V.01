@@ -7,6 +7,8 @@ public class gameModeOnManager : MonoBehaviour
     //När spelet ska spelas "skarpt"
 
     public GameObject stockPanelGO;
+    public GameObject portfolioPlayerGO;
+    public GameObject portfolioChooseCategoriPanelGO;
 
     private void Start()
     {
@@ -16,5 +18,7 @@ public class gameModeOnManager : MonoBehaviour
     public void inactivateGameObjectsAtStart()
     {
         stockPanelGO.SetActive(false);
+        portfolioPlayerGO.SetActive(false);
+        portfolioChooseCategoriPanelGO.SetActive(false);
     }
 }

@@ -89,9 +89,9 @@ public class sellStock : MonoBehaviour
 		if (amountOrder <= playerStockCount) {
 
 			//Addera pengar
-			moneyPlayer = playerGO.GetComponent<totalCash>().moneyNow;
-			playerGO.GetComponent<totalCash> ().moneyNow = moneyPlayer + orderValue;
-			playerGO.GetComponent<totalCash>().updateMoney();
+			moneyPlayer = playerScriptsGO.GetComponent<totalCash>().moneyNow;
+			playerScriptsGO.GetComponent<totalCash> ().moneyNow = moneyPlayer + orderValue;
+			playerScriptsGO.GetComponent<totalCash>().updateMoney();
 
 			//Sub antalet aktier
 			if (activeSector == 1) {

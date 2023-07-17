@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class showShareAssets : MonoBehaviour
 {
     public playerPortfolioAllAssets PlayerPortfolioAllAssets;
+    public portfolioStock PortfolioStock;
+    public bondsPortfolio BondsPortfolio;
+    public totalCash TotalCash;
 
     //Panel Ett
     public Text nameHeadline;
@@ -16,14 +19,21 @@ public class showShareAssets : MonoBehaviour
     public Text shareStocks;
     public Text shareBonds;
 
+    //Panel Tre, Avkastning
+    public Text returnStocks;
+    public Text returnBonds;
+
     private float shareStockTotalPortfolio;
     private float shareBondsTotalPortfolio;
+
+    private float returnStockPortfolio;
+    private float returnBondsPortfolio;
 
     public void stockAndBondsSharePortfolio()
     {
         shareStockTotalPortfolio = PlayerPortfolioAllAssets.shareStockTotalPortfolio();
         shareBondsTotalPortfolio = PlayerPortfolioAllAssets.shareBondsTotalPortfolio();
-        Debug.Log("Aktier andel av portfölj: " + shareStockTotalPortfolio);
+        //Debug.Log("Aktier andel av portfölj: " + shareStockTotalPortfolio);
     }
 
     public void infoPanelOne()
@@ -31,6 +41,10 @@ public class showShareAssets : MonoBehaviour
         nameHeadline.text = " Asset class: ";
         assetClassOne.text = " Stocks: ";
         assetClassTwo.text = " Bonds: ";
+
+        infoSharePanelStocksVsBonds();
+        returnOnAsset();
+        //returnStocks.text = " " + ;
     }
 
     public void infoSharePanelStocksVsBonds()
@@ -40,6 +54,17 @@ public class showShareAssets : MonoBehaviour
         shareBonds.text = "" + Mathf.Round(shareBondsTotalPortfolio * 10000) / 100 + "%";
     }
 
+    public void returnOnAsset()
+    {
+        PortfolioStock.returnPortfolio();
+        returnStockPortfolio = PortfolioStock.totalReturnPortfolioPercent;
+        returnStocks.text = " " + Mathf.Round(returnStockPortfolio * 10000) / 100 + "%";
+
+        returnBondsPortfolio = TotalCash.incomeBondsLifetime / BondsPortfolio.getTotalBondsInvestedLifetime();
+        Debug.Log(TotalCash.incomeBondsLifetime);
+        Debug.Log(BondsPortfolio.getTotalBondsInvestedLifetime());
+        returnBonds.text = " " + Mathf.Round(returnBondsPortfolio * 10000) / 100 + "%";
+    }
 
 
 }

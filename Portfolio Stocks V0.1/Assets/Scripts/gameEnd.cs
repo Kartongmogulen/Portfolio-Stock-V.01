@@ -7,6 +7,7 @@ public class gameEnd : MonoBehaviour
 {
 	public GameObject playerGO;
 	public GameObject playerScriptsGO;
+	public GameObject calcutaionToolsScriptsGO;
 
 	public GameObject MainCanvasGO;
 	public GameObject endGamePanel;
@@ -24,6 +25,7 @@ public class gameEnd : MonoBehaviour
 	public Text assetsValueText;
 	public Text incomeBondsLifetimeText;
 	public Text capGainStockText;
+	public Text sharpeRatioText;
 	public Text totalReturnAssets;
 	public Text playerReturnVsIndexText;
 	public Text playerReturnVsBestStockText;
@@ -109,6 +111,7 @@ public class gameEnd : MonoBehaviour
 		incomeBondsLifetimeText.text = "Bonds income: " + incomeBondsLifetime;
 		incomeDivPerYear.text = "Income/year to live from: " + divPerYear;
 		capGainStockText.text = "Capital Gain from Stocks: " + capGainStockAmount + "(" + Mathf.Round(capGainStockPercent*10000)/100 + "%)";
+		sharpeRatioText.text = "Sharpe Ratio Portfolio: " + calcutaionToolsScriptsGO.GetComponent<sharpeKvotPortfolio>().getSharpeRatio();
 		totalReturnAssets.text = "Total Return Assets: " + Mathf.Round((assetsValue / totalInvestAssets-1)*100) + " %";
 		playerReturnVsIndexText.text = "Players return (%): " + Mathf.Round(capGainStockPercent * 10000) / 100 + " Vs Index (%): " + (EconomyScriptsGO.GetComponent<economicClimate>().totalBNPlist[EconomyScriptsGO.GetComponent<economicClimate>().totalBNPlist.Count-1]-100);
 		playerReturnVsBestStockText.text = "Players return (%): " + Mathf.Round(capGainStockPercent * 10000) / 100 + " Vs Best stock (%): " + Mathf.Round(playerScriptsGO.GetComponent<compareStockReturn>().highestReturn() * 10000) / 10000;

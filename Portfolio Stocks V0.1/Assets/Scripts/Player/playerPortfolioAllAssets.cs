@@ -14,7 +14,7 @@ public class playerPortfolioAllAssets : MonoBehaviour
     {
         PortfolioStock.valuePortfolio();
         stockShareTotalPortfolio = PortfolioStock.totalValuePortfolio/(PortfolioStock.totalValuePortfolio+BondsPortfolio.totalBondsInvest);
-        Debug.Log(stockShareTotalPortfolio);
+        //Debug.Log(stockShareTotalPortfolio);
 
         return stockShareTotalPortfolio;
     }
@@ -24,4 +24,5 @@ public class playerPortfolioAllAssets : MonoBehaviour
         bondsShareTotalPortfolio = BondsPortfolio.totalBondsInvest / (PortfolioStock.totalValuePortfolio + BondsPortfolio.totalBondsInvest);
         return bondsShareTotalPortfolio;
     }
+
 }

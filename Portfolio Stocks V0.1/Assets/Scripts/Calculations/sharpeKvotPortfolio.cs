@@ -25,13 +25,14 @@ public class sharpeKvotPortfolio : MonoBehaviour
         //getRiskFreeRate();
     }
 
-    public void getSharpeRatio()
+    public float getSharpeRatio()
     {
         getRiskFreeRate();
         totalReturnBondsAndStocks();
         standardDeviationPortfolio = GetComponent<standardDeviationCalculation>().calculateStandardDeviation(PortfolioStock.returnPortfolioEachTurn);
         sharpeRatioPortfolio = GetComponent<sharpeRatioCalculation>().sharpeRatio(riskFreeRate, totalReturnAllPortfolioPercent, standardDeviationPortfolio);
-     
+
+        return sharpeRatioPortfolio;
     }
 
     public void getRiskFreeRate()

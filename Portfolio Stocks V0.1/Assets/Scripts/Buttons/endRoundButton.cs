@@ -20,6 +20,7 @@ public class endRoundButton : MonoBehaviour
 	public int timePoints; //Research/Time poäng.
 
 	public GameObject MainCanvas; //Object where the main scripts are
+	public GameObject visualisationScriptsGO;
 	public GameObject stockMarketGO;
 	public GameObject PanelSectorGO;
 	public GameObject playerPanelGO;
@@ -83,7 +84,7 @@ public class endRoundButton : MonoBehaviour
 		//Portfölj
 		//playerPanelGO.GetComponent<portfolio>().updatePortfolio(); //Uppdaterar utd för portföljen
 		playerScriptsGO.GetComponent<portfolioStock>().valuePortfolio();
-		playerScriptsGO.GetComponent<portfolioStock>().showPortfolioData();
+		//playerScriptsGO.GetComponent<portfolioStock>().showPortfolioData();
 		//StockScriptGO.GetComponent<portfolioStock> ().returnPortfolio(); //Avkastning på portföljen
 
 		//Utdelning
@@ -159,7 +160,7 @@ public class endRoundButton : MonoBehaviour
 	IEnumerator waitSoOtherScriptsCanFinish()
 	{
 		yield return new WaitForSeconds(0.25f);
-		MainCanvas.GetComponent<gameEnd>().endOfGame();
+		visualisationScriptsGO.GetComponent<gameEnd>().endOfGame();
 	}
 
 		public void endTurn12Mon() //Simulerar 12 månader i taget

@@ -62,6 +62,13 @@ public class totalCash : MonoBehaviour
 		moneyNow = moneyBefore;
 	}
 
+	public void updateStartingMoney()
+	{
+		moneyText.text = "Money: " + moneyStart;
+		moneyBefore = moneyStart;
+		moneyNow = moneyBefore;
+	}
+
 	public void updateMoney(){
 	
 		moneyText.text = "Money: " + moneyNow;
@@ -111,21 +118,21 @@ public class totalCash : MonoBehaviour
 	{
 		//Korta räntor, 1 år
 		rate = BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[0].GetComponent<bondInfoPrefab>().rate / 100;
-		Debug.Log("Ränta: " + rate);
+		//Debug.Log("Ränta: " + rate);
 		amountBonds = BondsPortfolio.bondsOwned1Year[0];
-		Debug.Log("Antal: " + amountBonds);
+		//Debug.Log("Antal: " + amountBonds);
 		moneyNow += rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[0].GetComponent<bondInfoPrefab>().costBond;
 		incomeBondsLifetime += rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[0].GetComponent<bondInfoPrefab>().costBond;
-		Debug.Log("Intäkt räntor: " + rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[0].GetComponent<bondInfoPrefab>().costBond);
+		//Debug.Log("Intäkt räntor: " + rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[0].GetComponent<bondInfoPrefab>().costBond);
 
 		//Långa räntor, 5 år
 		rate = BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[1].GetComponent<bondInfoPrefab>().rate / 100;
-		Debug.Log("Ränta: " + rate);
+		//Debug.Log("Ränta: " + rate);
 		amountBonds = BondsPortfolio.bondsOwned5Year[0];
-		Debug.Log("Antal: " + amountBonds);
+		//Debug.Log("Antal: " + amountBonds);
 		moneyNow += rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond;
 		incomeBondsLifetime += rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond;
-		Debug.Log("Intäkt räntor: " + rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond);
+		//Debug.Log("Intäkt räntor: " + rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond);
 		moneyText.text = "Money: " + moneyNow;
 
 

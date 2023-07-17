@@ -7,14 +7,23 @@ public class moneyManager : MonoBehaviour
     //Hanterar alla transaktioner spelaren genomför
 
     //==Starting values==
-
+    public float moneyStart;
+    public float incomeWorkPerMonth;
 
     //==COMPONENTS
-
+    public totalCash TotalCash;
+    public incomeWork IncomeWork;
 
     //==Data under spelets gång
     public float moneyNow;
     public float moneyTransactionOrder;
+
+    private void Start()
+    {
+        TotalCash.moneyStart = moneyStart;
+        TotalCash.updateStartingMoney();
+        IncomeWork.incomeWorkPerMonth = incomeWorkPerMonth;
+    }
 
     public float moneyTransaction(float startMoney, float moneyTransactionOrder){
 
