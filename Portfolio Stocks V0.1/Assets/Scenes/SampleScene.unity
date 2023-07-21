@@ -5881,7 +5881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &338090513
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5899,8 +5899,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80.01, y: -52.64935}
-  m_SizeDelta: {x: 160.02, y: 105.2987}
+  m_AnchoredPosition: {x: 80.01, y: 22.1034}
+  m_SizeDelta: {x: 160.02, y: 44.2075}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &338090514
 MonoBehaviour:
@@ -5946,9 +5946,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1790731561}
-        m_TargetAssemblyTypeName: sharpeKvotSingelAsset, Assembly-CSharp
-        m_MethodName: sharpeKvotCalc
+      - m_Target: {fileID: 678885393}
+        m_TargetAssemblyTypeName: bondsPortfolio, Assembly-CSharp
+        m_MethodName: bondsOwnedTotal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33630,8 +33630,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e7b72c6f9f9a2429e3596847174572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moneyStart: 5000
-  incomeWorkPerMonth: 100
+  moneyStart: 10000
+  incomeWorkPerMonth: 500
   TotalCash: {fileID: 678885390}
   IncomeWork: {fileID: 678885389}
   moneyNow: 0
@@ -33700,6 +33700,7 @@ MonoBehaviour:
   stockPanelGO: {fileID: 572861973}
   portfolioPlayerGO: {fileID: 591398742}
   portfolioChooseCategoriPanelGO: {fileID: 1566977984}
+  bondsPanelGO: {fileID: 1468750903}
 --- !u!114 &1774405553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39549,8 +39550,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 108.85, y: 45.3413}
-  m_SizeDelta: {x: -217.69, y: -90.5826}
+  m_AnchoredPosition: {x: 107.48, y: 45.465}
+  m_SizeDelta: {x: -214.95, y: -90.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2094654417
 MonoBehaviour:

@@ -34,8 +34,34 @@ public class bondsPortfolio : MonoBehaviour
 			bondsOwned5Year[bondsOwned1Year.Count - 1]++;
 
 		bondsOwned[nrBond]++;
+		bondsOwnedTotal();
 		valueBondPort();
 
+	}
+
+	public void bondsOwnedTotal()
+	{
+		//Nollställer antalet innan summering
+		for (int i = 0; i < bondsOwned.Length-1;i++)
+		{
+			bondsOwned[i] = 0;
+		}
+		//Debug.Log("Korta räntor antal (ska vara noll): " + bondsOwned[0]);
+		//Debug.Log("Långa räntor antal (ska vara noll): " + bondsOwned[1]);
+
+		//Summerar antalet 
+		foreach (int nummer in bondsOwned1Year)
+		{
+			bondsOwned[0] += nummer;
+		}
+
+		foreach (int nummer in bondsOwned5Year)
+		{
+			bondsOwned[1] += nummer;
+		}
+
+		//Debug.Log("Korta räntor antal (ska vara korrekt): " + bondsOwned[0]);
+		//Debug.Log("Långa räntor antal (ska vara korrekt): " + bondsOwned[1]);
 	}
 
 	public void addPlaceInList()

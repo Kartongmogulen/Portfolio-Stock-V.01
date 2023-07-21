@@ -31,6 +31,12 @@ public class BondSelectedInfoButton : MonoBehaviour
 
 	public float rateIncrease;
 
+	private void Start()
+	{
+		showBondInfo(0);
+	}
+
+
 	public void showBondInfo(int bondNumb)
 	{
 		activeBond = bondNumb;
