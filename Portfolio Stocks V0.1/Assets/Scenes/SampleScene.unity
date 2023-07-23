@@ -1215,8 +1215,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 201.8962, y: -16.018}
-  m_SizeDelta: {x: 69.3975, y: 27.968}
+  m_AnchoredPosition: {x: 250.61, y: -16.331}
+  m_SizeDelta: {x: 166.83, y: 28.595}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &52199840
 MonoBehaviour:
@@ -1459,9 +1459,9 @@ RectTransform:
   m_Father: {fileID: 2094654416}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80, y: -57.976665}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &75659843
@@ -3222,9 +3222,9 @@ RectTransform:
   m_Father: {fileID: 1323242866}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 118.275, y: -101.07623}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 236.55, y: 47.2129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &190521308
@@ -4100,9 +4100,9 @@ RectTransform:
   m_Father: {fileID: 2094654416}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80, y: -100.95333}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &222317172
@@ -5946,9 +5946,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 678885393}
-        m_TargetAssemblyTypeName: bondsPortfolio, Assembly-CSharp
-        m_MethodName: bondsOwnedTotal
+      - m_Target: {fileID: 2092176707}
+        m_TargetAssemblyTypeName: trailing12MonthHighLowCalculation, Assembly-CSharp
+        m_MethodName: updateDataForStocks
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6902,9 +6902,9 @@ RectTransform:
   m_Father: {fileID: 1323242866}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 118.275, y: -144.8418}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 236.55, y: 28.6717}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &396135257
@@ -7693,7 +7693,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -34.686, y: 12.929}
+  m_AnchoredPosition: {x: -83.411, y: 14.297}
   m_SizeDelta: {x: 167.18, y: 25.859}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &435343872
@@ -8766,9 +8766,9 @@ RectTransform:
   m_Father: {fileID: 1323242866}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -61.646523}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &479856776
@@ -9206,6 +9206,7 @@ GameObject:
   - component: {fileID: 514381899}
   - component: {fileID: 514381902}
   - component: {fileID: 514381901}
+  - component: {fileID: 514381903}
   m_Layer: 0
   m_Name: Visualisation
   m_TagString: Untagged
@@ -9339,6 +9340,20 @@ MonoBehaviour:
   nameHeadline: {fileID: 518227276}
   utitiliesName: {fileID: 1480212326}
   technologyName: {fileID: 1904288544}
+--- !u!114 &514381903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514381897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7ed666eea8fd3468fac651173779e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  number: 0.75
+  yourSlider: {fileID: 52199840}
 --- !u!1 &518227274
 GameObject:
   m_ObjectHideFlags: 0
@@ -10256,7 +10271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &572861974
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11061,7 +11076,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 103.65, y: -10.65}
+  m_AnchoredPosition: {x: 103.650024, y: -10.650024}
   m_SizeDelta: {x: 207.3, y: 21.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &609009420
@@ -14693,9 +14708,9 @@ RectTransform:
   m_Father: {fileID: 1323242866}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -10}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &797530040
@@ -16757,7 +16772,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21105,6 +21120,8 @@ MonoBehaviour:
   EPSGrowthMax: 6
   StockPrice: []
   priceNow: 0
+  trailingTwelweMonthHigh: 0
+  trailingTwelweMonthLow: 0
 --- !u!1 &1138160615
 GameObject:
   m_ObjectHideFlags: 0
@@ -22452,8 +22469,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -34.686, y: -15.001}
-  m_SizeDelta: {x: 167.18, y: 25.784}
+  m_AnchoredPosition: {x: -83.411, y: -16.369}
+  m_SizeDelta: {x: 167.18, y: 28.519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1185626463
 MonoBehaviour:
@@ -24531,7 +24548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1323242866
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24890,7 +24907,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -25426,7 +25443,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1389411348
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26968,7 +26985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1468750904
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27105,9 +27122,9 @@ RectTransform:
   m_Father: {fileID: 2094654416}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80, y: -15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469757368
@@ -33684,7 +33701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yearsBeforeEndGameMaster: 5
-  yearsToGetHistoricData: 10
+  yearsToGetHistoricData: 2
 --- !u!114 &1774405552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33692,7 +33709,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774405546}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 744d363262179a448ae286ce1a9cc0df, type: 3}
   m_Name: 
@@ -33721,28 +33738,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7914890261130055018}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1790731561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1790731557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e77aecb962848c943a1165c0d066cd48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orderInStockList: 0
-  Stock: {fileID: 0}
-  calculationTools: {fileID: 1721568479}
-  BondMarketManager: {fileID: 1985270149}
-  gav: {fileID: 678885392}
-  prices: []
-  standardDeviation: 0
-  sharpeKvot: 0
-  returnAsset: 0
-  riskFreeRate: 0
 --- !u!1 &1795432812
 GameObject:
   m_ObjectHideFlags: 0
@@ -36796,9 +36791,9 @@ RectTransform:
   m_Father: {fileID: 1323242866}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -35.82326}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1931793490
@@ -38959,6 +38954,7 @@ GameObject:
   - component: {fileID: 2092176691}
   - component: {fileID: 2092176693}
   - component: {fileID: 2092176698}
+  - component: {fileID: 2092176707}
   - component: {fileID: 2092176697}
   m_Layer: 0
   m_Name: Stocks
@@ -39188,6 +39184,7 @@ MonoBehaviour:
   playerScriptsGO: {fileID: 678885383}
   stocksUiScriptsGO: {fileID: 47778896}
   StockMarketManager: {fileID: 0}
+  trailing12MonthSliderPosition: {fileID: 514381903}
   PriceChange: {fileID: 0}
   PortfolioStock: {fileID: 0}
   buttonsScriptsGO: {fileID: 903494703}
@@ -39197,6 +39194,8 @@ MonoBehaviour:
   divUtiShareText: {fileID: 1878708423}
   divPolicyText: {fileID: 1399013658}
   priceText: {fileID: 692720418}
+  high52Price: {fileID: 1185626463}
+  low52Price: {fileID: 435343872}
   EPSText: {fileID: 479856776}
   EPSGrowth: {fileID: 475424726}
   PEtext: {fileID: 797530040}
@@ -39319,6 +39318,7 @@ MonoBehaviour:
   playerScriptsGO: {fileID: 678885383}
   stocksUiScriptsGO: {fileID: 47778896}
   StockMarketManager: {fileID: 0}
+  trailing12MonthSliderPosition: {fileID: 514381903}
   PriceChange: {fileID: 0}
   PortfolioStock: {fileID: 0}
   buttonsScriptsGO: {fileID: 903494703}
@@ -39328,6 +39328,8 @@ MonoBehaviour:
   divShareText: {fileID: 1878708423}
   divPolicyText: {fileID: 1399013658}
   priceText: {fileID: 692720418}
+  high52Price: {fileID: 1185626463}
+  low52Price: {fileID: 435343872}
   EPSText: {fileID: 479856776}
   EPSGrowth: {fileID: 475424726}
   PEtext: {fileID: 797530040}
@@ -39511,6 +39513,24 @@ MonoBehaviour:
   StockPriceManager: {fileID: 1774405549}
   StockScriptGO: {fileID: 2092176686}
   EconomyScriptGO: {fileID: 1764841513}
+--- !u!114 &2092176707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092176686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2a75957ea45d34a8f4e48880bba965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueHigh: 0
+  valueLow: 0
+  amountOfValuesToGet12Month: 12
+  last12Numbers: []
+  allDataBeforeCleaning: []
+  StockMarketManager: {fileID: 1010759430}
 --- !u!1 &2094654415
 GameObject:
   m_ObjectHideFlags: 0
@@ -40492,6 +40512,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1364874597}
     m_Modifications:
+    - target: {fileID: 1790731561, guid: 128bd1b2f9f5faf4a9e5981548c60885, type: 3}
+      propertyPath: gav
+      value: 
+      objectReference: {fileID: 678885392}
+    - target: {fileID: 1790731561, guid: 128bd1b2f9f5faf4a9e5981548c60885, type: 3}
+      propertyPath: calculationTools
+      value: 
+      objectReference: {fileID: 1721568479}
+    - target: {fileID: 1790731561, guid: 128bd1b2f9f5faf4a9e5981548c60885, type: 3}
+      propertyPath: BondMarketManager
+      value: 
+      objectReference: {fileID: 1985270149}
     - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
         type: 3}
       propertyPath: EndRoundButton
@@ -40507,6 +40539,11 @@ PrefabInstance:
       propertyPath: GamePlayScopeManager
       value: 
       objectReference: {fileID: 1774405551}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: trailing12MonthHighLowCalculation
+      value: 
+      objectReference: {fileID: 2092176707}
     - target: {fileID: 3471436335729396843, guid: 128bd1b2f9f5faf4a9e5981548c60885,
         type: 3}
       propertyPath: m_Name

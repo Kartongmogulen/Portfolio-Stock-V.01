@@ -22,6 +22,8 @@ public class stock : MonoBehaviour
 
 	public List<float> StockPrice;
 	public float priceNow;
+	public float trailingTwelweMonthHigh;
+	public float trailingTwelweMonthLow;
 
 	public void updatePriceNow(float priceNew)
 	{

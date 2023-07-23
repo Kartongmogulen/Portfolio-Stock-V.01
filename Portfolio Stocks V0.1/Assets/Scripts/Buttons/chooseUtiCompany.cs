@@ -9,6 +9,7 @@ public class chooseUtiCompany : MonoBehaviour
 	public GameObject playerScriptsGO;
 	public GameObject stocksUiScriptsGO;
 	public stockMarketManager StockMarketManager;
+	public trailing12MonthSliderPosition trailing12MonthSliderPosition;
 
 	public priceChange PriceChange;
 	public portfolioStock PortfolioStock;
@@ -21,6 +22,9 @@ public class chooseUtiCompany : MonoBehaviour
 	public Text divUtiShareText;
 	public Text divPolicyText;
 	public Text priceText;
+
+	public Text high52Price;
+	public Text low52Price;
 
 	public Text EPSText;
 	public Text EPSGrowth;
@@ -56,6 +60,10 @@ public class chooseUtiCompany : MonoBehaviour
 		divPayoutShare = StockMarketManager.StockUtiList[i].divPayout/ StockMarketManager.StockUtiList[i].EPSnow;
 
 		divUtiShareText.text = "Div.Share: " + Mathf.Round(divPayoutShare*100) + "%";
+
+		high52Price.text = ("52 week high: " + StockMarketManager.StockUtiList[i].trailingTwelweMonthHigh);
+		low52Price.text = ("52 week low: " + StockMarketManager.StockUtiList[i].trailingTwelweMonthLow);
+		trailing12MonthSliderPosition.MoveSlider(StockMarketManager.StockUtiList[i].StockPrice[StockMarketManager.StockUtiList[i].StockPrice.Count-1], StockMarketManager.StockUtiList[i].trailingTwelweMonthHigh);
 
 		//Info spelaren måste låsa upp
 		if (StocksUnlockInfo.utiDivPolicyUnlocked [i] == 1) {

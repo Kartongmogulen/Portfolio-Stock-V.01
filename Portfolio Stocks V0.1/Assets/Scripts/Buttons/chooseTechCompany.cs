@@ -9,6 +9,7 @@ public class chooseTechCompany : MonoBehaviour
 	public GameObject playerScriptsGO;
 	public GameObject stocksUiScriptsGO;
 	public stockMarketManager StockMarketManager;
+	public trailing12MonthSliderPosition trailing12MonthSliderPosition;
 
 	public priceChange PriceChange;
 	public portfolioStock PortfolioStock;
@@ -21,6 +22,9 @@ public class chooseTechCompany : MonoBehaviour
 	public Text divShareText;
 	public Text divPolicyText;
 	public Text priceText;
+
+	public Text high52Price;
+	public Text low52Price;
 
 	public Text EPSText;
 	public Text EPSGrowth;
@@ -59,6 +63,10 @@ public class chooseTechCompany : MonoBehaviour
 		EPSnow = StockMarketManager.StockTechList[i].EPSnow;
 		divPayoutShare = divPayout / EPSnow;
 		divShareText.text = "Div.Share: " + Mathf.Round(divPayoutShare * 100) + "%";
+
+		high52Price.text = ("52 week high: " + StockMarketManager.StockTechList[i].trailingTwelweMonthHigh);
+		low52Price.text = ("52 week low: " + StockMarketManager.StockTechList[i].trailingTwelweMonthLow);
+		trailing12MonthSliderPosition.MoveSlider(StockMarketManager.StockTechList[i].StockPrice[StockMarketManager.StockTechList[i].StockPrice.Count - 1], StockMarketManager.StockTechList[i].trailingTwelweMonthHigh);
 
 		//Info spelaren måste låsa upp
 		if (StocksUnlockInfo.techDivPolicyUnlocked[i] == 1 && StockMarketManager.StockTechList[i].companyPaysDividend == true)

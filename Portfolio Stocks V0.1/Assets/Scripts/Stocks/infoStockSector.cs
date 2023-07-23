@@ -207,8 +207,8 @@ public class infoStockSector : MonoBehaviour
 		if (activeSector == 3){
 			infoTech();
 		}
-	
-		Week52Interval();
+
+		//week52HighLowText();
 
 	}
 
@@ -420,123 +420,6 @@ public class infoStockSector : MonoBehaviour
 		}
 
 	}
-		
-	public void Week52Interval(){
-
-		uti52WeekData [roundInt52Week] = utiStockPrice;
-		fin52WeekData [roundInt52Week] = finPriceNow;
-		tech52WeekData [roundInt52Week] = techPriceNow;
-		roundInt52Week++;
-
-		week52LowValue[0] = uti52WeekData [0];
-		week52LowValue[1] = fin52WeekData [0];
-		week52LowValue[2] = tech52WeekData [0];
-
-		if (roundInt52Week == 12){
-
-			//uti52WeekData[11] = uti52WeekData[12];
-			uti52WeekData[0] = uti52WeekData[1];
-			uti52WeekData[1] = uti52WeekData[2];
-			uti52WeekData[2] = uti52WeekData[3];
-			uti52WeekData[3] = uti52WeekData[4];
-			uti52WeekData[4] = uti52WeekData[5];
-			uti52WeekData[5] = uti52WeekData[6];
-			uti52WeekData[6] = uti52WeekData[7];
-			uti52WeekData[7] = uti52WeekData[8];
-			uti52WeekData[8] = uti52WeekData[9];
-			uti52WeekData[9] = uti52WeekData[10];
-			uti52WeekData[10] = uti52WeekData[11];
-
-			fin52WeekData[0] = fin52WeekData[1];
-			fin52WeekData[1] = fin52WeekData[2];
-			fin52WeekData[2] = fin52WeekData[3];
-			fin52WeekData[3] = fin52WeekData[4];
-			fin52WeekData[4] = fin52WeekData[5];
-			fin52WeekData[5] = fin52WeekData[6];
-			fin52WeekData[6] = fin52WeekData[7];
-			fin52WeekData[7] = fin52WeekData[8];
-			fin52WeekData[8] = fin52WeekData[9];
-			fin52WeekData[9] = fin52WeekData[10];
-			fin52WeekData[10] = fin52WeekData[11];
-
-			tech52WeekData[0] = tech52WeekData[1];
-			tech52WeekData[1] = tech52WeekData[2];
-			tech52WeekData[2] = tech52WeekData[3];
-			tech52WeekData[3] = tech52WeekData[4];
-			tech52WeekData[4] = tech52WeekData[5];
-			tech52WeekData[5] = tech52WeekData[6];
-			tech52WeekData[6] = tech52WeekData[7];
-			tech52WeekData[7] = tech52WeekData[8];
-			tech52WeekData[8] = tech52WeekData[9];
-			tech52WeekData[9] = tech52WeekData[10];
-			tech52WeekData[10] = tech52WeekData[11];
-
-			roundInt52Week = 11;
-
-		}
-
-		for(int i = 0; i < uti52WeekData.Length; i++)
-
-		{
-			if (uti52WeekData[i]<week52LowValue[0]){
-
-				valueLow = uti52WeekData[i];
-				indexMinValue[0] = i;
-				week52LowValue[0] = uti52WeekData[indexMinValue[0]];
-			}
-
-			if (uti52WeekData[i]>week52HighValue[0]){
-
-				Debug.Log (week52HighValue);
-				valueHigh = uti52WeekData[i];
-				indexMaxValue[0] = i;
-				week52HighValue[0] = uti52WeekData[indexMaxValue[0]];
-			}
-
-		}
-
-		for(int i = 0; i < fin52WeekData.Length; i++){
-			
-			if (fin52WeekData[i]<week52LowValue[1]){
-
-				valueLow = fin52WeekData[i];
-				indexMinValue[1] = i;
-				week52LowValue[1] = uti52WeekData[indexMinValue[1]];
-			
-			}
-
-			if (fin52WeekData[i]>week52HighValue[1]){
-
-				valueHigh = fin52WeekData[i];
-				indexMaxValue[1] = i;
-				week52HighValue[1] = fin52WeekData[indexMaxValue[1]];
-			}
-		}	
-
-		for(int i = 0; i < tech52WeekData.Length; i++){
-
-			if (tech52WeekData[i]<week52LowValue[2]){
-
-				valueLow = tech52WeekData[i];
-				indexMinValue[2] = i;
-				week52LowValue[2] = tech52WeekData[indexMinValue[2]];
-
-			}
-
-			if (tech52WeekData[i]>week52HighValue[2]){
-
-				valueHigh = tech52WeekData[i];
-				indexMaxValue[2] = i;
-				week52HighValue[2] = tech52WeekData[indexMaxValue[2]];
-			}
-		}	
-
-
-		week52HighLowText();
-
-	}
-
-
 	public void week52HighLowText(){
 	
 		week52LowText.text = "52 week low: " + week52LowValue[activeSector-1];

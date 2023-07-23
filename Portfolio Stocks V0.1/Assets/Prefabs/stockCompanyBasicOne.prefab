@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8142389932202983004}
   - component: {fileID: -1338333447919414845}
   - component: {fileID: 2154981163000740535}
+  - component: {fileID: 1790731561}
   m_Layer: 0
   m_Name: stockCompanyBasicOne
   m_TagString: Untagged
@@ -59,6 +60,9 @@ MonoBehaviour:
   EPSGrowthMax: 2
   StockPrice: []
   priceNow: 0
+  trailingTwelweMonthHigh: 0
+  trailingTwelweMonthLow: 0
+  trailing12MonthHighLowCalculation: {fileID: 0}
 --- !u!114 &8142389932202983004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,3 +111,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EPSdata: 
   GamePlayScopeManager: {fileID: 0}
+  EndRoundButton: {fileID: 0}
+  showHistoricData: {fileID: 0}
+  startingYearToRevealData: 0
+--- !u!114 &1790731561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3471436335729396843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77aecb962848c943a1165c0d066cd48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orderInStockList: 0
+  Stock: {fileID: 0}
+  calculationTools: {fileID: 0}
+  BondMarketManager: {fileID: 0}
+  gav: {fileID: 0}
+  prices: []
+  standardDeviation: 0
+  sharpeKvot: 0
+  returnAsset: 0
+  riskFreeRate: 0
