@@ -66,7 +66,7 @@ public class chooseTechCompany : MonoBehaviour
 
 		high52Price.text = ("52 week high: " + StockMarketManager.StockTechList[i].trailingTwelweMonthHigh);
 		low52Price.text = ("52 week low: " + StockMarketManager.StockTechList[i].trailingTwelweMonthLow);
-		trailing12MonthSliderPosition.MoveSlider(StockMarketManager.StockTechList[i].StockPrice[StockMarketManager.StockTechList[i].StockPrice.Count - 1], StockMarketManager.StockTechList[i].trailingTwelweMonthHigh);
+		trailing12MonthSliderPosition.MoveSlider(StockMarketManager.StockTechList[i].StockPrice[StockMarketManager.StockTechList[i].StockPrice.Count - 1], StockMarketManager.StockTechList[i].trailingTwelweMonthHigh, StockMarketManager.StockTechList[i].trailingTwelweMonthLow);
 
 		//Info spelaren måste låsa upp
 		if (StocksUnlockInfo.techDivPolicyUnlocked[i] == 1 && StockMarketManager.StockTechList[i].companyPaysDividend == true)

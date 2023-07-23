@@ -7,6 +7,7 @@ public class stock : MonoBehaviour
 
 	//public string sectorName;
 	public sectorNameEnum SectorNameEnum;
+	public string nameOfCompany;
 
 	public float divPolicyChangeDiv;
 	public float divPolicyMaxPayouRatio;
