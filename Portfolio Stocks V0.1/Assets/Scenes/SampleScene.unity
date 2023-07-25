@@ -16791,6 +16791,7 @@ MonoBehaviour:
   BondMarketManager: {fileID: 1985270149}
   amountBonds: 0
   valueBonds: 0
+  numberIterations: 0
 --- !u!1 &744468114
 GameObject:
   m_ObjectHideFlags: 0
@@ -40240,7 +40241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d0d73e8619f3db43b118c4b25984467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yearsBeforeEndGameMaster: 5
+  yearsBeforeEndGameMaster: 10
   yearsToGetHistoricData: 10
 --- !u!114 &1774405552
 MonoBehaviour:

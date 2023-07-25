@@ -117,7 +117,7 @@ public class bondsPortfolio : MonoBehaviour
 	public void bondsTotalInvest(float cost){
 
 		totalBondsInvest = totalBondsInvest + cost;
-		Debug.Log("Totalt investerat i räntor, löpande: " + totalBondsInvestLifetime);
+		//Debug.Log("Totalt investerat i räntor, löpande: " + totalBondsInvestLifetime);
 		if (totalBondsInvest < 0) {
 			totalBondsInvest = 0;
 		}

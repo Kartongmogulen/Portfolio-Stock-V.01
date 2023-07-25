@@ -120,7 +120,7 @@ public class totalCash : MonoBehaviour
 		//Korta räntor, 1 år
 		rate = BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[0].GetComponent<bondInfoPrefab>().rate / 100;
 		//Debug.Log("Ränta: " + rate);
-		amountBonds = BondsPortfolio.bondsOwned1Year[0];
+		amountBonds = BondsPortfolio.bondsOwned1Year[BondsPortfolio.bondsOwned1Year.Count - 12];
 		//Debug.Log("Antal: " + amountBonds);
 		moneyNow += rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[0].GetComponent<bondInfoPrefab>().costBond;
 		incomeBondsLifetime += rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[0].GetComponent<bondInfoPrefab>().costBond;
@@ -129,7 +129,7 @@ public class totalCash : MonoBehaviour
 		//Långa räntor, 5 år
 		rate = BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[1].GetComponent<bondInfoPrefab>().rate / 100;
 		//Debug.Log("Ränta: " + rate);
-		amountBonds = BondsPortfolio.bondsOwned5Year[0];
+		amountBonds = BondsPortfolio.bondsOwned5Year[BondsPortfolio.bondsOwned5Year.Count - 12];
 		//Debug.Log("Antal: " + amountBonds);
 		moneyNow += rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond;
 		incomeBondsLifetime += rate * amountBonds * BondMarketManager.GetComponent<bondMarketManager>().bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond;

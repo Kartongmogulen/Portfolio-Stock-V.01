@@ -13,7 +13,7 @@ public class endOfYearPerformanceUI : MonoBehaviour
     public void activeEndOfYearPanel()
     {
         endOfYearPanelGO.SetActive(true);
-        Debug.Log(PlayerScriptsGO.GetComponent<portfolioStock>().returnPortfolioEachTurn[PlayerScriptsGO.GetComponent<portfolioStock>().returnPortfolioEachTurn.Count - 1]);
+        //Debug.Log(PlayerScriptsGO.GetComponent<portfolioStock>().returnPortfolioEachTurn[PlayerScriptsGO.GetComponent<portfolioStock>().returnPortfolioEachTurn.Count - 1]);
         returnTotalStocksText.text = "Total return, Stocks: " + Mathf.Round((PlayerScriptsGO.GetComponent<portfolioStock>().returnPortfolioEachTurn[PlayerScriptsGO.GetComponent<portfolioStock>().returnPortfolioEachTurn.Count-1])*100) + "%";
     }
 
