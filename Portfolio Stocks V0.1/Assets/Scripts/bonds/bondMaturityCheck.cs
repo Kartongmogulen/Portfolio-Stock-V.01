@@ -8,6 +8,7 @@ public class bondMaturityCheck : MonoBehaviour
     public bondsPortfolio BondsPortfolio;
     public totalCash TotalCash;
     public bondMarketManager BondMarketManager;
+    public GameObject bondsScriptsGO;
 
     [SerializeField] private float amountBonds;
     [SerializeField] private float valueBonds;
@@ -28,13 +29,16 @@ public class bondMaturityCheck : MonoBehaviour
         }
         else
         {
+            bondsScriptsGO.GetComponent<bondsCollectCoupon>().CollectCoupon();
+            BondsPortfolio.removeBondsFromListWhenMature(0);
+            /*
             amountBonds = BondsPortfolio.bondsOwned1Year[BondsPortfolio.bondsOwned1Year.Count - 13];
-            //Debug.Log("Antal Korta räntor: " + amountBonds);
             valueBonds = amountBonds * BondMarketManager.bondMarketListGO[0].GetComponent<bondInfoPrefab>().costBond;
-            //TotalCash.incomeBonds(valueBonds * BondMarketManager.bondMarketListGO[0].GetComponent<bondInfoPrefab>().rate / 100);
+
             BondsPortfolio.removeBondsFromListWhenMature(0);
             TotalCash.sellBonds(valueBonds);
             //BondsPortfolio.bondsOwned1Year[BondsPortfolio.bondsOwned1Year.Count-12]
+            */
         }
     }
 

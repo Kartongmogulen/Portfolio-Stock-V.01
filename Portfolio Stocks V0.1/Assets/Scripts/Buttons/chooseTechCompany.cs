@@ -110,6 +110,7 @@ public class chooseTechCompany : MonoBehaviour
 
 		//Historisk data
 		stocksUiScriptsGO.GetComponent<ShowHistoricData>().updateAllHistoricData(StockMarketManager.StockTechList[i]);
+		stocksUiScriptsGO.GetComponent<ShowHistoricData>().updateAllHistoricDataWithGameObject(StockMarketManager.StockPrefabAllList[i+2]);
 
 		//Data spelaren känner till
 		buttonsScriptsGO.GetComponent<dataPlayerKnowsButtonUnlock>().chooseStock(StockMarketManager.StockTechList[i]);

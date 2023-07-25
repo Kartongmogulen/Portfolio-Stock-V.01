@@ -57,6 +57,9 @@ public class chooseCompany : MonoBehaviour
 		activeSector = ChooseStockSector.activeSector;
 		deactivateAll ();
 		companyOneButton.GetComponent<Image>().color = Color.green;
+		//Debug.Log(activeSector);
+		//Debug.Log("Bolag: " + activeCompany);
+		
 
 		if (activeSector == 1) {
 			activeCompany = 1;
@@ -69,7 +72,6 @@ public class chooseCompany : MonoBehaviour
 			ChooseTechCompany.companyOne ();
 			
 		}
-		
 
 
 	}

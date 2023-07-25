@@ -6,6 +6,7 @@ public class stock : MonoBehaviour
 {
 
 	//public string sectorName;
+	public int indexPrefabList; //Alla prefabs får ett nummer som motsvarar denna i listan för alla prefabs. Underlätta vid script för att hämta data för specifikt bolag.
 	public sectorNameEnum SectorNameEnum;
 	public string nameOfCompany;
 

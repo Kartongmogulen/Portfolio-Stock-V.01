@@ -63,7 +63,7 @@ public class chooseUtiCompany : MonoBehaviour
 
 		high52Price.text = ("52 week high: " + StockMarketManager.StockUtiList[i].trailingTwelweMonthHigh);
 		low52Price.text = ("52 week low: " + StockMarketManager.StockUtiList[i].trailingTwelweMonthLow);
-		trailing12MonthSliderPosition.MoveSlider(StockMarketManager.StockUtiList[i].StockPrice[StockMarketManager.StockUtiList[i].StockPrice.Count-1], StockMarketManager.StockUtiList[i].trailingTwelweMonthHigh, StockMarketManager.StockUtiList[i].trailingTwelweMonthLow);
+
 
 		//Info spelaren måste låsa upp
 		if (StocksUnlockInfo.utiDivPolicyUnlocked [i] == 1) {
@@ -91,6 +91,8 @@ public class chooseUtiCompany : MonoBehaviour
 
 		//Historisk data
 		stocksUiScriptsGO.GetComponent<ShowHistoricData>().updateAllHistoricData(StockMarketManager.StockUtiList[i]);
+		stocksUiScriptsGO.GetComponent<ShowHistoricData>().updateAllHistoricDataWithGameObject(StockMarketManager.StockPrefabAllList[i]);
+
 
 		//Data spelaren känner till
 		buttonsScriptsGO.GetComponent<dataPlayerKnowsButtonUnlock>().chooseStock(StockMarketManager.StockUtiList[i]);

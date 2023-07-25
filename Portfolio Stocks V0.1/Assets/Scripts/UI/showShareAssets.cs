@@ -61,8 +61,8 @@ public class showShareAssets : MonoBehaviour
         returnStocks.text = " " + Mathf.Round(returnStockPortfolio * 10000) / 100 + "%";
 
         returnBondsPortfolio = TotalCash.incomeBondsLifetime / BondsPortfolio.getTotalBondsInvestedLifetime();
-        Debug.Log(TotalCash.incomeBondsLifetime);
-        Debug.Log(BondsPortfolio.getTotalBondsInvestedLifetime());
+        //Debug.Log("Intäkter från Räntor under livet: " + TotalCash.incomeBondsLifetime);
+        //Debug.Log("Totalt investerat i Räntor under livet: " + BondsPortfolio.getTotalBondsInvestedLifetime());
         returnBonds.text = " " + Mathf.Round(returnBondsPortfolio * 10000) / 100 + "%";
     }
 

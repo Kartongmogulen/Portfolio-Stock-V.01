@@ -13,8 +13,8 @@ public class trailing12MonthSliderPosition : MonoBehaviour
     
     public void MoveSlider(float price, float high, float low)
     {
-        Debug.Log("Pris: " + price);
-        Debug.Log("Högsta pris: " + high);
+        //Debug.Log("Pris: " + price);
+        //Debug.Log("Högsta pris: " + high);
         number = (price-low)/(high-low);
         yourSlider.value = number;     //num should be from 0 to 1, because that's the range of a slider
     }

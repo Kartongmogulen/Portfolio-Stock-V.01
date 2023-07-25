@@ -19,6 +19,11 @@ public class chooseDataToShow : MonoBehaviour
 
 	private int dataToShowInt;
 
+	private void Start()
+	{
+		divDataShow();
+	}
+
 	public void divDataShow(){
 
 		dataToShowInt = 0;

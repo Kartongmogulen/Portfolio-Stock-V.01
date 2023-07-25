@@ -7,8 +7,12 @@ public class ShowHistoricData : MonoBehaviour
 {
     public List<Text> yearsHeader;
     public List<Text> EPSText;
+    public List<Text> EPSChangeYearOverYearText;
+    public List<Text> DividendGrowthYoYText;
+    public List<Text> PayoutRatioText;
     public endRoundButton EndRoundButton;
     public gamePlayScopeManager GamePlayScopeManager;
+    public stockMarketManager StockMarketManager;
 
     private int yearNow;
 
@@ -26,7 +30,15 @@ public class ShowHistoricData : MonoBehaviour
     {
         yearNow = EndRoundButton.year; //År i dagsläget
         updateYearText();
+
         updateEPSText(Stock);
+        updateEPSChangeYearOverYearText(Stock);
+    }
+
+    public void updateAllHistoricDataWithGameObject(GameObject stockPrefab)
+    {
+        updateDividendGrowthYoY(stockPrefab);
+        updatePayoutRatioText(stockPrefab);
     }
 
     public void updateYearText()
@@ -56,7 +68,75 @@ public class ShowHistoricData : MonoBehaviour
         }
     }
 
-    public int getStartingYear()
+    public void updateEPSChangeYearOverYearText(stock Stock)
+    {
+
+        //KAN UPPSTÅ PROBLEM OM DET INTE FINNS TILLRÄCKLIGT MED HISTORISKA VÄRDEN
+        EPSChangeYearOverYearText[0].text = Mathf.Round((Stock.EPSHistory[(startingYearToRevealData + yearNow)] / Stock.EPSHistory[(startingYearToRevealData + yearNow - 1)] - 1) * 100) + " %";
+
+        for (int i = 0; i < EPSChangeYearOverYearText.Count - 1; i++)
+        {
+
+            EPSChangeYearOverYearText[i + 1].text = " " + Mathf.Round((Stock.EPSHistory[(startingYearToRevealData + yearNow + i + 1)] / Stock.EPSHistory[(startingYearToRevealData + yearNow + i)] - 1) * 100) + " %";
+            //Debug.Log(Mathf.Round((Stock.EPSHistory[(startingYearToRevealData + yearNow + i + 1)] / Stock.EPSHistory[(startingYearToRevealData + yearNow + i)]) * 100));
+            /*
+            //if (stockPrefab.GetComponent<stockDataPlayerKnow>().EPSdata[Mathf.Abs(yearNow + i)] == false)
+            if (Stock.GetComponent<stockDataPlayerKnow>().EPSdata[Mathf.Abs(startingYearToRevealData + yearNow + i)] == true)
+            {
+                //Debug.Log(Stock.EPSHistory[(startingYearToRevealData + yearNow + i)]);
+                EPSText[i].text = " " + (Stock.EPSHistory[(startingYearToRevealData + yearNow + i)]);
+
+            }
+            else
+            {
+                //EPSText[i].text = " " + (Stock.EPSHistory[(GamePlayScopeManager.yearsToGetHistoricData + yearNow + i - EPSText.Count)]);
+                EPSText[i].text = "???";
+            }
+            */
+        }
+    }
+
+    public void updateDividendGrowthYoY(GameObject stockPrefab)
+    {
+
+        //KAN UPPSTÅ PROBLEM OM DET INTE FINNS TILLRÄCKLIGT MED HISTORISKA VÄRDEN
+        DividendGrowthYoYText[0].text = Mathf.Round((stockPrefab.GetComponent<dividendHistory>().dividendPaid[(startingYearToRevealData + yearNow)] / stockPrefab.GetComponent<dividendHistory>().dividendPaid[(startingYearToRevealData + yearNow - 1)] - 1) * 100) + " %";
+
+        for (int i = 0; i < DividendGrowthYoYText.Count - 1; i++)
+        {
+
+            //EPSChangeYearOverYearText[i + 1].text = " " + Mathf.Round((Stock.EPSHistory[(startingYearToRevealData + yearNow + i + 1)] / Stock.EPSHistory[(startingYearToRevealData + yearNow + i)] - 1) * 100) + " %";
+            DividendGrowthYoYText[i + 1].text = Mathf.Round((stockPrefab.GetComponent<dividendHistory>().dividendPaid[(startingYearToRevealData + yearNow + i + 1)] / stockPrefab.GetComponent<dividendHistory>().dividendPaid[(startingYearToRevealData + yearNow + i)] - 1) * 100) + " %";
+
+
+        }
+    }
+        public void updatePayoutRatioText(GameObject stockPrefab)
+        {
+
+            for (int i = 0; i < PayoutRatioText.Count; i++)
+            {
+
+            PayoutRatioText[i].text = " " + Mathf.Round((stockPrefab.GetComponent<dividendHistory>().dividendPaid[(startingYearToRevealData + yearNow + i )]/ (stockPrefab.GetComponent<stock>().EPSHistory[(startingYearToRevealData + yearNow + i)])*100));
+            Debug.Log(stockPrefab.GetComponent<dividendHistory>().dividendPaid[(startingYearToRevealData + yearNow + i)] / (stockPrefab.GetComponent<stock>().EPSHistory[(startingYearToRevealData + yearNow + i)]));
+            /*
+                //if (stockPrefab.GetComponent<stockDataPlayerKnow>().EPSdata[Mathf.Abs(yearNow + i)] == false)
+                if (Stock.GetComponent<stockDataPlayerKnow>().EPSdata[Mathf.Abs(startingYearToRevealData + yearNow + i)] == true)
+                {
+                    //Debug.Log(Stock.EPSHistory[(startingYearToRevealData + yearNow + i)]);
+                    EPSText[i].text = " " + (Stock.EPSHistory[(startingYearToRevealData + yearNow + i)]);
+
+                }
+                else
+                {
+                    //EPSText[i].text = " " + (Stock.EPSHistory[(GamePlayScopeManager.yearsToGetHistoricData + yearNow + i - EPSText.Count)]);
+                    EPSText[i].text = "???";
+                }
+                */
+        }
+    }
+
+        public int getStartingYear()
     {
         return startingYearToRevealData;
     }

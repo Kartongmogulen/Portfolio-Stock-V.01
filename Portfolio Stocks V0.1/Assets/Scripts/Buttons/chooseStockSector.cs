@@ -13,6 +13,11 @@ public class chooseStockSector : MonoBehaviour
 	public GameObject utiSectorButton;
 	public GameObject techSectorButton;
 
+
+	private void Start()
+	{
+		utiSectorSelection();
+	}
 	public void deactivateAll() {
 		utiSectorButton.GetComponent<Image>().color = Color.white;
 		techSectorButton.GetComponent<Image>().color = Color.white;

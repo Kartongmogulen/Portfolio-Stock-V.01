@@ -30,6 +30,7 @@ public class endRoundButton : MonoBehaviour
 	public GameObject StockScriptGO;
 	public GameObject EconomyScriptGO;
 	public GameObject PlayerScriptsGO;//Step 3.1.1
+	public GameObject PlayerPerformanceUIScriptsGO;
 
 	public int globalEcoClimate;
 
@@ -44,7 +45,7 @@ public class endRoundButton : MonoBehaviour
 	public int countMultiMonthSim;
 
 	void Start(){
-		month = 1;
+		//month = 1;
 		DateNowText.text = "Y: " + year + " M: " + month;
 		timePointsLeftText.GetComponent<Text>().enabled = false;
 
@@ -92,6 +93,7 @@ public class endRoundButton : MonoBehaviour
 
 		//Spelaren
 		managerScriptsGO.GetComponent<actionPointsManager>().endRound();
+		playerScriptsGO.GetComponent<portfolioStock>().returnPortfolio();
 
 		//Debug/Övriga spelare
 		//debugPanelGO.GetComponent<Bonds100> ().investBonds ();
@@ -117,7 +119,10 @@ public class endRoundButton : MonoBehaviour
 			StockScriptGO.GetComponent<companyNumbersUpdate>().updateYearEnd();
 
 			//Intäkter
-			
+
+
+			//UI
+			PlayerPerformanceUIScriptsGO.GetComponent<endOfYearPerformanceUI>().activeEndOfYearPanel();
 
 			/*
 			MainCanvas.GetComponent<infoStockSector>().updateSectorRoundEnd();

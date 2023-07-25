@@ -5,6 +5,8 @@ using UnityEngine;
 public class bondMarketManager : MonoBehaviour
 {
     public List<GameObject> bondMarketListGO;
+    public GameObject bondsScriptsGO;
+    public bondsPortfolio BondsPortfolio;
 
     [SerializeField]
     private float yield10YearBondAverage;
@@ -15,7 +17,7 @@ public class bondMarketManager : MonoBehaviour
 
     private void Start()
     {
-        bondMarketListGO[bondMarketListGO.Count-1].GetComponent<bondInfoPrefab>().rate += yield10YearBondStandardDev;
+        bondMarketListGO[bondMarketListGO.Count - 1].GetComponent<bondInfoPrefab>().rate += yield10YearBondStandardDev;
     }
 
     public void updateYield()
@@ -31,9 +33,17 @@ public class bondMarketManager : MonoBehaviour
         {
 
         }
-        else if(willYieldChange == 2)//Yield ökar
+        else if (willYieldChange == 2)//Yield ökar
         {
 
         }
+    }
+
+    public void updateEachRound()
+    {
+        BondsPortfolio.addPlaceInList();
+        //bondsScriptsGO.GetComponent<bondsCollectCoupon>().CollectCoupon();
+        bondsScriptsGO.GetComponent<bondMaturityCheck>().checkIfMaturePassed();
+        BondsPortfolio.bondsOwnedTotal();
     }
 }
