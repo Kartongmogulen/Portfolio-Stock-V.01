@@ -93,20 +93,5 @@ public class bondsCollectCoupon : MonoBehaviour
             TotalCash.sellBonds(valueBonds);
            
         }
-
-        /*
-            for (int i = 1; i <= BondMarketManager.bondMarketListGO[1].GetComponent<bondInfoPrefab>().duration * 12; i++)
-            {
-                amountBonds = BondsPortfolio.bondsOwned5Year[BondsPortfolio.bondsOwned5Year.Count - 12*i];
-                Debug.Log("Antal Långa Räntor: " + amountBonds);
-                valueBonds = amountBonds * BondMarketManager.bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond;
-                Debug.Log("Värde Räntor: " + valueBonds);
-                //Ränta betalas till Spelaren
-                TotalCash.incomeBonds(valueBonds * BondMarketManager.bondMarketListGO[1].GetComponent<bondInfoPrefab>().rate / 100);
-                TotalCash.sellBonds(valueBonds);
-            }
-
-        */
     }
-
 }

@@ -25,8 +25,7 @@ public class bondsPortfolio : MonoBehaviour
 	}
 
 	public void addBonds(int nrBond){
-		//nrBond--;
-		//bondsOwned[nrBond]++;
+		
 		if (nrBond == 0)
 			bondsOwned1Year[bondsOwned1Year.Count - 1]++;
 		
@@ -82,7 +81,6 @@ public class bondsPortfolio : MonoBehaviour
 		//nrBond--;
 		//bondsOwned[nrBond] = bondsOwned[nrBond] - 1;
 
-
 		valueBondPort();
 	}
 
@@ -124,7 +122,6 @@ public class bondsPortfolio : MonoBehaviour
 
 		if (cost > 0)
 			totalBondsInvestLifetime += cost;
-
 	}
 
 	public float getTotalBondsInvestedLifetime()

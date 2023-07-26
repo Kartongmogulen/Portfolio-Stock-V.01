@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class techInfoStock : MonoBehaviour
 {
 
-	public int amountCompanies;
-	public int costUnlockDivPolicy;
-	public int costUnlockEPSGrowth;
+	//public int amountCompanies;
+	public int costUnlockDivPolicy; //SKA STYRAS FRÅN ETT CENTRALT SCRIPT
+	public int costUnlockEPSGrowth; //SKA STYRAS FRÅN ETT CENTRALT SCRIPT
 
+	//Ska slumpmässiga bolag
+	public int spreadEPS; //Om det är liten eller stor spread på EPS;
 	public float minEPSGrowth;
 	public float maxEPSGrowth;
-	public int spreadEPS; //Om det är liten eller stor spread på EPS;
+	
 	public float minEPSGrowthWithBNP;
 	public float maxEPSGrowthWithBNP;
 
@@ -168,7 +170,6 @@ public class techInfoStock : MonoBehaviour
 				techPaysDividend [i] = 1;
 				divPayoutShare [i] = divPayout [i] / EPSNow [i];
 			}*/
-
 
 		}
 			

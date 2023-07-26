@@ -13,7 +13,6 @@ public class trailing12MonthHighLowCalculation : MonoBehaviour
     public List<float> allDataBeforeCleaning; //All data innan man rensat
 
     public stockMarketManager StockMarketManager;
-    
 
    public void updateDataForStocks()
     {
@@ -44,8 +43,6 @@ public class trailing12MonthHighLowCalculation : MonoBehaviour
                 valueHigh = number;
             }
         }
-        
-
         return valueHigh;
     }
 
@@ -60,8 +57,6 @@ public class trailing12MonthHighLowCalculation : MonoBehaviour
                 valueLow = number;
             }
         }
-
-
         return valueLow;
     }
 }

@@ -13,13 +13,9 @@ public class stockPriceManager : MonoBehaviour
     public DCF dcfCalculation;
 
     public float priceNow;
-
-    public List<float> StockPriceUtiOne;
-
     private void Awake()
     {
-        StockMarketManager = StockMarketGO.GetComponent<stockMarketManager>();
-        
+        StockMarketManager = StockMarketGO.GetComponent<stockMarketManager>(); 
     }
 
     public void Start()
@@ -33,8 +29,5 @@ public class stockPriceManager : MonoBehaviour
             priceNow = ScriptsStockGO.GetComponent<priceChange>().DCFbasedPriceTest(StockMarketManager.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i]);
             StockMarketManager.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i].StockPrice.Add(priceNow);
         }
-
-        
     }
-
 }

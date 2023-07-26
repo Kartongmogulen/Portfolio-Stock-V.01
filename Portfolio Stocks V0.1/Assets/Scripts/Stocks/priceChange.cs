@@ -13,17 +13,24 @@ public class priceChange : MonoBehaviour
 	public float riskFreeRate;
 	public float stockMarketPremium;
 
-	//public stockMarketInventory ChooseStockPanel;
+	public DCF dcf;
+	public PECalculation pECalculation;
 
 	//Info från bolag
 	public float minEPSGrowth;
 	public float maxEPSGrowth;
-	public float EPSnow;
+	public float EPS;
+
 	[Tooltip("Om bolaget ej är lönsamt. Vad värderar marknaden det till.")]
 	public float ifEPSNegativeMarketEPSValue; //Om bolaget ej är lönsamt. Vad värderar marknaden det till.
 
 	public float valueDCFMin;
 	public float valueDCFMax;
+	
+	//Beräkning parametrar
+	public float discountRate; //Ska ha formen 0.01 = 1 %. Borde ändars i något övergripande script kring marknadsförhållande
+	public float discountRateVolatility; //Hur mycket diskonteringsräntan kan ändras
+	public int period;
 
 	public float stockPriceNow;
 
@@ -35,50 +42,6 @@ public class priceChange : MonoBehaviour
 	public GameObject PanelSectorGO;
 
 	public int amountPriceChange; //Hur många gånger har scriptet priceChange körts.
-
-	//Steg 3.1.1
-	public materialsInfoStock MaterialsInfoStock;
-	public int amountTechCompanies;
-
-	//Steg 3.1
-	public float discountRate; //Ska ha formen 0.01 = 1 %. Borde ändars i något övergripande script kring marknadsförhållande
-	public float discountRateVolatility; //Hur mycket diskonteringsräntan kan ändras
-	public int period;
-
-	public techInfoStock TechInfoStock;
-	public utilitiesInfoStock UtilitiesInfoStock;
-	public DCF dcf;
-	public PECalculation pECalculation;
-
-	public int amountUtiCompanies;
-	public float[] priceNowUti; //Priserna för företagen inom Uti nu
-	public float[] priceUtiCompBefore;
-	public float[] priceUtiCompAfter;
-	public float[] utiCompEPS;
-	public float EPS;
-
-	public float[] priceNowTech; //Priserna för företagen inom Tech nu
-
-	public float[] priceNowMaterial; //Priserna för företagen inom Material nu
-
-
-
-	public float[] valueDCFMinTech;
-	public float[] valueDCFMaxTech;
-
-	public float[] valueDCFMinUti;
-	public float[] valueDCFMaxUti;
-
-	public float[] valueDCFMinMaterial;
-	public float[] valueDCFMaxMaterial;
-
-	public float priceUtiCompOneBefore;
-	public float priceUtiCompOneAfter;
-
-	public float priceUtiCompTwoBefore;
-	public float priceUtiCompTwoAfter;
-
-
 
 	//Utilities
 	public float utiStockPriceBefore;
@@ -105,80 +68,21 @@ public class priceChange : MonoBehaviour
 	public Text finPriceText;
 	public Text techPriceText;
 
-	public Text EPSchangeThisTurnTest;
-
-
-	//Steg 1
-	public int ecoClimate;
-
-	public float STEP1utiPriceEarning; // Fasta P/E-talet för sektorn
-									   //public float utiDivNow;
-
-	public float STEP1finPriceEarning;
-	//public float finDivNow;
-
-	public float STEP1techPriceEarning;
-	public float techDivNow;
-
-	//STEP 2
-	//public float utiEPSNow;
-	public float finEPSNow;
-	public float techEPSNow;
-
-	//public List<float> utiEPSNow = new List<float> ();
-
-	//public List<float> priceUtiComp = new List<float> ();
-
-
 	void Awake()
 	{
-		/*
-		TechInfoStock = GetComponent<techInfoStock> ();
-		UtilitiesInfoStock = GetComponent<utilitiesInfoStock> ();
-		MaterialsInfoStock = GetComponent<materialsInfoStock> ();
-		*/
-
 		dcf = GetComponent<DCF>();
-
 	}
 
-	void Start() {
-
+	void Start() 
+	{
 		StockMarketManager = StockMarketGO.GetComponent<stockMarketManager>();
-
-		//DCFbasedPriceTest ();
-
-		//changePriceStock ();
-
-		//STEP1utiPriceEarning = MainCanvasGO.GetComponent<infoStockSector> ().STEP1utiPE;
-
-		//UtilitiesInfoStock.companyOnePriceHist.Add (UtilitiesInfoStock.EPS [0] * STEP1utiPriceEarning);
-		//UtilitiesInfoStock.companyTwoPriceHist.Add (UtilitiesInfoStock.EPS [0] * STEP1utiPriceEarning);
-		//Debug.Log("EPS: " + UtilitiesInfoStock.EPS[0]);
-		//Debug.Log("Price before: " + priceUtiCompBefore[i]);
-		//for (int i = 0; i < 3; i++){
-		//priceUtiCompBefore [i] = UtilitiesInfoStock.EPS [i] * STEP1utiPriceEarning;
-
-		//}
 	}
 
 	public float DCFbasedPriceTest(stock Stock)
 	{
 		riskFreeRate = BondMarketManager.bondMarketListGO[BondMarketManager.bondMarketListGO.Count-1].GetComponent<bondInfoPrefab>().rate/100;
 		discountRate = riskFreeRate + stockMarketPremium;
-		/*for (int i = 0; i < StockMarketInventory.Stock.Count; i++) {
-			minEPSGrowth = StockMarketInventory.Stock[i].EPSGrowthMin;
-			maxEPSGrowth = StockMarketInventory.Stock[i].EPSGrowthMax;
-			EPSnow = StockMarketInventory.Stock[i].EPSnow;
-			*/
-		/*for (int i = 0; i < StockList.Count; i++) {
-			Debug.Log("Körningar DCF: ");
-			Debug.Log("Discount Rate: " + discountRate);
-			Debug.Log("EPSnow: " + StockList[i].EPSnow);
-			*/
-
-		//Debug.Log("Diskonteringsränta Volla: " + (discountRate + Random.Range(-discountRateVolatility, discountRateVolatility)));
-
+		
 		//Min värdering
 		if (Stock.EPSnow < 0)
 		{
@@ -203,131 +107,35 @@ public class priceChange : MonoBehaviour
 			valueDCFMax = Mathf.RoundToInt(dcf.valueDCF);
 		}
 		//Spara priset för bolaget
-		
 		stockPriceNow = Mathf.RoundToInt(Random.Range(valueDCFMin, valueDCFMax));
 
-		return stockPriceNow;
-		//StockMarketInventory.Stock[i].updatePriceNow();
-	
+		return stockPriceNow;	
 	}
 
 	public void changePriceStock(){
 
 		//PRISMODELLER
-		//oldPriceAddVolla ();
 		amountPriceChange++;
 		DCFbasedPrice();
 
 	}
 
-	//Priset baserar sig på gammalt pris + volla
 	public void DCFbasedPrice()
 	{
-		//amountUtiCompanies = UtilitiesInfoStock.amountCompanies;
-		//amountTechCompanies = TechInfoStock.amountCompanies;
-
-
-		//DCF för varje bolag. Min och Max värde
-		//Utilitites
-		for (int i = 0; i < amountUtiCompanies; i++) {
-
-			EPS = UtilitiesInfoStock.EPSNow [i];
-
-			minEPSGrowth = UtilitiesInfoStock.utiCompanyMinEPSGrowth[i];
-			maxEPSGrowth = UtilitiesInfoStock.utiCompanyMaxEPSGrowth[i];
-
-			dcf.DCFCalculation (discountRate, EPS, minEPSGrowth, period);
-			valueDCFMinUti[i] = Mathf.RoundToInt(dcf.valueDCF);
-
-			dcf.DCFCalculation (discountRate, EPS, maxEPSGrowth, period);
-			valueDCFMaxUti[i] = Mathf.RoundToInt(dcf.valueDCF);
-		}
-
-		//Technology
-		for (int i = 0; i < amountTechCompanies; i++) {
-			
-			EPS = TechInfoStock.EPSNow [i];
-
-			minEPSGrowth = TechInfoStock.CompanyMinEPSGrowth[i];
-			maxEPSGrowth = TechInfoStock.CompanyMaxEPSGrowth[i];
-
-			dcf.DCFCalculation (discountRate, EPS, minEPSGrowth, period);
-			valueDCFMinTech[i] = Mathf.RoundToInt(dcf.valueDCF);
-
-			dcf.DCFCalculation (discountRate, EPS, maxEPSGrowth, period);
-			valueDCFMaxTech[i] = Mathf.RoundToInt(dcf.valueDCF);
-		}
-
-
-		//Materials
-		for (int i = 0; i < 3; i++) {
-
-			EPS = MaterialsInfoStock.EPSNow [i];
-			minEPSGrowth = MaterialsInfoStock.CompanyMinEPSGrowth[i];
-			maxEPSGrowth = MaterialsInfoStock.CompanyMaxEPSGrowth[i];
-
-			dcf.DCFCalculation (discountRate, EPS, minEPSGrowth, period);
-			valueDCFMinMaterial[i] = Mathf.RoundToInt(dcf.valueDCF);
-
-			dcf.DCFCalculation (discountRate, EPS, maxEPSGrowth, period);
-			valueDCFMaxMaterial[i] = Mathf.RoundToInt(dcf.valueDCF);
-
-		}
-
-		for (int i = 0; i < 3; i++) {
-
-			if (i == 0) {
-
-				priceNowUti[i] = Mathf.RoundToInt(Random.Range (valueDCFMinUti [i], valueDCFMaxUti [i]));
-				priceNowTech [i] = Mathf.RoundToInt (Random.Range (valueDCFMinTech [i], valueDCFMaxTech [i]));
-				priceNowMaterial [i] = Mathf.RoundToInt (Random.Range (valueDCFMinMaterial [i], valueDCFMaxMaterial [i]));
-				//UtilitiesInfoStock.companyOnePriceHist.Add (Mathf.RoundToInt(Random.Range (valueDCFMinUti [i], valueDCFMaxUti [i])));
-				UtilitiesInfoStock.companyOnePriceHist.Add (priceNowUti[i]);
-				TechInfoStock.companyOnePriceHist.Add (priceNowTech [i]);
-				MaterialsInfoStock.companyOnePriceHist.Add (priceNowMaterial[i]);
 		
-			}
+		foreach (GameObject stockPrefab in StockMarketManager.StockPrefabAllList)
+		{
+			EPS = stockPrefab.GetComponent<stock>().EPSnow;
+			minEPSGrowth = stockPrefab.GetComponent<stock>().EPSGrowthMin;
+			maxEPSGrowth = stockPrefab.GetComponent<stock>().EPSGrowthMax;
 
-			if (i == 1) {
-				priceNowUti[i] = Mathf.RoundToInt(Random.Range (valueDCFMinUti [i], valueDCFMaxUti [i]));
-				priceNowTech [i] = Mathf.RoundToInt (Random.Range (valueDCFMinTech [i], valueDCFMaxTech [i]));
-				priceNowMaterial [i] = Mathf.RoundToInt (Random.Range (valueDCFMinMaterial [i], valueDCFMaxMaterial [i]));
-				UtilitiesInfoStock.companyTwoPriceHist.Add (priceNowUti[i]);
-				TechInfoStock.companyTwoPriceHist.Add (priceNowTech [i]);
-				MaterialsInfoStock.companyTwoPriceHist.Add (priceNowMaterial [i]);
-			}
+			dcf.DCFCalculation(discountRate, EPS, minEPSGrowth, period);
+			valueDCFMin = Mathf.RoundToInt(dcf.valueDCF);
 
-			if (i == 2) {
-				priceNowUti[i] = Mathf.RoundToInt(Random.Range (valueDCFMinUti [i], valueDCFMaxUti [i]));
-				priceNowTech [i] = Mathf.RoundToInt (Random.Range (valueDCFMinTech [i], valueDCFMaxTech [i]));
-				priceNowMaterial [i] = Mathf.RoundToInt (Random.Range (valueDCFMinMaterial [i], valueDCFMaxMaterial [i]));
-				UtilitiesInfoStock.companyThreePriceHist.Add (priceNowUti[i]);
-				TechInfoStock.companyThreePriceHist.Add (priceNowTech [i]);
-				MaterialsInfoStock.companyThreePriceHist.Add (priceNowMaterial [i]);
-			}
+			dcf.DCFCalculation(discountRate, EPS, maxEPSGrowth, period);
+			valueDCFMax = Mathf.RoundToInt(dcf.valueDCF);
 		}
 
-	}
-
-	public void oldPriceAddVolla()
-	{
-
-		for (int i = 0; i < 2; i++) {
-			vollaUti [i] = Random.Range (-MainCanvasGO.GetComponent<infoStockSector> ().volatilityUti, MainCanvasGO.GetComponent<infoStockSector> ().volatilityUti);
-
-		}
-
-		utiCompEPS  [0] = UtilitiesInfoStock.EPSNow[0];
-
-		priceUtiCompOneBefore = UtilitiesInfoStock.companyOnePriceHist[i];
-		priceUtiCompOneAfter = priceUtiCompOneBefore*(1+vollaUti [0]);
-		UtilitiesInfoStock.companyOnePriceHist.Add (priceUtiCompOneAfter);
-
-		priceUtiCompTwoBefore = UtilitiesInfoStock.companyTwoPriceHist[i];
-		priceUtiCompTwoAfter = priceUtiCompTwoBefore*(1+vollaUti [1]);
-		UtilitiesInfoStock.companyTwoPriceHist.Add (priceUtiCompTwoAfter);
-
-		i++;
 	}
 
 	public void showInfoStock ()

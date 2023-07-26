@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class returnPortfolio : MonoBehaviour
 {
-	//List<stock> stockList;
-	//List<float> stockListGAV;
 	public List<float> stockListReturn;
 
 	private float priceNow;
@@ -13,8 +11,6 @@ public class returnPortfolio : MonoBehaviour
 
 	public List<float> returnStocksPercent(List<stock> stockList, List<float> stockListGAV)
 	{
-
-
 		//Avkastning per företag
 		for (int i = 0; i < stockList.Count; i++)
 		{
@@ -34,11 +30,6 @@ public class returnPortfolio : MonoBehaviour
 				totalReturnAmount += (sharesOwned[i] * priceNow) - (sharesOwned[i]*stockListGAV[i]);
 				//Debug.Log("Total return: " + totalReturnAmount);
 		}
-
-		return totalReturnAmount;
-
-		
+		return totalReturnAmount;		
 	}
-
-
 }

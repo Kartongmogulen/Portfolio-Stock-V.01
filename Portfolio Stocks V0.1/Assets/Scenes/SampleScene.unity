@@ -1565,10 +1565,10 @@ RectTransform:
   m_Father: {fileID: 1164423650}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 39.8989, y: -77.59}
+  m_SizeDelta: {x: 79.7978, y: 51.726665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &57371367
 MonoBehaviour:
@@ -1802,9 +1802,9 @@ RectTransform:
   m_Father: {fileID: 2094654416}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -57.976665}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &75659843
@@ -5266,9 +5266,9 @@ RectTransform:
   m_Father: {fileID: 2094654416}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -100.95333}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &222317172
@@ -6454,10 +6454,10 @@ RectTransform:
   m_Father: {fileID: 1566977985}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 193.79504, y: -23.7994}
+  m_SizeDelta: {x: 129.1967, y: 47.5988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &303980182
 MonoBehaviour:
@@ -11319,10 +11319,10 @@ RectTransform:
   m_Father: {fileID: 1365472873}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 47.3989, y: -25.863333}
+  m_SizeDelta: {x: 94.7978, y: 51.726665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &518227276
 MonoBehaviour:
@@ -12915,7 +12915,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &591398743
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14829,7 +14829,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalValueSector: 0
-  stockList: []
 --- !u!114 &678885392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18919,10 +18918,10 @@ RectTransform:
   m_Father: {fileID: 1566977985}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 64.59835, y: -23.7994}
+  m_SizeDelta: {x: 129.1967, y: 47.5988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &856969214
 MonoBehaviour:
@@ -21002,10 +21001,10 @@ RectTransform:
   m_Father: {fileID: 1164423650}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 39.8989, y: -25.863333}
+  m_SizeDelta: {x: 79.7978, y: 51.726665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &939958894
 MonoBehaviour:
@@ -24056,10 +24055,10 @@ RectTransform:
   m_Father: {fileID: 1888656368}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 41.8989, y: -25.863333}
+  m_SizeDelta: {x: 83.7978, y: 51.726665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1080658432
 MonoBehaviour:
@@ -25807,10 +25806,10 @@ RectTransform:
   m_Father: {fileID: 591398743}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 155.18}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 218.49449, y: -77.59}
+  m_SizeDelta: {x: 79.7978, y: 155.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1164423651
 MonoBehaviour:
@@ -29623,10 +29622,10 @@ RectTransform:
   m_Father: {fileID: 1888656368}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 41.8989, y: -77.59}
+  m_SizeDelta: {x: 83.7978, y: 51.726665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1336948628
 MonoBehaviour:
@@ -30153,10 +30152,10 @@ RectTransform:
   m_Father: {fileID: 591398743}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 155.18}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 47.3989, y: -77.59}
+  m_SizeDelta: {x: 94.7978, y: 155.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1365472874
 MonoBehaviour:
@@ -32266,10 +32265,10 @@ RectTransform:
   m_Father: {fileID: 1164423650}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 39.8989, y: -129.31667}
+  m_SizeDelta: {x: 79.7978, y: 51.726665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467432995
 MonoBehaviour:
@@ -32411,7 +32410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1468750904
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32627,9 +32626,9 @@ RectTransform:
   m_Father: {fileID: 2094654416}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -15}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1469757368
@@ -33094,10 +33093,10 @@ RectTransform:
   m_Father: {fileID: 1365472873}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 47.3989, y: -77.59}
+  m_SizeDelta: {x: 94.7978, y: 51.726665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1480212326
 MonoBehaviour:
@@ -34792,7 +34791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1566977985
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39396,10 +39395,10 @@ RectTransform:
   m_Father: {fileID: 1888656368}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 41.8989, y: -129.31667}
+  m_SizeDelta: {x: 83.7978, y: 51.726665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1752251273
 MonoBehaviour:
@@ -40212,7 +40211,6 @@ MonoBehaviour:
   stockScript: {fileID: 0}
   dcfCalculation: {fileID: 0}
   priceNow: 0
-  StockPriceUtiOne: []
 --- !u!114 &1774405550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42934,10 +42932,10 @@ RectTransform:
   m_Father: {fileID: 591398743}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 155.18}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 136.6967, y: -77.59}
+  m_SizeDelta: {x: 83.7978, y: 155.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1888656369
 MonoBehaviour:
@@ -43464,10 +43462,10 @@ RectTransform:
   m_Father: {fileID: 1365472873}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 47.3989, y: -129.31667}
+  m_SizeDelta: {x: 94.7978, y: 51.726665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1904288544
 MonoBehaviour:
@@ -47190,43 +47188,21 @@ MonoBehaviour:
   bondSelectedInfoButton: {fileID: 741300673}
   riskFreeRate: 0
   stockMarketPremium: 0.04
+  dcf: {fileID: 0}
+  pECalculation: {fileID: 0}
   minEPSGrowth: 0
   maxEPSGrowth: 0
-  EPSnow: 0
+  EPS: 0
   ifEPSNegativeMarketEPSValue: 10
   valueDCFMin: 0
   valueDCFMax: 0
+  discountRate: 0
+  discountRateVolatility: 0.02
+  period: 20
   stockPriceNow: 0
   MainCanvasGO: {fileID: 0}
   PanelSectorGO: {fileID: 0}
   amountPriceChange: 0
-  MaterialsInfoStock: {fileID: 0}
-  amountTechCompanies: 0
-  discountRate: 0
-  discountRateVolatility: 0.02
-  period: 20
-  TechInfoStock: {fileID: 0}
-  UtilitiesInfoStock: {fileID: 0}
-  dcf: {fileID: 0}
-  pECalculation: {fileID: 0}
-  amountUtiCompanies: 0
-  priceNowUti: []
-  priceUtiCompBefore: []
-  priceUtiCompAfter: []
-  utiCompEPS: []
-  EPS: 0
-  priceNowTech: []
-  priceNowMaterial: []
-  valueDCFMinTech: []
-  valueDCFMaxTech: []
-  valueDCFMinUti: []
-  valueDCFMaxUti: []
-  valueDCFMinMaterial: []
-  valueDCFMaxMaterial: []
-  priceUtiCompOneBefore: 0
-  priceUtiCompOneAfter: 0
-  priceUtiCompTwoBefore: 0
-  priceUtiCompTwoAfter: 0
   utiStockPriceBefore: 0
   utiStockPriceNow: 0
   utiEPSchange: 0
@@ -47242,14 +47218,6 @@ MonoBehaviour:
   utiPriceText: {fileID: 0}
   finPriceText: {fileID: 0}
   techPriceText: {fileID: 0}
-  EPSchangeThisTurnTest: {fileID: 0}
-  ecoClimate: 0
-  STEP1utiPriceEarning: 0
-  STEP1finPriceEarning: 0
-  STEP1techPriceEarning: 0
-  techDivNow: 0
-  finEPSNow: 0
-  techEPSNow: 0
 --- !u!114 &2092176692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47409,12 +47377,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c4c23b243bbe4f4898a1987ba0532a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountCompanies: 2
   costUnlockDivPolicy: 1
   costUnlockEPSGrowth: 1
+  spreadEPS: 0
   minEPSGrowth: 0
   maxEPSGrowth: 0
-  spreadEPS: 0
   minEPSGrowthWithBNP: 0
   maxEPSGrowthWithBNP: 0
   EPSstart: []

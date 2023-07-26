@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class stockInformation : MonoBehaviour
 {
-
   public sectorNameEnum SectorName;
-
 }
