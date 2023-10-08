@@ -35,6 +35,13 @@ public class earningsUpdate : MonoBehaviour
         //newEPS = Mathf.Round(oldEPS + oldEPS * (EPSGrowthForPreviousYear + earningsMacro) * 100) / 100;
         Stock.EPSnow = newEPS;
         Stock.EPSHistory.Add(newEPS);
+        //saveE_P_S_ChangeYoY(Stock);
+        //Stock.EPSChangeYoYHistory.Add(changeEPS);  
+    }
+
+    public void saveE_P_S_ChangeYoY(stock Stock)
+    {
+        Stock.EPSChangeYoYHistory.Add(Stock.EPSHistory[Stock.EPSHistory.Count-1]/ (Stock.EPSHistory[Stock.EPSHistory.Count-2])-1);
     }
 
     //Hur earnings påverkas utifrån den generella BNP utvecklingen

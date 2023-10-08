@@ -28,5 +28,33 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
         
     }
 
+    public void unlockEPSChangeYoYyearX(int i)
+    {
 
+        if (activeCompany.GetComponent<stockDataPlayerKnow>().EPSYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+        {
+            activeCompany.GetComponent<stockDataPlayerKnow>().EPSYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+        }
+
+    }
+
+    public void unlockDividendChangeYoYyearX(int i)
+    {
+
+        if (activeCompany.GetComponent<stockDataPlayerKnow>().DividendYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+        {
+            activeCompany.GetComponent<stockDataPlayerKnow>().DividendYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+        }
+
+    }
+
+    public void unlockPayoutyearX(int i)
+    {
+
+        if (activeCompany.GetComponent<stockDataPlayerKnow>().PayoutRatiodata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+        {
+            activeCompany.GetComponent<stockDataPlayerKnow>().PayoutRatiodata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+        }
+
+    }
 }

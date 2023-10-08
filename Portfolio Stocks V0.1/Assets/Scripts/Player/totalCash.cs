@@ -110,7 +110,7 @@ public class totalCash : MonoBehaviour
 		moneyText.text = "Money: " + moneyNow;
 		moneyBefore = moneyNow;
 		incomeBondsLifetime += income;
-		Debug.Log("Intäkter från Räntor: " + incomeBondsLifetime);
+		//Debug.Log("Intäkter från Räntor: " + incomeBondsLifetime);
 		//incomeBondsLifetime = incomeBondsLifetime + panelBonds.GetComponent<buyBonds>().cashFlowBondsNow;
 	}
 

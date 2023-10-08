@@ -81,6 +81,7 @@ public class dividendRecieved : MonoBehaviour
 	public float divIncomeFromPortfolioNow()
 	{
 		incomeDivFromPortfolioNow = 0;
+		//Debug.Log(StockMarketManager.StockUtiList.Count);
 
 		for (int i = 0; i < StockMarketManager.StockUtiList.Count; i++)
 		{
@@ -90,6 +91,7 @@ public class dividendRecieved : MonoBehaviour
 			incomeDivFromPortfolioNow += utiCompanyDivRecieved[i];
 		}
 
+		//Debug.Log(StockMarketManager.StockTechList.Count);
 		for (int i = 0; i < StockMarketManager.StockTechList.Count; i++)
 		{
 			techCompanyDivPayout[i] = StockMarketManager.StockTechList[i].GetComponent<stock>().divPayout;

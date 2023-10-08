@@ -26,6 +26,7 @@ public class allStocksComparisonLayout : MonoBehaviour
 
     public void updateNameText()
     {
+        Debug.Log(StockMarketInventory.Stock.Count);
         for (int i = 0;  i < StockMarketInventory.Stock.Count; i++)
         {
             nameStocksList[i].text = StockMarketInventory.Stock[i].nameOfCompany;

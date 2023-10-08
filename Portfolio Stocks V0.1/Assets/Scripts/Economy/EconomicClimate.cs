@@ -46,7 +46,8 @@ public class economicClimate : MonoBehaviour
 	public int recOrDep;
 
 	public int i;
-	
+
+	public List<recessionOrExpanssionEnum> recenssionOrExpanssion;
 
 	void Start()
 	{
@@ -55,7 +56,8 @@ public class economicClimate : MonoBehaviour
 		//updateEcoClimate ();
 		//lengthPeriod();
 		lengthPeriodThreeConstant();
-		yearlyGrowthRate();
+		//yearlyGrowthRate();
+		updateEcoClimate();
 		StartCoroutine(normalizeStartingBNP());
 	}
 
@@ -66,25 +68,29 @@ public class economicClimate : MonoBehaviour
 	}
 
 	public void updateEcoClimate() {
-		
-		globalBNPChanger(yearlyBNPGrowthRate);
+		//Debug.Log("Uppdatering ekonomiskt klimat: 1");
+		recenssionOrExpanssion.Add(RecessionOrExpanssionEnum);
 		yearlyGrowthRate();
+		globalBNPChanger(yearlyBNPGrowthRate);
 
 		lengthCykelYearsCount++;
 		if (lengthCykelYearsCount >= lengthCykelYears) {
 			lengthCykelYearsCount = 0;
-
+			Debug.Log("Uppdatering ekonomiskt klimat: 2");
 			if (RecessionOrExpanssionEnum == recessionOrExpanssionEnum.Expanssion)
 			{
 				RecessionOrExpanssionEnum = recessionOrExpanssionEnum.Rececssion;
+				Debug.Log("Uppdatering ekonomiskt klimat: Byt till Recenssion");
 			}
 
 			else if (RecessionOrExpanssionEnum == recessionOrExpanssionEnum.Rececssion)
 			{
 				RecessionOrExpanssionEnum = recessionOrExpanssionEnum.Expanssion;
+				//Debug.Log("Uppdatering ekonomiskt klimat: Byt till Expanssion");
 			}
 
-			lengthPeriod();
+			//lengthPeriod();
+			lengthPeriodThreeConstant();
 			/*if (expOrRec == 0) {
 				expOrRec = 1;
 				lengthCykelYearsCount = 0;
@@ -118,6 +124,10 @@ public class economicClimate : MonoBehaviour
 
 		if (expOrRec == 0) {
 
+			lengthCykelYears = constantIntervallExpansion[Random.Range(0, constantIntervallExpansion.Length)];
+			Debug.Log("Längd högkonjunktur: " + lengthCykelYears);
+
+			/*
 			lengthCykelProb = Random.Range (0, 10); //Slumpar om perioden ska vara kort, medium eller lång
 
 			//Beslutar längden på konjunkturcykeln
@@ -139,7 +149,7 @@ public class economicClimate : MonoBehaviour
 			if (lengthCykelText.text == "Long") {
 				lengthCykelYears = Random.Range (10, 20);
 			}
-		
+		*/
 			ecoClimateText.text = "Expanssion";
 
 		}
@@ -166,6 +176,8 @@ public class economicClimate : MonoBehaviour
 		{
 			yearlyBNPGrowthRate = growthRateYearRecession[Random.Range(0, growthRateYearRecession.Length)];
 		}
+		//Debug.Log("BNP-förändring: " + yearlyBNPGrowthRate);
+
 		/*
 		//Hur mycket BNP ökar per år
 		if (expOrRec == 0) {

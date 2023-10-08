@@ -19,6 +19,7 @@ public class stock : MonoBehaviour
 
 	public float EPSnow;
 	public List<float> EPSHistory;
+	public List<float> EPSChangeYoYHistory;
 	public float EPSGrowthMin;
 	public float EPSGrowthMax;
 

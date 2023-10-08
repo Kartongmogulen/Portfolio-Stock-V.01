@@ -5,6 +5,9 @@ using UnityEngine;
 public class stockDataPlayerKnow : MonoBehaviour
 {
     public List<bool> EPSdata = new List<bool>(); //Vilken data spelaren känner till om EPS
+    public List<bool> EPSYoYChangedata = new List<bool>(); //Vilken data spelaren känner till om YoY-förändring
+    public List<bool> DividendYoYChangedata = new List<bool>(); //Vilken data spelaren känner till om YoY-förändring
+    public List<bool> PayoutRatiodata = new List<bool>(); //Vilken data spelaren känner till
 
     public gamePlayScopeManager GamePlayScopeManager;
     public endRoundButton EndRoundButton;
@@ -21,6 +24,9 @@ public class stockDataPlayerKnow : MonoBehaviour
         for (int i = 0; i<(GamePlayScopeManager.yearsToGetHistoricData + GamePlayScopeManager.yearsBeforeEndGameMaster); i++)
         {
             EPSdata.Add(false);
+            EPSYoYChangedata.Add(false);
+            DividendYoYChangedata.Add(false);
+            PayoutRatiodata.Add(false);
         }
     }
 
@@ -30,6 +36,21 @@ public class stockDataPlayerKnow : MonoBehaviour
         if(EPSdata[Mathf.Abs(startingYearToRevealData + EndRoundButton.year + year)] == false)
         {
             EPSdata[Mathf.Abs(startingYearToRevealData + EndRoundButton.year + year)] = true;
+        }
+
+        if (EPSYoYChangedata[Mathf.Abs(startingYearToRevealData + EndRoundButton.year + year)] == false)
+        {
+            EPSYoYChangedata[Mathf.Abs(startingYearToRevealData + EndRoundButton.year + year)] = true;
+        }
+
+        if (DividendYoYChangedata[Mathf.Abs(startingYearToRevealData + EndRoundButton.year + year)] == false)
+        {
+            DividendYoYChangedata[Mathf.Abs(startingYearToRevealData + EndRoundButton.year + year)] = true;
+        }
+
+        if (PayoutRatiodata[Mathf.Abs(startingYearToRevealData + EndRoundButton.year + year)] == false)
+        {
+            PayoutRatiodata[Mathf.Abs(startingYearToRevealData + EndRoundButton.year + year)] = true;
         }
     }
 }

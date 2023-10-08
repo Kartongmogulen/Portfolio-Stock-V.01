@@ -33,6 +33,7 @@ public class createHistoricDataStocks : MonoBehaviour
             {
                 StockScriptGO.GetComponent<companyNumbersUpdate>().updateYearEnd();
                 EconomyScriptGO.GetComponent<economicClimate>().updateEcoClimate();
+                EconomyScriptGO.GetComponent<eventAtDifferentEcoClimateManager>().valAvSektor();
             }
         }
     }

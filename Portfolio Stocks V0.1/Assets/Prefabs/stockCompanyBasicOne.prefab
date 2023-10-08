@@ -47,22 +47,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caf8d83697af9840801750f1f99deed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indexPrefabList: 0
   SectorNameEnum: 1
-  divPolicyChangeDiv: 2
-  divPolicyMaxPayouRatio: 80
+  nameOfCompany: 
+  divPolicyChangeDiv: 0
+  divPolicyMaxPayouRatio: 0
   companyPaysDividend: 1
   startPayDividendWhenEPS: 0
-  divPayout: 10
+  divPayout: 0
   lastDivPayout: 0
-  EPSnow: 15
+  EPSnow: 0
   EPSHistory: []
-  EPSGrowthMin: 2
-  EPSGrowthMax: 2
+  EPSChangeYoYHistory: []
+  EPSGrowthMin: 0
+  EPSGrowthMax: 0
   StockPrice: []
   priceNow: 0
   trailingTwelweMonthHigh: 0
   trailingTwelweMonthLow: 0
-  trailing12MonthHighLowCalculation: {fileID: 0}
 --- !u!114 &8142389932202983004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EPSdata: 
+  EPSYoYChangedata: 
+  DividendYoYChangedata: 
+  PayoutRatiodata: 
   GamePlayScopeManager: {fileID: 0}
   EndRoundButton: {fileID: 0}
   showHistoricData: {fileID: 0}
