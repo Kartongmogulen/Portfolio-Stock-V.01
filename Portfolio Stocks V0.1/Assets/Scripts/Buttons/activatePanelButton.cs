@@ -168,6 +168,8 @@ public class activatePanelButton : MonoBehaviour
 
 			inactivePlayerStockPanel();
 			inactiveBondsPanel ();
+
+
 			/*inactiveBooksPanel ();
 			inactiveBusinessPanel ();
 			inactiveRealEstatePanel ();

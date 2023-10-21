@@ -7,5 +7,11 @@ public class descriptionTextSkillTree : MonoBehaviour
 {
     public Text descpritionText;
 
-    public string morePointsToInvest = "You get more effective with your time";
+    public string morePointsToInvest = " You get more effective with your time.";
+    public string unlockNewCompnay;
+
+    public void updateTextUnlockNewCompany()
+    {
+        descpritionText.text = "" + unlockNewCompnay;
+    }
 }

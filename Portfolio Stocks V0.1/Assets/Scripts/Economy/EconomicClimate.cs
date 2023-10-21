@@ -76,11 +76,11 @@ public class economicClimate : MonoBehaviour
 		lengthCykelYearsCount++;
 		if (lengthCykelYearsCount >= lengthCykelYears) {
 			lengthCykelYearsCount = 0;
-			Debug.Log("Uppdatering ekonomiskt klimat: 2");
+			//Debug.Log("Uppdatering ekonomiskt klimat: 2");
 			if (RecessionOrExpanssionEnum == recessionOrExpanssionEnum.Expanssion)
 			{
 				RecessionOrExpanssionEnum = recessionOrExpanssionEnum.Rececssion;
-				Debug.Log("Uppdatering ekonomiskt klimat: Byt till Recenssion");
+				//Debug.Log("Uppdatering ekonomiskt klimat: Byt till Recenssion");
 			}
 
 			else if (RecessionOrExpanssionEnum == recessionOrExpanssionEnum.Rececssion)

@@ -7,6 +7,7 @@ public class portfolioStock : MonoBehaviour
 {
 	public GameObject stockScriptsGO;
 	public GameObject stockMarketGO;
+	public createListWithLength CreateListWithLength;
 
 	public GameObject playerUtiGO;
 	public GameObject playerTechGO;
@@ -29,14 +30,14 @@ public class portfolioStock : MonoBehaviour
 	public float totalValueUti;
 	public float totalValueTech;
 
-	public float[] utiTotalInvest; //Summan som har investerats i specifikt företag
+	public List<float> utiTotalInvest; //Summan som har investerats i specifikt företag
 	public List<float> returnUtiCompanies;
 	public float utiTotalInvestAmount;
 	public float utiTotalReturnAmount;
 	public float utiTotalReturnPercent;
 	public float utiTotalValue;
 
-	public float[] techTotalInvest; //Summan som har investerats i specifikt företag
+	public List<float> techTotalInvest; //Summan som har investerats i specifikt företag
 	public List<float> returnTechCompanies;
 	public float techTotalInvestAmount;
 	public float techTotalReturnAmount;
@@ -87,6 +88,17 @@ public class portfolioStock : MonoBehaviour
 
 		stockListUti = stockMarketGO.GetComponent<stockMarketManager>().StockUtiList;
 		stockListTech = stockMarketGO.GetComponent<stockMarketManager>().StockTechList;
+
+		//Skapar rätt längd på listor
+		utiCompanySharesOwned = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockPrefabUtiList.Count);
+		utiTotalInvest = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockPrefabUtiList.Count);
+		returnUtiCompanies = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockPrefabUtiList.Count);
+		utiGAV = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockPrefabUtiList.Count);
+
+		techCompanySharesOwned = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
+		techTotalInvest = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
+		returnTechCompanies = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
+		techGAV = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
 	}
 
 
@@ -141,12 +153,12 @@ public class portfolioStock : MonoBehaviour
 		}*/
 
 		//Total investering i sektorn
-		for (int i = 0; i < utiTotalInvest.Length; i++) {
+		for (int i = 0; i < utiTotalInvest.Count; i++) {
 			//Debug.Log("Uti Längd: " + i);
 			utiTotalInvestAmount = utiTotalInvestAmount + utiGAV [i]*utiCompanySharesOwned [i];
 		}
 
-		for (int i = 0; i < techTotalInvest.Length; i++) {
+		for (int i = 0; i < techTotalInvest.Count; i++) {
 			techTotalInvestAmount = techTotalInvestAmount + techGAV [i]*techCompanySharesOwned [i];
 			//Debug.Log("Tech Längd: " + i);
 		}

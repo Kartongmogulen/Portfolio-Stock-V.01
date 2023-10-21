@@ -4,10 +4,36 @@ using UnityEngine;
 
 public class returnPortfolio : MonoBehaviour
 {
+	public bool utiReturn;
+	public bool techReturn;
+
 	public List<float> stockListReturn;
+	public stockMarketManager StockMarketManager;
+	
 
 	private float priceNow;
 	float totalReturnAmount;
+
+	private void Start()
+	{
+		if (utiReturn)
+		{
+
+			for (int i = 0; StockMarketManager.StockUtiList.Count > i; i++)
+			{
+				stockListReturn.Add(0);
+			}
+		}
+
+		if (techReturn)
+		{
+
+			for (int i = 0; StockMarketManager.StockTechList.Count > i; i++)
+			{
+				stockListReturn.Add(0);
+			}
+		}
+	}
 
 	public List<float> returnStocksPercent(List<stock> stockList, List<float> stockListGAV)
 	{

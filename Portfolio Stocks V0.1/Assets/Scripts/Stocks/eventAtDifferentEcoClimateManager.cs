@@ -62,7 +62,7 @@ public class eventAtDifferentEcoClimateManager : MonoBehaviour
             if (randomInt < SlhAttUtiValjsRecenssion)
             {
                 randomIntCompany = Random.Range(0, StockMarketManager.StockUtiList.Count);
-                Debug.Log("Uti väljs " + StockMarketManager.StockUtiList[randomIntCompany].name);
+                //Debug.Log("Uti väljs " + StockMarketManager.StockUtiList[randomIntCompany].name);
                 StockMarketManager.StockUtiList[randomIntCompany].EPSGrowthMin -= negativeImpactOnEPS;
                 StockMarketManager.StockUtiList[randomIntCompany].EPSGrowthMax -= negativeImpactOnEPS;
 
@@ -71,7 +71,7 @@ public class eventAtDifferentEcoClimateManager : MonoBehaviour
             else if (randomInt < SlhAttUtiValjsRecenssion + SlhAttTechValjsRecenssion)
             {
                 randomIntCompany = Random.Range(0, StockMarketManager.StockTechList.Count);
-                Debug.Log("Tech väljs " + StockMarketManager.StockTechList[randomIntCompany].name);
+                //Debug.Log("Tech väljs " + StockMarketManager.StockTechList[randomIntCompany].name);
                 StockMarketManager.StockTechList[randomIntCompany].EPSGrowthMin -= negativeImpactOnEPS;
                 StockMarketManager.StockTechList[randomIntCompany].EPSGrowthMax -= negativeImpactOnEPS;
             }
@@ -84,7 +84,7 @@ public class eventAtDifferentEcoClimateManager : MonoBehaviour
             {
                
                 randomIntCompany = Random.Range(0, StockMarketManager.StockUtiList.Count);
-                Debug.Log("Uti väljs " + StockMarketManager.StockUtiList[randomIntCompany].name);
+                //Debug.Log("Uti väljs " + StockMarketManager.StockUtiList[randomIntCompany].name);
                 StockMarketManager.StockUtiList[randomIntCompany].EPSGrowthMin += positiveImpactOnEPS;
                 StockMarketManager.StockUtiList[randomIntCompany].EPSGrowthMax += positiveImpactOnEPS;
             }
@@ -92,13 +92,13 @@ public class eventAtDifferentEcoClimateManager : MonoBehaviour
             else if (randomInt < SlhAttUtiValjsExpanssion + SlhAttTechValjsExpanssion)
             {
                 randomIntCompany = Random.Range(0, StockMarketManager.StockTechList.Count);
-                Debug.Log("Tech väljs " + StockMarketManager.StockTechList[randomIntCompany].name);
+                //Debug.Log("Tech väljs " + StockMarketManager.StockTechList[randomIntCompany].name);
                 StockMarketManager.StockTechList[randomIntCompany].EPSGrowthMin += positiveImpactOnEPS;
                 StockMarketManager.StockTechList[randomIntCompany].EPSGrowthMax += positiveImpactOnEPS;
             }
 
 
-            Debug.Log("Expanssion" + randomInt);
+            //Debug.Log("Expanssion" + randomInt);
         }
 
     }

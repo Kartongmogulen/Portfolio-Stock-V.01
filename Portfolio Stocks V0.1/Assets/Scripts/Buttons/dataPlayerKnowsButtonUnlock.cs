@@ -8,6 +8,8 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
     public ShowHistoricData showHistoricData;
     public stock activeCompany;
     public gamePlayScopeManager GamePlayScopeManager;
+    public actionPointsManager ActionPointsManager;
+    [SerializeField] int costToUnlock;
 
     public void chooseStock(stock Stock)
     {
@@ -20,41 +22,49 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
     //1. Hämta Prefab för bolaget. Görs i "chooseStock";
     public void unlockEPSyearX(int i)
     {
-
-        if (activeCompany.GetComponent<stockDataPlayerKnow>().EPSdata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+        if (ActionPointsManager.remainingAP >= costToUnlock)
         {
-            activeCompany.GetComponent<stockDataPlayerKnow>().EPSdata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+            if (activeCompany.GetComponent<stockDataPlayerKnow>().EPSdata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+            {
+                activeCompany.GetComponent<stockDataPlayerKnow>().EPSdata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+                ActionPointsManager.actionPointSub(costToUnlock);
+            }
         }
-        
     }
 
     public void unlockEPSChangeYoYyearX(int i)
     {
-
-        if (activeCompany.GetComponent<stockDataPlayerKnow>().EPSYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+        if (ActionPointsManager.remainingAP >= costToUnlock)
         {
-            activeCompany.GetComponent<stockDataPlayerKnow>().EPSYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+            if (activeCompany.GetComponent<stockDataPlayerKnow>().EPSYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+            {
+                activeCompany.GetComponent<stockDataPlayerKnow>().EPSYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+                ActionPointsManager.actionPointSub(costToUnlock);
+            }
         }
-
     }
 
     public void unlockDividendChangeYoYyearX(int i)
     {
-
-        if (activeCompany.GetComponent<stockDataPlayerKnow>().DividendYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+        if (ActionPointsManager.remainingAP >= costToUnlock)
         {
-            activeCompany.GetComponent<stockDataPlayerKnow>().DividendYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+            if (activeCompany.GetComponent<stockDataPlayerKnow>().DividendYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+            {
+                activeCompany.GetComponent<stockDataPlayerKnow>().DividendYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+                ActionPointsManager.actionPointSub(costToUnlock);
+            }
         }
-
     }
 
     public void unlockPayoutyearX(int i)
     {
-
-        if (activeCompany.GetComponent<stockDataPlayerKnow>().PayoutRatiodata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+        if (ActionPointsManager.remainingAP >= costToUnlock)
         {
-            activeCompany.GetComponent<stockDataPlayerKnow>().PayoutRatiodata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+            if (activeCompany.GetComponent<stockDataPlayerKnow>().PayoutRatiodata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+            {
+                activeCompany.GetComponent<stockDataPlayerKnow>().PayoutRatiodata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+                ActionPointsManager.actionPointSub(costToUnlock);
+            }
         }
-
     }
 }

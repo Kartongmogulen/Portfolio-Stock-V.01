@@ -8,6 +8,7 @@ public class createHistoricDataStocks : MonoBehaviour
     public stockPriceManager StockPriceManager;
     public GameObject StockScriptGO;
     public GameObject EconomyScriptGO;
+    public GameObject debugPanelGO;
 
     private int numberOfYearsToCreateData;
 
@@ -28,6 +29,7 @@ public class createHistoricDataStocks : MonoBehaviour
         for (int i = 0; i < 12; i++)
         {
             StockPriceManager.updateStockMarketPrice();
+            debugPanelGO.GetComponent<endRoundButtonDebugg>().investInOnlyOneCompany();//Test för att se vad en investering i ett bolag ger över tid
 
             if (i >= 11)
             {

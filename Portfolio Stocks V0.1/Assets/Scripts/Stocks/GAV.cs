@@ -7,19 +7,24 @@ public class GAV : MonoBehaviour
 	//Beräkning av GAV, Genomsnittligt inköpspris
 	public GameObject playerScriptsGO;
 	public portfolioStock PortfolioStock;
+	public stockMarketManager StockMarketManager;
+	public createListWithLength CreateListWithLength;
 
 	public List<float> utiCompanyGAVPlayer;
 	public List<float> utiCompanySharesOwned;
-	public float[] utiTotalInvest;
+	public List<float> utiTotalInvest;
 
 	public List<float> techCompanyGAVPlayer;
 	public List<float> techCompanySharesOwned;
-	public float[] techTotalInvest;
+	public List<float> techTotalInvest;
 
 	private void Awake()
 	{
 		PortfolioStock = playerScriptsGO.GetComponent<portfolioStock>();
+		utiCompanyGAVPlayer = CreateListWithLength.listWithRightLengthFloat(StockMarketManager.StockPrefabUtiList.Count);
+		techCompanyGAVPlayer = CreateListWithLength.listWithRightLengthFloat(StockMarketManager.StockTechList.Count);
 	}
+
 
 	public void utiGAV()
 	{

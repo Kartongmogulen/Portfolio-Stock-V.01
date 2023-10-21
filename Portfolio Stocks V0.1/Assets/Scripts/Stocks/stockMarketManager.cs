@@ -9,6 +9,7 @@ public class stockMarketManager : MonoBehaviour
     public List<stock> StockTechList;
     public List<GameObject> StockPrefabAllList;
     public List<GameObject> StockPrefabUtiList;
+    public List<GameObject> StockPrefabTechList;
 
     //Spindeln i nätet för vad som händer på aktiemarknaden
 

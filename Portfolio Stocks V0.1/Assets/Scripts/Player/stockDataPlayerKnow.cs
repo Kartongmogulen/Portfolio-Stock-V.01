@@ -20,7 +20,7 @@ public class stockDataPlayerKnow : MonoBehaviour
     private void Start()
     {
         startingYearToRevealData = GamePlayScopeManager.yearsToGetHistoricData - showHistoricData.yearsHeader.Count;
-
+        
         for (int i = 0; i<(GamePlayScopeManager.yearsToGetHistoricData + GamePlayScopeManager.yearsBeforeEndGameMaster); i++)
         {
             EPSdata.Add(false);

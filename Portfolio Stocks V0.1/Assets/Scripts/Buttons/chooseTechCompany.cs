@@ -52,6 +52,7 @@ public class chooseTechCompany : MonoBehaviour
 	public void companyNumber (int i)
 	{
 		activeCompany = i;
+		//Debug.Log("Aktivit företag: " + activeCompany);
 
 		divPayout = Mathf.Round(StockMarketManager.StockTechList[i].divPayout);
 		activeCompanyPrice = StockMarketManager.StockTechList[i].StockPrice[StockMarketManager.StockTechList[i].StockPrice.Count - 1];

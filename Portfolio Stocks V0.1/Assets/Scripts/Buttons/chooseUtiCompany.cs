@@ -110,8 +110,16 @@ public class chooseUtiCompany : MonoBehaviour
 
 	public void companyThree()
 	{
+		Debug.Log("Företag 3 valt");
 		companyNumber (2);
 		
+	}
+
+	public void companyFour()
+	{
+		Debug.Log("Företag 3 valt");
+		companyNumber(3);
+
 	}
 
 }

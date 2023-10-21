@@ -4,29 +4,32 @@ using UnityEngine;
 
 public class stock : MonoBehaviour
 {
-
+	[Header("Starting values")]
 	//public string sectorName;
-	public int indexPrefabList; //Alla prefabs får ett nummer som motsvarar denna i listan för alla prefabs. Underlätta vid script för att hämta data för specifikt bolag.
-	public sectorNameEnum SectorNameEnum;
-	public string nameOfCompany;
-
 	public float divPolicyChangeDiv;
 	public float divPolicyMaxPayouRatio;
 	public bool companyPaysDividend;
 	public float startPayDividendWhenEPS;
 	public float divPayout;
-	public float lastDivPayout;
-
+	
 	public float EPSnow;
-	public List<float> EPSHistory;
-	public List<float> EPSChangeYoYHistory;
+	public sectorNameEnum SectorNameEnum;
 	public float EPSGrowthMin;
 	public float EPSGrowthMax;
 
+	[Header("Historic data")]
+	public List<float> EPSHistory;
+	public List<float> EPSChangeYoYHistory;
 	public List<float> StockPrice;
+	
+	[Header("Other")]
+	public string nameOfCompany;
+	public int indexPrefabList; //Alla prefabs får ett nummer som motsvarar denna i listan för alla prefabs. Underlätta vid script för att hämta data för specifikt bolag.
 	public float priceNow;
 	public float trailingTwelweMonthHigh;
 	public float trailingTwelweMonthLow;
+	public float lastDivPayout;
+
 
 	public void updatePriceNow(float priceNew)
 	{

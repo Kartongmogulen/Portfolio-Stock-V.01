@@ -8,11 +8,28 @@ public class pointsLeftToUnlock : MonoBehaviour
     public SkillsManager skillsManager;
    
     public Text pointsInvestedAndLeftToUnlockText;
+    public Text unlockNewCompanyText;
 
-    public string pointsInvestedAndLeftToUnlockString;
+    //public string pointsInvestedAndLeftToUnlockString;
 
-    public void updateText()
+    public void getMoreActionPoints()
     {
-        pointsInvestedAndLeftToUnlockText.text = "" + skillsManager.pointsInvestedNowMoreActionPoints + "/" + skillsManager.costToUnlockMorePoints;
+        if (skillsManager.timePointsLvlNow < skillsManager.costToUnlockMorePoints.Count)
+        pointsInvestedAndLeftToUnlockText.text = "" + skillsManager.pointsInvestedNowMoreActionPoints + "/" + skillsManager.costToUnlockMorePoints[skillsManager.timePointsLvlNow];
+        else
+        {
+            pointsInvestedAndLeftToUnlockText.text = "Max lvl reached";
+        }
     }
+
+    public void unlockNewCompany()
+    {
+        if (skillsManager.getLevelUnlockNewCompany() < skillsManager.maxLevelUnlockNewCompany)
+            unlockNewCompanyText.text = "" + skillsManager.getExperienceUnlockNewCompany() + "/" + skillsManager.costToUnlockNewCompany;
+        else
+        {
+            unlockNewCompanyText.text = "Max lvl reached";
+        }
+    }
+
 }
