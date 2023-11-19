@@ -2,5 +2,6 @@ public enum sectorNameEnum
 {
     None,
     Utilities, 
-    Technology
+    Technology,
+    Oil
 }

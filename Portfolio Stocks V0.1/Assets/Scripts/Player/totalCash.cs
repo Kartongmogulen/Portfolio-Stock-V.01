@@ -74,6 +74,12 @@ public class totalCash : MonoBehaviour
 		moneyText.text = "Money: " + moneyNow;
 	}
 
+	public void transactionMoney(int amount)
+	{
+		moneyNow += amount;
+		moneyText.text = "Money: " + moneyNow;
+	}
+
 	public void incomeWork()
 	{
 		moneyNow = MoneyManager.moneyTransaction(moneyNow,GetComponent<incomeWork>().incomeWorkPerMonth);

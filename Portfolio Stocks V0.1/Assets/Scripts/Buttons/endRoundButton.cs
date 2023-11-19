@@ -32,6 +32,8 @@ public class endRoundButton : MonoBehaviour
 	public GameObject PlayerScriptsGO;//Step 3.1.1
 	public GameObject PlayerPerformanceUIScriptsGO;
 
+	public sendMoneyHome SendMoneyHome;
+
 	public int globalEcoClimate;
 
 	public float incomeFromWork;
@@ -155,6 +157,9 @@ public class endRoundButton : MonoBehaviour
 			{
 				StartCoroutine(waitSoOtherScriptsCanFinish());
 			}
+
+			//Settler
+			SendMoneyHome.timeForPlayerToSendMoney(year);
 
 		}
 		//playerPanelGO.GetComponent<totalCash>().incomeWork();
