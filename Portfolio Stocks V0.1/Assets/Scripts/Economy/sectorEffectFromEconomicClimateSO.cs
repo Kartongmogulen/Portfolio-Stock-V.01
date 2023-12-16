@@ -8,5 +8,7 @@ public class sectorEffectFromEconomicClimateSO : ScriptableObject
 {
     public float utilitesFactor; //Hur makrofaktorer påverkar Earnings
     public float technologyFactor; //Hur makrofaktorer påverkar Earnings
+    public float minesFactor; //Hur makrofaktorer påverkar Earnings
+    public float railroadFactor; //Hur makrofaktorer påverkar Earnings
     //public int utilitesRecession;
 }

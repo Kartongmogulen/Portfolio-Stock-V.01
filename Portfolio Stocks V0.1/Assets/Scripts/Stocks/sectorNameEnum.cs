@@ -3,5 +3,7 @@ public enum sectorNameEnum
     None,
     Utilities, 
     Technology,
-    Oil
+    Oil,
+    Mine,
+    Railroad
 }

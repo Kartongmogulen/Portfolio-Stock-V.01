@@ -12,4 +12,10 @@ public class divPolicyPrefab : MonoBehaviour
 	public bool companyPaysDividend;
 	public float startPayDividendWhenEPS;
 	public float divPayout;
+	[SerializeField] float divPayoutTotal;
+
+	public void changeDividendPayoutTotal(float amount)
+	{
+		divPayoutTotal = amount;
+	}
 }

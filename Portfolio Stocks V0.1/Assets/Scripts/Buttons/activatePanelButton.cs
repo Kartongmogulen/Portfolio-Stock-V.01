@@ -35,6 +35,9 @@ public class activatePanelButton : MonoBehaviour
 	public GameObject stockPanelGO;
 	public int stockPanelActive;
 
+	public GameObject stockPanelGO_1850;
+	public int stockPanelActive_1850;
+
 	public GameObject windowGraphGO;
 	public int windowGraphActive;
 
@@ -179,6 +182,34 @@ public class activatePanelButton : MonoBehaviour
 		else {
 			stockPanelGO.SetActive (false);
 			stockPanelActive = 0;
+		}
+	}
+
+	public void activeStockPanel_1850()
+	{
+
+		if (stockPanelActive_1850 == 0)
+		{
+			stockPanelGO_1850.SetActive(true);
+			stockPanelActive_1850 = 1;
+
+			//stockPanelGO.GetComponent<priceChange>().showInfoStock();
+			//stockPanelGO.GetComponent<infoButton>().correctOnOff();
+
+			inactivePlayerStockPanel();
+			inactiveBondsPanel();
+
+
+			/*inactiveBooksPanel ();
+			inactiveBusinessPanel ();
+			inactiveRealEstatePanel ();
+			inactiveSectorInfoPanel ();
+			*/
+		}
+		else
+		{
+			stockPanelGO_1850.SetActive(false);
+			stockPanelActive_1850 = 0;
 		}
 	}
 

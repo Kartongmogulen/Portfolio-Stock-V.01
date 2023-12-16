@@ -8,7 +8,8 @@ public class stockPriceManager : MonoBehaviour
     public GameObject StockMarketGO;
 
     public stockMarketManager StockMarketManager;
- 
+    public stockMarketManager_1850 StockMarketManager_1850;
+
     public GameObject stockScript;
     public DCF dcfCalculation;
 
@@ -29,5 +30,13 @@ public class stockPriceManager : MonoBehaviour
             priceNow = ScriptsStockGO.GetComponent<priceChange>().DCFbasedPriceTest(StockMarketManager.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i]);
             StockMarketManager.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i].StockPrice.Add(priceNow);
         }
+
+        for (int i = 0; i < StockMarketManager_1850.StockMarketListGO.GetComponent<stockMarketInventory>().Stock.Count; i++)
+        {
+            Debug.Log("Price manager: " + i);
+            priceNow = ScriptsStockGO.GetComponent<priceChange>().DCFbasedPriceTest(StockMarketManager_1850.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i]);
+            StockMarketManager_1850.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i].StockPrice.Add(priceNow);
+        }
+       
     }
 }

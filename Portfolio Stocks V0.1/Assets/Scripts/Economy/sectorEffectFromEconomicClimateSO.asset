@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   utilitesFactor: 50
   technologyFactor: 100
+  minesFactor: 150
+  railroadFactor: 50
