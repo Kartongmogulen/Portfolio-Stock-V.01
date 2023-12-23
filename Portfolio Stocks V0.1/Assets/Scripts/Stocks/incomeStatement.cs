@@ -9,6 +9,7 @@ public class incomeStatement : MonoBehaviour
 	[SerializeField] List<float> revenue;
 	[SerializeField] List<float> cost;
 
+	
 	public float EarningPerShareNow;
 	public List<float> EarningPerShareHistory;
 	public float EarningPerShareGrowth;

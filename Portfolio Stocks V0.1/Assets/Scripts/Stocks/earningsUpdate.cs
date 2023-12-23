@@ -22,6 +22,7 @@ public class earningsUpdate : MonoBehaviour
         earningsMacro = earningsFromMacro(Stock);
         oldEPS = Stock.EPSnow;
         EPSGrowthForPreviousYear = Random.Range(Stock.EPSGrowthMin, Stock.EPSGrowthMax)/100;
+        //Debug.Log("" + Stock.nameOfCompany + "EPSGrowthMin: " + Stock.EPSGrowthMin + " EPSGrowthMax: " + Stock.EPSGrowthMax);
         
         if (oldEPS > 0)
         {

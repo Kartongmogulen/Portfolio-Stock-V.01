@@ -24,26 +24,34 @@ public class chooseCompany_1850 : MonoBehaviour
     [SerializeField] float divPayout;
     [SerializeField] float stockPrice;
 
+    [SerializeField] bool divDataActive = true;
+    [SerializeField] bool keyDataActive;
+
     private float divPayoutShare;
+
+    private void Start()
+    {
+        Invoke("chooseCompany", 0.1f);
+        //chooseCompany();
+    }
+
+    private void Update()
+    {
+        chooseCompany();
+    }
 
     public void chooseCompany()
     {
         getCityAndSectorIndex();
 
-        divYieldText.text = "Div. yield: " + Mathf.Round((stockMarketSectorActive[cityIndex].GetComponent<stock>().divPayout) / stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1] * 10000) / 100 + "%";
-        divPayoutText.text = "Annual dividend: " + Mathf.Round(stockMarketSectorActive[cityIndex].GetComponent<stock>().divPayout * 100) / 100;
-        
-        divPayoutShare = stockMarketSectorActive[cityIndex].GetComponent<stock>().divPayout / stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow;
-        divPayoutShareText.text = "Div.Share: " + Mathf.Round(divPayoutShare * 100) + "%";
-
-        //Info spelaren måste låsa upp
-        if (StocksUnlockInfo.minesDivPolicyUnlocked[cityIndex] == 1)
+        if(divDataActive == true)
         {
-            divPolicyText.text = "Maximum payout ratio: " + stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyMaxPayouRatio + "% and aims to increase the dividend with " + stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyChangeDiv + "% per year.";
+            divDataUpdateText();
         }
-        else
+
+        else if (keyDataActive == true)
         {
-            divPolicyText.text = "Div.Policy: LOCKED. Cost (Time Points): " + StocksUnlockInfo.getCost_UnlockDivPolicy();
+            keyDataPanel();
         }
     }
 
@@ -57,14 +65,62 @@ public class chooseCompany_1850 : MonoBehaviour
             stockMarketSectorActive = StockMarketManager_1850.StockPrefabListMines;
         }
 
+        if (activeSector == 1)
+        {
+            stockMarketSectorActive = StockMarketManager_1850.StockPrefabListRailroad;
+        }
+
+        if (activeSector == 2)
+        {
+            stockMarketSectorActive = StockMarketManager_1850.StockPrefabListIndustri;
+        }
+
         stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
+    }
+
+    public void divDataUpdateText()
+    {
+     
+        setAllBoolInactive();
+        divDataActive = true;
+
+        divYieldText.text = "Div. yield: " + Mathf.Round((stockMarketSectorActive[cityIndex].GetComponent<stock>().divPayout) / stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1] * 10000) / 100 + "%";
+        divPayoutText.text = "Annual dividend: " + Mathf.Round(stockMarketSectorActive[cityIndex].GetComponent<stock>().divPayout * 100) / 100;
+
+        divPayoutShare = stockMarketSectorActive[cityIndex].GetComponent<stock>().divPayout / stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow;
+        divPayoutShareText.text = "Payout-ratio: " + Mathf.Round(divPayoutShare * 100) + "%";
+
+        //Info spelaren måste låsa upp
+        if (activeSector == 0 && StocksUnlockInfo.minesDivPolicyUnlocked[cityIndex] == 1)
+        {
+            divPolicyText.text = "Maximum payout ratio: " + stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyMaxPayouRatio + "% and aims to increase the dividend with " + stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyChangeDiv + "% per year.";
+        }
+
+        else if (activeSector == 1 && StocksUnlockInfo.railroadDivPolicyUnlocked[cityIndex] == 1)
+        {
+            divPolicyText.text = "Maximum payout ratio: " + stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyMaxPayouRatio + "% and aims to increase the dividend with " + stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyChangeDiv + "% per year.";
+        }
+
+        else
+        {
+            divPolicyText.text = "Div.Policy: LOCKED. Cost (Time Points): " + StocksUnlockInfo.getCost_UnlockDivPolicy();
+        }
     }
 
     public void keyDataPanel()
     {
-        getCityAndSectorIndex();
-        Debug.Log("EPS: " + stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow);
+        setAllBoolInactive();
+        keyDataActive = true;
+
+        //getCityAndSectorIndex();
+        //Debug.Log("EPS: " + stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow);
         EPSText.text = "EPS: " + Mathf.Round(stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow * 100) / 100;
         PEtext.text = "P/E: " + Mathf.Round((stockPrice / stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow) * 10) / 10;
+    }
+
+    public void setAllBoolInactive()
+    {
+        divDataActive = false;
+        keyDataActive = false;
     }
 }

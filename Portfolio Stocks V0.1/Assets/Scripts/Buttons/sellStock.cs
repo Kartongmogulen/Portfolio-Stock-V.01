@@ -10,6 +10,10 @@ public class sellStock : MonoBehaviour
 	public GameObject playerScriptsGO;
 	public GameObject playerGO;
 
+	public activeSector_1850 ActiveSector_1850;
+	public CityManager cityManager;
+	public stockMarketManager_1850 StockMarketManager_1850;
+
 	public int activeSector; //Kontrollera i scriptet chooseStockSector så sector-indexeringen är rätt när fler kategorier läggs till
 	public int activeCompany;
 	public int amountOrder;
@@ -62,58 +66,110 @@ public class sellStock : MonoBehaviour
 
 	}
 
-	public void sellStocks(){
+	public void sellStocks()
+	{
 		//Identifiera sektor
 		activeSector = ChooseStockSector.activeSector;
 		//moneyPlayer = playerPanel.GetComponent<totalCash> ().moneyNow;
 
 		//Identifera vilket företag (nr)
-		if (activeSector == 1) {
-			activeCompany = stockGO.GetComponent<chooseUtiCompany> ().activeCompany;
-			stockPrice = stockGO.GetComponent<chooseUtiCompany> ().activeCompanyPrice;
-			playerStockCount = playerScriptsGO.GetComponent<portfolioStock> ().utiCompanySharesOwned [activeCompany];
+		if (activeSector == 1)
+		{
+			activeCompany = stockGO.GetComponent<chooseUtiCompany>().activeCompany;
+			stockPrice = stockGO.GetComponent<chooseUtiCompany>().activeCompanyPrice;
+			playerStockCount = playerScriptsGO.GetComponent<portfolioStock>().utiCompanySharesOwned[activeCompany];
 		}
 
-		if (activeSector == 2) {
-			activeCompany = stockGO.GetComponent<chooseTechCompany> ().activeCompany;
-			stockPrice = stockGO.GetComponent<chooseTechCompany> ().activeCompanyPrice;
-			playerStockCount = playerScriptsGO.GetComponent<portfolioStock> ().techCompanySharesOwned [activeCompany];
+		if (activeSector == 2)
+		{
+			activeCompany = stockGO.GetComponent<chooseTechCompany>().activeCompany;
+			stockPrice = stockGO.GetComponent<chooseTechCompany>().activeCompanyPrice;
+			playerStockCount = playerScriptsGO.GetComponent<portfolioStock>().techCompanySharesOwned[activeCompany];
 		}
 
 		//Identifiera antalet spelaren vill sälja
-		amountOrder = int.Parse (inputAmountOrder.text);	
+		amountOrder = int.Parse(inputAmountOrder.text);
 
 		orderValue = amountOrder * stockPrice;
 
 		//Har spelaren tillräckligt med aktier
-		if (amountOrder <= playerStockCount) {
+		if (amountOrder <= playerStockCount)
+		{
 
 			//Addera pengar
 			moneyPlayer = playerScriptsGO.GetComponent<totalCash>().moneyNow;
-			playerScriptsGO.GetComponent<totalCash> ().moneyNow = moneyPlayer + orderValue;
+			playerScriptsGO.GetComponent<totalCash>().moneyNow = moneyPlayer + orderValue;
 			playerScriptsGO.GetComponent<totalCash>().updateMoney();
 
 			//Sub antalet aktier
-			if (activeSector == 1) {
-				playerScriptsGO.GetComponent<portfolioStock> ().sellUtiShares (amountOrder, activeCompany, orderValue);
-	
+			if (activeSector == 1)
+			{
+				playerScriptsGO.GetComponent<portfolioStock>().sellUtiShares(amountOrder, activeCompany, orderValue);
+
 			}
 
-			if (activeSector == 2) {
-				playerScriptsGO.GetComponent<portfolioStock> ().sellTechShares (amountOrder, activeCompany);
+			if (activeSector == 2)
+			{
+				playerScriptsGO.GetComponent<portfolioStock>().sellTechShares(amountOrder, activeCompany);
 
 			}
 			playerScriptsGO.GetComponent<portfolioStock>().valuePortfolio();//Uppdaterar värdet av portfölj
-																			 
+
 			//playerScriptsGO.GetComponent<portfolioStock>().GAVupdateSell();
 		}
 	}
+	public void sellStocks_1850()
+	{
+		Debug.Log("Sälj aktie");
+		activeSector = ActiveSector_1850.getActiveSector();
+		amountOrder = int.Parse(inputAmountOrder.text);
 
-		//_______________________________________________________________
+		if (activeSector == 0)
+		{
+			stockPrice = StockMarketManager_1850.StockPrefabListMines[cityManager.getActiveCity()].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[cityManager.getActiveCity()].GetComponent<stock>().StockPrice.Count - 1];
+			playerStockCount = playerScriptsGO.GetComponent<portfolioStock>().minesCompanySharesOwned[cityManager.getActiveCity()];
+		}
+
+		if (activeSector == 1)
+		{
+			stockPrice = StockMarketManager_1850.StockPrefabListRailroad[cityManager.getActiveCity()].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[cityManager.getActiveCity()].GetComponent<stock>().StockPrice.Count - 1];
+			playerStockCount = playerScriptsGO.GetComponent<portfolioStock>().railroadCompanySharesOwned[cityManager.getActiveCity()];
+		}
+
+		orderValue = amountOrder * stockPrice;
+		
+		//Har spelaren tillräckligt med aktier
+		if (amountOrder <= playerStockCount)
+		{
+			Debug.Log("Spelaren har aktier");
+			//Addera pengar
+			playerGO.GetComponent<totalCash>().transactionMoney(orderValue);
+
+			//Sub antalet aktier
+			if (activeSector == 0)
+			{
+				playerScriptsGO.GetComponent<portfolioStock>().mineTotalInvestAmount[cityManager.getActiveCity()] -= orderValue;
+				playerScriptsGO.GetComponent<portfolioStock>().addMineShares(-amountOrder, cityManager.getActiveCity());
+
+			}
+
+			if (activeSector == 1)
+			{
+				playerScriptsGO.GetComponent<portfolioStock>().railroadTotalInvestAmount[cityManager.getActiveCity()] -= orderValue;
+				playerScriptsGO.GetComponent<portfolioStock>().addRailroadShares(-amountOrder, cityManager.getActiveCity());
+
+			}
+			playerScriptsGO.GetComponent<portfolioStock>().valuePortfolio();//Uppdaterar värdet av portfölj
+		}
+	}
 
 	
 
-	public void sellUtilitiesOne (){
+		//_______________________________________________________________
+
+
+
+		public void sellUtilitiesOne (){
 		priceUti = PanelStockSector.GetComponent<priceChange>().utiStockPriceNow;
 		priceUtiText.text = "Price: " + priceUti;
 		numStockUti = playerPanel.GetComponent<portfolio>().utiAmount;

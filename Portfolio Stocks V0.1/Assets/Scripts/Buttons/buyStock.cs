@@ -8,6 +8,9 @@ public class buyStock : MonoBehaviour
 {
 	public GameObject playerScriptsGO;
 	public GameObject playerGO;
+	public activeSector_1850 ActiveSector_1850;
+	public CityManager cityManager;
+	public stockMarketManager_1850 StockMarketManager_1850;
 
 	public int activeSector; //Kontrollera i scriptet chooseStockSector så sector-indexeringen är rätt när fler kategorier läggs till
 	public int activeCompany;
@@ -126,134 +129,59 @@ public class buyStock : MonoBehaviour
 
 
 	}
-}
-	/*
 
-	//---------------------------------------------
-	//INNAN STEG 3.1
+	public void buyStocks_1850()
+	{
+		activeSector = ActiveSector_1850.getActiveSector();
 
-	public void buyUtilitiesOne (){
-		priceUti = PanelStockSector.GetComponent<priceChange>().utiStockPriceNow;
-		priceUtiText.text = "Price: " + priceUti;
-		moneyBeforeBuy = playerPanelGO.GetComponent<totalCash>().moneyNow;
+		//Identifiera antalet spelaren vill köpa
+		
+		amountOrder = int.Parse(inputAmountOrder.text);
+		//Debug.Log("Amountorder: " + amountOrder);
 
-		if (moneyBeforeBuy >= priceUti) {
-			playerPanelGO.GetComponent<portfolio>().addUtiAmount (1);
-			playerPanelGO.GetComponent<totalCash>().buyStockUti (1);
-			playerPanelGO.GetComponent<portfolio>().GAV();
+		if (activeSector == 0)
+		{
+			stockPrice = StockMarketManager_1850.StockPrefabListMines[cityManager.getActiveCity()].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[cityManager.getActiveCity()].GetComponent<stock>().StockPrice.Count-1];
 		}
-	}
 
-	public void buyUtilitiesTen (){
-		priceUti = PanelStockSector.GetComponent<priceChange>().utiStockPriceNow;
-		priceUtiText.text = "Price: " + priceUti;
-		moneyBeforeBuy = playerPanelGO.GetComponent<totalCash>().moneyNow;
-
-		if (moneyBeforeBuy >= priceUti*10) {
-			playerPanelGO.GetComponent<portfolio>().addUtiAmount (10);
-			playerPanelGO.GetComponent<totalCash>().buyStockUti (10);
-			playerPanelGO.GetComponent<portfolio>().GAV();
+		if (activeSector == 1)
+		{
+			stockPrice = StockMarketManager_1850.StockPrefabListRailroad[cityManager.getActiveCity()].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[cityManager.getActiveCity()].GetComponent<stock>().StockPrice.Count - 1];
 		}
-	}
+		//Debug.Log("Stockprice: " + stockPrice);
 
-	public void buyUtilitiesHundred (){
-		priceUti = PanelStockSector.GetComponent<priceChange>().utiStockPriceNow;
-		priceUtiText.text = "Price: " + priceUti;
-		moneyBeforeBuy = playerPanelGO.GetComponent<totalCash>().moneyNow;
+		//Har spelaren tillräckligt med pengar?
+		moneyPlayer = playerGO.GetComponent<totalCash>().moneyNow;
 
-		if (moneyBeforeBuy >= priceUti*100) {
-			playerPanelGO.GetComponent<portfolio>().addUtiAmount (100);
-			playerPanelGO.GetComponent<totalCash>().buyStockUti (100);
-			playerPanelGO.GetComponent<portfolio>().GAV();
-		}
-	}
+		orderValue = amountOrder * stockPrice;
+		Debug.Log("Ordervalue: " + orderValue);
 
-	public void buyFinanceOne (){
-		priceFin= PanelStockSector.GetComponent<priceChange>().finStockPriceNow;
-		priceFinText.text = "Price: " + priceFin;
-		moneyBeforeBuy = playerPanelGO.GetComponent<totalCash>().moneyNow;
+		if (moneyPlayer >= orderValue)
 
-		if (moneyBeforeBuy >= priceFin) {
-			playerPanelGO.GetComponent<portfolio>().addFinAmount (1);
-			playerPanelGO.GetComponent<totalCash>().buyStockFin (1);
-			playerPanelGO.GetComponent<portfolio>().GAV();
-		}
-	}
+		{
+			//Subtrahera pengar
+			playerGO.GetComponent<totalCash>().transactionMoney(-orderValue);
+			//playerGO.GetComponent<totalCash>().updateMoney();
+			//moneyPlayer = playerPanelGO.GetComponent<totalCash>().moneyNow;
 
-	public void buyFinanceTen (){
-		priceFin= PanelStockSector.GetComponent<priceChange>().finStockPriceNow;
-		priceFinText.text = "Price: " + priceFin;
-		moneyBeforeBuy = playerPanelGO.GetComponent<totalCash>().moneyNow;
+			//Addera antalet aktier
+			if (activeSector == 0)
+			{
+				playerScriptsGO.GetComponent<portfolioStock>().mineTotalInvestAmount[cityManager.getActiveCity()] += orderValue;
+				playerScriptsGO.GetComponent<portfolioStock>().addMineShares(amountOrder, cityManager.getActiveCity());
 
-		if (moneyBeforeBuy >= priceFin*10) {
-			playerPanelGO.GetComponent<portfolio>().addFinAmount (10);
-			playerPanelGO.GetComponent<totalCash>().buyStockFin (10);
-			playerPanelGO.GetComponent<portfolio>().GAV();
-		}
-	}
+			}
 
-	public void buyFinanceHundred (){
-		priceFin= PanelStockSector.GetComponent<priceChange>().finStockPriceNow;
-		priceFinText.text = "Price: " + priceFin;
-		moneyBeforeBuy = playerPanelGO.GetComponent<totalCash>().moneyNow;
+			if (activeSector == 1)
+			{
+				playerScriptsGO.GetComponent<portfolioStock>().railroadTotalInvestAmount[cityManager.getActiveCity()] += orderValue;
+				playerScriptsGO.GetComponent<portfolioStock>().addRailroadShares(amountOrder, cityManager.getActiveCity());
 
-		if (moneyBeforeBuy >= priceFin*100) {
-			playerPanelGO.GetComponent<portfolio>().addFinAmount (100);
-			playerPanelGO.GetComponent<totalCash>().buyStockFin (100);
-			playerPanelGO.GetComponent<portfolio>().GAV();
-		}
-	}
+			}
 
-	public void buyTechOne (){
-		priceTech= PanelStockSector.GetComponent<priceChange>().techStockPriceNow;
-		priceTechText.text = "Price: " + priceTech;
-		moneyBeforeBuy = playerPanelGO.GetComponent<totalCash>().moneyNow;
-
-		if (moneyBeforeBuy >= priceTech) {
-			playerPanelGO.GetComponent<portfolio>().addTechAmount (1);
-			playerPanelGO.GetComponent<totalCash>().buyStockTech (1);
-			playerPanelGO.GetComponent<portfolio>().GAV();
-		}
-	}
-
-	public void buyTechTen (){
-		priceTech= PanelStockSector.GetComponent<priceChange>().techStockPriceNow;
-		priceTechText.text = "Price: " + priceTech;
-		moneyBeforeBuy = playerPanelGO.GetComponent<totalCash>().moneyNow;
-
-		if (moneyBeforeBuy >= priceTech*10) {
-			playerPanelGO.GetComponent<portfolio>().addTechAmount (10);
-			playerPanelGO.GetComponent<totalCash>().buyStockTech (10);
-			playerPanelGO.GetComponent<portfolio>().GAV();
-		}
-	}
-
-	public void buyTechHundred (){
-		priceTech= PanelStockSector.GetComponent<priceChange>().techStockPriceNow;
-		priceTechText.text = "Price: " + priceTech;
-		moneyBeforeBuy = playerPanelGO.GetComponent<totalCash>().moneyNow;
-
-		if (moneyBeforeBuy >= priceTech*100) {
-			playerPanelGO.GetComponent<portfolio>().addTechAmount (100);
-			playerPanelGO.GetComponent<totalCash>().buyStockTech (100);
-			playerPanelGO.GetComponent<portfolio>().GAV();
-		}
-	}
-
-	public void buyIndex (){
-		indexNAV = BottomPanelGO.GetComponent<indexFunds>().NAVIndexFund;
-		moneyBeforeBuy = playerPanelGO.GetComponent<totalCash>().moneyNow;
-
-		amountOrderIndex = float.Parse (inputAmountIndex.text);	
-
-		indexSharesAdd = amountOrderIndex/indexNAV;
-
-		if (moneyBeforeBuy >= amountOrderIndex) {
-			playerPanelGO.GetComponent<portfolio>().addIndexAmount (indexSharesAdd, amountOrderIndex);
-			playerPanelGO.GetComponent<totalCash>().buyStockIndex(amountOrderIndex);
+			playerScriptsGO.GetComponent<portfolioStock>().valuePortfolio(); //Uppdaterar värdet av portfölj
 
 		}
 	}
 }
 
-*/

@@ -25,7 +25,7 @@ public class CityManager : MonoBehaviour
        for (int i = 0; i < listOfCities.Count; i++)
         {
             listOfCities[i].cityIndex = i;
-            Debug.Log("Index: " + listOfCities[i].cityIndex);
+            //Debug.Log("Index: " + listOfCities[i].cityIndex);
         }
 
     }

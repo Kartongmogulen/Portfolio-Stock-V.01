@@ -43,7 +43,7 @@ public class showShareAssets : MonoBehaviour
         assetClassTwo.text = " Bonds: ";
 
         infoSharePanelStocksVsBonds();
-        returnOnAsset();
+        //returnOnAsset();
         //returnStocks.text = " " + ;
     }
 

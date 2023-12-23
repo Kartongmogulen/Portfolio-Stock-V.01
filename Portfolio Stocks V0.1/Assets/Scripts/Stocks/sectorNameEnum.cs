@@ -5,5 +5,6 @@ public enum sectorNameEnum
     Technology,
     Oil,
     Mine,
-    Railroad
+    Railroad,
+    Industri
 }

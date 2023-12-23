@@ -33,7 +33,7 @@ public class stockPriceManager : MonoBehaviour
 
         for (int i = 0; i < StockMarketManager_1850.StockMarketListGO.GetComponent<stockMarketInventory>().Stock.Count; i++)
         {
-            Debug.Log("Price manager: " + i);
+            //Debug.Log("Price manager: " + i);
             priceNow = ScriptsStockGO.GetComponent<priceChange>().DCFbasedPriceTest(StockMarketManager_1850.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i]);
             StockMarketManager_1850.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i].StockPrice.Add(priceNow);
         }

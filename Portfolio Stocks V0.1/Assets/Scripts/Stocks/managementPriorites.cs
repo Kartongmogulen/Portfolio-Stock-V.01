@@ -10,6 +10,9 @@ public class managementPriorites : MonoBehaviour
     public float andelFoU; //Andel som läggs på FoU, lvl upp produkt;
     public float andelEffekiviseringar; //Andel som går till effektivisering för att sänka kostnader
     public float andelTillväxt; //Andel som läggs för att öka antalet enheter sålda;
+    
+    //Prioritering inom ledning
+    [SerializeField] List<float> prioritiseList;//Lista med värden som avgör prioritering av ledningen
 
     [SerializeField] float resultThisYear;
 
@@ -18,12 +21,37 @@ public class managementPriorites : MonoBehaviour
     public divPolicyPrefab DivPolicyPrefab;
     public productHolder ProductHolder;
 
+    [SerializeField] float sumAllOfMangementPriorites; //Summan av utdelninsandel, FoU, Kostnadsbesparingar, Tillväxt
+
     private void Start()
     {
         IncomeStatement = GetComponent<incomeStatement>();
         CostCuttingManager = GetComponent<costCuttingManager>();
         DivPolicyPrefab = GetComponent<divPolicyPrefab>();
         ProductHolder = GetComponent<productHolder>();
+        //prioritiseFromBoard();
+    }
+
+    //Hur stor vikt som läggs på olika delar från ledningen
+    public void prioritiseFromBoard()
+    {
+        int i = Random.Range(0, prioritiseList.Count);
+        dividendShareOfResult = prioritiseList[i];
+        Debug.Log("Utdelning: " + prioritiseList[i]);
+       
+        i = Random.Range(0, prioritiseList.Count);
+        andelFoU = prioritiseList[i];
+        Debug.Log("FoU: " + prioritiseList[i]);
+
+        i = Random.Range(0, prioritiseList.Count);
+        andelEffekiviseringar = prioritiseList[i];
+        Debug.Log("CostCutting: " + prioritiseList[i]);
+
+        i = Random.Range(0, prioritiseList.Count);
+        andelTillväxt = prioritiseList[i];
+        Debug.Log("Growth: " + prioritiseList[i]);
+
+        normalizeManagementPriorites();
     }
 
     //Resultat att fördela
@@ -40,6 +68,7 @@ public class managementPriorites : MonoBehaviour
     public void allocateCapital()
     {
         getResult();//Hämtar årets resultat
+        normalizeManagementPriorites(); //Kontrollerar så inte 100% överskrids
 
         //Investerar i åtgärder som minskar kostnader
         CostCuttingManager.investeringInCostCutting(resultThisYear * andelEffekiviseringar);
@@ -51,6 +80,16 @@ public class managementPriorites : MonoBehaviour
 
         //Investerar i FoU för att förbättra produkt
         ProductHolder.Products[0].addExpericenToProduct(resultThisYear * andelFoU);
+    }
+
+    //Kontrollera så inte utdelning, FoU, Kostnadsbesparingar och Tillväxt överstiger resultatet (100% av resultat)
+    public void normalizeManagementPriorites()
+    {
+        sumAllOfMangementPriorites = dividendShareOfResult + andelFoU + andelEffekiviseringar + andelTillväxt;
+        dividendShareOfResult = dividendShareOfResult / sumAllOfMangementPriorites;
+        andelFoU = andelFoU / sumAllOfMangementPriorites;
+        andelEffekiviseringar = andelEffekiviseringar / sumAllOfMangementPriorites;
+        andelTillväxt = andelTillväxt / sumAllOfMangementPriorites;
     }
 
 }

@@ -36,7 +36,7 @@ public class productInfo : MonoBehaviour
             return;
         }
         float randomInt = Random.Range(minXPFromEachMoney, maxXPFromEachMoney);
-        Debug.Log("RandomInt:" + randomInt);
+        //Debug.Log("RandomInt:" + randomInt);
         productExpericeneNow += moneyInvested * randomInt;
         if (productExpericeneNow >= experienceToLvlUp[lvlProduct])
         {
@@ -47,9 +47,9 @@ public class productInfo : MonoBehaviour
     public void investInGrowth(float moneyInvested)
     {
         float randomInt = Random.Range(minXPFromEachMoneyAmountSold, maxXPFromEachMoneyAmountSold);
-        Debug.Log("RandomInt:" + randomInt);
+        //Debug.Log("RandomInt:" + randomInt);
         float additionalAmountSold = moneyInvested * randomInt;
-        Debug.Log("Antal fler enheter sålda: " + additionalAmountSold);
+        //Debug.Log("Antal fler enheter sålda: " + additionalAmountSold);
         amountSoldNow += Mathf.FloorToInt(additionalAmountSold);
     }
 

@@ -7,6 +7,7 @@ public class companyNumbersUpdate : MonoBehaviour
 	public GameObject ScriptsStockGO;
 	public GameObject StockMarketGO;
 	public stockMarketManager StockMarketManager;
+	public stockMarketManager_1850 StockMarketManager_1850;
 
 	public float newDividend;
 
@@ -41,5 +42,11 @@ public class companyNumbersUpdate : MonoBehaviour
 		{
 			ScriptsStockGO.GetComponent<earningsUpdate>().updateEarnings(StockMarketManager.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i]);
 		}
+
+		for (int i = 0; i < StockMarketManager_1850.StockMarketListGO.GetComponent<stockMarketInventory>().Stock.Count; i++)
+		{
+			ScriptsStockGO.GetComponent<earningsUpdate>().updateEarnings(StockMarketManager_1850.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i]);
+		}
+
 	}
 }

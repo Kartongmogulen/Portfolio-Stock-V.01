@@ -8,6 +8,8 @@ public class portfolioStock : MonoBehaviour
 	public GameObject stockScriptsGO;
 	public GameObject stockMarketGO;
 	public createListWithLength CreateListWithLength;
+	public stockMarketManager_1850 StockMarketManager_1850;
+	public GameObject stockMarket_1850GO;
 
 	public GameObject playerUtiGO;
 	public GameObject playerTechGO;
@@ -19,6 +21,19 @@ public class portfolioStock : MonoBehaviour
 	public List<float> utiCompanySharesOwned = new List<float> (); 
 	public List<float> techCompanySharesOwned = new List<float> ();
 	public List<float> materialsCompanySharesOwned = new List<float> ();
+
+	//1850
+	public List<float> minesCompanySharesOwned = new List<float>();
+	public List<float> mineTotalInvestAmount;
+	public List<float> mineTotalReturnAmount;
+	public float mineTotalReturnPercent;
+	public float mineTotalValue;
+
+	public List<float> railroadCompanySharesOwned = new List<float>();
+	public List<float> railroadTotalInvestAmount;
+	public List<float> railroadTotalReturnAmount;
+	public float railroadTotalReturnPercent;
+	public float railroadTotalValue;
 
 	public List<float> utiGAV= new List<float>();
 	public List<float> techGAV = new List<float>();
@@ -99,6 +114,12 @@ public class portfolioStock : MonoBehaviour
 		techTotalInvest = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
 		returnTechCompanies = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
 		techGAV = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
+
+		minesCompanySharesOwned = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListMines.Count);
+		mineTotalInvestAmount = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListMines.Count);
+
+		railroadCompanySharesOwned = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListRailroad.Count);
+		railroadTotalInvestAmount = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListRailroad.Count);
 	}
 
 
@@ -134,6 +155,16 @@ public class portfolioStock : MonoBehaviour
 	public void sellMaterialShares(int shares, int activeCompany){
 		materialsCompanySharesOwned [activeCompany] -= shares;
 
+	}
+
+	public void addMineShares(int shares, int activeCompany)
+	{
+		minesCompanySharesOwned[activeCompany] += shares;
+	}
+
+	public void addRailroadShares(int shares, int activeCompany)
+	{
+		railroadCompanySharesOwned[activeCompany] += shares;
 	}
 
 	public void totalInvest(){
@@ -270,10 +301,13 @@ public class portfolioStock : MonoBehaviour
 
 	public void valuePortfolio()
 	{
+		Debug.Log("ValuePortfolio");
 		totalValuePortfolio = 0; //Nollställer innan varje körning
 
 		totalValuePortfolio = GetComponent<valuePortfolio>().valueSector(utiCompanySharesOwned, stockListUti);
 		totalValuePortfolio += GetComponent<valuePortfolio>().valueSector(techCompanySharesOwned, stockListTech);
+		totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects(minesCompanySharesOwned, StockMarketManager_1850.StockPrefabListMines);
+		totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects(railroadCompanySharesOwned, StockMarketManager_1850.StockPrefabListRailroad);
 
 		valuePortfolioText.text = "Value: " + totalValuePortfolio;
 	}

@@ -74,7 +74,7 @@ public class totalCash : MonoBehaviour
 		moneyText.text = "Money: " + moneyNow;
 	}
 
-	public void transactionMoney(int amount)
+	public void transactionMoney(float amount)
 	{
 		moneyNow += amount;
 		moneyText.text = "Money: " + moneyNow;

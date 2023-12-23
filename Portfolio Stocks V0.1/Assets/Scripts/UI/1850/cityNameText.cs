@@ -13,4 +13,13 @@ public class cityNameText : MonoBehaviour
         nameText.text = "City name: " + cityManager.nameCity[cityManager.getActiveCity()];
     }
 
+    public void updateOnlyTextWithName()
+    {
+        nameText.text = "" + cityManager.nameCity[cityManager.getActiveCity()];
+    }
+
+    public string getCityName(int i)
+    {
+        return cityManager.nameCity[i];
+    }
 }
