@@ -63,6 +63,10 @@ public class priceChange : MonoBehaviour
 	public float techStockPriceNow; //Priset för en aktie nu
 	public float vollaTech;
 
+	//Indistri
+	public float minEPSGrowth_Industri; //SCHABLON FÖR ATT BLI KLAR MED SNABBARE
+	public float maxEPSGrowth_Industri; //SCHABLON FÖR ATT BLI KLAR MED SNABBARE
+
 	//Text
 	public Text utiPriceText;
 	public Text finPriceText;
@@ -136,6 +140,29 @@ public class priceChange : MonoBehaviour
 			valueDCFMax = Mathf.RoundToInt(dcf.valueDCF);
 		}
 
+	}
+
+	public float DCFbasedPrice_OneCompany_IncomeStatement(incomeStatement IncomeStatement)
+	{
+
+
+		EPS = 1;	
+		EPS = IncomeStatement.EarningPerShareHistory[IncomeStatement.EarningPerShareHistory.Count-1];
+			//Debug.Log("EPS: " + EPS);
+			minEPSGrowth = minEPSGrowth_Industri;
+			maxEPSGrowth = maxEPSGrowth_Industri;
+
+		//Debug.Log(minEPSGrowth_Industri);
+
+			dcf.DCFCalculation(discountRate, EPS, minEPSGrowth, period);
+			valueDCFMin = Mathf.RoundToInt(dcf.valueDCF);
+		//Debug.Log("Value DCF min: " + valueDCFMin);
+
+			dcf.DCFCalculation(discountRate, EPS, maxEPSGrowth, period);
+			valueDCFMax = Mathf.RoundToInt(dcf.valueDCF);
+		//Debug.Log("Value DCF max: " + valueDCFMax);
+
+		return Mathf.RoundToInt(Random.Range(valueDCFMin, valueDCFMax));
 	}
 
 	public void showInfoStock ()

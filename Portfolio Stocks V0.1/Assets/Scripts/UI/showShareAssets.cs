@@ -14,6 +14,7 @@ public class showShareAssets : MonoBehaviour
     public Text nameHeadline;
     public Text assetClassOne;
     public Text assetClassTwo;
+    public Text assetClassThree;
 
     //Panel Två, Andelar
     public Text shareStocks;
@@ -41,6 +42,7 @@ public class showShareAssets : MonoBehaviour
         nameHeadline.text = " Asset class: ";
         assetClassOne.text = " Stocks: ";
         assetClassTwo.text = " Bonds: ";
+        assetClassThree.text = "";
 
         infoSharePanelStocksVsBonds();
         //returnOnAsset();

@@ -11,11 +11,18 @@ public class divPolicyPrefab : MonoBehaviour
 	public float divPolicyMaxPayouRatio;
 	public bool companyPaysDividend;
 	public float startPayDividendWhenEPS;
-	public float divPayout;
-	[SerializeField] float divPayoutTotal;
+	public float divPayoutPerShare;
+	//[SerializeField] float divPayoutTotal;
+	public stockInformation StockInformation;
+
+	private void Awake()
+	{
+		StockInformation = GetComponent<stockInformation>();
+	}
 
 	public void changeDividendPayoutTotal(float amount)
 	{
-		divPayoutTotal = amount;
+		divPayoutPerShare = amount;
+		
 	}
 }

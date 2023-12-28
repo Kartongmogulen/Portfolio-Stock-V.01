@@ -29,7 +29,7 @@ public class managementPriorites : MonoBehaviour
         CostCuttingManager = GetComponent<costCuttingManager>();
         DivPolicyPrefab = GetComponent<divPolicyPrefab>();
         ProductHolder = GetComponent<productHolder>();
-        //prioritiseFromBoard();
+        prioritiseFromBoard();
     }
 
     //Hur stor vikt som läggs på olika delar från ledningen
@@ -37,19 +37,19 @@ public class managementPriorites : MonoBehaviour
     {
         int i = Random.Range(0, prioritiseList.Count);
         dividendShareOfResult = prioritiseList[i];
-        Debug.Log("Utdelning: " + prioritiseList[i]);
+        //Debug.Log("Utdelning: " + prioritiseList[i]);
        
         i = Random.Range(0, prioritiseList.Count);
         andelFoU = prioritiseList[i];
-        Debug.Log("FoU: " + prioritiseList[i]);
+        //Debug.Log("FoU: " + prioritiseList[i]);
 
         i = Random.Range(0, prioritiseList.Count);
         andelEffekiviseringar = prioritiseList[i];
-        Debug.Log("CostCutting: " + prioritiseList[i]);
+        //Debug.Log("CostCutting: " + prioritiseList[i]);
 
         i = Random.Range(0, prioritiseList.Count);
         andelTillväxt = prioritiseList[i];
-        Debug.Log("Growth: " + prioritiseList[i]);
+        //Debug.Log("Growth: " + prioritiseList[i]);
 
         normalizeManagementPriorites();
     }
@@ -57,16 +57,17 @@ public class managementPriorites : MonoBehaviour
     //Resultat att fördela
     public void getResult()
     {
-        resultThisYear = IncomeStatement.EarningPerShareHistory[IncomeStatement.EarningPerShareHistory.Count - 1];
+        resultThisYear = IncomeStatement.EarningHistory[IncomeStatement.EarningHistory.Count - 1];
     }
 
     public void dividendPayoutOfResult()
     {
-        DivPolicyPrefab.changeDividendPayoutTotal(resultThisYear * dividendShareOfResult);
+        DivPolicyPrefab.changeDividendPayoutTotal(IncomeStatement.EarningPerShareHistory[IncomeStatement.EarningPerShareHistory.Count - 1] * dividendShareOfResult);
     }
 
     public void allocateCapital()
     {
+        //Debug.Log("Allokera kapital");
         getResult();//Hämtar årets resultat
         normalizeManagementPriorites(); //Kontrollerar så inte 100% överskrids
 
@@ -76,10 +77,10 @@ public class managementPriorites : MonoBehaviour
         dividendPayoutOfResult();
 
         //Investerar i att öka antalet sålda enheter
-        ProductHolder.Products[0].investInGrowth(resultThisYear * andelTillväxt);
+        ProductHolder.investInGrowth(resultThisYear * andelTillväxt, 0);
 
         //Investerar i FoU för att förbättra produkt
-        ProductHolder.Products[0].addExpericenToProduct(resultThisYear * andelFoU);
+        ProductHolder.addExpericenToProduct(resultThisYear * andelFoU, 0);
     }
 
     //Kontrollera så inte utdelning, FoU, Kostnadsbesparingar och Tillväxt överstiger resultatet (100% av resultat)

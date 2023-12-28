@@ -130,10 +130,16 @@ public class sellStock : MonoBehaviour
 			playerStockCount = playerScriptsGO.GetComponent<portfolioStock>().minesCompanySharesOwned[cityManager.getActiveCity()];
 		}
 
-		if (activeSector == 1)
+		else if (activeSector == 1)
 		{
 			stockPrice = StockMarketManager_1850.StockPrefabListRailroad[cityManager.getActiveCity()].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[cityManager.getActiveCity()].GetComponent<stock>().StockPrice.Count - 1];
 			playerStockCount = playerScriptsGO.GetComponent<portfolioStock>().railroadCompanySharesOwned[cityManager.getActiveCity()];
+		}
+
+		else if (activeSector == 2)
+		{
+			stockPrice = StockMarketManager_1850.StockPrefabListIndustri[cityManager.getActiveCity()].GetComponent<priceStock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[cityManager.getActiveCity()].GetComponent<priceStock>().StockPrice.Count - 1];
+			playerStockCount = playerScriptsGO.GetComponent<portfolioStock>().industriCompanySharesOwned[cityManager.getActiveCity()];
 		}
 
 		orderValue = amountOrder * stockPrice;
@@ -153,10 +159,17 @@ public class sellStock : MonoBehaviour
 
 			}
 
-			if (activeSector == 1)
+			else if (activeSector == 1)
 			{
 				playerScriptsGO.GetComponent<portfolioStock>().railroadTotalInvestAmount[cityManager.getActiveCity()] -= orderValue;
 				playerScriptsGO.GetComponent<portfolioStock>().addRailroadShares(-amountOrder, cityManager.getActiveCity());
+
+			}
+
+			else if (activeSector == 2)
+			{
+				playerScriptsGO.GetComponent<portfolioStock>().industriTotalInvestAmount[cityManager.getActiveCity()] -= orderValue;
+				playerScriptsGO.GetComponent<portfolioStock>().addIndustriShares(-amountOrder, cityManager.getActiveCity());
 
 			}
 			playerScriptsGO.GetComponent<portfolioStock>().valuePortfolio();//Uppdaterar värdet av portfölj

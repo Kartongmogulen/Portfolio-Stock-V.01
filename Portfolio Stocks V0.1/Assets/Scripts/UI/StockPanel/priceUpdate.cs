@@ -26,10 +26,17 @@ public class priceUpdate : MonoBehaviour
             }
         }
 
-        if (ActiveSector_1850.getActiveSector() == 1)
+        else if (ActiveSector_1850.getActiveSector() == 1)
         {
             {
                 stockPrice = StockMarketManager_1850.StockPrefabListRailroad[cityManager.getActiveCity()].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[0].GetComponent<stock>().StockPrice.Count - 1];
+            }
+        }
+
+        else if (ActiveSector_1850.getActiveSector() == 2)
+        {
+            {
+                stockPrice = StockMarketManager_1850.StockPrefabListIndustri[cityManager.getActiveCity()].GetComponent<priceStock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[cityManager.getActiveCity()].GetComponent<priceStock>().StockPrice.Count - 1];
             }
         }
 

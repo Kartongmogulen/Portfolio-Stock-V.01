@@ -92,6 +92,12 @@ public class orderValue : MonoBehaviour
 				stockPrice = StockMarketManager_1850.StockPrefabListRailroad[cityManager.getActiveCity()].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListRailroad[0].GetComponent<stock>().StockPrice.Count - 1];
 			}
 
+			if (activeSector == 2)
+			{
+				//activeCompany = StockMarketManager_1850.StockPrefabListMines[0];
+				stockPrice = StockMarketManager_1850.StockPrefabListIndustri[cityManager.getActiveCity()].GetComponent<priceStock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[cityManager.getActiveCity()].GetComponent<priceStock>().StockPrice.Count - 1];
+			}
+
 			if (orderValueText.text == "")
 			{
 				amountOrder = 0;

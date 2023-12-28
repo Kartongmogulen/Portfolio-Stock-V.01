@@ -76,6 +76,7 @@ MonoBehaviour:
   companyPaysDividend: 0
   startPayDividendWhenEPS: 0
   divPayout: 0
+  divPayoutTotal: 0
 --- !u!114 &216242760838551202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +96,7 @@ MonoBehaviour:
   EarningPerShareHistory: []
   EarningPerShareGrowth: 0
   CostCuttingManager: {fileID: 0}
+  ProductHolder: {fileID: 0}
 --- !u!114 &8645120913243470888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,8 +113,13 @@ MonoBehaviour:
   andelFoU: 0
   andelEffekiviseringar: 0
   "andelTillv\xE4xt": 0
+  prioritiseList: []
   resultThisYear: 0
   IncomeStatement: {fileID: 0}
+  CostCuttingManager: {fileID: 0}
+  DivPolicyPrefab: {fileID: 0}
+  ProductHolder: {fileID: 0}
+  sumAllOfMangementPriorites: 0
 --- !u!114 &9208037321073837137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34d646f208483c42b23e00b9a631837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SectorName: 0
+  SectorName: 6
+  numberOfSharesStart: 1000
+  numberOfSharesNow: 0
 --- !u!114 &4898406765420978490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,3 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Products:
   - {fileID: 0}
+  ProductOne: {fileID: 0}
+  lvlProduct_One: 0
+  amountSoldList_One: 
+  productExpericeneNow_One: 0

@@ -25,9 +25,14 @@ public class stocksOwnedAmount_UpdateText : MonoBehaviour
             stockPanelOwnedText.text = "Owned: " + PortfolioStock.minesCompanySharesOwned[cityManager.getActiveCity()];
         }
 
-        if (ActiveSector_1850.getActiveSector() == 1)
+        else if (ActiveSector_1850.getActiveSector() == 1)
         {
             stockPanelOwnedText.text = "Owned: " + PortfolioStock.railroadCompanySharesOwned[cityManager.getActiveCity()];
+        }
+
+        else if (ActiveSector_1850.getActiveSector() == 2)
+        {
+            stockPanelOwnedText.text = "Owned: " + PortfolioStock.industriCompanySharesOwned[cityManager.getActiveCity()];
         }
     }
 }

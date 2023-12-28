@@ -28,6 +28,37 @@ public class productInfo : MonoBehaviour
         amountSoldNow = amountSoldStart;
     }
 
+    public float getexperienceToLvlUp(int lvl)
+    {
+        return experienceToLvlUp[lvl];
+    }
+
+    public float getexperienceToLvlUp_Length()
+    {
+        return experienceToLvlUp.Count;
+    }
+
+    public float getMinXPFromEachMoney()
+    {
+        return minXPFromEachMoney;
+    }
+
+    public float getMaxXPFromEachMoney()
+    {
+        return maxXPFromEachMoney;
+    }
+
+    public float getMinXPFromEachMoneyAmountSold()
+    {
+        return minXPFromEachMoneyAmountSold;
+    }
+
+    public float getMaxXPFromEachMoneyAmountSold()
+    {
+        return maxXPFromEachMoneyAmountSold;
+    }
+
+    /*
     public void addExpericenToProduct(float moneyInvested)
     {
         //Om MAX-level är uppnådd
@@ -43,14 +74,17 @@ public class productInfo : MonoBehaviour
             lvlProduct++;
         }
     }
+    */
 
-    public void investInGrowth(float moneyInvested)
-    {
-        float randomInt = Random.Range(minXPFromEachMoneyAmountSold, maxXPFromEachMoneyAmountSold);
-        //Debug.Log("RandomInt:" + randomInt);
-        float additionalAmountSold = moneyInvested * randomInt;
-        //Debug.Log("Antal fler enheter sålda: " + additionalAmountSold);
-        amountSoldNow += Mathf.FloorToInt(additionalAmountSold);
-    }
+    /*
+  public void investInGrowth(float moneyInvested)
+  {
+      float randomInt = Random.Range(minXPFromEachMoneyAmountSold, maxXPFromEachMoneyAmountSold);
+      //Debug.Log("RandomInt:" + randomInt);
+      float additionalAmountSold = moneyInvested * randomInt;
+      //Debug.Log("Antal fler enheter sålda: " + additionalAmountSold);
+      amountSoldNow += Mathf.FloorToInt(additionalAmountSold);
+  }
+  */
 
 }

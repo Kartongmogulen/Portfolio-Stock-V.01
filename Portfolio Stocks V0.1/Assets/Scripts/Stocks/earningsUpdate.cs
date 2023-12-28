@@ -7,6 +7,7 @@ public class earningsUpdate : MonoBehaviour
     public stock Stock;
     public sectorEffectFromEconomicClimateSO SectorEffectFromEconomic;
     public economicClimate EconomicClimate;
+    public productHolder ProductHolder;
 
     public float newEPS;
     public float oldEPS;
@@ -38,6 +39,26 @@ public class earningsUpdate : MonoBehaviour
         Stock.EPSHistory.Add(newEPS);
         //saveE_P_S_ChangeYoY(Stock);
         //Stock.EPSChangeYoYHistory.Add(changeEPS);  
+    }
+
+    public void earningsUpdate_Products(GameObject stockPrefab)
+    {
+
+        //Hämta produktlista
+        ProductHolder = stockPrefab.GetComponent<productHolder>();
+
+        //Uppdaterar intäkter från produkt
+        stockPrefab.GetComponent<incomeStatement>().revenueFromProduct(ProductHolder.Products[0]);
+                
+        //Gå igenom listan med produkter
+       
+
+        //Debug.Log("EarningsUpdate_GO");
+        //oldEPS = stockPrefab.GetComponent<incomeStatement>().EarningPerShareHistory[stockPrefab.GetComponent<incomeStatement>().EarningPerShareHistory.Count - 1];
+        //Debug.Log("Old EPS: " + oldEPS);
+        //newEPS = Mathf.Round((oldEPS) * 100) / 100;
+        //stockPrefab.GetComponent<incomeStatement>().EarningPerShareHistory.Add(newEPS);
+        //return newEPS;
     }
 
     public void saveE_P_S_ChangeYoY(stock Stock)

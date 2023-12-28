@@ -18,9 +18,9 @@ public class portfolioStock : MonoBehaviour
 	public List<stock> stockListTech;
 
 	//Lista där antal aktier i specifik sector sparas
-	public List<float> utiCompanySharesOwned = new List<float> (); 
-	public List<float> techCompanySharesOwned = new List<float> ();
-	public List<float> materialsCompanySharesOwned = new List<float> ();
+	public List<float> utiCompanySharesOwned = new List<float>();
+	public List<float> techCompanySharesOwned = new List<float>();
+	public List<float> materialsCompanySharesOwned = new List<float>();
 
 	//1850
 	public List<float> minesCompanySharesOwned = new List<float>();
@@ -28,6 +28,7 @@ public class portfolioStock : MonoBehaviour
 	public List<float> mineTotalReturnAmount;
 	public float mineTotalReturnPercent;
 	public float mineTotalValue;
+	public float minesTotalInvest;
 
 	public List<float> railroadCompanySharesOwned = new List<float>();
 	public List<float> railroadTotalInvestAmount;
@@ -35,7 +36,13 @@ public class portfolioStock : MonoBehaviour
 	public float railroadTotalReturnPercent;
 	public float railroadTotalValue;
 
-	public List<float> utiGAV= new List<float>();
+	public List<float> industriCompanySharesOwned = new List<float>();
+	public List<float> industriTotalInvestAmount;
+	public List<float> industriTotalReturnAmount;
+	public float industriTotalReturnPercent;
+	public float industriTotalValue;
+
+	public List<float> utiGAV = new List<float>();
 	public List<float> techGAV = new List<float>();
 
 	public float totalValuePortfolio;
@@ -61,10 +68,10 @@ public class portfolioStock : MonoBehaviour
 
 	public float[] materialsTotalInvest; //Summan som har investerats i specifikt företag
 	public float materialsTotalInvestAmount;
-	public float[] materialsGAV; 
+	public float[] materialsGAV;
 	public float materialsTotalReturn;
 
-	
+
 	public float[] returnTech;
 	public List<float> returnPortfolioEachTurn;
 
@@ -84,7 +91,7 @@ public class portfolioStock : MonoBehaviour
 	//SEKTORNS AVKASTNING
 	public Text utiReturnText;
 	public Text techReturnText;
-
+	public Text minesReturnText;
 
 	public priceChange PriceChange;
 
@@ -95,11 +102,11 @@ public class portfolioStock : MonoBehaviour
 	public utilitiesInfoStock UtilitiesInfoStock;
 	public techInfoStock TechInfoStock;
 
-	void Awake(){
-		
-		PriceChange = GetComponent<priceChange> ();
-		UtilitiesInfoStock = GetComponent<utilitiesInfoStock> ();
-		TechInfoStock = GetComponent<techInfoStock> ();
+	void Awake() {
+
+		PriceChange = GetComponent<priceChange>();
+		UtilitiesInfoStock = GetComponent<utilitiesInfoStock>();
+		TechInfoStock = GetComponent<techInfoStock>();
 
 		stockListUti = stockMarketGO.GetComponent<stockMarketManager>().StockUtiList;
 		stockListTech = stockMarketGO.GetComponent<stockMarketManager>().StockTechList;
@@ -120,40 +127,43 @@ public class portfolioStock : MonoBehaviour
 
 		railroadCompanySharesOwned = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListRailroad.Count);
 		railroadTotalInvestAmount = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListRailroad.Count);
+
+		industriCompanySharesOwned = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListIndustri.Count);
+		industriTotalInvestAmount = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListIndustri.Count);
 	}
 
 
-	public void addUtiShares(int shares, int activeCompany){
-		utiCompanySharesOwned [activeCompany] += shares;
+	public void addUtiShares(int shares, int activeCompany) {
+		utiCompanySharesOwned[activeCompany] += shares;
 		GetComponent<GAV>().utiGAV();
 
 	}
 
 	public void sellUtiShares(int shares, int activeCompany, float orderValue)
 	{
-		utiCompanySharesOwned [activeCompany] -= shares;
+		utiCompanySharesOwned[activeCompany] -= shares;
 		utiTotalInvest[activeCompany] -= orderValue;
 		GetComponent<GAV>().utiGAVSell();
 	}
 
-	public void addTechShares(int shares, int activeCompany){
-		techCompanySharesOwned [activeCompany] += shares;
+	public void addTechShares(int shares, int activeCompany) {
+		techCompanySharesOwned[activeCompany] += shares;
 		GetComponent<GAV>().techGAV();
 
 	}
 
-	public void sellTechShares(int shares, int activeCompany){
-		techCompanySharesOwned [activeCompany] -= shares;
+	public void sellTechShares(int shares, int activeCompany) {
+		techCompanySharesOwned[activeCompany] -= shares;
 		GetComponent<GAV>().techGAVSell();
 	}
 
-	public void addMaterialShares(int shares, int activeCompany){
-		materialsCompanySharesOwned [activeCompany] += shares;
+	public void addMaterialShares(int shares, int activeCompany) {
+		materialsCompanySharesOwned[activeCompany] += shares;
 
 	}
 
-	public void sellMaterialShares(int shares, int activeCompany){
-		materialsCompanySharesOwned [activeCompany] -= shares;
+	public void sellMaterialShares(int shares, int activeCompany) {
+		materialsCompanySharesOwned[activeCompany] -= shares;
 
 	}
 
@@ -167,7 +177,12 @@ public class portfolioStock : MonoBehaviour
 		railroadCompanySharesOwned[activeCompany] += shares;
 	}
 
-	public void totalInvest(){
+	public void addIndustriShares(int shares, int activeCompany)
+	{
+		industriCompanySharesOwned[activeCompany] += shares;
+	}
+
+	public void totalInvest() {
 
 		//valuePortfolio ();
 
@@ -186,11 +201,11 @@ public class portfolioStock : MonoBehaviour
 		//Total investering i sektorn
 		for (int i = 0; i < utiTotalInvest.Count; i++) {
 			//Debug.Log("Uti Längd: " + i);
-			utiTotalInvestAmount = utiTotalInvestAmount + utiGAV [i]*utiCompanySharesOwned [i];
+			utiTotalInvestAmount = utiTotalInvestAmount + utiGAV[i] * utiCompanySharesOwned[i];
 		}
 
 		for (int i = 0; i < techTotalInvest.Count; i++) {
-			techTotalInvestAmount = techTotalInvestAmount + techGAV [i]*techCompanySharesOwned [i];
+			techTotalInvestAmount = techTotalInvestAmount + techGAV[i] * techCompanySharesOwned[i];
 			//Debug.Log("Tech Längd: " + i);
 		}
 
@@ -211,105 +226,144 @@ public class portfolioStock : MonoBehaviour
 		*/
 
 	}
-	
 
-	public void showPortfolioData(){
+	public void totalInvest_1850()
+	{
+		minesTotalInvest = 0;
 
-		totalInvest();
-		//GAVupdate();
-		//utiGAV = stockScriptsGO.GetComponent<GAV>().stockListCalculation(utiCompanySharesOwned, utiTotalInvest);
-		//techGAV = stockScriptsGO.GetComponent<GAV>().stockListCalculation(techCompanySharesOwned, techTotalInvest);
-
-		utiSharePortfolio = 0;
-		techSharePortfolio = 0;
-		utiTotalValue = 0;
-		techTotalValue = 0;
-
-		//stockListUti = stockMarketGO.GetComponent<stockMarketManager>().StockUtiList;
-		//stockListTech = stockMarketGO.GetComponent<stockMarketManager>().StockTechList;
-
-		//SEKTORNS ANDEL AV PORTFÖLJEN
-		for (int i = 0; i < stockListUti.Count; i++) {
-			utiTotalValue += (utiCompanySharesOwned [i] * stockListUti[i].StockPrice[stockListUti[i].StockPrice.Count-1]);
-			//utiSharePortfolio += utiTotalValue;
-			
-		}
-
-		for (int i = 0; i < stockListTech.Count; i++)
+		for (int i = 0; i < utiTotalInvest.Count; i++)
 		{
-			techTotalValue += (techCompanySharesOwned[i] * stockListTech[i].StockPrice[stockListTech[i].StockPrice.Count - 1]);
-			//techSharePortfolio += techTotalValue;
-			//Debug.Log("UtiShare: " + techSharePortfolio);
+			//Debug.Log("Uti Längd: " + i);
+			minesTotalInvest += mineTotalInvestAmount[i];
 		}
 
-		totalValuePortfolio = utiTotalValue + techTotalValue;
-
-		utiSharePortfolio = utiTotalValue / totalValuePortfolio;
-		techSharePortfolio = techTotalValue / totalValuePortfolio;
-
-		utiSharePortfolioText.text = " " + Mathf.Round(utiSharePortfolio*100) + "%";
-		techSharePortfolioText.text = " " + Mathf.Round(techSharePortfolio * 100) + "%";
-
-		//VÄRDE AV PORTFÖLJEN
-		//totalValueSector = GetComponent<valuePortfolio>()
-
-		//SEKTORNS AVKASTNING
-		returnPortfolio();
-		//Utilites
-		/*returnUtiCompanies = playerUtiGO.GetComponent<returnPortfolio>().returnStocksPercent(stockListUti, utiGAV);
-		utiTotalReturnAmount = playerUtiGO.GetComponent<returnPortfolio>().returnSector(stockListUti, utiGAV, utiCompanySharesOwned);
-		 
-		utiTotalReturnPercent = utiTotalReturnAmount / utiTotalInvestAmount;
-		utiReturnText.text = " " + Mathf.Round(utiTotalReturnPercent * 10000)/100 + "%";
-
-		//Tech
-		returnTechCompanies = playerTechGO.GetComponent<returnPortfolio>().returnStocksPercent(stockListTech, techGAV);
-		techTotalReturnAmount = playerTechGO.GetComponent<returnPortfolio>().returnSector(stockListTech, techGAV, techCompanySharesOwned);
-
-		techTotalReturnPercent = techTotalReturnAmount / techTotalInvestAmount;
-		techReturnText.text = " " + Mathf.Round(techTotalReturnPercent*10000)/100 + "%";
-		*/
+		totalInvestAmountPortfolio = minesTotalInvest;
+		Debug.Log("Total investering: " + totalInvestAmountPortfolio);
 	}
 
-	public void returnPortfolio()
+	public void returnFromSector_1850()
 	{
-		//Utilites
-		returnUtiCompanies = playerUtiGO.GetComponent<returnPortfolio>().returnStocksPercent(stockListUti, utiGAV);
-		utiTotalReturnAmount = playerUtiGO.GetComponent<returnPortfolio>().returnSector(stockListUti, utiGAV, utiCompanySharesOwned);
+		mineTotalValue = 0;
 
-		utiTotalReturnPercent = utiTotalReturnAmount / utiTotalInvestAmount;
-		utiReturnText.text = " " + Mathf.Round(utiTotalReturnPercent * 10000) / 100 + "%";
+		for (int i = 0; i < minesCompanySharesOwned.Count; i++)
+		{
+			int lengthList = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice.Count;
+			mineTotalValue += (minesCompanySharesOwned[i] * StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice[lengthList - 1]);
+			Debug.Log("Totalt värde: " + mineTotalValue);
+			//utiSharePortfolio += utiTotalValue;
+		}
 
-		//Tech
-		returnTechCompanies = playerTechGO.GetComponent<returnPortfolio>().returnStocksPercent(stockListTech, techGAV);
-		techTotalReturnAmount = playerTechGO.GetComponent<returnPortfolio>().returnSector(stockListTech, techGAV, techCompanySharesOwned);
+		mineTotalReturnPercent = mineTotalValue / minesTotalInvest -1 ;
+		Debug.Log("Gruvor (Avkastning): " + mineTotalReturnPercent);
 
-		techTotalReturnPercent = techTotalReturnAmount / techTotalInvestAmount;
-		techReturnText.text = " " + Mathf.Round(techTotalReturnPercent * 10000) / 100 + "%";
-
-		totalReturnPortfolioAmount = utiTotalReturnAmount + techTotalReturnAmount;
-
-		totalInvest();
-		totalReturnPortfolioPercent = totalReturnPortfolioAmount / totalInvestAmountPortfolio;
-		savePortfolioReturnEachTurn();
 	}
+		public void showPortfolioData_1850()
+		{
+		totalInvest_1850();
+		returnFromSector_1850();
 
-	public void savePortfolioReturnEachTurn()
-	{
-		returnPortfolioEachTurn.Add(totalReturnPortfolioPercent);
+		minesReturnText.text = " " + Mathf.Round(mineTotalReturnPercent * 10000) / 100 + "%";
+		}
+
+		public void showPortfolioData() {
+
+			totalInvest();
+			//GAVupdate();
+			//utiGAV = stockScriptsGO.GetComponent<GAV>().stockListCalculation(utiCompanySharesOwned, utiTotalInvest);
+			//techGAV = stockScriptsGO.GetComponent<GAV>().stockListCalculation(techCompanySharesOwned, techTotalInvest);
+
+			utiSharePortfolio = 0;
+			techSharePortfolio = 0;
+			utiTotalValue = 0;
+			techTotalValue = 0;
+
+			//stockListUti = stockMarketGO.GetComponent<stockMarketManager>().StockUtiList;
+			//stockListTech = stockMarketGO.GetComponent<stockMarketManager>().StockTechList;
+
+			//SEKTORNS ANDEL AV PORTFÖLJEN
+			for (int i = 0; i < stockListUti.Count; i++) {
+				utiTotalValue += (utiCompanySharesOwned[i] * stockListUti[i].StockPrice[stockListUti[i].StockPrice.Count - 1]);
+				//utiSharePortfolio += utiTotalValue;
+
+			}
+
+			for (int i = 0; i < stockListTech.Count; i++)
+			{
+				techTotalValue += (techCompanySharesOwned[i] * stockListTech[i].StockPrice[stockListTech[i].StockPrice.Count - 1]);
+				//techSharePortfolio += techTotalValue;
+				//Debug.Log("UtiShare: " + techSharePortfolio);
+			}
+
+			totalValuePortfolio = utiTotalValue + techTotalValue;
+
+			utiSharePortfolio = utiTotalValue / totalValuePortfolio;
+			techSharePortfolio = techTotalValue / totalValuePortfolio;
+
+			utiSharePortfolioText.text = " " + Mathf.Round(utiSharePortfolio * 100) + "%";
+			techSharePortfolioText.text = " " + Mathf.Round(techSharePortfolio * 100) + "%";
+
+			//VÄRDE AV PORTFÖLJEN
+			//totalValueSector = GetComponent<valuePortfolio>()
+
+			//SEKTORNS AVKASTNING
+			returnPortfolio();
+			//Utilites
+			/*returnUtiCompanies = playerUtiGO.GetComponent<returnPortfolio>().returnStocksPercent(stockListUti, utiGAV);
+			utiTotalReturnAmount = playerUtiGO.GetComponent<returnPortfolio>().returnSector(stockListUti, utiGAV, utiCompanySharesOwned);
+
+			utiTotalReturnPercent = utiTotalReturnAmount / utiTotalInvestAmount;
+			utiReturnText.text = " " + Mathf.Round(utiTotalReturnPercent * 10000)/100 + "%";
+
+			//Tech
+			returnTechCompanies = playerTechGO.GetComponent<returnPortfolio>().returnStocksPercent(stockListTech, techGAV);
+			techTotalReturnAmount = playerTechGO.GetComponent<returnPortfolio>().returnSector(stockListTech, techGAV, techCompanySharesOwned);
+
+			techTotalReturnPercent = techTotalReturnAmount / techTotalInvestAmount;
+			techReturnText.text = " " + Mathf.Round(techTotalReturnPercent*10000)/100 + "%";
+			*/
+		}
+
+		public void returnPortfolio()
+		{
+			//Utilites
+			returnUtiCompanies = playerUtiGO.GetComponent<returnPortfolio>().returnStocksPercent(stockListUti, utiGAV);
+			utiTotalReturnAmount = playerUtiGO.GetComponent<returnPortfolio>().returnSector(stockListUti, utiGAV, utiCompanySharesOwned);
+
+			utiTotalReturnPercent = utiTotalReturnAmount / utiTotalInvestAmount;
+			utiReturnText.text = " " + Mathf.Round(utiTotalReturnPercent * 10000) / 100 + "%";
+
+			//Tech
+			returnTechCompanies = playerTechGO.GetComponent<returnPortfolio>().returnStocksPercent(stockListTech, techGAV);
+			techTotalReturnAmount = playerTechGO.GetComponent<returnPortfolio>().returnSector(stockListTech, techGAV, techCompanySharesOwned);
+
+			techTotalReturnPercent = techTotalReturnAmount / techTotalInvestAmount;
+			techReturnText.text = " " + Mathf.Round(techTotalReturnPercent * 10000) / 100 + "%";
+
+			totalReturnPortfolioAmount = utiTotalReturnAmount + techTotalReturnAmount;
+
+			totalInvest();
+			totalReturnPortfolioPercent = totalReturnPortfolioAmount / totalInvestAmountPortfolio;
+			savePortfolioReturnEachTurn();
+		}
+
+		public void savePortfolioReturnEachTurn()
+		{
+			returnPortfolioEachTurn.Add(totalReturnPortfolioPercent);
+		}
+
+		public void valuePortfolio()
+		{
+			Debug.Log("ValuePortfolio");
+			totalValuePortfolio = 0; //Nollställer innan varje körning
+
+			totalValuePortfolio = GetComponent<valuePortfolio>().valueSector(utiCompanySharesOwned, stockListUti);
+			totalValuePortfolio += GetComponent<valuePortfolio>().valueSector(techCompanySharesOwned, stockListTech);
+			totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabOne(minesCompanySharesOwned, StockMarketManager_1850.StockPrefabListMines);
+			totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabOne(railroadCompanySharesOwned, StockMarketManager_1850.StockPrefabListRailroad);
+			totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabTwo(industriCompanySharesOwned, StockMarketManager_1850.StockPrefabListIndustri);
+
+
+			valuePortfolioText.text = "Value: " + totalValuePortfolio;
+		}
+
 	}
-
-	public void valuePortfolio()
-	{
-		Debug.Log("ValuePortfolio");
-		totalValuePortfolio = 0; //Nollställer innan varje körning
-
-		totalValuePortfolio = GetComponent<valuePortfolio>().valueSector(utiCompanySharesOwned, stockListUti);
-		totalValuePortfolio += GetComponent<valuePortfolio>().valueSector(techCompanySharesOwned, stockListTech);
-		totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects(minesCompanySharesOwned, StockMarketManager_1850.StockPrefabListMines);
-		totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects(railroadCompanySharesOwned, StockMarketManager_1850.StockPrefabListRailroad);
-
-		valuePortfolioText.text = "Value: " + totalValuePortfolio;
-	}
-
-}

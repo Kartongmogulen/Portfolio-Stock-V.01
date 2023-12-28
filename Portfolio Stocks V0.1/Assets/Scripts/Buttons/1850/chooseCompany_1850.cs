@@ -23,11 +23,10 @@ public class chooseCompany_1850 : MonoBehaviour
     [SerializeField] int activeSector;
     [SerializeField] float divPayout;
     [SerializeField] float stockPrice;
+    [SerializeField] float payoutRatioOnEPS;
 
     [SerializeField] bool divDataActive = true;
     [SerializeField] bool keyDataActive;
-
-    private float divPayoutShare;
 
     private void Start()
     {
@@ -63,19 +62,22 @@ public class chooseCompany_1850 : MonoBehaviour
         if(activeSector == 0)
         {
             stockMarketSectorActive = StockMarketManager_1850.StockPrefabListMines;
-        }
+            stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
+    }
 
         if (activeSector == 1)
         {
             stockMarketSectorActive = StockMarketManager_1850.StockPrefabListRailroad;
+            stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
         }
 
         if (activeSector == 2)
         {
             stockMarketSectorActive = StockMarketManager_1850.StockPrefabListIndustri;
+            stockPrice = stockMarketSectorActive[cityIndex].GetComponent<priceStock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<priceStock>().StockPrice.Count - 1];
         }
 
-        stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
+        //stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
     }
 
     public void divDataUpdateText()
@@ -84,11 +86,25 @@ public class chooseCompany_1850 : MonoBehaviour
         setAllBoolInactive();
         divDataActive = true;
 
-        divYieldText.text = "Div. yield: " + Mathf.Round((stockMarketSectorActive[cityIndex].GetComponent<stock>().divPayout) / stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1] * 10000) / 100 + "%";
-        divPayoutText.text = "Annual dividend: " + Mathf.Round(stockMarketSectorActive[cityIndex].GetComponent<stock>().divPayout * 100) / 100;
+        if (activeSector == 2)
+        {
+            
+            divPayout = stockMarketSectorActive[cityIndex].GetComponent<divPolicyPrefab>().divPayoutPerShare;
+            payoutRatioOnEPS = divPayout / stockMarketSectorActive[cityIndex].GetComponent<incomeStatement>().EarningPerShareHistory[stockMarketSectorActive[cityIndex].GetComponent<incomeStatement>().EarningPerShareHistory.Count - 1];
 
-        divPayoutShare = stockMarketSectorActive[cityIndex].GetComponent<stock>().divPayout / stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow;
-        divPayoutShareText.text = "Payout-ratio: " + Mathf.Round(divPayoutShare * 100) + "%";
+
+        }
+        else
+        {
+            divPayout = stockMarketSectorActive[cityIndex].GetComponent<stock>().divPayout;
+            payoutRatioOnEPS = divPayout / stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow;
+
+        }
+        divYieldText.text = "Div. yield: " + Mathf.Round(divPayout / stockPrice * 10000) / 100 + "%";
+        divPayoutText.text = "Annual dividend: " + Mathf.Round(divPayout * 100) / 100;
+
+        
+        divPayoutShareText.text = "Payout-ratio: " + Mathf.Round(payoutRatioOnEPS * 100) + "%";
 
         //Info spelaren måste låsa upp
         if (activeSector == 0 && StocksUnlockInfo.minesDivPolicyUnlocked[cityIndex] == 1)
@@ -114,8 +130,19 @@ public class chooseCompany_1850 : MonoBehaviour
 
         //getCityAndSectorIndex();
         //Debug.Log("EPS: " + stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow);
-        EPSText.text = "EPS: " + Mathf.Round(stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow * 100) / 100;
-        PEtext.text = "P/E: " + Mathf.Round((stockPrice / stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow) * 10) / 10;
+
+        if (activeSector == 0 || activeSector == 1)
+        {
+            EPSText.text = "EPS: " + Mathf.Round(stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow * 100) / 100;
+            PEtext.text = "P/E: " + Mathf.Round((stockPrice / stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow) * 10) / 10;
+        }
+
+        else if (activeSector == 2)
+        {
+            int length = stockMarketSectorActive[cityIndex].GetComponent<incomeStatement>().EarningPerShareHistory.Count;
+            EPSText.text = "EPS: " + Mathf.Round(stockMarketSectorActive[cityIndex].GetComponent<incomeStatement>().EarningPerShareHistory[length-1] * 100) / 100;
+            PEtext.text = "P/E: " + Mathf.Round((stockPrice / stockMarketSectorActive[cityIndex].GetComponent<incomeStatement>().EarningPerShareHistory[length - 1]) * 10) / 10;
+        }
     }
 
     public void setAllBoolInactive()

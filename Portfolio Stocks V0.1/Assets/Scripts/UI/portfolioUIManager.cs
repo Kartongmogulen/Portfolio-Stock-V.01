@@ -20,7 +20,7 @@ public class portfolioUIManager : MonoBehaviour
         else if (stocksSector == true)
         {
             PortfolioStock.showPortfolioData();
-            ShowStockSector.infoPanelOne();
+            ShowStockSector.infoPanelOne_1850();
         }
     }
 

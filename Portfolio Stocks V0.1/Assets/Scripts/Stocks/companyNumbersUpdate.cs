@@ -20,6 +20,7 @@ public class companyNumbersUpdate : MonoBehaviour
 	{
 		updateDividends();
 		updateEarnings();
+		allocateCapital();
 	}
 
 	public void updateDividends() //Script för att uppdatera utdelningen vid årets slut
@@ -48,5 +49,19 @@ public class companyNumbersUpdate : MonoBehaviour
 			ScriptsStockGO.GetComponent<earningsUpdate>().updateEarnings(StockMarketManager_1850.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i]);
 		}
 
+		for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
+		{
+			//Debug.Log("Loop UpdateEarnings");
+			ScriptsStockGO.GetComponent<earningsUpdate>().earningsUpdate_Products(StockMarketManager_1850.StockPrefabListIndustri[i]);
+		}
+
+	}
+
+	public void allocateCapital()
+	{
+		for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
+		{
+			StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<managementPriorites>().allocateCapital();
+		}
 	}
 }
