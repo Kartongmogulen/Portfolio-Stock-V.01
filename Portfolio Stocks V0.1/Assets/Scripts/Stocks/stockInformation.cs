@@ -7,6 +7,7 @@ public class stockInformation : MonoBehaviour
   public sectorNameEnum SectorName;
     [SerializeField] int numberOfSharesStart;
     [SerializeField] int numberOfSharesNow;
+    public string nameCompany;
 
     private void Start()
     {

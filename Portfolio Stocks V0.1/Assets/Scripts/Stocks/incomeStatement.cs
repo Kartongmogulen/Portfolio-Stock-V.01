@@ -11,6 +11,7 @@ public class incomeStatement : MonoBehaviour
 
 	
 	public float EarningPerShareStart;
+	[SerializeField] float EarningsPerShareNow;
 	public List<float> EarningPerShareHistory;
 	public List<float> EarningHistory;
 	public float EarningPerShareGrowth;
@@ -36,6 +37,12 @@ public void revenueCalculation(float revenue, float cost, float amount)
 		StockInformation = GetComponent<stockInformation>();
 		//Debug.Log("IncomeStatement: " + name);
 		//EarningPerShareHistory.Add(0);//För att annat ska funka
+	}
+
+	public float getEarningsPerShareNow()
+	{
+		EarningsPerShareNow = EarningPerShareHistory[EarningPerShareHistory.Count - 1];
+		return EarningsPerShareNow;
 	}
 
 	public void revenueFromProduct (productInfo ProductInfo)

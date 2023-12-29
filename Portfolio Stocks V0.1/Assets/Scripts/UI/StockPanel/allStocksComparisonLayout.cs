@@ -8,15 +8,40 @@ public class allStocksComparisonLayout : MonoBehaviour
     public stockMarketInventory StockMarketInventory;
     public stockMarketManager_1850 StockMarketManager_1850;
 
+    public bool minesActive;
+    public bool railroadActive;
+    public bool industriActive;
+
     //Text
     public List<Text> nameStocksList;
+    public List<Text> nameMinesList;
+    public GameObject nameGO_Mines;
+    public List<Text> nameRailRoadList;
+    public GameObject nameGO_RailRoad;
+    public List<Text> nameIndustriList;
+    public GameObject nameGO_Industri;
 
     //P/E-tal nu
     public List<Text> PriceEarningsList;
+    public List<Text> PriceEarningsListMines;
+    public GameObject PriceEarningsGOMines;
+    public List<Text> PriceEarningsListRailroad;
+    public GameObject PriceEarningsGORailroad;
+    public List<Text> PriceEarningsListIndustri;
+    public GameObject PriceEarningsGOIndustri;
 
-    //P/E-tal nu
+    //52week Interval
     public List<Slider> Trailing12MonthPrice;
     public trailing12MonthSliderPosition Trailing12MonthSliderPosition;
+
+    public List<Slider> Trailing12MonthPrice_Mines;
+    public GameObject week52IntervalGO_Mines;
+
+    public List<Slider> Trailing12MonthPrice_Railroad;
+    public GameObject week52IntervalGO_Railroad;
+
+    public List<Slider> Trailing12MonthPrice_Índustri;
+    public GameObject week52IntervalGO_Industri;
 
     public void updateAllText()
     {
@@ -27,9 +52,10 @@ public class allStocksComparisonLayout : MonoBehaviour
 
     public void updateAllText_1850()
     {
+        isPanelActive();
         updateNameText_1850();
         updatePriceEarningsText_1850();
-        //updateTrailing12MonthPrice();
+        updateTrailing12MonthPrice_1850();
     }
 
     public void updateNameText()
@@ -49,15 +75,21 @@ public class allStocksComparisonLayout : MonoBehaviour
             nameStocksList[i].text = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().nameOfCompany;
         }
 
-        int intToStartFrom = StockMarketManager_1850.StockPrefabListMines.Count;
-        Debug.Log(intToStartFrom);
+            
+            for (int i = 0;i < StockMarketManager_1850.StockPrefabListRailroad.Count; i++)
+            {
+                //Debug.Log("i: " + i);
+                //Debug.Log("intToStartFrom: " + intToStartFrom);
+                nameRailRoadList[i].text = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().nameOfCompany;
+            }
 
-        for (int i = intToStartFrom; i < intToStartFrom + StockMarketManager_1850.StockPrefabListRailroad.Count; i++)
+        for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
         {
-            Debug.Log("i: " + i);
-            Debug.Log("intToStartFrom: " + intToStartFrom);
-            nameStocksList[i].text = StockMarketManager_1850.StockPrefabListRailroad[i-intToStartFrom].GetComponent<stock>().nameOfCompany;
+            //Debug.Log("i: " + i);
+            //Debug.Log("intToStartFrom: " + intToStartFrom);
+            nameIndustriList[i].text = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stockInformation>().nameCompany;
         }
+
     }
 
     public void updatePriceEarningsText()
@@ -74,10 +106,31 @@ public class allStocksComparisonLayout : MonoBehaviour
         {
             float priceNow = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice.Count - 1];
             float EPSNow = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().EPSnow;
-            Debug.Log("Pris: " + priceNow);
-            Debug.Log("EPS nu: " + EPSNow);
             PriceEarningsList[i].text = "" + Mathf.Round(priceNow / EPSNow*100)/100;
         }
+        
+            for (int i = 0; i < StockMarketManager_1850.StockPrefabListRailroad.Count; i++)
+            {
+                float priceNow = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().StockPrice.Count - 1];
+                float EPSNow = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().EPSnow;
+                //Debug.Log("Pris: " + priceNow);
+                //Debug.Log("EPS nu: " + EPSNow);
+                PriceEarningsListRailroad[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
+                //PriceEarningsList[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
+            }
+
+        for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
+        {
+            float priceNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice.Count - 1];
+            //float EPSNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<incomeStatement>().EarningPerShareHistory[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<incomeStatement>().EarningPerShareHistory.Count-1];
+
+            float EPSNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<incomeStatement>().getEarningsPerShareNow();
+            //Debug.Log("Pris: " + priceNow);
+            Debug.Log("EPS nu: " + EPSNow);
+            PriceEarningsListIndustri[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
+            //PriceEarningsList[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
+        }
+
     }
 
     public void updateTrailing12MonthPrice()
@@ -87,6 +140,64 @@ public class allStocksComparisonLayout : MonoBehaviour
         {
             Trailing12MonthPrice[i].value = Trailing12MonthSliderPosition.slidersRelativePoistionFromTwoValues(StockMarketInventory.Stock[i].StockPrice[StockMarketInventory.Stock[i].StockPrice.Count - 1], StockMarketInventory.Stock[i].trailingTwelweMonthLow, StockMarketInventory.Stock[i].trailingTwelweMonthHigh);
         }
+    }
+
+    public void updateTrailing12MonthPrice_1850()
+    {
+
+        float priceNow;
+        float low52Week;
+        float high52Week;
+
+        for (int i = 0; i < StockMarketManager_1850.StockPrefabListMines.Count; i++)
+        {
+            priceNow = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice.Count - 1];
+            Debug.Log("Pris nu: " + priceNow);
+            //Trailing12MonthPrice_Mines[i].value = Trailing12MonthSliderPosition.slidersRelativePoistionFromTwoValues(priceNow, StockMarketInventory.Stock[i].trailingTwelweMonthLow, StockMarketInventory.Stock[i].trailingTwelweMonthHigh);
+        }
+    }
+    
+    public void isPanelActive()
+    {
+        if (minesActive == true)
+        {
+            nameGO_Mines.SetActive(true);
+            PriceEarningsGOMines.SetActive(true);
+            week52IntervalGO_Mines.SetActive(true);
+        }
+        else
+        {
+            nameGO_Mines.SetActive(false);
+            PriceEarningsGOMines.SetActive(false);
+            week52IntervalGO_Mines.SetActive(false);
+        }
+
+        if (railroadActive == true)
+        {
+            nameGO_RailRoad.SetActive(true);
+            PriceEarningsGORailroad.SetActive(true);
+            week52IntervalGO_Railroad.SetActive(true);
+        }
+        else
+        {
+            nameGO_RailRoad.SetActive(false);
+            PriceEarningsGORailroad.SetActive(false);
+            week52IntervalGO_Railroad.SetActive(false);
+        }
+
+        if (industriActive == true)
+        {
+            nameGO_Industri.SetActive(true);
+            PriceEarningsGOIndustri.SetActive(true);
+            //week52IntervalGO_Industri.SetActive(true);
+        }
+        else
+        {
+            nameGO_Industri.SetActive(false);
+            PriceEarningsGORailroad.SetActive(false);
+            //week52IntervalGO_Railroad.SetActive(false);
+        }
+
     }
 
 }
