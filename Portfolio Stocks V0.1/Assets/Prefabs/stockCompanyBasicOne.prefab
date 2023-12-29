@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4471696381777332498}
+  - component: {fileID: -1338333447919414845}
+  - component: {fileID: 6832933249423965724}
   - component: {fileID: 2773773203410686542}
   - component: {fileID: 8142389932202983004}
-  - component: {fileID: -1338333447919414845}
   - component: {fileID: 2154981163000740535}
   - component: {fileID: 1790731561}
   m_Layer: 0
@@ -35,6 +36,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1338333447919414845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3471436335729396843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2004453dd3cb9545bb81c8d3221d7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dividendPaid: []
+--- !u!114 &6832933249423965724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3471436335729396843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2670022d3019df54283695970d6ff5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stock: {fileID: 0}
+  newDividend: 0
+  oldDividend: 0
+  newDivShare: 0
+  oldDivShare: 0
+  divPolicyRaise: 0
+  divPayoutRatioAfter: 0
 --- !u!114 &2773773203410686542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,24 +80,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0caf8d83697af9840801750f1f99deed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexPrefabList: 0
-  SectorNameEnum: 1
-  nameOfCompany: 
-  divPolicyChangeDiv: 0
-  divPolicyMaxPayouRatio: 0
+  divPolicyChangeDiv: 5
+  divPolicyMaxPayouRatio: 80
   companyPaysDividend: 1
   startPayDividendWhenEPS: 0
-  divPayout: 0
-  lastDivPayout: 0
-  EPSnow: 0
-  EPSHistory: []
-  EPSChangeYoYHistory: []
+  divPayout: 1
+  EPSnow: 10
+  SectorNameEnum: 4
   EPSGrowthMin: 0
   EPSGrowthMax: 0
+  EPSHistory: []
+  EPSChangeYoYHistory: []
   StockPrice: []
+  nameOfCompany: Mines_A
+  indexPrefabList: 0
   priceNow: 0
   trailingTwelweMonthHigh: 0
   trailingTwelweMonthLow: 0
+  lastDivPayout: 0
 --- !u!114 &8142389932202983004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,19 +119,6 @@ MonoBehaviour:
   returnOnInvestment: []
   dividendsRecieved: []
   totalDividendsRecieved: 0
---- !u!114 &-1338333447919414845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3471436335729396843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2004453dd3cb9545bb81c8d3221d7a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dividendPaid: []
 --- !u!114 &2154981163000740535
 MonoBehaviour:
   m_ObjectHideFlags: 0

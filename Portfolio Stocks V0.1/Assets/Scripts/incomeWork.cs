@@ -13,7 +13,8 @@ public class incomeWork : MonoBehaviour
 
     private void Start()
     {
-        incomeNowUpdate();
+        Invoke("incomeNowUpdate", 0.01f);
+        //incomeNowUpdate();
     }
 
     public void incomeDuringLife()

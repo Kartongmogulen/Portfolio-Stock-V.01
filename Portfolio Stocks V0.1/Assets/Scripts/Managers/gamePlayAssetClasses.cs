@@ -9,6 +9,10 @@ public class gamePlayAssetClasses : MonoBehaviour
     public bool Bonds;
 
     public GameObject bondsButtonPanel;
+    public GameObject bondsButtonPanel_1850;
+
+    //Portfölj-vy
+    public List<GameObject> stocksAndBondsUpdateButton;
 
     private void Start()
     {
@@ -20,8 +24,18 @@ public class gamePlayAssetClasses : MonoBehaviour
         if (Bonds == true)
         {
             bondsButtonPanel.SetActive(true);
+            bondsButtonPanel_1850.SetActive(true);
         }
-        else bondsButtonPanel.SetActive(false);
+        else
+        {
+            bondsButtonPanel.SetActive(false);
+            bondsButtonPanel_1850.SetActive(false);
+
+            for (int i = 0; i < stocksAndBondsUpdateButton.Count; i++) 
+            {
+                stocksAndBondsUpdateButton[i].SetActive(false);
+            }
+        }
     }
 
 }

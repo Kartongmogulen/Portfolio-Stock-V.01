@@ -35,6 +35,32 @@ public class companyNumbersUpdate : MonoBehaviour
 			ScriptsStockGO.GetComponent<divPolicy>().endOfYearUpdate(StockMarketManager.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i]);
 		}
 
+		for (int i = 0; i < StockMarketManager_1850.StockPrefabListMines.Count; i++)
+		{
+			//Spara utdelning för historik
+			StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().saveDividendHistory();
+
+			//Uppdatera värden vid årets slut
+			StockMarketManager_1850.StockPrefabListMines[i].GetComponent<divPolicy>().endOfYearUpdate(StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>());
+		
+	}
+
+		for (int i = 0; i < StockMarketManager_1850.StockPrefabListRailroad.Count; i++)
+		{
+			//Spara utdelning för historik
+			StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().saveDividendHistory();
+			//StockMarketManager_1850.StockPrefabListMines[i].GetComponent<dividendHistory>().dividendPaid.Add()
+
+			//Uppdatera värden vid årets slut
+			StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<divPolicy>().endOfYearUpdate(StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>());
+		}
+
+		for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
+		{
+			StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicyPrefab>().saveDividendHistory();
+			//StockMarketManager_1850.StockPrefabListMines[i].GetComponent<dividendHistory>().dividendPaid.Add()
+		}
+
 	}
 
 	public void updateEarnings()

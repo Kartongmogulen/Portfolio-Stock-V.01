@@ -11,6 +11,7 @@ public class dividendRecieved : MonoBehaviour
 
 	public GameObject StockMarketGO;
 	public stockMarketManager StockMarketManager;
+	public stockMarketManager_1850 StockMarketManager_1850;
 	public GameObject playerScriptsGO;
 
 	public portfolioStock PortfolioStock; 
@@ -25,6 +26,15 @@ public class dividendRecieved : MonoBehaviour
 	public List<float> techCompanyDivPayout;
 	public List<float> techCompanyDivRecieved = new List<float> ();
 
+	//1850
+	public List<float> minesCompanySharesOwned;
+	public List<float> minesCompanyDivPayout;
+	public List<float> minesCompanyDivRecieved = new List<float>();
+
+	public List<float> railroadCompanySharesOwned;
+	public List<float> railroadCompanyDivPayout;
+	public List<float> railroadCompanyDivRecieved = new List<float>();
+
 	public List<float> divRecPerYear = new List<float> ();
 
 	public float totalDivRecieved;
@@ -36,6 +46,7 @@ public class dividendRecieved : MonoBehaviour
     {
 		PortfolioStock = playerScriptsGO.GetComponent<portfolioStock> ();
 		StockMarketManager = StockMarketGO.GetComponent<stockMarketManager>();
+		//StockMarketManager_1850 = GetComponent<stockMarketManager_1850>();
 
 		//SKAPAR STORLEK PÅ LISTA EFTER ANTALET BOLAG
 		for (int i = 0; i < StockMarketManager.StockUtiList.Count; i++)
@@ -52,6 +63,21 @@ public class dividendRecieved : MonoBehaviour
 			techCompanyDivPayout.Add(StockMarketManager.StockTechList[i].divPayout);
 			techCompanyDivRecieved.Add(0);
 		}
+
+		for (int i = 0; i < StockMarketManager_1850.StockPrefabListMines.Count; i++)
+		{
+			minesCompanySharesOwned.Add(0);
+			minesCompanyDivPayout.Add(StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().divPayout);
+			minesCompanyDivRecieved.Add(0);
+		}
+
+		for(int i = 0; i < StockMarketManager_1850.StockPrefabListRailroad.Count; i++)
+		{
+			railroadCompanySharesOwned.Add(0);
+			railroadCompanyDivPayout.Add(StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().divPayout);
+			railroadCompanyDivRecieved.Add(0);
+		}
+
 	}
 
 	public void recievedDividends()
@@ -75,6 +101,27 @@ public class dividendRecieved : MonoBehaviour
 			techCompanyDivRecieved[i] = techCompanyDivPayout[i] * techCompanySharesOwned[i];
 			divRecPerYear[year] += techCompanyDivRecieved[i];
 		}
+
+		//Gå igenom alla gruv-bolag
+		for (int i = 0; i < StockMarketManager_1850.StockPrefabListMines.Count; i++)
+		{
+			//Debug.Log("Utdelningar Gruvor");
+			minesCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().divPayout;
+			minesCompanySharesOwned[i] = PortfolioStock.minesCompanySharesOwned[i];
+			minesCompanyDivRecieved[i] = minesCompanyDivPayout[i] * minesCompanySharesOwned[i];
+			divRecPerYear[year] += minesCompanyDivRecieved[i];
+		}
+
+		//Gå igenom alla järnvägs-bolag
+		for (int i = 0; i < StockMarketManager_1850.StockPrefabListRailroad.Count; i++)
+		{
+			Debug.Log("Utdelningar Järnväg");
+			railroadCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().divPayout;
+			railroadCompanySharesOwned[i] = PortfolioStock.railroadCompanySharesOwned[i];
+			railroadCompanyDivRecieved[i] = railroadCompanyDivPayout[i] * railroadCompanySharesOwned[i];
+			divRecPerYear[year] += railroadCompanyDivRecieved[i];
+		}
+
 		year++;
     }
 
@@ -99,6 +146,24 @@ public class dividendRecieved : MonoBehaviour
 			techCompanyDivRecieved[i] = techCompanyDivPayout[i] * techCompanySharesOwned[i];
 			incomeDivFromPortfolioNow += techCompanyDivRecieved[i];
 		}
+
+		//Debug.Log(StockMarketManager.StockTechList.Count);
+		for (int i = 0; i < StockMarketManager_1850.StockPrefabListMines.Count; i++)
+		{
+			minesCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().divPayout;
+			minesCompanySharesOwned[i] = PortfolioStock.minesCompanySharesOwned[i];
+			minesCompanyDivRecieved[i] = minesCompanyDivPayout[i] * minesCompanySharesOwned[i];
+			incomeDivFromPortfolioNow += minesCompanyDivRecieved[i];
+		}
+
+		for (int i = 0; i < StockMarketManager_1850.StockPrefabListRailroad.Count; i++)
+		{
+			railroadCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().divPayout;
+			railroadCompanySharesOwned[i] = PortfolioStock.railroadCompanySharesOwned[i];
+			railroadCompanyDivRecieved[i] = railroadCompanyDivPayout[i] * railroadCompanySharesOwned[i];
+			incomeDivFromPortfolioNow += railroadCompanyDivRecieved[i];
+		}
+
 		return incomeDivFromPortfolioNow;
 	}
 }

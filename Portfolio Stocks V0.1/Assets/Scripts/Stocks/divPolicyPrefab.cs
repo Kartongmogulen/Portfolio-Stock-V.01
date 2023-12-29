@@ -15,6 +15,9 @@ public class divPolicyPrefab : MonoBehaviour
 	//[SerializeField] float divPayoutTotal;
 	public stockInformation StockInformation;
 
+	//Utdelning bolaget gett ut 
+	public List<float> dividendPaid;
+
 	private void Awake()
 	{
 		StockInformation = GetComponent<stockInformation>();
@@ -24,5 +27,10 @@ public class divPolicyPrefab : MonoBehaviour
 	{
 		divPayoutPerShare = amount;
 		
+	}
+
+	public void saveDividendHistory()
+	{
+		dividendPaid.Add(divPayoutPerShare);
 	}
 }
