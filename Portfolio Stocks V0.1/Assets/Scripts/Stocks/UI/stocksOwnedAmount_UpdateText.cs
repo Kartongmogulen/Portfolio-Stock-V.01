@@ -22,17 +22,17 @@ public class stocksOwnedAmount_UpdateText : MonoBehaviour
     {
         if (ActiveSector_1850.getActiveSector() == 0)
         {
-            stockPanelOwnedText.text = "Owned: " + PortfolioStock.minesCompanySharesOwned[cityManager.getActiveCity()];
+            stockPanelOwnedText.text = "Owned: " + "\n"+ PortfolioStock.minesCompanySharesOwned[cityManager.getActiveCity()];
         }
 
         else if (ActiveSector_1850.getActiveSector() == 1)
         {
-            stockPanelOwnedText.text = "Owned: " + PortfolioStock.railroadCompanySharesOwned[cityManager.getActiveCity()];
+            stockPanelOwnedText.text = "Owned: " + "\n" + PortfolioStock.railroadCompanySharesOwned[cityManager.getActiveCity()];
         }
 
         else if (ActiveSector_1850.getActiveSector() == 2)
         {
-            stockPanelOwnedText.text = "Owned: " + PortfolioStock.industriCompanySharesOwned[cityManager.getActiveCity()];
+            stockPanelOwnedText.text = "Owned: " +"\n" + PortfolioStock.industriCompanySharesOwned[cityManager.getActiveCity()];
         }
     }
 }
