@@ -14,11 +14,12 @@ public class standardDeviationCalculation : MonoBehaviour
 
     public float calculateStandardDeviation(List<float> priceData)
     {
+        resetValues();
         //prices = Stock.StockPrice;
 
         averagePrices = AverageCalculation.listOfFloats(priceData);
 
-        Debug.Log("Medelvärde: " + averagePrices);
+        //Debug.Log("Medelvärde: " + averagePrices);
 
         //Skapar lista med differensen mellan medelpriset och priset
         for (int i = 0; i < priceData.Count; i++)
@@ -40,5 +41,12 @@ public class standardDeviationCalculation : MonoBehaviour
         standardDeviation = Mathf.Pow(sumPriceDeviationFromMean / amountToTakeInCalcualtion, 0.5f);
 
         return standardDeviation;
+    }
+
+    public void resetValues()
+    {
+        pricesDeviationFromMean.Clear();
+        standardDeviation = 0;
+        sumPriceDeviationFromMean = 0;
     }
 }

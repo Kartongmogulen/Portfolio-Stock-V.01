@@ -29,6 +29,8 @@ public class stock : MonoBehaviour
 	public float trailingTwelweMonthHigh;
 	public float trailingTwelweMonthLow;
 	public float lastDivPayout;
+	public float volatilityAbs;
+	public float volatilityPercent;
 
 
 	public void updatePriceNow(float priceNew)

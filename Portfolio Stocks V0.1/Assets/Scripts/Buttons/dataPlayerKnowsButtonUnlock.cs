@@ -13,6 +13,7 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
 
     public void chooseStock(stock Stock)
     {
+        //Debug.Log("ChooseStock: " + Stock.nameOfCompany);
         showHistoricData.updateAllHistoricData(Stock);
 
         activeCompany = Stock;
@@ -22,6 +23,9 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
     //1. Hämta Prefab för bolaget. Görs i "chooseStock";
     public void unlockEPSyearX(int i)
     {
+        Debug.Log(showHistoricData.getStartingYear());
+        Debug.Log(showHistoricData.getYearNow());
+
         if (ActionPointsManager.remainingAP >= costToUnlock)
         {
             if (activeCompany.GetComponent<stockDataPlayerKnow>().EPSdata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
@@ -34,6 +38,7 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
 
     public void unlockEPSChangeYoYyearX(int i)
     {
+        
         if (ActionPointsManager.remainingAP >= costToUnlock)
         {
             if (activeCompany.GetComponent<stockDataPlayerKnow>().EPSYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)

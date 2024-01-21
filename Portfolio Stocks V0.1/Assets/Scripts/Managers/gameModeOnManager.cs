@@ -10,11 +10,14 @@ public class gameModeOnManager : MonoBehaviour
 
     public bool startingYear_1850;
 
+    public bool historicEventsOn;
+
     public GameObject stockPanelGO;
     public GameObject portfolioPlayerGO;
     public GameObject portfolioChooseCategoriPanelGO;
     public GameObject bondsPanelGO;
     public GameObject SettlerGO;
+    public GameObject historicEventsGO;
 
     private void Start()
     {
@@ -23,6 +26,11 @@ public class gameModeOnManager : MonoBehaviour
         if (settlerOn == true)
         {
             settlerModeActive();
+        }
+
+        if(historicEventsOn == true)
+        {
+            historicEventsActive();
         }
     }
 
@@ -33,10 +41,16 @@ public class gameModeOnManager : MonoBehaviour
         portfolioChooseCategoriPanelGO.SetActive(false);
         bondsPanelGO.SetActive(false);
         SettlerGO.SetActive(false);
+        historicEventsGO.SetActive(false);
     }
 
     public void settlerModeActive()
     {
         SettlerGO.SetActive(true);
+    }
+
+    public void historicEventsActive()
+    {
+        historicEventsGO.SetActive(true);
     }
 }

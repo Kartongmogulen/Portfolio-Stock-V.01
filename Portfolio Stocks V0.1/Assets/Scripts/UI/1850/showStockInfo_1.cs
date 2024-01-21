@@ -12,10 +12,12 @@ public class showStockInfo_1 : MonoBehaviour
     public Text cityNameText;
     public Text sectorNameText;
     public Text companyNameText;
+    //public Text companyGAVText;
 
     public CityManager cityManager;
     public activeSector_1850 ActiveSector_1850;
     public stockMarketManager_1850 StockMarketManager_1850;
+    public portfolioStock PortfolioStock;
 
     private void Start()
     {
@@ -39,6 +41,8 @@ public class showStockInfo_1 : MonoBehaviour
             {
                 companyNameText.text = "Company: " + StockMarketManager_1850.StockPrefabListMines[cityManager.getActiveCity()].GetComponent<stock>().nameOfCompany;
             }
+
+            
         }
 
         if (ActiveSector_1850.getActiveSector() == 1)

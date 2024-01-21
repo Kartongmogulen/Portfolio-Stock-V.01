@@ -10,6 +10,7 @@ public class averageCalculation : MonoBehaviour
 
     public float listOfFloats(List<float> dataset)
     {
+        sumFromDataSet = 0;
 
         foreach (float f in dataset)
         {

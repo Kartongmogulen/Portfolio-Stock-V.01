@@ -10,6 +10,8 @@ public class chooseCompany_1850 : MonoBehaviour
     public activeSector_1850 ActiveSector_1850;
     public stockMarketManager_1850 StockMarketManager_1850;
     public stocks_UnlockInfo_1850 StocksUnlockInfo;
+    public dataPlayerKnowsButtonUnlock DataPlayerKnowsButtonUnlock;
+    public ShowHistoricData showHistoricData;
     public List<GameObject> stockMarketSectorActive; //Listan med Prefabs över aktuell sektor
     public Text divYieldText;
     public Text divPayoutText;
@@ -37,6 +39,7 @@ public class chooseCompany_1850 : MonoBehaviour
     private void Update()
     {
         chooseCompany();
+        
     }
 
     public void chooseCompany()
@@ -52,6 +55,8 @@ public class chooseCompany_1850 : MonoBehaviour
         {
             keyDataPanel();
         }
+
+        //showHistoricData.updateAllHistoricData(stockMarketSectorActive[cityIndex].GetComponent<stock>());
     }
 
     public void getCityAndSectorIndex()
@@ -63,7 +68,11 @@ public class chooseCompany_1850 : MonoBehaviour
         {
             stockMarketSectorActive = StockMarketManager_1850.StockPrefabListMines;
             stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
-    }
+            DataPlayerKnowsButtonUnlock.chooseStock(stockMarketSectorActive[cityIndex].GetComponent<stock>());
+            
+            //stocksUiScriptsGO.GetComponent<ShowHistoricData>().updateAllHistoricData(StockMarketManager_1850);
+            //buttonsScriptsGO.GetComponent<dataPlayerKnowsButtonUnlock>().chooseStock(StockMarketManager.StockTechList[i]);
+        }
 
         if (activeSector == 1)
         {

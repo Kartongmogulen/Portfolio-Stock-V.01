@@ -51,8 +51,10 @@ public class ShowHistoricData : MonoBehaviour
 
     public void updateEPSText(stock Stock)
     {
+        //Debug.Log("UpdateEPSText: " + Stock.nameOfCompany);
         for (int i = 0; i < EPSText.Count; i++)
         {
+            Debug.Log("True or False: " + Stock.GetComponent<stockDataPlayerKnow>().EPSdata[Mathf.Abs(startingYearToRevealData + yearNow + i)] + " - " + Mathf.Abs(startingYearToRevealData + yearNow + i));
             //if (stockPrefab.GetComponent<stockDataPlayerKnow>().EPSdata[Mathf.Abs(yearNow + i)] == false)
             if(Stock.GetComponent<stockDataPlayerKnow>().EPSdata[Mathf.Abs(startingYearToRevealData + yearNow + i)] == true)
             {

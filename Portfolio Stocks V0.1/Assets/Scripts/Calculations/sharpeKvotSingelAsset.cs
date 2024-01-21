@@ -6,12 +6,17 @@ public class sharpeKvotSingelAsset : MonoBehaviour
 {
     //Beräknar Sharpekvot för en enskild tillgång t.ex en aktie eller räntepapper
 
+    public stockMarketManager_1850 StockMarketManager_1850;
+    public portfolioStock PortfolioStock;
+
     public int orderInStockList; //MÅSTE VÄLJAS
 
     public stock Stock;
     public GameObject calculationTools;
     public bondMarketManager BondMarketManager;
     public GAV gav;
+
+
 
     public List<float> prices;
     //public List<float> pricesDeviationFromMean;
@@ -53,6 +58,16 @@ public class sharpeKvotSingelAsset : MonoBehaviour
         }
 
         sharpeKvot = calculationTools.GetComponent<sharpeRatioCalculation>().sharpeRatio(riskFreeRate, returnAsset, standardDeviation);
+    }
+
+    public void calculateSharpeForSector()
+    {
+        for (int i = 0; i < StockMarketManager_1850.StockPrefabListMines.Count;i++)
+        {
+            standardDeviation = calculationTools.GetComponent<standardDeviationCalculation>().calculateStandardDeviation(StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice);
+            riskFreeRate = BondMarketManager.bondMarketListGO[BondMarketManager.bondMarketListGO.Count - 1].GetComponent<bondInfoPrefab>().rate;
+            returnAsset = (StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice.Count - 1] / PortfolioStock.minesCompanyGAV[i] - 1) * 100;
+        }
     }
 
     

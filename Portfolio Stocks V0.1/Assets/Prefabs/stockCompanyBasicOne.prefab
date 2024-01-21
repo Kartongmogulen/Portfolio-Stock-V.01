@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8142389932202983004}
   - component: {fileID: 2154981163000740535}
   - component: {fileID: 1790731561}
+  - component: {fileID: 963262753979846440}
   m_Layer: 0
   m_Name: stockCompanyBasicOne
   m_TagString: Untagged
@@ -151,6 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77aecb962848c943a1165c0d066cd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StockMarketManager_1850: {fileID: 0}
+  PortfolioStock: {fileID: 0}
   orderInStockList: 0
   Stock: {fileID: 0}
   calculationTools: {fileID: 0}
@@ -161,3 +164,21 @@ MonoBehaviour:
   sharpeKvot: 0
   returnAsset: 0
   riskFreeRate: 0
+--- !u!114 &963262753979846440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3471436335729396843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a739508d47678243b62f7b5d832173f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AverageCalculation: {fileID: 0}
+  averagePrices: 0
+  pricesDeviationFromMean: []
+  sumPriceDeviationFromMean: 0
+  standardDeviation: 0
+  amountToTakeInCalcualtion: 0
