@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 9208037321073837137}
   - component: {fileID: 4898406765420978490}
   - component: {fileID: 2489763990841594431}
+  - component: {fileID: 2443685818415685943}
   m_Layer: 0
   m_Name: stockCompanyBasicTwo_Products
   m_TagString: Untagged
@@ -75,8 +76,9 @@ MonoBehaviour:
   divPolicyMaxPayouRatio: 0
   companyPaysDividend: 0
   startPayDividendWhenEPS: 0
-  divPayout: 0
-  divPayoutTotal: 0
+  divPayoutPerShare: 0
+  StockInformation: {fileID: 0}
+  dividendPaid: []
 --- !u!114 &216242760838551202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,11 +94,14 @@ MonoBehaviour:
   moneyTest: 10
   revenue: []
   cost: []
-  EarningPerShareNow: 0
+  EarningPerShareStart: 0
+  EarningsPerShareNow: 0
   EarningPerShareHistory: []
+  EarningHistory: []
   EarningPerShareGrowth: 0
   CostCuttingManager: {fileID: 0}
   ProductHolder: {fileID: 0}
+  StockInformation: {fileID: 0}
 --- !u!114 &8645120913243470888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +140,7 @@ MonoBehaviour:
   SectorName: 6
   numberOfSharesStart: 1000
   numberOfSharesNow: 0
+  nameCompany: 
 --- !u!114 &4898406765420978490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StockPrice: []
   priceNow: 0
+  volatilityAbs: 0
+  volatilityPercent: 0
 --- !u!114 &2489763990841594431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,3 +175,23 @@ MonoBehaviour:
   lvlProduct_One: 0
   amountSoldList_One: 
   productExpericeneNow_One: 0
+--- !u!114 &2443685818415685943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4588446364668238124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d52d96dd16c17a44baca56c3934298fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EPSdata: 
+  EPSYoYChangedata: 
+  DividendYoYChangedata: 
+  PayoutRatiodata: 
+  GamePlayScopeManager: {fileID: 0}
+  EndRoundButton: {fileID: 0}
+  showHistoricData: {fileID: 0}
+  startingYearToRevealData: 0

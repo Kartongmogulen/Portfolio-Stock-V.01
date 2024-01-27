@@ -7,8 +7,10 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
 {
     public ShowHistoricData showHistoricData;
     public stock activeCompany;
+    public incomeStatement activeCompany_IncomeStatement;
     public gamePlayScopeManager GamePlayScopeManager;
     public actionPointsManager ActionPointsManager;
+    public activeSector_1850 ActiveSector_1850;
     [SerializeField] int costToUnlock;
 
     public void chooseStock(stock Stock)
@@ -19,20 +21,34 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
         activeCompany = Stock;
     }
 
+    public void chooseStock_Products(incomeStatement IncomeStatement)
+    {
+        activeCompany_IncomeStatement = IncomeStatement;
+    }
+
     //Att-göra
     //1. Hämta Prefab för bolaget. Görs i "chooseStock";
     public void unlockEPSyearX(int i)
     {
-        Debug.Log(showHistoricData.getStartingYear());
-        Debug.Log(showHistoricData.getYearNow());
+        //Debug.Log(showHistoricData.getStartingYear());
+        //Debug.Log(showHistoricData.getYearNow());
 
-        if (ActionPointsManager.remainingAP >= costToUnlock)
+        if (ActiveSector_1850.getActiveSector() == 0 || ActiveSector_1850.getActiveSector() == 1)
         {
-            if (activeCompany.GetComponent<stockDataPlayerKnow>().EPSdata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+            if (ActionPointsManager.remainingAP >= costToUnlock)
             {
-                activeCompany.GetComponent<stockDataPlayerKnow>().EPSdata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
-                ActionPointsManager.actionPointSub(costToUnlock);
+                if (activeCompany.GetComponent<stockDataPlayerKnow>().EPSdata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+                {
+                    activeCompany.GetComponent<stockDataPlayerKnow>().EPSdata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+                    ActionPointsManager.actionPointSub(costToUnlock);
+                }
             }
+        }
+
+        if (ActiveSector_1850.getActiveSector() == 2)
+        {
+            Debug.Log("Active sector: 2");
+            unlockEPSyearX_Products(i);
         }
     }
 
@@ -68,6 +84,20 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
             if (activeCompany.GetComponent<stockDataPlayerKnow>().PayoutRatiodata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
             {
                 activeCompany.GetComponent<stockDataPlayerKnow>().PayoutRatiodata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+                ActionPointsManager.actionPointSub(costToUnlock);
+            }
+        }
+    }
+    //___________________________
+    public void unlockEPSyearX_Products(int i)
+    {
+        Debug.Log("unlockEPSyearX_Products: " + i);
+
+        if (ActionPointsManager.remainingAP >= costToUnlock)
+        {
+            if (activeCompany_IncomeStatement.GetComponent<stockDataPlayerKnow>().EPSdata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+            {
+                activeCompany_IncomeStatement.GetComponent<stockDataPlayerKnow>().EPSdata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
                 ActionPointsManager.actionPointSub(costToUnlock);
             }
         }

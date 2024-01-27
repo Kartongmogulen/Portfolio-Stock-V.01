@@ -39,7 +39,7 @@ public class chooseCompany_1850 : MonoBehaviour
     private void Update()
     {
         chooseCompany();
-        
+        //getCityAndSectorIndex();
     }
 
     public void chooseCompany()
@@ -70,6 +70,8 @@ public class chooseCompany_1850 : MonoBehaviour
             stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
             DataPlayerKnowsButtonUnlock.chooseStock(stockMarketSectorActive[cityIndex].GetComponent<stock>());
             
+            showHistoricData.updateAllHistoricDataWithGameObject(stockMarketSectorActive[cityIndex]);
+
             //stocksUiScriptsGO.GetComponent<ShowHistoricData>().updateAllHistoricData(StockMarketManager_1850);
             //buttonsScriptsGO.GetComponent<dataPlayerKnowsButtonUnlock>().chooseStock(StockMarketManager.StockTechList[i]);
         }
@@ -78,12 +80,21 @@ public class chooseCompany_1850 : MonoBehaviour
         {
             stockMarketSectorActive = StockMarketManager_1850.StockPrefabListRailroad;
             stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
+            DataPlayerKnowsButtonUnlock.chooseStock(stockMarketSectorActive[cityIndex].GetComponent<stock>());
+
+            showHistoricData.updateAllHistoricDataWithGameObject(stockMarketSectorActive[cityIndex]);
         }
 
         if (activeSector == 2)
         {
             stockMarketSectorActive = StockMarketManager_1850.StockPrefabListIndustri;
             stockPrice = stockMarketSectorActive[cityIndex].GetComponent<priceStock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<priceStock>().StockPrice.Count - 1];
+
+            DataPlayerKnowsButtonUnlock.chooseStock_Products(stockMarketSectorActive[cityIndex].GetComponent<incomeStatement>());
+
+            showHistoricData.updateEPSText_GO(stockMarketSectorActive[cityIndex]);
+            showHistoricData.updateAllHistoricDataWithGameObject(stockMarketSectorActive[cityIndex]);
+            
         }
 
         //stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];

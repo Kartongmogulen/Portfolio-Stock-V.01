@@ -2104,7 +2104,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47778896}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aecee92276228246a07f3ddc645aeb3, type: 3}
   m_Name: 
@@ -11923,7 +11923,7 @@ PrefabInstance:
         type: 3}
       propertyPath: showHistoricData
       value: 
-      objectReference: {fileID: 47778898}
+      objectReference: {fileID: 867323548}
     - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
         type: 3}
       propertyPath: GamePlayScopeManager
@@ -21841,8 +21841,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -160.3877, y: -35.377106}
-  m_SizeDelta: {x: -320.7854, y: -70.7531}
+  m_AnchoredPosition: {x: -172.2395, y: -35.377094}
+  m_SizeDelta: {x: -344.489, y: -70.7531}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &485404715
 MonoBehaviour:
@@ -26066,7 +26066,7 @@ PrefabInstance:
         type: 3}
       propertyPath: showHistoricData
       value: 
-      objectReference: {fileID: 47778898}
+      objectReference: {fileID: 867323548}
     - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
         type: 3}
       propertyPath: GamePlayScopeManager
@@ -54108,23 +54108,23 @@ MonoBehaviour:
   - {fileID: 1044765042}
   - {fileID: 1634255332}
   EPSChangeYearOverYearText:
-  - {fileID: 1697274951}
-  - {fileID: 215965732}
-  - {fileID: 1347531208}
-  - {fileID: 590720523}
-  - {fileID: 2073941361}
+  - {fileID: 373601276}
+  - {fileID: 1960290874}
+  - {fileID: 1016860281}
+  - {fileID: 38919948}
+  - {fileID: 871893971}
   DividendGrowthYoYText:
-  - {fileID: 487030160}
-  - {fileID: 1469227145}
-  - {fileID: 1382386132}
-  - {fileID: 2103226801}
-  - {fileID: 1215481789}
+  - {fileID: 2127790881}
+  - {fileID: 78466674}
+  - {fileID: 1250901094}
+  - {fileID: 1404933129}
+  - {fileID: 507691077}
   PayoutRatioText:
-  - {fileID: 866261382}
-  - {fileID: 2078252573}
-  - {fileID: 128564227}
-  - {fileID: 536042595}
-  - {fileID: 217486453}
+  - {fileID: 1717282943}
+  - {fileID: 680764309}
+  - {fileID: 1902470143}
+  - {fileID: 1308382946}
+  - {fileID: 945360016}
   EndRoundButton: {fileID: 903494711}
   GamePlayScopeManager: {fileID: 1774405551}
   StockMarketManager: {fileID: 0}
@@ -56067,8 +56067,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showHistoricData: {fileID: 867323548}
   activeCompany: {fileID: 0}
+  activeCompany_IncomeStatement: {fileID: 0}
   GamePlayScopeManager: {fileID: 0}
   ActionPointsManager: {fileID: 1774405550}
+  ActiveSector_1850: {fileID: 2023206896}
   costToUnlock: 1
 --- !u!114 &903494714
 MonoBehaviour:
@@ -58786,7 +58788,7 @@ PrefabInstance:
         type: 3}
       propertyPath: showHistoricData
       value: 
-      objectReference: {fileID: 47778898}
+      objectReference: {fileID: 867323548}
     - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
         type: 3}
       propertyPath: GamePlayScopeManager
@@ -61083,8 +61085,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 154.75, y: -41.6135}
-  m_SizeDelta: {x: 193.14, y: 20.1751}
+  m_AnchoredPosition: {x: 166.6, y: -41.613}
+  m_SizeDelta: {x: 216.85, y: 20.175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1002903967
 MonoBehaviour:
@@ -63157,8 +63159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 154.76, y: -87.2235}
-  m_SizeDelta: {x: 193.14, y: 31.0638}
+  m_AnchoredPosition: {x: 166.61, y: -100.75663}
+  m_SizeDelta: {x: 216.85, y: 30.5322}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1034427536
 MonoBehaviour:
@@ -64091,7 +64093,7 @@ PrefabInstance:
         type: 3}
       propertyPath: showHistoricData
       value: 
-      objectReference: {fileID: 47778898}
+      objectReference: {fileID: 867323548}
     - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
         type: 3}
       propertyPath: GamePlayScopeManager
@@ -64790,8 +64792,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 154.75, y: -122.46}
-  m_SizeDelta: {x: 193.14, y: 39.409}
+  m_AnchoredPosition: {x: 166.61, y: -129.76208}
+  m_SizeDelta: {x: 216.85, y: 27.479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058513200
 MonoBehaviour:
@@ -71190,6 +71192,21 @@ PrefabInstance:
       propertyPath: EarningPerShareHistory.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2443685818415685943, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
+      propertyPath: EndRoundButton
+      value: 
+      objectReference: {fileID: 903494711}
+    - target: {fileID: 2443685818415685943, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
+      propertyPath: showHistoricData
+      value: 
+      objectReference: {fileID: 867323548}
+    - target: {fileID: 2443685818415685943, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
+      propertyPath: GamePlayScopeManager
+      value: 
+      objectReference: {fileID: 1774405551}
     - target: {fileID: 2489763990841594431, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
       propertyPath: ProductOne
@@ -81356,7 +81373,7 @@ PrefabInstance:
         type: 3}
       propertyPath: showHistoricData
       value: 
-      objectReference: {fileID: 47778898}
+      objectReference: {fileID: 867323548}
     - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
         type: 3}
       propertyPath: GamePlayScopeManager
@@ -87912,8 +87929,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 125.66, y: -15.763}
-  m_SizeDelta: {x: 251.32, y: 31.526}
+  m_AnchoredPosition: {x: 137.51, y: -15.763}
+  m_SizeDelta: {x: 275.03, y: 31.526}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1563287252
 MonoBehaviour:
@@ -93456,6 +93473,21 @@ PrefabInstance:
       propertyPath: EarningPerShareHistory.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2443685818415685943, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
+      propertyPath: EndRoundButton
+      value: 
+      objectReference: {fileID: 903494711}
+    - target: {fileID: 2443685818415685943, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
+      propertyPath: showHistoricData
+      value: 
+      objectReference: {fileID: 867323548}
+    - target: {fileID: 2443685818415685943, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
+      propertyPath: GamePlayScopeManager
+      value: 
+      objectReference: {fileID: 1774405551}
     - target: {fileID: 2489763990841594431, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
       propertyPath: ProductOne
@@ -94158,7 +94190,7 @@ PrefabInstance:
         type: 3}
       propertyPath: showHistoricData
       value: 
-      objectReference: {fileID: 47778898}
+      objectReference: {fileID: 867323548}
     - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
         type: 3}
       propertyPath: GamePlayScopeManager
@@ -95457,8 +95489,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 29.044, y: -21.972}
-  m_SizeDelta: {x: -58.089, y: -43.943}
+  m_AnchoredPosition: {x: 17.192, y: -21.972}
+  m_SizeDelta: {x: -34.385, y: -43.943}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1723330388
 MonoBehaviour:
@@ -98033,7 +98065,7 @@ PrefabInstance:
         type: 3}
       propertyPath: showHistoricData
       value: 
-      objectReference: {fileID: 47778898}
+      objectReference: {fileID: 867323548}
     - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
         type: 3}
       propertyPath: GamePlayScopeManager
@@ -98173,6 +98205,21 @@ PrefabInstance:
       propertyPath: EarningPerShareHistory.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2443685818415685943, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
+      propertyPath: EndRoundButton
+      value: 
+      objectReference: {fileID: 903494711}
+    - target: {fileID: 2443685818415685943, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
+      propertyPath: showHistoricData
+      value: 
+      objectReference: {fileID: 867323548}
+    - target: {fileID: 2443685818415685943, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
+      propertyPath: GamePlayScopeManager
+      value: 
+      objectReference: {fileID: 1774405551}
     - target: {fileID: 2489763990841594431, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
       propertyPath: ProductOne
@@ -110146,8 +110193,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 154.75, y: -61.8142}
-  m_SizeDelta: {x: 193.14, y: 20.2264}
+  m_AnchoredPosition: {x: 166.6, y: -66.783966}
+  m_SizeDelta: {x: 216.85, y: 27.479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1921877698
 MonoBehaviour:
@@ -110253,8 +110300,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 154.75, y: -161.65842}
-  m_SizeDelta: {x: 193.14, y: 38.9812}
+  m_AnchoredPosition: {x: 166.61, y: -162.68387}
+  m_SizeDelta: {x: 216.86, y: 27.479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1922224673
 MonoBehaviour:
@@ -114331,7 +114378,7 @@ MonoBehaviour:
   StockMarketManager_1850: {fileID: 1010759431}
   StocksUnlockInfo: {fileID: 2023206899}
   DataPlayerKnowsButtonUnlock: {fileID: 903494713}
-  showHistoricData: {fileID: 47778898}
+  showHistoricData: {fileID: 867323548}
   stockMarketSectorActive: []
   divYieldText: {fileID: 1602319386}
   divPayoutText: {fileID: 2071218430}
@@ -115003,7 +115050,7 @@ PrefabInstance:
         type: 3}
       propertyPath: showHistoricData
       value: 
-      objectReference: {fileID: 47778898}
+      objectReference: {fileID: 867323548}
     - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
         type: 3}
       propertyPath: GamePlayScopeManager
