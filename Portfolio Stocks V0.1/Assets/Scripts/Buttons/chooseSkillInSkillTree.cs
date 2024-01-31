@@ -16,8 +16,16 @@ public class chooseSkillInSkillTree : MonoBehaviour
 
     public void unlockNewCompany()
     {
-        DescriptionTextSkillTree.descpritionText.text = DescriptionTextSkillTree.unlockNewCompnay + "\n You get one new company to invest in";
+        DescriptionTextSkillTree.descpritionText.text = DescriptionTextSkillTree.unlockNewCompany + "\n You get one new company to invest in";
     }
 
-   
+    public void unlockNewCity()
+    {
+        DescriptionTextSkillTree.descpritionText.text = DescriptionTextSkillTree.unlockNewCompany + "\n You get one new city to invest in";
+    }
+
+    public void unlockTool_ComparisonPanel()
+    {
+        DescriptionTextSkillTree.descpritionText.text = DescriptionTextSkillTree.unlockTool_ComparisonPanel + "\n You unlock new Tool: Compare multiple stocks";
+    }
 }

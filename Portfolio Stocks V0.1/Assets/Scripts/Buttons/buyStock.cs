@@ -159,7 +159,7 @@ public class buyStock : MonoBehaviour
 		moneyPlayer = playerGO.GetComponent<totalCash>().moneyNow;
 
 		orderValue = amountOrder * stockPrice;
-		Debug.Log("Ordervalue: " + orderValue);
+		//Debug.Log("Ordervalue: " + orderValue);
 
 		if (moneyPlayer >= orderValue)
 

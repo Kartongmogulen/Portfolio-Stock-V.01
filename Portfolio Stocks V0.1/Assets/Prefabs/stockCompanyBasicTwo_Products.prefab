@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4898406765420978490}
   - component: {fileID: 2489763990841594431}
   - component: {fileID: 2443685818415685943}
+  - component: {fileID: 8817465705882986888}
   m_Layer: 0
   m_Name: stockCompanyBasicTwo_Products
   m_TagString: Untagged
@@ -195,3 +196,16 @@ MonoBehaviour:
   EndRoundButton: {fileID: 0}
   showHistoricData: {fileID: 0}
   startingYearToRevealData: 0
+--- !u!114 &8817465705882986888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4588446364668238124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2004453dd3cb9545bb81c8d3221d7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dividendPaid: []

@@ -35,6 +35,10 @@ public class dividendRecieved : MonoBehaviour
 	public List<float> railroadCompanyDivPayout;
 	public List<float> railroadCompanyDivRecieved = new List<float>();
 
+	public List<float> industriCompanySharesOwned;
+	public List<float> industriCompanyDivPayout;
+	public List<float> industriCompanyDivRecieved = new List<float>();
+
 	public List<float> divRecPerYear = new List<float> ();
 
 	public float totalDivRecieved;
@@ -120,6 +124,16 @@ public class dividendRecieved : MonoBehaviour
 			railroadCompanySharesOwned[i] = PortfolioStock.railroadCompanySharesOwned[i];
 			railroadCompanyDivRecieved[i] = railroadCompanyDivPayout[i] * railroadCompanySharesOwned[i];
 			divRecPerYear[year] += railroadCompanyDivRecieved[i];
+		}
+
+		//Gå igenom alla Industri-bolag
+		for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
+		{
+			Debug.Log("Utdelningar Industri");
+			industriCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().divPayout;
+			industriCompanySharesOwned[i] = PortfolioStock.industriCompanySharesOwned[i];
+			industriCompanyDivRecieved[i] = industriCompanyDivPayout[i] * industriCompanySharesOwned[i];
+			divRecPerYear[year] += industriCompanyDivRecieved[i];
 		}
 
 		year++;

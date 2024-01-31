@@ -93,6 +93,7 @@ public class chooseCompany_1850 : MonoBehaviour
             DataPlayerKnowsButtonUnlock.chooseStock_Products(stockMarketSectorActive[cityIndex].GetComponent<incomeStatement>());
 
             showHistoricData.updateEPSText_GO(stockMarketSectorActive[cityIndex]);
+            showHistoricData.updateEPSChangeYearOverYearText_GO(stockMarketSectorActive[cityIndex]);
             showHistoricData.updateAllHistoricDataWithGameObject(stockMarketSectorActive[cityIndex]);
             
         }

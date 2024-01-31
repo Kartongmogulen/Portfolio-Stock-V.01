@@ -40,14 +40,14 @@ public class stocks_UnlockInfo_1850 : MonoBehaviour
 				minesDivPolicyUnlocked[activeCity] = 1;
 				ActionPointsManager.actionPointSub(divPolicyUnlockCost);
 				ChooseCompany_1850.chooseCompany();
-				Debug.Log("Mines One: Div Pol UNLOCKED!");
+				//Debug.Log("Mines One: Div Pol UNLOCKED!");
 			}
 			if (activeSector == 1) //&& activeCity == 0)
 			{
 				railroadDivPolicyUnlocked[activeCity] = 1;
 				ActionPointsManager.actionPointSub(divPolicyUnlockCost);
 				ChooseCompany_1850.chooseCompany();
-				Debug.Log("Mines One: Div Pol UNLOCKED!");
+				//Debug.Log("Mines One: Div Pol UNLOCKED!");
 			}
 
 

@@ -8,7 +8,8 @@ public class pointsLeftToUnlock : MonoBehaviour
     public SkillsManager skillsManager;
    
     public Text pointsInvestedAndLeftToUnlockText;
-    public Text unlockNewCompanyText;
+    public Text skillNrTwo_Text;
+    public Text skillNrThree_Text;
 
     //public string pointsInvestedAndLeftToUnlockString;
 
@@ -25,10 +26,44 @@ public class pointsLeftToUnlock : MonoBehaviour
     public void unlockNewCompany()
     {
         if (skillsManager.getLevelUnlockNewCompany() < skillsManager.maxLevelUnlockNewCompany)
-            unlockNewCompanyText.text = "" + skillsManager.getExperienceUnlockNewCompany() + "/" + skillsManager.costToUnlockNewCompany;
+            skillNrTwo_Text.text = "" + skillsManager.getExperienceUnlockNewCompany() + "/" + skillsManager.costToUnlockNewCompany;
         else
         {
-            unlockNewCompanyText.text = "Max lvl reached";
+            skillNrTwo_Text.text = "Max lvl reached";
+        }
+    }
+
+    public void unlockNewCity()
+    {
+        if (skillsManager.getLevelUnlockNewCity() < skillsManager.maxLevelUnlockNewCity)
+            skillNrTwo_Text.text = "" + skillsManager.getExperienceUnlockNewCity() + "/" + skillsManager.costToUnlockNewCity;
+        else
+        {
+            skillNrTwo_Text.text = "Max lvl reached";
+        }
+    }
+
+    public void unlockSkill(SkillsPlayer skill)
+    {
+        if (skill.getCurrentLevel() < skill.maxLevel)
+        {
+            skillNrThree_Text.text = "" + skill.getCurrentExperience() + "/" + skill.costToUnlockNextLvl[skill.getCurrentLevel()];
+        }
+
+        else
+        {
+            skillNrThree_Text.text = "Max lvl reached";
+        }
+        
+    }
+
+    public void unlockTool_ComparisonPanel()
+    {
+        if (skillsManager.getLevelUnlockNewCity() < skillsManager.maxLevelUnlockNewCity)
+            skillNrThree_Text.text = "" + skillsManager.getExperienceUnlockNewCity() + "/" + skillsManager.costToUnlockNewCity;
+        else
+        {
+            skillNrThree_Text.text = "Max lvl reached";
         }
     }
 

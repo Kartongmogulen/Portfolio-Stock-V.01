@@ -28,4 +28,14 @@ public class onOffGameObjectsTool : MonoBehaviour
             objectsToTurnOff[i].SetActive(false);
         }
     }
+
+    public void turnOnOrOffEachClick()
+    {
+        if (objectToActivate.activeSelf == true)
+        {
+            objectToActivate.SetActive(false);
+        }
+        else
+            objectToActivate.SetActive(true);
+    }
 }
