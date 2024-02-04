@@ -14,7 +14,12 @@ public class trailing12MonthHighLowCalculation : MonoBehaviour
 
     public stockMarketManager StockMarketManager;
 
-   public void updateDataForStocks()
+    private void Start()
+    {
+        updateDataForStocks_StockComponent(StockMarketManager.GetComponent<stockMarketManager_1850>().StockMarketListGO);
+    }
+
+    public void updateDataForStocks()
     {
         for (int i = 0; i < StockMarketManager.StockMarketListGO.GetComponent<stockMarketInventory>().Stock.Count; i++)
         {
@@ -29,6 +34,26 @@ public class trailing12MonthHighLowCalculation : MonoBehaviour
             //Lägsta värdet
             valueLow = findLowestValue(last12Numbers);
             StockMarketManager.StockMarketListGO.GetComponent<stockMarketInventory>().Stock[i].trailingTwelweMonthLow = valueLow;
+        }
+    }
+
+    public void updateDataForStocks_StockComponent(GameObject ObjectThatContainsStocks)
+    {
+        for (int i = 0; i < ObjectThatContainsStocks.GetComponent<stockMarketInventory>().Stock.Count; i++)
+        {
+            //Debug.Log(ObjectThatContainsStocks.GetComponent<stockMarketInventory>().Stock.nameOfCompany);
+
+            //Hämta data
+            allDataBeforeCleaning = ObjectThatContainsStocks.GetComponent<stockMarketInventory>().Stock[i].StockPrice;
+            last12Numbers = allDataBeforeCleaning.GetRange(allDataBeforeCleaning.Count - amountOfValuesToGet12Month, amountOfValuesToGet12Month);
+
+            //Högsta värdet
+            valueHigh = findHighestValue(last12Numbers);
+            ObjectThatContainsStocks.GetComponent<stockMarketInventory>().Stock[i].trailingTwelweMonthHigh = valueHigh;
+
+            //Lägsta värdet
+            valueLow = findLowestValue(last12Numbers);
+            ObjectThatContainsStocks.GetComponent<stockMarketInventory>().Stock[i].trailingTwelweMonthLow = valueLow;
         }
     }
 

@@ -9,7 +9,6 @@ public class trailing12MonthSliderPosition : MonoBehaviour
 
     public float number;
     public Slider yourSlider;
-
     
     public void MoveSlider(float price, float high, float low)
     {
@@ -23,7 +22,9 @@ public class trailing12MonthSliderPosition : MonoBehaviour
     public float slidersRelativePoistionFromTwoValues(float price, float low, float high)
     {
         number = (price - low) / (high - low);
+        Debug.Log("SliderValue: " + number);
 
         return number;
     }
+
 }

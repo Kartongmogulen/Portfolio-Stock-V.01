@@ -43,6 +43,12 @@ public class allStocksComparisonLayout : MonoBehaviour
     public List<Slider> Trailing12MonthPrice_Índustri;
     public GameObject week52IntervalGO_Industri;
 
+    private void Start ()
+    {
+        InvokeRepeating("updateAllText_1850", 0.5f, 0.1f);
+        
+    }
+
     public void updateAllText()
     {
         updateNameText();
@@ -126,7 +132,7 @@ public class allStocksComparisonLayout : MonoBehaviour
 
             float EPSNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<incomeStatement>().getEarningsPerShareNow();
             //Debug.Log("Pris: " + priceNow);
-            Debug.Log("EPS nu: " + EPSNow);
+            //Debug.Log("EPS nu: " + EPSNow);
             PriceEarningsListIndustri[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
             //PriceEarningsList[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
         }
@@ -144,7 +150,7 @@ public class allStocksComparisonLayout : MonoBehaviour
 
     public void updateTrailing12MonthPrice_1850()
     {
-
+        //Debug.Log("Trailing12Month_1850");
         float priceNow;
         float low52Week;
         float high52Week;
@@ -152,11 +158,38 @@ public class allStocksComparisonLayout : MonoBehaviour
         for (int i = 0; i < StockMarketManager_1850.StockPrefabListMines.Count; i++)
         {
             priceNow = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice.Count - 1];
-            Debug.Log("Pris nu: " + priceNow);
-            //Trailing12MonthPrice_Mines[i].value = Trailing12MonthSliderPosition.slidersRelativePoistionFromTwoValues(priceNow, StockMarketInventory.Stock[i].trailingTwelweMonthLow, StockMarketInventory.Stock[i].trailingTwelweMonthHigh);
+            low52Week = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().trailingTwelweMonthLow;
+            high52Week = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().trailingTwelweMonthHigh;
+            //Debug.Log("Pris nu: " + priceNow);
+            //Debug.Log("low52Week: " + low52Week);
+            Trailing12MonthPrice_Mines[i].value = Trailing12MonthSliderPosition.slidersRelativePoistionFromTwoValues(priceNow,low52Week, high52Week);
         }
+
+        for (int i = 0; i < StockMarketManager_1850.StockPrefabListRailroad.Count; i++)
+        {
+            priceNow = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().StockPrice.Count - 1];
+            low52Week = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().trailingTwelweMonthLow;
+            high52Week = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().trailingTwelweMonthHigh;
+            //Debug.Log("Pris nu: " + priceNow);
+            //Debug.Log("low52Week: Railroad" + low52Week);
+            Trailing12MonthPrice_Railroad[i].value = Trailing12MonthSliderPosition.slidersRelativePoistionFromTwoValues(priceNow, low52Week, high52Week);
+        }
+
+        
+        for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
+        {
+            priceNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice.Count - 1];
+            low52Week = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().getTrailingTwelveMonthLow();
+            high52Week = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().getTrailingTwelveMonthHigh();
+            //Debug.Log("Pris nu: " + priceNow);
+            Debug.Log("PriceNow: Industri" + priceNow);
+            Debug.Log("Low52: " + low52Week);
+            Debug.Log("High52: " + high52Week);
+            Trailing12MonthPrice_Índustri[i].value = Trailing12MonthSliderPosition.slidersRelativePoistionFromTwoValues(priceNow, low52Week, high52Week);
+        }
+        
     }
-    
+
     public void isPanelActive()
     {
         if (minesActive == true)

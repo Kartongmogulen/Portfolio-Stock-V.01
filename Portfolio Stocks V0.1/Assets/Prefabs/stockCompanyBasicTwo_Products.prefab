@@ -158,6 +158,11 @@ MonoBehaviour:
   priceNow: 0
   volatilityAbs: 0
   volatilityPercent: 0
+  amountOfValuesToGet12Month: 12
+  allDataBeforeCleaning: []
+  trailingTwelweMonthLow: 0
+  trailingTwelweMonthHigh: 0
+  last12Numbers: []
 --- !u!114 &2489763990841594431
 MonoBehaviour:
   m_ObjectHideFlags: 0

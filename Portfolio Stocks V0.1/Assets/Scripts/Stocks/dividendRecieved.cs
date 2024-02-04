@@ -82,6 +82,13 @@ public class dividendRecieved : MonoBehaviour
 			railroadCompanyDivRecieved.Add(0);
 		}
 
+		for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
+		{
+			industriCompanySharesOwned.Add(0);
+			industriCompanyDivPayout.Add(StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicyPrefab>().divPayoutPerShare);
+			industriCompanyDivRecieved.Add(0);
+		}
+
 	}
 
 	public void recievedDividends()
@@ -130,7 +137,7 @@ public class dividendRecieved : MonoBehaviour
 		for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
 		{
 			Debug.Log("Utdelningar Industri");
-			industriCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().divPayout;
+			industriCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicyPrefab>().divPayoutPerShare;
 			industriCompanySharesOwned[i] = PortfolioStock.industriCompanySharesOwned[i];
 			industriCompanyDivRecieved[i] = industriCompanyDivPayout[i] * industriCompanySharesOwned[i];
 			divRecPerYear[year] += industriCompanyDivRecieved[i];

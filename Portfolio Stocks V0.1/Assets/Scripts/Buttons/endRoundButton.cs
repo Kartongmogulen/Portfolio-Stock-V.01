@@ -71,6 +71,7 @@ public class endRoundButton : MonoBehaviour
 
 		//Aktier
 		managerScriptsGO.GetComponent<stockPriceManager>().updateStockMarketPrice();
+		StockScriptGO.GetComponent<trailing12MonthHighLowCalculation>().updateDataForStocks_StockComponent(stockMarketGO.GetComponent<stockMarketManager_1850>().StockMarketListGO);
 		//StockScriptGO.GetComponent<priceChange>().changePriceStock(); //Uppdaterar pris för aktier
 		//StockScriptGO.GetComponent<indexFunds> ().updateIndex (); //GÅ IGENOM DÅ INDEX LÄGGS TILL
 		//StockScriptGO.GetComponent<PEG>().calculatePEG();
