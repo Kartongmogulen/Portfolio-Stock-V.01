@@ -20,7 +20,7 @@ public class ObjectiveManager : MonoBehaviour
 
     private void Update()
     {
-        checkIfObjectiveIsCompleted();
+        InvokeRepeating("checkIfObjectiveIsCompleted",1.0f,1.0f);
     }
 
     public void checkIfObjectiveIsCompleted()

@@ -123,20 +123,26 @@ public class portfolioStock : MonoBehaviour
 		UtilitiesInfoStock = GetComponent<utilitiesInfoStock>();
 		TechInfoStock = GetComponent<techInfoStock>();
 
+		if (stockMarketGO.GetComponent<stockMarketManager>() != null)
 		stockListUti = stockMarketGO.GetComponent<stockMarketManager>().StockUtiList;
+
+		if(stockMarketGO.GetComponent<stockMarketManager>() != null)
 		stockListTech = stockMarketGO.GetComponent<stockMarketManager>().StockTechList;
 
 		//Skapar rätt längd på listor
-		utiCompanySharesOwned = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockPrefabUtiList.Count);
-		utiTotalInvest = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockPrefabUtiList.Count);
-		returnUtiCompanies = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockPrefabUtiList.Count);
-		utiGAV = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockPrefabUtiList.Count);
+		if (stockMarketGO.GetComponent<stockMarketManager>() != null)
+		{
+			utiCompanySharesOwned = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockPrefabUtiList.Count);
+			utiTotalInvest = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockPrefabUtiList.Count);
+			returnUtiCompanies = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockPrefabUtiList.Count);
+			utiGAV = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockPrefabUtiList.Count);
 
-		techCompanySharesOwned = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
-		techTotalInvest = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
-		returnTechCompanies = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
-		techGAV = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
+			techCompanySharesOwned = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
+			techTotalInvest = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
+			returnTechCompanies = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
+			techGAV = CreateListWithLength.listWithRightLengthFloat(stockMarketGO.GetComponent<stockMarketManager>().StockTechList.Count);
 
+		}
 		minesCompanySharesOwned = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListMines.Count);
 		mineTotalInvestAmount = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListMines.Count);
 		minesCompanyGAV = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListMines.Count);

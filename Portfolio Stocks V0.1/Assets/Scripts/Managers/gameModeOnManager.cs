@@ -16,7 +16,12 @@ public class gameModeOnManager : MonoBehaviour
     public GameObject portfolioPlayerGO;
     public GameObject portfolioChooseCategoriPanelGO;
     public GameObject bondsPanelGO;
+
+    public GameObject testButtonPanelGO;
+    
+    //Settler
     public GameObject SettlerGO;
+
     public GameObject historicEventsGO;
 
     private void Start()
@@ -42,6 +47,7 @@ public class gameModeOnManager : MonoBehaviour
         bondsPanelGO.SetActive(false);
         SettlerGO.SetActive(false);
         historicEventsGO.SetActive(false);
+        testButtonPanelGO.SetActive(false);
     }
 
     public void settlerModeActive()

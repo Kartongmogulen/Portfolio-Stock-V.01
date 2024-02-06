@@ -182,9 +182,9 @@ public class allStocksComparisonLayout : MonoBehaviour
             low52Week = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().getTrailingTwelveMonthLow();
             high52Week = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().getTrailingTwelveMonthHigh();
             //Debug.Log("Pris nu: " + priceNow);
-            Debug.Log("PriceNow: Industri" + priceNow);
-            Debug.Log("Low52: " + low52Week);
-            Debug.Log("High52: " + high52Week);
+            //Debug.Log("PriceNow: Industri" + priceNow);
+            //Debug.Log("Low52: " + low52Week);
+            //Debug.Log("High52: " + high52Week);
             Trailing12MonthPrice_Índustri[i].value = Trailing12MonthSliderPosition.slidersRelativePoistionFromTwoValues(priceNow, low52Week, high52Week);
         }
         

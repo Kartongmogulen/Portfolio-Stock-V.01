@@ -49,7 +49,7 @@ public class dividendRecieved : MonoBehaviour
     void Awake()
     {
 		PortfolioStock = playerScriptsGO.GetComponent<portfolioStock> ();
-		StockMarketManager = StockMarketGO.GetComponent<stockMarketManager>();
+		//StockMarketManager = StockMarketGO.GetComponent<stockMarketManager>();
 		//StockMarketManager_1850 = GetComponent<stockMarketManager_1850>();
 
 		//SKAPAR STORLEK PÅ LISTA EFTER ANTALET BOLAG
@@ -151,24 +151,27 @@ public class dividendRecieved : MonoBehaviour
 		incomeDivFromPortfolioNow = 0;
 		//Debug.Log(StockMarketManager.StockUtiList.Count);
 
-		for (int i = 0; i < StockMarketManager.StockUtiList.Count; i++)
+		if (StockMarketManager != null)
 		{
-			utiCompanyDivPayout[i] = StockMarketManager.StockUtiList[i].GetComponent<stock>().divPayout;
-			utiCompanySharesOwned[i] = PortfolioStock.utiCompanySharesOwned[i];
-			utiCompanyDivRecieved[i] = utiCompanyDivPayout[i] * utiCompanySharesOwned[i];
-			incomeDivFromPortfolioNow += utiCompanyDivRecieved[i];
-		}
+			for (int i = 0; i < StockMarketManager.StockUtiList.Count; i++)
+			{
+				utiCompanyDivPayout[i] = StockMarketManager.StockUtiList[i].GetComponent<stock>().divPayout;
+				utiCompanySharesOwned[i] = PortfolioStock.utiCompanySharesOwned[i];
+				utiCompanyDivRecieved[i] = utiCompanyDivPayout[i] * utiCompanySharesOwned[i];
+				incomeDivFromPortfolioNow += utiCompanyDivRecieved[i];
+			}
 
-		//Debug.Log(StockMarketManager.StockTechList.Count);
-		for (int i = 0; i < StockMarketManager.StockTechList.Count; i++)
-		{
-			techCompanyDivPayout[i] = StockMarketManager.StockTechList[i].GetComponent<stock>().divPayout;
-			techCompanySharesOwned[i] = PortfolioStock.techCompanySharesOwned[i];
-			techCompanyDivRecieved[i] = techCompanyDivPayout[i] * techCompanySharesOwned[i];
-			incomeDivFromPortfolioNow += techCompanyDivRecieved[i];
+			//Debug.Log(StockMarketManager.StockTechList.Count);
+			for (int i = 0; i < StockMarketManager.StockTechList.Count; i++)
+			{
+				techCompanyDivPayout[i] = StockMarketManager.StockTechList[i].GetComponent<stock>().divPayout;
+				techCompanySharesOwned[i] = PortfolioStock.techCompanySharesOwned[i];
+				techCompanyDivRecieved[i] = techCompanyDivPayout[i] * techCompanySharesOwned[i];
+				incomeDivFromPortfolioNow += techCompanyDivRecieved[i];
+			}
 		}
-
 		//Debug.Log(StockMarketManager.StockTechList.Count);
+		
 		for (int i = 0; i < StockMarketManager_1850.StockPrefabListMines.Count; i++)
 		{
 			minesCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().divPayout;

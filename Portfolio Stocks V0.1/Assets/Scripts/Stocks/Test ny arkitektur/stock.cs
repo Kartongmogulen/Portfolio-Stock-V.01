@@ -19,7 +19,7 @@ public class stock : MonoBehaviour
 
 	[Header("Historic data")]
 	public List<float> EPSHistory;
-	public List<float> EPSChangeYoYHistory;
+	[SerializeField] List<float> EPSChangeYoYHistory;
 	public List<float> StockPrice;
 	
 	[Header("Other")]
@@ -45,4 +45,13 @@ public class stock : MonoBehaviour
 		lastDivPayout = GetComponent<dividendHistory>().dividendPaid[GetComponent<dividendHistory>().dividendPaid.Count - 1];
 	}
 
+	public void setEPSChangeYoYHistory()
+	{
+		Debug.Log("EPS Change: " + EPSHistory.Count);
+		if (EPSHistory.Count > 1) 
+		{
+			float percentChange = Mathf.Round(((EPSHistory[EPSHistory.Count - 1]) / (EPSHistory[EPSHistory.Count - 2]) - 1)*100)/100;
+			EPSChangeYoYHistory.Add(percentChange);
+		}
+	}
 }

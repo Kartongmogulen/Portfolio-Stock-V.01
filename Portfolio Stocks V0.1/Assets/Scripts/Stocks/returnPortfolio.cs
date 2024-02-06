@@ -16,16 +16,21 @@ public class returnPortfolio : MonoBehaviour
 
 	private void Start()
 	{
-		if (utiReturn)
+		if (StockMarketManager != null)
 		{
-
-			for (int i = 0; StockMarketManager.StockUtiList.Count > i; i++)
+			if (utiReturn)
 			{
-				stockListReturn.Add(0);
+
+				for (int i = 0; StockMarketManager.StockUtiList.Count > i; i++)
+				{
+					stockListReturn.Add(0);
+				}
 			}
+
 		}
 
-		if (techReturn)
+		if (StockMarketManager != null)
+			if (techReturn)
 		{
 
 			for (int i = 0; StockMarketManager.StockTechList.Count > i; i++)

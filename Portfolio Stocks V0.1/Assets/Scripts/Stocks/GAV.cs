@@ -30,8 +30,12 @@ public class GAV : MonoBehaviour
 	private void Awake()
 	{
 		PortfolioStock = playerScriptsGO.GetComponent<portfolioStock>();
+
+		if(StockMarketManager != null)
 		utiCompanyGAVPlayer = CreateListWithLength.listWithRightLengthFloat(StockMarketManager.StockPrefabUtiList.Count);
-		techCompanyGAVPlayer = CreateListWithLength.listWithRightLengthFloat(StockMarketManager.StockTechList.Count);
+
+		if (StockMarketManager != null)
+			techCompanyGAVPlayer = CreateListWithLength.listWithRightLengthFloat(StockMarketManager.StockTechList.Count);
 		//minesCompanyGAVPlayer = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListMines.Count);
 	}
 

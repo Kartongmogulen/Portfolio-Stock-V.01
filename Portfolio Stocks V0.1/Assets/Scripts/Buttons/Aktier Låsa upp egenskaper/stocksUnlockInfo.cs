@@ -39,12 +39,15 @@ public class stocksUnlockInfo : MonoBehaviour
 		UtilitiesInfoStock = scriptsStockGO.GetComponent<utilitiesInfoStock> ();
 		TechInfoStock = scriptsStockGO.GetComponent<techInfoStock> ();
 		ActionPointsManager = managerScriptsStockGO.GetComponent<actionPointsManager>();
-		utiDivPolicyUnlocked = CreateListWithLength.listWithRightLengthInt(StockMarketManager.StockPrefabUtiList.Count);
-		utiEPSGrowthUnlocked = CreateListWithLength.listWithRightLengthInt(StockMarketManager.StockPrefabUtiList.Count);
 
-		techDivPolicyUnlocked = CreateListWithLength.listWithRightLengthInt(StockMarketManager.StockPrefabTechList.Count);
-		techEPSGrowthUnlocked = CreateListWithLength.listWithRightLengthInt(StockMarketManager.StockPrefabTechList.Count);
+		if (StockMarketManager != null)
+		{
+			utiDivPolicyUnlocked = CreateListWithLength.listWithRightLengthInt(StockMarketManager.StockPrefabUtiList.Count);
+			utiEPSGrowthUnlocked = CreateListWithLength.listWithRightLengthInt(StockMarketManager.StockPrefabUtiList.Count);
 
+			techDivPolicyUnlocked = CreateListWithLength.listWithRightLengthInt(StockMarketManager.StockPrefabTechList.Count);
+			techEPSGrowthUnlocked = CreateListWithLength.listWithRightLengthInt(StockMarketManager.StockPrefabTechList.Count);
+		}
 	}
 
 	public void unlockDivPolicy(){
