@@ -70,13 +70,16 @@ public class totalCash : MonoBehaviour
 	}
 
 	public void updateMoney(){
-	
+
+		moneyNow = Mathf.Round(moneyNow * 100) / 100;
+		//Debug.Log("Money 5: " + moneyNow);
 		moneyText.text = "Money: " + moneyNow;
 	}
 
 	public void transactionMoney(float amount)
 	{
 		moneyNow += amount;
+		moneyNow = Mathf.Round(moneyNow * 100) / 100;
 		moneyText.text = "Money: " + moneyNow;
 	}
 

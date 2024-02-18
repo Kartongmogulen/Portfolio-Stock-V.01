@@ -96,7 +96,7 @@ public class endRoundButton : MonoBehaviour
 
 		//Spelaren
 		managerScriptsGO.GetComponent<actionPointsManager>().endRound();
-		playerScriptsGO.GetComponent<portfolioStock>().returnPortfolio();
+		//playerScriptsGO.GetComponent<portfolioStock>().returnPortfolio();
 
 		//Debug/Övriga spelare
 		//debugPanelGO.GetComponent<Bonds100> ().investBonds ();
@@ -111,9 +111,13 @@ public class endRoundButton : MonoBehaviour
 			DateNowText.text = "Y: " + year + " M: " + month;
 
 			//Utdelningar från föregående år innan värden uppdateras för bolagen
+			
 			StockScriptGO.GetComponent<dividendRecieved>().recievedDividends();
+			
 			PlayerScriptsGO.GetComponent<incomeDividends>().updateIncomeDividends();
+		
 			PlayerScriptsGO.GetComponent<totalCash>().incomeDividend(playerScriptsGO.GetComponent<incomeDividends>().incomeDividendPreviousYear);
+			//Debug.Log("Money 4: " + PlayerScriptsGO.GetComponent<totalCash>().moneyNow);
 			//PlayerScriptsGO.GetComponent<totalCash>().incomeBondsOncePerYear();
 
 			//playerPanelGO.GetComponent<totalCash>().incomeBonds();
@@ -160,6 +164,7 @@ public class endRoundButton : MonoBehaviour
 			}
 
 			//Settler
+			Debug.Log("År: " + year);
 			SendMoneyHome.timeForPlayerToSendMoney(year);
 
 		}

@@ -7,6 +7,15 @@ public class onOffGameObjectsTool : MonoBehaviour
     public GameObject objectToActivate;
     public List<GameObject> objectsToTurnOff;
     [SerializeField] bool stayActiveEvenWhenButtonPress; //Om objektet ska vara aktivt även om man trycker på samma knapp
+    [SerializeField] bool activateAtStart;
+
+    private void Start()
+    {
+        if (activateAtStart == true)
+        {
+            activateObject();
+        }  
+    }
 
     public void activateObject()
     {

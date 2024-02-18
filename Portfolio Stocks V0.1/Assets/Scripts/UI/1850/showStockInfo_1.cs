@@ -57,5 +57,18 @@ public class showStockInfo_1 : MonoBehaviour
                 companyNameText.text = "Company: " + StockMarketManager_1850.StockPrefabListRailroad[cityManager.getActiveCity()].GetComponent<stock>().nameOfCompany;
             }
         }
+
+        if (ActiveSector_1850.getActiveSector() == 2)
+        {
+            if (showSectorName == true)
+            {
+                sectorNameText.text = "Sector: Industri";
+            }
+
+            if (showCompanyName == true)
+            {
+                companyNameText.text = "Company: " + StockMarketManager_1850.StockPrefabListIndustri[cityManager.getActiveCity()].GetComponent<stockInformation>().nameCompany;
+            }
+        }
     }
 }

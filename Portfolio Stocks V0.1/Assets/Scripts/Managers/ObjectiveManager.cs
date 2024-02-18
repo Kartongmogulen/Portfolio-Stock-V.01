@@ -18,11 +18,6 @@ public class ObjectiveManager : MonoBehaviour
 
     public CityManager cityManager;
 
-    private void Update()
-    {
-        InvokeRepeating("checkIfObjectiveIsCompleted",1.0f,1.0f);
-    }
-
     public void checkIfObjectiveIsCompleted()
     {
         dividendIncomeObjective();
@@ -30,6 +25,12 @@ public class ObjectiveManager : MonoBehaviour
 
     public void dividendIncomeObjective()
     {
+        //Är MAX-level uppnådd
+        if(dividendIncomeLevel == dividendIncome.Count)
+        {
+            return;
+        }
+
         if (dividendIncome[dividendIncomeLevel] < DividendRecieved.divIncomeFromPortfolioNow())
         {
             
@@ -39,7 +40,7 @@ public class ObjectiveManager : MonoBehaviour
             completedQuest_BonusText.text = dividendQuestCompletedText_Bonus + cityManager.nameCity[availibleCities];
             cityManager.activateNextCity();
 
-            if (dividendIncomeLevel< dividendIncome.Count-1)
+            if (dividendIncomeLevel < dividendIncome.Count)
             {
                 dividendIncomeLevel++;
             }

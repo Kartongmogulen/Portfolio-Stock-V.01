@@ -126,7 +126,7 @@ public class dividendRecieved : MonoBehaviour
 		//Gå igenom alla järnvägs-bolag
 		for (int i = 0; i < StockMarketManager_1850.StockPrefabListRailroad.Count; i++)
 		{
-			Debug.Log("Utdelningar Järnväg");
+			//Debug.Log("Utdelningar Järnväg");
 			railroadCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().divPayout;
 			railroadCompanySharesOwned[i] = PortfolioStock.railroadCompanySharesOwned[i];
 			railroadCompanyDivRecieved[i] = railroadCompanyDivPayout[i] * railroadCompanySharesOwned[i];
@@ -136,7 +136,7 @@ public class dividendRecieved : MonoBehaviour
 		//Gå igenom alla Industri-bolag
 		for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
 		{
-			Debug.Log("Utdelningar Industri");
+			//Debug.Log("Utdelningar Industri");
 			industriCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicyPrefab>().divPayoutPerShare;
 			industriCompanySharesOwned[i] = PortfolioStock.industriCompanySharesOwned[i];
 			industriCompanyDivRecieved[i] = industriCompanyDivPayout[i] * industriCompanySharesOwned[i];

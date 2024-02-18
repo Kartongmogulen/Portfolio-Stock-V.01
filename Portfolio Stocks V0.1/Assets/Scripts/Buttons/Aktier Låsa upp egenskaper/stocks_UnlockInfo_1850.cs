@@ -16,6 +16,7 @@ public class stocks_UnlockInfo_1850 : MonoBehaviour
 	//Div policy
 	public List<int> minesDivPolicyUnlocked; //= new int[2];//0 = Spelaren har inte låst upp
 	public List<int> railroadDivPolicyUnlocked; //= new int[2];//0 = Spelaren har inte låst upp
+	public List<int> industriDivPolicyUnlocked; //= new int[2];//0 = Spelaren har inte låst upp
 
 	[SerializeField] int activeCity;
 	[SerializeField] int activeSector;
@@ -24,6 +25,7 @@ public class stocks_UnlockInfo_1850 : MonoBehaviour
 	{
 		minesDivPolicyUnlocked = CreateListWithLength.listWithRightLengthInt(StockMarketManager.StockPrefabListMines.Count);
 		railroadDivPolicyUnlocked = CreateListWithLength.listWithRightLengthInt(StockMarketManager.StockPrefabListRailroad.Count);
+		industriDivPolicyUnlocked = CreateListWithLength.listWithRightLengthInt(StockMarketManager.StockPrefabListIndustri.Count);
 	}
 
 
@@ -48,6 +50,14 @@ public class stocks_UnlockInfo_1850 : MonoBehaviour
 				ActionPointsManager.actionPointSub(divPolicyUnlockCost);
 				ChooseCompany_1850.chooseCompany();
 				//Debug.Log("Mines One: Div Pol UNLOCKED!");
+			}
+
+			if (activeSector == 2) //&& activeCity == 0)
+			{
+				industriDivPolicyUnlocked[activeCity] = 1;
+				ActionPointsManager.actionPointSub(divPolicyUnlockCost);
+				ChooseCompany_1850.chooseCompany();
+				Debug.Log("Industri One: Div Pol UNLOCKED!");
 			}
 
 

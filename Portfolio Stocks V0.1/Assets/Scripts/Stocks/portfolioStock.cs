@@ -322,6 +322,8 @@ public class portfolioStock : MonoBehaviour
 		}
 
 		industriTotalReturnPercent = industriTotalValue / industriTotalInvest - 1;
+
+
 	}
 	public void showPortfolioData_1850()
 		{
@@ -345,6 +347,16 @@ public class portfolioStock : MonoBehaviour
 		shareOfStockPortfolio_thirdSector_1850.text = " " + Mathf.Round(industriSharePortfolio * 100) + "%";
 		//techSharePortfolioText.text = " " + Mathf.Round(techSharePortfolio * 100) + "%";
 
+	}
+
+	public void returnPortfolio_1850()
+	{
+		totalInvest_1850();
+		valuePortfolio();
+		Debug.Log("Värde portfölj: " + totalValuePortfolio);
+		Debug.Log("Investerat i portfölj: " + totalInvestAmountPortfolio);
+		totalReturnPortfolioPercent = (totalValuePortfolio / totalInvestAmountPortfolio)-1;
+		savePortfolioReturnEachTurn();
 	}
 
 	public void showPortfolioData() {
@@ -424,12 +436,13 @@ public class portfolioStock : MonoBehaviour
 			totalReturnPortfolioAmount = utiTotalReturnAmount + techTotalReturnAmount;
 
 			totalInvest();
-			totalReturnPortfolioPercent = totalReturnPortfolioAmount / totalInvestAmountPortfolio;
+			totalReturnPortfolioPercent = (totalReturnPortfolioAmount / totalInvestAmountPortfolio)-1;
 			savePortfolioReturnEachTurn();
 		}
 
 		public void savePortfolioReturnEachTurn()
 		{
+
 			returnPortfolioEachTurn.Add(totalReturnPortfolioPercent);
 		}
 

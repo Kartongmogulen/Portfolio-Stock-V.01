@@ -15,6 +15,7 @@ public class sendMoneyHome : MonoBehaviour
 
     public Text textOne;
 
+    public GameObject infoPanel;
     public GameObject sendMoneyButton;
     public totalCash TotalCash;
     public familyStatusManager FamilyStatusManager;
@@ -28,13 +29,14 @@ public class sendMoneyHome : MonoBehaviour
 
     public void timeForPlayerToSendMoney(int yearNow)
     {
-        Debug.Log("År: " + yearNow);
+        //Debug.Log("År: " + yearNow);
         Debug.Log("Börja skicka pengar (år): " + startSendingMoneyTimepoint);
 
         if (yearNow >= startSendingMoneyTimepoint)
         {
             Debug.Log("Send money!");
             textOne.text = sendMoneyText + " " + moneyNeededPerYear + "\n" + effectOnFamilyNoMoneyText + "-" + FamilyStatusManager.getFamilyStatusChange();
+            infoPanel.SetActive(true);
             sendMoneyButton.SetActive(true);
            
         }
@@ -49,10 +51,11 @@ public class sendMoneyHome : MonoBehaviour
         //Om spelaren har tillräckligt med pengar skickas detta till familjen
         if (TotalCash.moneyNow >= amountToSend)
         {
+            Debug.Log("Tillräckligt med pengar");
             TotalCash.transactionMoney(-amountToSend);
             FamilyStatusManager.updateFamilyHealth();
 
-            sendMoneyButton.SetActive(false);
+            infoPanel.SetActive(false);
         }
     }
 

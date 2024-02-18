@@ -359,6 +359,7 @@ MonoBehaviour:
   objectsToTurnOff:
   - {fileID: 76359831}
   stayActiveEvenWhenButtonPress: 0
+  activateAtStart: 0
 --- !u!114 &6490375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6518,6 +6519,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 2120513835}
   objectsToTurnOff: []
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!1 &133601313
 GameObject:
   m_ObjectHideFlags: 0
@@ -10859,6 +10861,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 227017668}
   objectsToTurnOff: []
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!1 &228235655
 GameObject:
   m_ObjectHideFlags: 0
@@ -10877,7 +10880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &228235656
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16117,7 +16120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &352070113
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16232,8 +16235,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToActivate: {fileID: 1032898966}
   objectsToTurnOff:
-  - {fileID: 572861973}
+  - {fileID: 2120513835}
+  - {fileID: 1122335989}
+  - {fileID: 1725961130}
+  - {fileID: 1138191010}
   stayActiveEvenWhenButtonPress: 0
+  activateAtStart: 0
 --- !u!114 &356407641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16475,6 +16482,7 @@ MonoBehaviour:
   - {fileID: 1120526362}
   - {fileID: 797269994}
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!114 &360375874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16650,6 +16658,7 @@ MonoBehaviour:
   - {fileID: 2067109901}
   - {fileID: 1120526362}
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!114 &361518846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18029,7 +18038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &384878682
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19095,6 +19104,7 @@ MonoBehaviour:
   - {fileID: 1546964327}
   - {fileID: 911754940}
   stayActiveEvenWhenButtonPress: 0
+  activateAtStart: 0
 --- !u!4 &400160926 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
@@ -22767,7 +22777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &485404714
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25423,7 +25433,7 @@ RectTransform:
   - {fileID: 1676036989}
   - {fileID: 1478325818}
   m_Father: {fileID: 1115742493}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -36794,18 +36804,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 741300675}
-        m_TargetAssemblyTypeName: bondMaturityCheck, Assembly-CSharp
-        m_MethodName: checkFiveYearBonds
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &602612600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37782,6 +37780,211 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628801987}
   m_CullTransparentMesh: 1
+--- !u!1 &630657656
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 630657657}
+  - component: {fileID: 630657660}
+  - component: {fileID: 630657659}
+  - component: {fileID: 630657658}
+  m_Layer: 5
+  m_Name: EndRoundButton (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &630657657
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630657656}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.4, y: 2.4, z: 2.4}
+  m_Children:
+  - {fileID: 645101665}
+  m_Father: {fileID: 1115742493}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1735.3439, y: -35.9989}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &630657658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630657656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 630657659}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 903494711}
+        m_TargetAssemblyTypeName: endRoundButton, Assembly-CSharp
+        m_MethodName: endTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1478753269}
+        m_TargetAssemblyTypeName: endRoundButtonDebugg, Assembly-CSharp
+        m_MethodName: investInOnlyOneCompany
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 514381901}
+        m_TargetAssemblyTypeName: portfolioUIManager, Assembly-CSharp
+        m_MethodName: updateData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 68072568}
+        m_TargetAssemblyTypeName: allStocksComparisonLayout, Assembly-CSharp
+        m_MethodName: updateAllText
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1985270149}
+        m_TargetAssemblyTypeName: bondMarketManager, Assembly-CSharp
+        m_MethodName: updateEachRound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1707127229}
+        m_TargetAssemblyTypeName: familyStatusManager, Assembly-CSharp
+        m_MethodName: didPlayerSendMoneyToFamily
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 678885388}
+        m_TargetAssemblyTypeName: portfolioStock, Assembly-CSharp
+        m_MethodName: returnPortfolio_1850
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &630657659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630657656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &630657660
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630657656}
+  m_CullTransparentMesh: 0
 --- !u!1 &633518837
 GameObject:
   m_ObjectHideFlags: 0
@@ -38279,6 +38482,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643585179}
+  m_CullTransparentMesh: 0
+--- !u!1 &645101664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 645101665}
+  - component: {fileID: 645101667}
+  - component: {fileID: 645101666}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &645101665
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645101664}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 630657657}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &645101666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645101664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: End Round
+--- !u!222 &645101667
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645101664}
   m_CullTransparentMesh: 0
 --- !u!1 &652974027
 GameObject:
@@ -39155,6 +39437,7 @@ MonoBehaviour:
   objectsToTurnOff:
   - {fileID: 917074884}
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!1 &670722034
 GameObject:
   m_ObjectHideFlags: 0
@@ -42352,10 +42635,10 @@ RectTransform:
   m_Father: {fileID: 1820210370}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 204.33, y: -22.899}
-  m_SizeDelta: {x: 408.66, y: 45.798}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &740678774
 GameObject:
@@ -42923,7 +43206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -54486,6 +54769,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 227017668}
   objectsToTurnOff: []
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!1 &845382340
 GameObject:
   m_ObjectHideFlags: 0
@@ -56203,7 +56487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &890702365
 RectTransform:
   m_ObjectHideFlags: 0
@@ -56331,18 +56615,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1707127229}
         m_TargetAssemblyTypeName: familyStatusManager, Assembly-CSharp
         m_MethodName: didPlayerSendMoneyToFamily
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1774405556}
-        m_TargetAssemblyTypeName: timeManager, Assembly-CSharp
-        m_MethodName: endTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -58462,7 +58734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.30588236}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -58506,7 +58778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 35.313965, y: -2.8743286}
+  m_AnchoredPosition: {x: 20.008, y: -25}
   m_SizeDelta: {x: -528.73, y: -242.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &925411306
@@ -64580,7 +64852,7 @@ RectTransform:
   m_Children:
   - {fileID: 1922248139}
   m_Father: {fileID: 1115742493}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -64605,7 +64877,10 @@ MonoBehaviour:
   - {fileID: 227017668}
   - {fileID: 1390032895}
   - {fileID: 1040087114}
+  - {fileID: 1032898966}
+  - {fileID: 2120513835}
   stayActiveEvenWhenButtonPress: 0
+  activateAtStart: 0
 --- !u!114 &1031960954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65570,6 +65845,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 1040087114}
   objectsToTurnOff: []
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!1 &1040694932
 GameObject:
   m_ObjectHideFlags: 0
@@ -67284,6 +67560,7 @@ MonoBehaviour:
   objectsToTurnOff:
   - {fileID: 2120513835}
   stayActiveEvenWhenButtonPress: 0
+  activateAtStart: 0
 --- !u!114 &1072818075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68022,10 +68299,10 @@ RectTransform:
   m_Father: {fileID: 975784951}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -62.395203}
-  m_SizeDelta: {x: 160, y: 41.5968}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1098449214
 MonoBehaviour:
@@ -68606,6 +68883,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1774405557}
+        m_TargetAssemblyTypeName: ObjectiveManager, Assembly-CSharp
+        m_MethodName: checkIfObjectiveIsCompleted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1105974507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68913,6 +69202,7 @@ MonoBehaviour:
   - {fileID: 2067109901}
   - {fileID: 797269994}
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!114 &1110523307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69140,6 +69430,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 630657657}
   - {fileID: 1031960952}
   - {fileID: 1389791432}
   - {fileID: 2120513836}
@@ -71671,7 +71962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1157597191
 RectTransform:
   m_ObjectHideFlags: 0
@@ -73553,7 +73844,7 @@ PrefabInstance:
     - target: {fileID: 216242760838551202, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
       propertyPath: EarningPerShareStart
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 216242760838551202, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
@@ -73652,8 +73943,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6092396831862956812, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
+      propertyPath: divPolicyChangeDiv
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6092396831862956812, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
       propertyPath: companyPaysDividend
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6092396831862956812, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
+      propertyPath: divPolicyMaxPayouRatio
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8645120913243470888, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
@@ -79054,6 +79355,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 482015902}
   objectsToTurnOff: []
   stayActiveEvenWhenButtonPress: 0
+  activateAtStart: 0
 --- !u!114 &1314306673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81123,7 +81425,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Send money
 --- !u!222 &1339489686
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -83165,6 +83467,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 2120513835}
   objectsToTurnOff: []
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!114 &1378033462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83591,7 +83894,7 @@ RectTransform:
   - {fileID: 236954821}
   - {fileID: 25039785}
   m_Father: {fileID: 1115742493}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -83757,6 +84060,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 1390032895}
   objectsToTurnOff: []
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!1 &1390873558
 GameObject:
   m_ObjectHideFlags: 0
@@ -84224,6 +84528,7 @@ MonoBehaviour:
   objectsToTurnOff:
   - {fileID: 181254844}
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!114 &1399147299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91102,7 +91407,6 @@ GameObject:
   - component: {fileID: 1572129391}
   - component: {fileID: 1572129390}
   - component: {fileID: 1572129389}
-  - component: {fileID: 1572129392}
   m_Layer: 5
   m_Name: SendMoneyButton
   m_TagString: Untagged
@@ -91186,18 +91490,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1572129392}
-        m_TargetAssemblyTypeName: onOffGameObjectsTool, Assembly-CSharp
-        m_MethodName: turnOffObjects
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1572129390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91236,22 +91528,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572129387}
   m_CullTransparentMesh: 1
---- !u!114 &1572129392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1572129387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eeade48537f35a4f95750dd4aa467fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToActivate: {fileID: 0}
-  objectsToTurnOff:
-  - {fileID: 1572129387}
-  stayActiveEvenWhenButtonPress: 0
 --- !u!1 &1572865821
 GameObject:
   m_ObjectHideFlags: 0
@@ -92059,6 +92335,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 2120513835}
   objectsToTurnOff: []
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!114 &1585031178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94812,6 +95089,7 @@ GameObject:
   - component: {fileID: 1635561459}
   - component: {fileID: 1635561458}
   - component: {fileID: 1635561457}
+  - component: {fileID: 1635561460}
   m_Layer: 5
   m_Name: StockButtonPanel
   m_TagString: Untagged
@@ -94883,18 +95161,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 903494712}
-        m_TargetAssemblyTypeName: activatePanelButton, Assembly-CSharp
-        m_MethodName: activeStockPanel_1850
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2092176707}
         m_TargetAssemblyTypeName: trailing12MonthHighLowCalculation, Assembly-CSharp
         m_MethodName: updateDataForStocks
@@ -94910,6 +95176,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2140863980}
         m_TargetAssemblyTypeName: showStockInfo_1, Assembly-CSharp
         m_MethodName: showDataBasic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1635561460}
+        m_TargetAssemblyTypeName: onOffGameObjectsTool, Assembly-CSharp
+        m_MethodName: activateObject
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -94957,6 +95235,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635561455}
   m_CullTransparentMesh: 0
+--- !u!114 &1635561460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635561455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eeade48537f35a4f95750dd4aa467fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToActivate: {fileID: 2120513835}
+  objectsToTurnOff:
+  - {fileID: 157167762}
+  - {fileID: 1032898966}
+  - {fileID: 1122335989}
+  - {fileID: 1725961130}
+  stayActiveEvenWhenButtonPress: 0
+  activateAtStart: 0
 --- !u!1 &1635975105
 GameObject:
   m_ObjectHideFlags: 0
@@ -95227,6 +95525,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 1319199868}
   objectsToTurnOff: []
   stayActiveEvenWhenButtonPress: 0
+  activateAtStart: 0
 --- !u!1 &1651946882
 GameObject:
   m_ObjectHideFlags: 0
@@ -96301,7 +96600,7 @@ PrefabInstance:
     - target: {fileID: 216242760838551202, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
       propertyPath: EarningPerShareStart
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 216242760838551202, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
@@ -96400,8 +96699,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6092396831862956812, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
+      propertyPath: divPolicyChangeDiv
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6092396831862956812, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
       propertyPath: companyPaysDividend
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6092396831862956812, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
+      propertyPath: divPolicyMaxPayouRatio
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8645120913243470888, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
@@ -97171,6 +97480,7 @@ MonoBehaviour:
   moneyNeededPerYear: 1000
   startSendingMoneyTimepoint: 1
   textOne: {fileID: 1051269093}
+  infoPanel: {fileID: 482015902}
   sendMoneyButton: {fileID: 1572129387}
   TotalCash: {fileID: 678885390}
   FamilyStatusManager: {fileID: 1707127229}
@@ -97192,6 +97502,7 @@ MonoBehaviour:
   moneySendThisTurn: 1
   EndRoundButton: {fileID: 903494711}
   sendMoneyButton: {fileID: 1572129387}
+  infoPanel: {fileID: 482015902}
   familyHealthText: {fileID: 737995444}
 --- !u!1 &1707861819
 GameObject:
@@ -98315,7 +98626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1723330387
 RectTransform:
   m_ObjectHideFlags: 0
@@ -98436,6 +98747,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 1725961130}
   objectsToTurnOff: []
   stayActiveEvenWhenButtonPress: 0
+  activateAtStart: 0
 --- !u!114 &1725961133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100853,6 +101165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762276804}
   - component: {fileID: 1762276805}
+  - component: {fileID: 1762276806}
   m_Layer: 0
   m_Name: HistoricalEvents
   m_TagString: Untagged
@@ -100898,7 +101211,25 @@ MonoBehaviour:
   eventDescription: {fileID: 1115897987}
   eventEffect: {fileID: 2132910132}
   StockMarketManager: {fileID: 1010759430}
-  TimeManager: {fileID: 1774405556}
+  TimeManager: {fileID: 0}
+--- !u!114 &1762276806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762276803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fcd7d91864cf864fa67b3ee5a2e0497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  year: 0
+  month: 1
+  multiMonthSim: 0
+  stop12MonthSim: 0
+  countMultiMonthSim: 0
+  HistoricEventManager: {fileID: 1762276805}
 --- !u!1001 &1764385023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101048,7 +101379,7 @@ PrefabInstance:
     - target: {fileID: 216242760838551202, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
       propertyPath: EarningPerShareStart
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 216242760838551202, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
@@ -101147,8 +101478,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6092396831862956812, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
+      propertyPath: divPolicyChangeDiv
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6092396831862956812, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
       propertyPath: companyPaysDividend
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6092396831862956812, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
+        type: 3}
+      propertyPath: divPolicyMaxPayouRatio
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 8645120913243470888, guid: 1045d7ea9ac3d97448a6d3d30ca55bae,
         type: 3}
@@ -102079,10 +102420,10 @@ RectTransform:
   m_Father: {fileID: 975784951}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -20.7984}
-  m_SizeDelta: {x: 160, y: 41.5968}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1772487747
 MonoBehaviour:
@@ -102309,6 +102650,7 @@ MonoBehaviour:
   - {fileID: 1546964327}
   - {fileID: 1157597190}
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!1 &1774405546
 GameObject:
   m_ObjectHideFlags: 0
@@ -102327,7 +102669,6 @@ GameObject:
   - component: {fileID: 1774405557}
   - component: {fileID: 1774405555}
   - component: {fileID: 1774405549}
-  - component: {fileID: 1774405556}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -102513,24 +102854,6 @@ MonoBehaviour:
   pointsInvestedAndLeftToUnlockText: {fileID: 1581008492}
   PointsLeftToUnlock: {fileID: 769020706}
   ChooseSkillInSkill: {fileID: 903494715}
---- !u!114 &1774405556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1774405546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fcd7d91864cf864fa67b3ee5a2e0497, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  year: 0
-  month: 1
-  multiMonthSim: 0
-  stop12MonthSim: 0
-  countMultiMonthSim: 0
-  HistoricEventManager: {fileID: 1762276805}
 --- !u!114 &1774405557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102544,8 +102867,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dividendIncome:
-  - 1
   - 10
+  - 100
   dividendIncomeLevel: 0
   DividendRecieved: {fileID: 2092176702}
   dividendQuestCompletedText: Dividend limit reached!
@@ -107311,7 +107634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -114240,6 +114563,7 @@ MonoBehaviour:
   - {fileID: 1157597190}
   - {fileID: 228235655}
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!1 &1951720553
 GameObject:
   m_ObjectHideFlags: 0
@@ -116271,6 +116595,7 @@ MonoBehaviour:
   objectToActivate: {fileID: 2120513835}
   objectsToTurnOff: []
   stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 0
 --- !u!114 &1998445165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117456,6 +117781,7 @@ MonoBehaviour:
   divPolicyUnlockCost: 0
   minesDivPolicyUnlocked: 
   railroadDivPolicyUnlocked: 
+  industriDivPolicyUnlocked: 
   activeCity: 0
   activeSector: 0
 --- !u!114 &2023206900
@@ -122545,6 +122871,7 @@ GameObject:
   - component: {fileID: 2120513836}
   - component: {fileID: 2120513838}
   - component: {fileID: 2120513837}
+  - component: {fileID: 2120513839}
   m_Layer: 5
   m_Name: StockPanel2_1850
   m_TagString: Untagged
@@ -122571,7 +122898,7 @@ RectTransform:
   - {fileID: 352070113}
   - {fileID: 395077088}
   m_Father: {fileID: 1115742493}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -122616,6 +122943,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120513835}
   m_CullTransparentMesh: 1
+--- !u!114 &2120513839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120513835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eeade48537f35a4f95750dd4aa467fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToActivate: {fileID: 228235655}
+  objectsToTurnOff:
+  - {fileID: 1157597190}
+  - {fileID: 1546964327}
+  - {fileID: 911754940}
+  stayActiveEvenWhenButtonPress: 1
+  activateAtStart: 1
 --- !u!1 &2120753462
 GameObject:
   m_ObjectHideFlags: 0
@@ -123813,6 +124159,7 @@ MonoBehaviour:
   - {fileID: 482015902}
   - {fileID: 2135700498}
   stayActiveEvenWhenButtonPress: 0
+  activateAtStart: 0
 --- !u!1 &2135943578
 GameObject:
   m_ObjectHideFlags: 0

@@ -138,6 +138,11 @@ public class chooseCompany_1850 : MonoBehaviour
             divPolicyText.text = "Maximum payout ratio: " + stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyMaxPayouRatio + "% and aims to increase the dividend with " + stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyChangeDiv + "% per year.";
         }
 
+        else if(activeSector == 2 && StocksUnlockInfo.industriDivPolicyUnlocked[cityIndex] == 1)
+        {
+            divPolicyText.text = "Maximum payout ratio: " + stockMarketSectorActive[cityIndex].GetComponent<divPolicyPrefab>().divPolicyMaxPayouRatio + "% and aims to increase the dividend with " + stockMarketSectorActive[cityIndex].GetComponent<divPolicyPrefab>().divPolicyChangeDiv + "% per year.";
+        }
+
         else
         {
             divPolicyText.text = "Div.Policy: LOCKED. Cost (Time Points): " + StocksUnlockInfo.getCost_UnlockDivPolicy();

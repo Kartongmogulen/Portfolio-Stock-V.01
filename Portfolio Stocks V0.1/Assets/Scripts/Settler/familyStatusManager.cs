@@ -12,6 +12,7 @@ public class familyStatusManager : MonoBehaviour
     public bool moneySendThisTurn = true;
     public endRoundButton EndRoundButton;
     public GameObject sendMoneyButton;
+    public GameObject infoPanel;
 
     public Text familyHealthText;
 
@@ -41,6 +42,7 @@ public class familyStatusManager : MonoBehaviour
         {
             familyHealthNow -= familyHealthChange;
             sendMoneyButton.SetActive(false);
+            infoPanel.SetActive(false);
         }
 
         //Nollställer 

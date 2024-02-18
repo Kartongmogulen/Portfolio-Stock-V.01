@@ -54,7 +54,7 @@ public class SkillsManager : MonoBehaviour
 
         if (buttonsSkills.Count != 0)
         {
-            Debug.Log("ButtonsSkill");
+            //Debug.Log("ButtonsSkill");
             buttonsSkills[0].GetComponentInChildren<Text>().text = skillsPlayersList[0].GetComponent<SkillsPlayer>().getDescription();
         }
     }

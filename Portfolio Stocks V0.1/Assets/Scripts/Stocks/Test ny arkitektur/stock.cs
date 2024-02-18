@@ -47,7 +47,7 @@ public class stock : MonoBehaviour
 
 	public void setEPSChangeYoYHistory()
 	{
-		Debug.Log("EPS Change: " + EPSHistory.Count);
+		//Debug.Log("EPS Change: " + EPSHistory.Count);
 		if (EPSHistory.Count > 1) 
 		{
 			float percentChange = Mathf.Round(((EPSHistory[EPSHistory.Count - 1]) / (EPSHistory[EPSHistory.Count - 2]) - 1)*100)/100;
