@@ -45,9 +45,21 @@ public class ShowHistoricData : MonoBehaviour
 
     public void updateYearText()
     {
-        for (int i = 0; i  < yearsHeader.Count;i++)
+
+
+        //Debug.Log("Antal EPS-text: " + EPSText.Count);
+        /*for (int i = 0; i  < yearsHeader.Count;i++)
         {
             yearsHeader[i].text = " " + (yearNow + EPSText.Count - (GamePlayScopeManager.yearsToGetHistoricData - i));
+        }
+        */
+
+        //Debug.Log("År nu: " + yearNow);
+
+        for (int i = 0; i < yearsHeader.Count; i++)
+        {
+            yearsHeader[i].text = " " + (yearNow  - i);
+            //yearsHeader[i].text = " " + (yearNow + (GamePlayScopeManager.yearsToGetHistoricData - i));
         }
     }
 

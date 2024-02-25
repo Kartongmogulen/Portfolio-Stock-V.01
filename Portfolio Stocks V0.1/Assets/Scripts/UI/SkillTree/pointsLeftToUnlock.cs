@@ -57,14 +57,17 @@ public class pointsLeftToUnlock : MonoBehaviour
         
     }
 
+    /*
     public void unlockTool_ComparisonPanel()
     {
-        if (skillsManager.getLevelUnlockNewCity() < skillsManager.maxLevelUnlockNewCity)
+        
+        if (skillsManager.skillsPlayersList[0].GetComponent<SkillsPlayer>().getCurrentLevel() < skillsManager.skillsPlayersList[0].GetComponent<SkillsPlayer>().maxLevel)
             skillNrThree_Text.text = "" + skillsManager.getExperienceUnlockNewCity() + "/" + skillsManager.costToUnlockNewCity;
         else
         {
             skillNrThree_Text.text = "Max lvl reached";
         }
     }
+    */
 
 }

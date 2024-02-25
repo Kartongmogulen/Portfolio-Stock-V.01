@@ -206,6 +206,39 @@ public class portfolioStock : MonoBehaviour
 		industriCompanySharesOwned[activeCompany] += shares;
 	}
 
+	public void checkIfAllStocksAreSold_ResetValues()
+	{
+		for (int i = 0; i < mineTotalInvestAmount.Count; i++)
+		{
+			if(minesCompanySharesOwned[i] == 0)
+			{
+				mineTotalInvestAmount[i] = 0;
+				mineTotalReturnAmount[i] = 0;
+				minesCompanyGAV[i] = 0;
+			}
+		}
+
+		for (int i = 0; i < railroadTotalInvestAmount.Count; i++)
+		{
+			if (railroadCompanySharesOwned[i] == 0)
+			{
+				railroadTotalInvestAmount[i] = 0;
+				railroadTotalReturnAmount[i] = 0;
+				railroadCompanyGAV[i] = 0;
+			}
+		}
+
+		for (int i = 0; i < industriTotalInvestAmount.Count; i++)
+		{
+			if (industriCompanySharesOwned[i] == 0)
+			{
+				industriTotalInvestAmount[i] = 0;
+				industriTotalReturnAmount[i] = 0;
+				industriCompanyGAV[i] = 0;
+			}
+		}
+	}
+
 	public void totalInvest() {
 
 		//valuePortfolio ();
@@ -297,8 +330,9 @@ public class portfolioStock : MonoBehaviour
 			mineTotalValue += (minesCompanySharesOwned[i] * StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice[lengthList - 1]);
 			
 		}
-		
-		mineTotalReturnPercent = mineTotalValue / minesTotalInvest -1 ;
+
+		mineTotalReturnPercent = mineTotalValue / minesTotalInvest - 1;
+
 		//___________
 
 		//Järnväg (Avkastning)

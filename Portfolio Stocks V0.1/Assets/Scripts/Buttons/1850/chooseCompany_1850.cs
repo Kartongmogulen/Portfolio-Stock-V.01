@@ -140,7 +140,8 @@ public class chooseCompany_1850 : MonoBehaviour
 
         else if(activeSector == 2 && StocksUnlockInfo.industriDivPolicyUnlocked[cityIndex] == 1)
         {
-            divPolicyText.text = "Maximum payout ratio: " + stockMarketSectorActive[cityIndex].GetComponent<divPolicyPrefab>().divPolicyMaxPayouRatio + "% and aims to increase the dividend with " + stockMarketSectorActive[cityIndex].GetComponent<divPolicyPrefab>().divPolicyChangeDiv + "% per year.";
+            //divPolicyText.text = "Maximum payout ratio: " + stockMarketSectorActive[cityIndex].GetComponent<divPolicyPrefab>().divPolicyMaxPayouRatio + "% and aims to increase the dividend with " + stockMarketSectorActive[cityIndex].GetComponent<divPolicyPrefab>().divPolicyChangeDiv + "% per year.";
+            divPolicyText.text = "Will pay out " + Mathf.Round(stockMarketSectorActive[cityIndex].GetComponent<managementPriorites>().dividendShareOfResult*10000)/100 + "% of the result";
         }
 
         else

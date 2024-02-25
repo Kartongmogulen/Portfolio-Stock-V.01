@@ -17,6 +17,12 @@ public class ObjectiveManager : MonoBehaviour
     public Text completedQuest_BonusText;
 
     public CityManager cityManager;
+    public SkillsManager skillsManager;
+
+    private void Start()
+    {
+        skillsManager = FindObjectOfType<SkillsManager>();
+    }
 
     public void checkIfObjectiveIsCompleted()
     {
@@ -38,7 +44,8 @@ public class ObjectiveManager : MonoBehaviour
             int availibleCities =  cityManager.getNumberOfAvailbleCities();
             questCompleted_ShowUI(dividendQuestCompletedText);
             completedQuest_BonusText.text = dividendQuestCompletedText_Bonus + cityManager.nameCity[availibleCities];
-            cityManager.activateNextCity();
+            //cityManager.activateNextCity();
+            skillsManager.levelUp_UnlockNewCity();
 
             if (dividendIncomeLevel < dividendIncome.Count)
             {

@@ -126,12 +126,7 @@ public class SkillsManager : MonoBehaviour
                 //Går spelaren upp en level?
                 if (experienceUnlockNewCity == costToUnlockNewCity)
                 {
-                    levelUnlockNewCity++; // Ökar lvl
-                    cityManager.activateNextCity();
-
-                    //Nollställer experince då det är samma poäng som krävs oavsett nuvarande level
-                    experienceUnlockNewCity = 0;
-                    //activateButtonForNewCompany();
+                    levelUp_UnlockNewCity();
                 }
             }
             PointsLeftToUnlock.unlockNewCity();
@@ -140,7 +135,17 @@ public class SkillsManager : MonoBehaviour
         }
     }
 
-    public void addExperienceUnlockTool_ComparisonPanel()
+    public void levelUp_UnlockNewCity()
+    {
+        levelUnlockNewCity++; // Ökar lvl
+        cityManager.activateNextCity();
+
+        //Nollställer experince då det är samma poäng som krävs oavsett nuvarande level
+        experienceUnlockNewCity = 0;
+        //activateButtonForNewCompany();
+    }
+
+    public void addExperienceUnlockTool_ComparisonPanel(int expPoints)
     {
         //Finns det poäng kvar att använda
         if (ActionPointsManager.remainingAP > 0)
@@ -151,7 +156,7 @@ public class SkillsManager : MonoBehaviour
             {
 
                 //experienceUnlock_ComparisonPanel++;
-                int newExperience = skillsPlayersList[0].GetComponent<SkillsPlayer>().setCurrentExperience(1);
+                int newExperience = skillsPlayersList[0].GetComponent<SkillsPlayer>().setCurrentExperience(expPoints);
                 ActionPointsManager.actionPointSub(1);
 
                 //Går spelaren upp en level?
