@@ -10,4 +10,9 @@ public class fishzone : MonoBehaviour
     {
         return probToCatchFish[zone];
     }
+
+    public int getNumberOfZones()
+    {
+        return (probToCatchFish.Count);
+    }
 }

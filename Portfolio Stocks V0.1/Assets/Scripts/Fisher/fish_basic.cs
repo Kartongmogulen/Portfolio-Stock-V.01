@@ -12,4 +12,8 @@ public class fish_basic : MonoBehaviour
         return probabilityByZoneLevel[level];
     }
 
+    public int getPrice()
+    {
+        return price;
+    }
 }
