@@ -24,8 +24,11 @@ public class valuePortfolio : MonoBehaviour
 
 		for (int i = 0; i < companySharesOwned.Count; i++)
 		{
-			totalValueSector += stockList[i].GetComponent<stock>().StockPrice[stockList[i].GetComponent<stock>().StockPrice.Count-1] * companySharesOwned[i];
-			//Debug.Log("ValueStock-script loop" + totalValueSector);
+			if (stockList[i].GetComponent<stock>() != null)
+			{
+				totalValueSector += stockList[i].GetComponent<stock>().StockPrice[stockList[i].GetComponent<stock>().StockPrice.Count - 1] * companySharesOwned[i];
+				//Debug.Log("ValueStock-script loop" + totalValueSector);
+			}
 		}
 
 		return totalValueSector;
@@ -37,8 +40,11 @@ public class valuePortfolio : MonoBehaviour
 
 		for (int i = 0; i < companySharesOwned.Count; i++)
 		{
-			totalValueSector += stockList[i].GetComponent<priceStock>().StockPrice[stockList[i].GetComponent<priceStock>().StockPrice.Count - 1] * companySharesOwned[i];
-			//Debug.Log("ValueStock-script loop" + totalValueSector);
+			if (stockList[i].GetComponent<productHolder>() != null)
+			{
+				totalValueSector += stockList[i].GetComponent<priceStock>().StockPrice[stockList[i].GetComponent<priceStock>().StockPrice.Count - 1] * companySharesOwned[i];
+				//Debug.Log("ValueStock-script loop" + totalValueSector);
+			}
 		}
 
 		return totalValueSector;

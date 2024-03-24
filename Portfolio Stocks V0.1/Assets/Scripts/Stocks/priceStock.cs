@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class priceStock : MonoBehaviour
 {
-    public List<float> StockPrice;
+	
+	public List<float> StockPrice;
     public float priceNow;
 	[SerializeField] float volatilityAbs;
 	[SerializeField] float volatilityPercent;
@@ -18,7 +19,13 @@ public class priceStock : MonoBehaviour
 
 	private void Start()
 	{
-		Invoke("calculate_TrailingTwelveMonth_PriceHighLow",0.1f);
+		if (allDataBeforeCleaning.Count > amountOfValuesToGet12Month)
+		{
+			Debug.Log(allDataBeforeCleaning.GetRange(allDataBeforeCleaning.Count - amountOfValuesToGet12Month, amountOfValuesToGet12Month));
+			Invoke("calculate_TrailingTwelveMonth_PriceHighLow", 0.1f);
+		}
+		else
+			return;
 	}
 
 	public float getTrailingTwelveMonthLow()

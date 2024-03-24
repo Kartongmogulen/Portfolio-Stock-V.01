@@ -21,12 +21,26 @@ public class catchFish : MonoBehaviour
 
     [SerializeField] int totalFishProb; //Totala "sannolikhets"poäng för alla fiskar i zonen. Används för att sedan beräkna vilken fisk som fångas
 
-    private void Start()
+    private void Awake()
     {
         FishManager = FindObjectOfType<fishManager>();
         Fishzone = FindObjectOfType<fishzone>();
         BoatStatManager = FindObjectOfType<boatStatManager>();
         FishingRodManager = FindObjectOfType<fishingRodManager>();
+    }
+
+    public void finishOneRound()
+    {
+        fishingPerRoundAllCompanies();
+        sellFish_OneRound();
+    }
+
+    public void fishingSeveralRoundsAllCompanies(int numberOfSimulations)
+    {
+        for (int i = 0; i < numberOfSimulations; i++)
+        {
+            fishingPerRoundAllCompanies();
+        }
     }
 
     public void fishingPerRoundAllCompanies()
@@ -37,39 +51,77 @@ public class catchFish : MonoBehaviour
         }
     }
 
+    public void sellFish_OneRound()
+    {
+        for (int i = 0; i < FisherCompanyStats.Count; i++)
+        {
+            FisherCompanyStats[i].sellFishAll();
+        }
+    }
+
     public void goFishingPerRound(fisherCompanyStats company)
     {
+        //Debug.Log("Name: " + company.name);
         //Var skickar bolaget sina anställda för att fiska
-        employeesPerZone[1] = whereToFish(company);
-        employeesPerZone[0] = company.getEmployees() - employeesPerZone[1];
+        //int zonToFish = whereToFish(company);
+        //employeesPerZone[zonToFish] = company.getEmployees();
+        company.whereToFish();
+
+        
+        //employeesPerZone[1] = whereToFish(company);
+        //employeesPerZone[0] = company.getEmployees() - employeesPerZone[1];
 
         //Var används fiskespön
-        whichZoneToUseFishingRods(company);
+        //whichZoneToUseFishingRods(company);
 
+      
         //Hur många fiskar per zon
-        howManyFishGetCaughtPerZone(company, 0);
-        howManyFishGetCaughtPerZone(company, 1);
+        for (int i = 0; i < Fishzone.getNumberOfZones(); i++)
+        {
+            if (company.getEmployeesPerZone()[i] > 0)
+            {
+                howManyFishGetCaughtPerZone(company, i);
+            }
+        }
+        
+        //howManyFishGetCaughtPerZone(company, 1);
+        
+        
+      //Vilken fisk fångas
+      resetValues();
 
-        //Vilken fisk fångas
-        resetValues();
-        whichFishGetCaught(0, company);
-        whichFishGetCaught(1, company);
+       //Kollar om det finns någon anställd i zonen{
+       for(int i = 0; i < employeesPerZone.Count; i++)
+        {
+            if (company.getEmployeesPerZone()[i] > 0)
+            {
+                whichFishGetCaught(i, company);
+            }
+        }
+
+        sellAllFish();
+
+
+        /*
+          whichFishGetCaught(0, company);
+      whichFishGetCaught(1, company);
         //whichFishGetCaught(0, 1, company);
-        //whichFishGetCaught(0, 2, company);
+      //whichFishGetCaught(0, 2, company);
 
-        //whichFishGetCaught(1, company);
-        //whichFishGetCaught(1, 1, company);
-        //whichFishGetCaught(1, 2, company);
+      //whichFishGetCaught(1, company);
+      //whichFishGetCaught(1, 1, company);
+      //whichFishGetCaught(1, 2, company);
 
-        //Data till företaget
-        company.setCaughtFish(0, caughtFishBySpecies[0]);
-        company.setCaughtFish(1, caughtFishBySpecies[1]);
-        company.setCaughtFish(2, caughtFishBySpecies[2]);
-
+      //Data till företaget
+      company.setCaughtFish(0, caughtFishBySpecies[0]);
+      company.setCaughtFish(1, caughtFishBySpecies[1]);
+      company.setCaughtFish(2, caughtFishBySpecies[2]);
+      */
     }
 
     public int whereToFish(fisherCompanyStats company)
     {
+       
         //Antal som åker ut till zon 2
         int employeesOnBoat = company.getBoatsAmount() * BoatStatManager.getBoatSize();
         return employeesOnBoat;
@@ -77,17 +129,40 @@ public class catchFish : MonoBehaviour
 
     public void howManyFishGetCaughtPerZone(fisherCompanyStats company, int zone)
     {
+        
         //Nollställer data
         caughtFishPerZone[zone] = 0;
 
         //Antal fångade fiskar per zon
-        for (int i = 0; i < employeesPerZone[zone] - 1; i++)
+
+        //Antal försök med fiskepö
+        for (int i = 0; i < company.getFishingRodAmount(0); i++)
         {
+            //Debug.Log("Antal iteration MED fiskespö: " + company.name + ": " + i);
             int randomInt = Random.Range(0, 100);
-            //Debug.Log("RandomInt: " + randomInt);
+            //Debug.Log("Slh att fånga fisk (grund): " + Fishzone.getProbFishZone(zone));
+
+            //Debug.Log("Slh att fånga fisk (fiskespö): " + FishingRodManager.getFishingRodStats(0).getprobChangeToGetAFish());
+            
+            int probToCatchFish = Fishzone.getProbFishZone(zone) + FishingRodManager.getFishingRodStats(0).getprobChangeToGetAFish();
+            //Debug.Log("Slh att fånga fisk efter påverkan av fiskespö: " + probToCatchFish);
+
+            if (randomInt < probToCatchFish)
+            {
+                company.addCaughtFishByZone(zone);
+            }
+        }
+
+        //Debug.Log("Antal fiskar per zon, iterationer: " + employeesPerZone[zone]);
+        for (int i = 0; i < (company.getEmployeesPerZone()[zone]- company.getFishingRodAmount(0)); i++)
+        {
+            //Debug.Log("Antal iteration utan fiskespö: " + i);
+            int randomInt = Random.Range(0, 100);
+            //Debug.Log("Antar fiskar som fångas RandomInt: " + randomInt);
             if(randomInt< Fishzone.getProbFishZone(zone))
             {
-                caughtFishPerZone[zone]++;
+                //Debug.Log("Zon där fisk fångas: " + zone);
+                company.addCaughtFishByZone(zone);
             }
         }
 
@@ -97,25 +172,62 @@ public class catchFish : MonoBehaviour
     //Vilken zon ska fiskepön av olika level användas
     public void whichZoneToUseFishingRods(fisherCompanyStats company)
     {
+        //Debug.Log("Var används fiskespön Script");
         //Lägg att på högsta zonen
         fishingRods_WhichZoneToUseThem_levelOne[1] = company.getFishingRodAmount(0);
     }
 
     public void whichFishGetCaught(int zone, fisherCompanyStats company)//, int fishingRodLevel)
     {
-        //Debug.Log("Fångade fiskar lvl 0: " + caughtFishBySpecies[0] + " i zon " + zone);
-        //Debug.Log("Antal fiskar lvl 1: " + caughtFishBySpecies[1]);
-        //normalizeWhichFishGetCaughtInZone(zone, 0);
+        //Debug.Log("Namn företag: " + company.name + " zon: " + zone +" antal fiskar som fångades i zonen: " + company.getCaughtFishByZone(zone));
 
+        //Antal fiskar som fångats i zonen
+        for (int i = 0; i < company.getCaughtFishByZone(zone); i++)
+        {
+            //Debug.Log("Antal iteration i zonen: " + i);
+            //Har alla fiskar i zonen blivit identifierade
+            if (totalFishCaught() == company.getCaughtFishByZone(zone))
+            {
+                //Debug.Log("Antalet fiskar fångade: " + caughtFishPerZone[zone]);
+                return;
+            }
+
+            else
+            {
+                int randomInt = Random.Range(0, totalFishProb);
+                //Debug.Log("RandomInt: " + randomInt);
+
+                if (randomInt < FishManager.typeOfFish[0].getProbabiltyByZoneLevel(Fishzone.getNumberOfZones() - 1))
+                {
+                    company.addCaughtFishBySpecies(0);
+                    //Debug.Log("Fisk nr 0: " + caughtFishBySpecies[0]);
+                }
+                else if (randomInt < (FishManager.typeOfFish[0].getProbabiltyByZoneLevel(Fishzone.getNumberOfZones() - 1) + FishManager.typeOfFish[1].getProbabiltyByZoneLevel(Fishzone.getNumberOfZones() - 1)))
+                {
+                    company.addCaughtFishBySpecies(1);
+                    //Debug.Log("Fisk nr 1: " + caughtFishBySpecies[1]);
+                }
+
+                else
+                {
+                    company.addCaughtFishBySpecies(2);
+                    //Debug.Log("Fisk nr 2: " + caughtFishBySpecies[2]);
+                }
+            }
+            //Debug.Log("Antal iterationer i fiskespö-loop: " + i);
+        }
+
+
+
+        /*
         //Fiskespön används vid högst zon
-       
         if (zone == Fishzone.getNumberOfZones() - 1)
         {
             //Debug.Log("Fiskezon: " + (Fishzone.getNumberOfZones() - 1));
             normalizeWhichFishGetCaughtInZone(zone, 1);
 
-            Debug.Log("Gräns för att fånga fisk lvl 0: " + FishManager.typeOfFish[0].getProbabiltyByZoneLevel(Fishzone.getNumberOfZones() - 1));
-            Debug.Log("Gräns för att fånga fisk lvl 1: " + (FishManager.typeOfFish[0].getProbabiltyByZoneLevel(Fishzone.getNumberOfZones() - 1) + FishManager.typeOfFish[1].getProbabiltyByZoneLevel(Fishzone.getNumberOfZones() - 1)));
+            //Debug.Log("Gräns för att fånga fisk lvl 0: " + FishManager.typeOfFish[0].getProbabiltyByZoneLevel(Fishzone.getNumberOfZones() - 1));
+            //Debug.Log("Gräns för att fånga fisk lvl 1: " + (FishManager.typeOfFish[0].getProbabiltyByZoneLevel(Fishzone.getNumberOfZones() - 1) + FishManager.typeOfFish[1].getProbabiltyByZoneLevel(Fishzone.getNumberOfZones() - 1)));
 
             //Antal fiskar som fångats i zonen
             for (int i = 0; i < company.getFishingRodAmount(0); i++)
@@ -123,14 +235,14 @@ public class catchFish : MonoBehaviour
                 //Har alla fiskar i zonen blivit identifierade
                 if (totalFishCaught() == caughtFishPerZone[zone])
                 {
-                    Debug.Log("Antalet fiskar fångade: " + caughtFishPerZone[zone]);
+                    //Debug.Log("Antalet fiskar fångade: " + caughtFishPerZone[zone]);
                     return;
                 }
 
                 else
                 {
                     int randomInt = Random.Range(0, totalFishProb);
-                    Debug.Log("RandomInt: " + randomInt);
+                    //Debug.Log("RandomInt: " + randomInt);
                    
                     if (randomInt < FishManager.typeOfFish[0].getProbabiltyByZoneLevel(Fishzone.getNumberOfZones() - 1))
                     {
@@ -149,10 +261,10 @@ public class catchFish : MonoBehaviour
                         //Debug.Log("Fisk nr 2: " + caughtFishBySpecies[2]);
                     }
                 }
-                Debug.Log("Antal iterationer i fiskespö-loop: " + i);
+                //Debug.Log("Antal iterationer i fiskespö-loop: " + i);
             }
 
-            Debug.Log("Antal fiskar efter fiskespön: " + (caughtFishBySpecies[0] + caughtFishBySpecies[1] + caughtFishBySpecies[2]));
+            //Debug.Log("Antal fiskar efter fiskespön: " + (caughtFishBySpecies[0] + caughtFishBySpecies[1] + caughtFishBySpecies[2]));
 
             //Debug.Log("Antal fiskar lvl 1: " + caughtFishBySpecies[1]);
             //
@@ -226,6 +338,7 @@ public class catchFish : MonoBehaviour
             }
         }
         //Debug.Log("Antal fiskar lvl 1: " + (caughtFishBySpecies[1]));
+        */
     }
 
     public int totalFishCaught()
@@ -265,6 +378,14 @@ public class catchFish : MonoBehaviour
         for (int i = 0; i < caughtFishBySpecies.Count; i++)
         {
             caughtFishBySpecies[i] = 0;
+        }
+    }
+
+    public void sellAllFish()
+    {
+        for (int i = 0; i< FisherCompanyStats.Count; i++)
+        {
+            FisherCompanyStats[i].sellFishAll();
         }
     }
 

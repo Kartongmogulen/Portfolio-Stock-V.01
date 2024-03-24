@@ -9,7 +9,7 @@ public class stockInformation : MonoBehaviour
     [SerializeField] int numberOfSharesNow;
     public string nameCompany;
 
-    private void Start()
+    private void Awake()
     {
         numberOfSharesNow = numberOfSharesStart;
     }

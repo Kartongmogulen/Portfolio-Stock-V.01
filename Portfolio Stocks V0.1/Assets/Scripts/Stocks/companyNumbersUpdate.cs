@@ -57,7 +57,15 @@ public class companyNumbersUpdate : MonoBehaviour
 
 		for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
 		{
-			StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicyPrefab>().saveDividendHistory();
+
+			if (StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicyPrefab>() != null)
+			{
+				StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicyPrefab>().saveDividendHistory();
+			}
+			else
+			{
+				StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().saveDividendHistory();
+			}
 			//StockMarketManager_1850.StockPrefabListMines[i].GetComponent<dividendHistory>().dividendPaid.Add()
 		}
 
@@ -87,7 +95,10 @@ public class companyNumbersUpdate : MonoBehaviour
 	{
 		for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
 		{
-			StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<managementPriorites>().allocateCapital();
+			if (StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<managementPriorites>() != null)
+			{
+				StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<managementPriorites>().allocateCapital();
+			}
 		}
 	}
 }

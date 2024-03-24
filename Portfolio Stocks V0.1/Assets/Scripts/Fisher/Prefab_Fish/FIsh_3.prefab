@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0376adc014ed354468fd0e60ff30cf16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 15
-  probabilityByZoneLevel: 000000000a000000
+  price: 10
+  probabilityByZoneLevel: 000000000a0000000a0000000f00000014000000

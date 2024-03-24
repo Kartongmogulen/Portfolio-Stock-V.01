@@ -47,7 +47,7 @@ public class endRoundButton : MonoBehaviour
 	public int countMultiMonthSim;
 
 	void Start(){
-		//month = 1;
+		month = 1;
 		DateNowText.text = "Y: " + year + " M: " + month;
 		timePointsLeftText.GetComponent<Text>().enabled = false;
 
@@ -61,6 +61,19 @@ public class endRoundButton : MonoBehaviour
 		*/
 	}
 
+	public void endTurn_Fisher()
+	{
+		month++;//Add 1 to the month;
+		DateNowText.text = "Y: " + year + " M: " + month;
+
+		if (month > 12)
+		{
+			year++;
+			month = 1;
+			DateNowText.text = "Y: " + year + " M: " + month;
+		}
+	}
+
 	public void endTurn() //Uppdaterar tid samt texten för vilken aktuell tid det är
 	{
 		timePointsLeftText.GetComponent<Text>().enabled = false;
@@ -68,6 +81,8 @@ public class endRoundButton : MonoBehaviour
 		//month = month + 10;
 		month++;//Add 1 to the month;
 		DateNowText.text = "Y: " + year + " M: " + month;
+
+		//Debug.Log("End Round Button Månad: " + month);
 
 		//Aktier
 		managerScriptsGO.GetComponent<stockPriceManager>().updateStockMarketPrice();
@@ -77,6 +92,8 @@ public class endRoundButton : MonoBehaviour
 		//StockScriptGO.GetComponent<PEG>().calculatePEG();
 		//MainCanvas.GetComponent<infoStockSector>().histPriceSector(); //Spara historiska priser
 		//DataPointsGO.GetComponent<windowGraph>().CreateGraph ();
+		
+
 
 		//Företag
 		playerPanelGO.GetComponent<ownedBusiness>().playerCashflow();
@@ -170,7 +187,7 @@ public class endRoundButton : MonoBehaviour
 		}
 		//playerPanelGO.GetComponent<totalCash>().incomeWork();
 		//playerPanelGO.GetComponent<totalCash>().incomeRealEstate();
-
+		managerScriptsGO.GetComponent<eventStockManager>().doesEventOccur(month);
 	}
 
 	IEnumerator waitSoOtherScriptsCanFinish()

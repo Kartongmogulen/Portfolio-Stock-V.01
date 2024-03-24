@@ -14,9 +14,10 @@ public class stockMarketInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        skapaStartLista();
-
+        if (minesList.Count > 0)
+        {
+            skapaStartLista();
+        }
     }
    
     public void skapaStartLista()

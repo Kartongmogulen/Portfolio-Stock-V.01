@@ -14,6 +14,7 @@ public class priceUpdate : MonoBehaviour
 
     private void Update()
     {
+        if (StockMarketManager_1850 != null)
         updatePriceText_1850();
     }
 
@@ -41,5 +42,10 @@ public class priceUpdate : MonoBehaviour
         }
 
         priceText.text = "Price: " + stockPrice;
+    }
+
+    public void updatePriceOnClick(priceStock stockPriceInfo)
+    {
+        priceText.text = "Price: " + stockPriceInfo.StockPrice[stockPriceInfo.StockPrice.Count-1];
     }
 }

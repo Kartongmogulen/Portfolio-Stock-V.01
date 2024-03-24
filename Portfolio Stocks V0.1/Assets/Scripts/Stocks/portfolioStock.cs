@@ -387,8 +387,8 @@ public class portfolioStock : MonoBehaviour
 	{
 		totalInvest_1850();
 		valuePortfolio();
-		Debug.Log("Värde portfölj: " + totalValuePortfolio);
-		Debug.Log("Investerat i portfölj: " + totalInvestAmountPortfolio);
+		//Debug.Log("Värde portfölj: " + totalValuePortfolio);
+		//Debug.Log("Investerat i portfölj: " + totalInvestAmountPortfolio);
 		totalReturnPortfolioPercent = (totalValuePortfolio / totalInvestAmountPortfolio)-1;
 		savePortfolioReturnEachTurn();
 	}
@@ -490,9 +490,10 @@ public class portfolioStock : MonoBehaviour
 			totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabOne(minesCompanySharesOwned, StockMarketManager_1850.StockPrefabListMines);
 			totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabOne(railroadCompanySharesOwned, StockMarketManager_1850.StockPrefabListRailroad);
 			totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabTwo(industriCompanySharesOwned, StockMarketManager_1850.StockPrefabListIndustri);
+		totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabOne(industriCompanySharesOwned, StockMarketManager_1850.StockPrefabListIndustri);
 
 
-			valuePortfolioText.text = "Value: " + totalValuePortfolio;
+		valuePortfolioText.text = "Value: " + totalValuePortfolio;
 		}
 
 	

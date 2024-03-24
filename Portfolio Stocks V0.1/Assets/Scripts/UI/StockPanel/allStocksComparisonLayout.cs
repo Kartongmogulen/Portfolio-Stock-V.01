@@ -45,8 +45,8 @@ public class allStocksComparisonLayout : MonoBehaviour
 
     private void Start ()
     {
-        InvokeRepeating("updateAllText_1850", 0.5f, 0.1f);
-        
+        InvokeRepeating("updateAllText_1850", 0.5f, 0.1f); //SÅ ANDRA SCRIPT HINNER KÖRAS
+        //updateAllText_1850();   
     }
 
     public void updateAllText()
@@ -93,7 +93,15 @@ public class allStocksComparisonLayout : MonoBehaviour
         {
             //Debug.Log("i: " + i);
             //Debug.Log("intToStartFrom: " + intToStartFrom);
-            nameIndustriList[i].text = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stockInformation>().nameCompany;
+            if (StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stockInformation>() != null)
+            {
+                nameIndustriList[i].text = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stockInformation>().nameCompany;
+            }
+
+            else
+            {
+                nameIndustriList[i].text = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().nameOfCompany;
+            }
         }
 
     }
@@ -108,33 +116,51 @@ public class allStocksComparisonLayout : MonoBehaviour
 
     public void updatePriceEarningsText_1850()
     {
+        //Debug.Log("Uppdatera text 1850");
         for (int i = 0; i < StockMarketManager_1850.StockPrefabListMines.Count; i++)
         {
+          
+            //Debug.Log("Längd lista med Pris: " + StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice.Count);
             float priceNow = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice.Count - 1];
+            //Debug.Log("Pris: " + priceNow);
             float EPSNow = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().EPSnow;
             PriceEarningsList[i].text = "" + Mathf.Round(priceNow / EPSNow*100)/100;
         }
-        
-            for (int i = 0; i < StockMarketManager_1850.StockPrefabListRailroad.Count; i++)
-            {
-                float priceNow = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().StockPrice.Count - 1];
-                float EPSNow = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().EPSnow;
-                //Debug.Log("Pris: " + priceNow);
-                //Debug.Log("EPS nu: " + EPSNow);
-                PriceEarningsListRailroad[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
-                //PriceEarningsList[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
-            }
+        //Debug.Log("Gruvor färdig");
 
+       for (int i = 0; i < StockMarketManager_1850.StockPrefabListRailroad.Count; i++)
+       {
+           float priceNow = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().StockPrice.Count - 1];
+           float EPSNow = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().EPSnow;
+           //Debug.Log("Pris: " + priceNow);
+           //Debug.Log("EPS nu: " + EPSNow);
+           PriceEarningsListRailroad[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
+           //PriceEarningsList[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
+       }
+
+
+        //Debug.Log("Innan Industri");
         for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
         {
-            float priceNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice.Count - 1];
-            //float EPSNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<incomeStatement>().EarningPerShareHistory[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<incomeStatement>().EarningPerShareHistory.Count-1];
+            //Debug.Log("i: " + i);
+            if (StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<productHolder>() != null)
+            {
+                float priceNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice.Count - 1];
+                //float EPSNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<incomeStatement>().EarningPerShareHistory[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<incomeStatement>().EarningPerShareHistory.Count-1];
 
-            float EPSNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<incomeStatement>().getEarningsPerShareNow();
-            //Debug.Log("Pris: " + priceNow);
-            //Debug.Log("EPS nu: " + EPSNow);
-            PriceEarningsListIndustri[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
-            //PriceEarningsList[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
+                float EPSNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<incomeStatement>().getEarningsPerShareNow();
+                //Debug.Log("Pris: " + priceNow);
+                //Debug.Log("EPS nu: " + EPSNow);
+                PriceEarningsListIndustri[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
+                //PriceEarningsList[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
+            }
+            else
+            {
+                float priceNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().StockPrice.Count - 1];
+                float EPSNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().EPSnow;
+                PriceEarningsListIndustri[i].text = "" + Mathf.Round(priceNow / EPSNow * 100) / 100;
+            }
+
         }
 
     }
@@ -178,14 +204,18 @@ public class allStocksComparisonLayout : MonoBehaviour
         
         for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
         {
-            priceNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice.Count - 1];
-            low52Week = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().getTrailingTwelveMonthLow();
-            high52Week = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().getTrailingTwelveMonthHigh();
-            //Debug.Log("Pris nu: " + priceNow);
-            //Debug.Log("PriceNow: Industri" + priceNow);
-            //Debug.Log("Low52: " + low52Week);
-            //Debug.Log("High52: " + high52Week);
-            Trailing12MonthPrice_Índustri[i].value = Trailing12MonthSliderPosition.slidersRelativePoistionFromTwoValues(priceNow, low52Week, high52Week);
+            if (StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<productHolder>() != null)
+            {
+                priceNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice.Count - 1];
+                low52Week = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().getTrailingTwelveMonthLow();
+                high52Week = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().getTrailingTwelveMonthHigh();
+                //Debug.Log("Pris nu: " + priceNow);
+                //Debug.Log("PriceNow: Industri" + priceNow);
+                //Debug.Log("Low52: " + low52Week);
+                //Debug.Log("High52: " + high52Week);
+
+                Trailing12MonthPrice_Índustri[i].value = Trailing12MonthSliderPosition.slidersRelativePoistionFromTwoValues(priceNow, low52Week, high52Week);
+            }
         }
         
     }

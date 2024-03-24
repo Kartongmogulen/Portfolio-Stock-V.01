@@ -8,6 +8,7 @@ public class earningsUpdate : MonoBehaviour
     public sectorEffectFromEconomicClimateSO SectorEffectFromEconomic;
     public economicClimate EconomicClimate;
     public productHolder ProductHolder;
+    public gameModeOnManager GameModeOnManager;
 
     public float newEPS;
     public float oldEPS;
@@ -20,7 +21,18 @@ public class earningsUpdate : MonoBehaviour
 
     public void updateEarnings(stock Stock)
     {
-        earningsMacro = earningsFromMacro(Stock);
+        //Påverkar ekonomiska klimatet EPS
+        if (GameModeOnManager.economicClimateEffectEPS == true)
+        {
+            earningsMacro = earningsFromMacro(Stock);
+        }
+        /*else
+        {
+            earningsMacro = 0;
+        }
+        */
+
+        //Debug.Log("" + Stock.nameOfCompany + ": " + earningsMacro);
         oldEPS = Stock.EPSnow;
         EPSGrowthForPreviousYear = Random.Range(Stock.EPSGrowthMin, Stock.EPSGrowthMax)/100;
         //Debug.Log("" + Stock.nameOfCompany + "EPSGrowthMin: " + Stock.EPSGrowthMin + " EPSGrowthMax: " + Stock.EPSGrowthMax);
@@ -34,6 +46,7 @@ public class earningsUpdate : MonoBehaviour
             changeEPS = Mathf.Abs(negativeEPSCalulationEPS * (EPSGrowthForPreviousYear + earningsMacro));
             newEPS = Mathf.Round((oldEPS + changeEPS) * 100) / 100;
         }
+
         //newEPS = Mathf.Round(oldEPS + oldEPS * (EPSGrowthForPreviousYear + earningsMacro) * 100) / 100;
         Stock.EPSnow = newEPS;
         Stock.EPSHistory.Add(newEPS);
@@ -43,6 +56,12 @@ public class earningsUpdate : MonoBehaviour
 
     public void earningsUpdate_Products(GameObject stockPrefab)
     {
+
+        //Om bolaget ej använder Produkter, avsluta.
+        if (stockPrefab.GetComponent<productHolder>() == null)
+        {
+            return;
+        }
 
         //Hämta produktlista
         ProductHolder = stockPrefab.GetComponent<productHolder>();
@@ -70,6 +89,8 @@ public class earningsUpdate : MonoBehaviour
     //Hur earnings påverkas utifrån den generella BNP utvecklingen
     public float earningsFromMacro(stock Stock)
     {
+        earningsMacro = 0;
+        //Debug.Log("EarningsMacro");
         if (Stock.SectorNameEnum == sectorNameEnum.Utilities)
         {
             earningsMacro = (EconomicClimate.yearlyBNPGrowthRate * SectorEffectFromEconomic.utilitesFactor)/(100*100);
@@ -80,6 +101,29 @@ public class earningsUpdate : MonoBehaviour
             earningsMacro = (EconomicClimate.yearlyBNPGrowthRate * SectorEffectFromEconomic.technologyFactor) / (100 * 100);
         }
 
+        if (Stock.SectorNameEnum == sectorNameEnum.Mine)
+        {
+            earningsMacro = (EconomicClimate.yearlyBNPGrowthRate * SectorEffectFromEconomic.minesFactor) / (100 * 100);
+        }
+
+        if (Stock.SectorNameEnum == sectorNameEnum.Railroad)
+        {
+            earningsMacro = (EconomicClimate.yearlyBNPGrowthRate * SectorEffectFromEconomic.railroadFactor) / (100 * 100);
+        }
+
+        if (Stock.SectorNameEnum == sectorNameEnum.Industri)
+        {
+            earningsMacro = (EconomicClimate.yearlyBNPGrowthRate * SectorEffectFromEconomic.industriFactor) / (100 * 100);
+        }
+
+        /*
+        else
+        {
+            Debug.Log("Ingen sektor");
+            return earningsMacro = 0;
+            
+        }
+        */
         return Mathf.Round(earningsMacro * 100)/ 100;
     }
 }

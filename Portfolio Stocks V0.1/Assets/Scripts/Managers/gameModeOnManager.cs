@@ -6,6 +6,8 @@ public class gameModeOnManager : MonoBehaviour
 {
     //När spelet ska spelas "skarpt"
 
+    public bool economicClimateEffectEPS; //Om aktiv påverkas EPS utifrån globalt ekonomiskt klimat
+
     public bool settlerOn;
 
     public bool startingYear_1850;

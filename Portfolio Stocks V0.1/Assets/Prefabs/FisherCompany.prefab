@@ -1,0 +1,197 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7870197669435554691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7870197669435554689}
+  - component: {fileID: 7870197669435554715}
+  - component: {fileID: 7870197669435554692}
+  - component: {fileID: 7870197669435554694}
+  - component: {fileID: 7870197669435554690}
+  - component: {fileID: 7870197669435554688}
+  - component: {fileID: 7870197669435554693}
+  - component: {fileID: 7870197669435554695}
+  - component: {fileID: 7870197669435554714}
+  m_Layer: 0
+  m_Name: FisherCompany
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7870197669435554689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870197669435554691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.4227295, y: 66.71387, z: -240.50818}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7870197669435554715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870197669435554691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2004453dd3cb9545bb81c8d3221d7a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dividendPaid: []
+--- !u!114 &7870197669435554692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870197669435554691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d583fce50b406f43b6e1121273864e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  divPolicyChangeDiv: 0
+  divPolicyMaxPayouRatio: 0
+  companyPaysDividend: 0
+  startPayDividendWhenEPS: 0
+  divPayoutPerShare: 0
+  StockInformation: {fileID: 0}
+  dividendPaid: []
+--- !u!114 &7870197669435554694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870197669435554691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bd1ebf23bbaa104e81622a0bf183216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IncomeStatement: {fileID: 0}
+  ManagementPriorites_FisherCompany: {fileID: 0}
+  EndRoundButton: {fileID: 0}
+--- !u!114 &7870197669435554690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870197669435554691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9333d4b6113521948acc3c3693c509d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  employees: 15
+  boats: 0
+  fishingRodAmount: 00000000
+  caughtFish: 000000000000000000000000
+  SellFish: {fileID: 0}
+  BoatStatManager: {fileID: 0}
+  FishingRodManager: {fileID: 0}
+  EmployeeStatManager: {fileID: 0}
+  money: 0
+--- !u!114 &7870197669435554688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870197669435554691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a9d7cc1237b9040a0557e998fc0efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moneyTest: 0
+  revenue: []
+  cost: []
+  EarningPerShareStart: 0
+  EarningsPerShareNow: 0
+  EarningPerShareHistory: []
+  EarningHistory: []
+  EarningPerShareGrowth: 0
+  CostCuttingManager: {fileID: 0}
+  ProductHolder: {fileID: 0}
+  StockInformation: {fileID: 0}
+--- !u!114 &7870197669435554693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870197669435554691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ac2214d1384d04f9297aab48b56e93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomizedPriorites: 0
+  dividendShareOfResult: 0
+  employeesOfResult: 25
+  rodOfResult: 25
+  boatOfResult: 25
+  employeesHireAmount: 0
+  fishingRodAmount: 0
+  boatInvestAmount: 0
+  prioritiseList:
+  - 0
+  - 0
+  - 0
+  - 0
+  resultThisYear: 0
+  IncomeStatement: {fileID: 0}
+  DivPolicyPrefab: {fileID: 0}
+  sumAllOfMangementPriorites: 0
+--- !u!114 &7870197669435554695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870197669435554691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34d646f208483c42b23e00b9a631837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SectorName: 0
+  numberOfSharesStart: 1000
+  numberOfSharesNow: 0
+  nameCompany: 
+--- !u!114 &7870197669435554714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870197669435554691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6816f7ca571a0f341929ff3ae9213675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StockPrice: []
+  priceNow: 0
+  volatilityAbs: 0
+  volatilityPercent: 0
+  amountOfValuesToGet12Month: 12
+  allDataBeforeCleaning: []
+  trailingTwelweMonthLow: 0
+  trailingTwelweMonthHigh: 0
+  last12Numbers: []

@@ -11,4 +11,9 @@ public class fishingRodManager : MonoBehaviour
     {
         return price[level];
     }
+
+    public fishingRodStats getFishingRodStats(int ID)
+    {
+        return FishingRods[ID];
+    }
 }

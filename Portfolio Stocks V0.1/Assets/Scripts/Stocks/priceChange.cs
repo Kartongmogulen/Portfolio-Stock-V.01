@@ -5,6 +5,14 @@ using UnityEngine.UI;
 
 public class priceChange : MonoBehaviour
 {
+	[Header("Inputparameter for Price")]
+	//Beräkning parametrar
+	public float discountRate; //Ska ha formen 0.01 = 1 %. Borde ändars i något övergripande script kring marknadsförhållande
+	public float discountRateVolatility; //Hur mycket diskonteringsräntan kan ändras
+	public int period;
+	[SerializeField] int numberOfYears_RevenueGrowth; //Antal år vid beräkning
+
+	[Header("Other")]
 	public GameObject StockMarketGO;
 	public stockMarketManager StockMarketManager;
 	public bondMarketManager BondMarketManager;
@@ -27,10 +35,7 @@ public class priceChange : MonoBehaviour
 	public float valueDCFMin;
 	public float valueDCFMax;
 	
-	//Beräkning parametrar
-	public float discountRate; //Ska ha formen 0.01 = 1 %. Borde ändars i något övergripande script kring marknadsförhållande
-	public float discountRateVolatility; //Hur mycket diskonteringsräntan kan ändras
-	public int period;
+	
 
 	public float stockPriceNow;
 
@@ -142,6 +147,37 @@ public class priceChange : MonoBehaviour
 
 	}
 
+	public float HistoricRevenueGrowth(incomeStatement stockPrefab, int numberOfYearsForCalc)
+	{
+		//Intäkter
+		float revenueToday = stockPrefab.getRevenue()[(stockPrefab.getRevenue().Count-1)];
+		//Debug.Log("Intäkter idag: " + revenueToday);
+
+		float revenueHistory = stockPrefab.getRevenue()[(stockPrefab.getRevenue().Count - numberOfYearsForCalc-1)];
+		//Debug.Log("Intäkter historik: " + revenueHistory);
+		//float revenueGrowth = StockMarketGO.GetComponent<stockMarketInventory>().masterList[0].GetComponent<incomeStatement>().getRevenue();
+
+		float powerOf = 1 / (float)numberOfYearsForCalc; //Vad beräkningen ska höja upp med för att få tillväxttakt/år
+		//Debug.Log("Power of: " + powerOf);
+		float revenueGrowthRate = Mathf.Pow((revenueToday / revenueHistory),powerOf);
+
+		return revenueGrowthRate;
+	}
+
+	public int DCFbasedPrice_HistoricRevenueGrowth(incomeStatement stockPrefab)
+	{
+		float revenueToday = stockPrefab.getRevenue()[stockPrefab.getRevenue().Count - 1];
+
+		dcf.DCFCalculation(discountRate + Random.Range(0, discountRateVolatility), revenueToday, HistoricRevenueGrowth(stockPrefab, numberOfYears_RevenueGrowth), period);
+		valueDCFMin = Mathf.RoundToInt(dcf.valueDCF);
+
+		dcf.DCFCalculation(discountRate + Random.Range(-discountRateVolatility, 0), revenueToday, HistoricRevenueGrowth(stockPrefab, numberOfYears_RevenueGrowth), period);
+		valueDCFMax = Mathf.RoundToInt(dcf.valueDCF);
+		Debug.Log("DCF min: " + valueDCFMin);
+
+		return Mathf.RoundToInt(Random.Range(valueDCFMin, valueDCFMax));
+	}
+
 	public float DCFbasedPrice_OneCompany_IncomeStatement(incomeStatement IncomeStatement)
 	{
 
@@ -152,9 +188,10 @@ public class priceChange : MonoBehaviour
 			minEPSGrowth = minEPSGrowth_Industri;
 			maxEPSGrowth = maxEPSGrowth_Industri;
 
-		//Debug.Log(minEPSGrowth_Industri);
+		//Debug.Log("EPS growth min: " + minEPSGrowth_Industri);
+		//Debug.Log("EPS growth max: " + maxEPSGrowth_Industri);
 
-			dcf.DCFCalculation(discountRate, EPS, minEPSGrowth, period);
+		dcf.DCFCalculation(discountRate, EPS, minEPSGrowth, period);
 			valueDCFMin = Mathf.RoundToInt(dcf.valueDCF);
 		//Debug.Log("Value DCF min: " + valueDCFMin);
 
@@ -172,8 +209,9 @@ public class priceChange : MonoBehaviour
 		techPriceText.text = "Price: " + techStockPriceNow;
 	}
 
-	public void changePriceStockTest(){
-		utiStockPriceNow = utiStockPriceNow + 1f;
+	public void changePriceStockTest()
+	{
+		//DCFbasedPrice_HistoricRevenueGrowth(StockMarketGO.GetComponent<stockMarketInventory>().masterList[0].GetComponent<incomeStatement>().getRevenue()[(StockMarketGO.GetComponent<stockMarketInventory>().masterList[0].GetComponent<incomeStatement>().getRevenue().Count - 1)]);
 	}
 }
 

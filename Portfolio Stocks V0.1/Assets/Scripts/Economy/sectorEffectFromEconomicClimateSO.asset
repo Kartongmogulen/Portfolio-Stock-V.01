@@ -16,3 +16,4 @@ MonoBehaviour:
   technologyFactor: 100
   minesFactor: 150
   railroadFactor: 50
+  industriFactor: 100

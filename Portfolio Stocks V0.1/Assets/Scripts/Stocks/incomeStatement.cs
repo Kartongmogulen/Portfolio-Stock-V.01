@@ -61,5 +61,30 @@ public void revenueCalculation(float revenue, float cost, float amount)
 		//return EarningPerShareNow;
 
 	}
-	
+
+	public void revenue_AddOwnAmount(int revenueToAdd)
+	{
+		revenue.Add(revenueToAdd);
+	}
+
+	public void cost_AddOwnAmount(int costToAdd)
+	{
+		cost.Add(costToAdd);
+	}
+
+	public void addEarningsPerShareToHistory()
+	{
+		EarningPerShareHistory.Add(EarningHistory[EarningHistory.Count - 1] / StockInformation.getNumberOfShares());
+	}
+
+	public List<float> getRevenue()
+	{
+		return revenue;
+	}
+
+	public List<float> getCost()
+	{
+		return cost;
+	}
+
 }

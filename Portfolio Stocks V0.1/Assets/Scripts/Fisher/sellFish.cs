@@ -6,7 +6,7 @@ public class sellFish : MonoBehaviour
 {
     public fishManager FishManager;
 
-    private void Start()
+    private void Awake()
     {
         FishManager = FindObjectOfType<fishManager>();
     }

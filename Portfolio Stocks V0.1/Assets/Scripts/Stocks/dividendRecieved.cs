@@ -85,7 +85,14 @@ public class dividendRecieved : MonoBehaviour
 		for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
 		{
 			industriCompanySharesOwned.Add(0);
-			industriCompanyDivPayout.Add(StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicyPrefab>().divPayoutPerShare);
+			if (StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicyPrefab>() != null)
+			{
+				industriCompanyDivPayout.Add(StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicyPrefab>().divPayoutPerShare);
+			}
+			else
+			{
+				industriCompanyDivPayout.Add(StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().divPayout);
+			}
 			industriCompanyDivRecieved.Add(0);
 		}
 
@@ -137,10 +144,14 @@ public class dividendRecieved : MonoBehaviour
 		for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
 		{
 			//Debug.Log("Utdelningar Industri");
-			industriCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicyPrefab>().divPayoutPerShare;
-			industriCompanySharesOwned[i] = PortfolioStock.industriCompanySharesOwned[i];
-			industriCompanyDivRecieved[i] = industriCompanyDivPayout[i] * industriCompanySharesOwned[i];
+			if (StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicyPrefab>() != null)
+			{
+				industriCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicyPrefab>().divPayoutPerShare;
+				industriCompanySharesOwned[i] = PortfolioStock.industriCompanySharesOwned[i];
+				industriCompanyDivRecieved[i] = industriCompanyDivPayout[i] * industriCompanySharesOwned[i];
+			}
 			divRecPerYear[year] += industriCompanyDivRecieved[i];
+
 		}
 
 		year++;

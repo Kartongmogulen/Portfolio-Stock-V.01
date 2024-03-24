@@ -28293,7 +28293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &582539330
 RectTransform:
   m_ObjectHideFlags: 0
@@ -41418,7 +41418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &711392153
 RectTransform:
   m_ObjectHideFlags: 0
@@ -64704,7 +64704,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1027863630
 RectTransform:
   m_ObjectHideFlags: 0
@@ -68642,7 +68642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1101728415
 RectTransform:
   m_ObjectHideFlags: 0
@@ -89825,7 +89825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1526856397
 RectTransform:
   m_ObjectHideFlags: 0
@@ -121828,6 +121828,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58d76e4f453707498567d896161ce91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  discountRate: 0
+  discountRateVolatility: 0.02
+  period: 20
+  numberOfYears_RevenueGrowth: 0
   StockMarketGO: {fileID: 1010759428}
   StockMarketManager: {fileID: 0}
   BondMarketManager: {fileID: 1985270149}
@@ -121842,9 +121846,6 @@ MonoBehaviour:
   ifEPSNegativeMarketEPSValue: 10
   valueDCFMin: 0
   valueDCFMax: 0
-  discountRate: 0
-  discountRateVolatility: 0.02
-  period: 20
   stockPriceNow: 0
   MainCanvasGO: {fileID: 0}
   PanelSectorGO: {fileID: 0}
