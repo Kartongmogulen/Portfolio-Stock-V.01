@@ -54,4 +54,22 @@ public class stock : MonoBehaviour
 			EPSChangeYoYHistory.Add(percentChange);
 		}
 	}
+
+	public void adjustEPSGrowth(bool max, float change)
+	{
+		Debug.Log("EPS Growth script");
+		if (max == true)
+		{
+			EPSGrowthMax += change;
+			EPSGrowthMin += change;
+			Debug.Log("EPS growth MAX ändrad med: " + change);
+		}
+
+		if(max == false)
+		{
+			EPSGrowthMax += change;
+			EPSGrowthMin += change;
+			Debug.Log("EPS growth MIN ändrad med: " + change);
+		}
+	}
 }

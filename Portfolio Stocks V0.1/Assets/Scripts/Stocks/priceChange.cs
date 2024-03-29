@@ -22,7 +22,7 @@ public class priceChange : MonoBehaviour
 	public float stockMarketPremium;
 
 	public DCF dcf;
-	public PECalculation pECalculation;
+	//public PECalculation pECalculation;
 
 	//Info från bolag
 	public float minEPSGrowth;
