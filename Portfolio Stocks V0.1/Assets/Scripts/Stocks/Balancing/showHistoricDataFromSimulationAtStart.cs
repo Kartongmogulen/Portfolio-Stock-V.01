@@ -33,6 +33,10 @@ public class showHistoricDataFromSimulationAtStart : MonoBehaviour
             nameCompany[i].text = stocks[i-1].GetComponent<stock>().nameOfCompany;
         }
 
+        if(stocksWithProducts.Count == 0)
+        {
+            return;
+        }
         nameCompany_Products[0].text = "Name Company: ";
         for (int i = 1; i < nameCompany_Products.Count; i++)
         {
@@ -56,6 +60,11 @@ public class showHistoricDataFromSimulationAtStart : MonoBehaviour
             priceAppreciation[i].text = "" + Mathf.Round((percentChangeStockPrice) * 100) + "%";
         }
 
+        //Om det inte finns några bolag med Produkter-mekanik avslutas scriptet
+        if (stocksWithProducts.Count == 0)
+        {
+            return;
+        }
         priceAppreciation_Products[0].text = "Price Change (%): ";
 
         for (int i = 1; i < priceAppreciation_Products.Count; i++)
@@ -78,6 +87,11 @@ public class showHistoricDataFromSimulationAtStart : MonoBehaviour
             priceVolatility[i].text = "" + Mathf.Round(stocks[i-1].GetComponent<stock>().volatilityPercent * 10000)/100 + "%";
         }
 
+        //Om det inte finns några bolag med Produkter-mekanik avslutas scriptet
+        if (stocksWithProducts.Count == 0)
+        {
+            return;
+        }
         priceVolatility_Products[0].text = "Price Volatility (%): ";
 
         for (int i = 1; i < priceVolatility_Products.Count; i++)

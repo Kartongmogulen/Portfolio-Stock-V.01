@@ -350,8 +350,17 @@ public class portfolioStock : MonoBehaviour
 		//Industri (Avkastning)
 		for (int i = 0; i < industriCompanySharesOwned.Count; i++)
 		{
-			int lengthList = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice.Count;
-			industriTotalValue += (industriCompanySharesOwned[i] * StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice[lengthList - 1]);
+			if (StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>() != null)
+			{
+				int lengthList = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice.Count;
+				industriTotalValue += (industriCompanySharesOwned[i] * StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<priceStock>().StockPrice[lengthList - 1]);
+			}
+			else
+			{
+				int lengthList = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().StockPrice.Count;
+				industriTotalValue += (industriCompanySharesOwned[i] * StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().StockPrice[lengthList - 1]);
+			}
+
 			//Debug.Log("Totalt värde (Industri): " + industriTotalValue);
 		}
 

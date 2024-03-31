@@ -65,6 +65,9 @@ public class companyNumbersUpdate : MonoBehaviour
 			else
 			{
 				StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().saveDividendHistory();
+				
+				//Uppdatera värden vid årets slut
+				StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<divPolicy>().endOfYearUpdate(StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>());
 			}
 			//StockMarketManager_1850.StockPrefabListMines[i].GetComponent<dividendHistory>().dividendPaid.Add()
 		}

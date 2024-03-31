@@ -88,9 +88,19 @@ public class chooseCompany_1850 : MonoBehaviour
         if (activeSector == 2)
         {
             stockMarketSectorActive = StockMarketManager_1850.StockPrefabListIndustri;
-            stockPrice = stockMarketSectorActive[cityIndex].GetComponent<priceStock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<priceStock>().StockPrice.Count - 1];
 
-            DataPlayerKnowsButtonUnlock.chooseStock_Products(stockMarketSectorActive[cityIndex].GetComponent<incomeStatement>());
+            if (stockMarketSectorActive[cityIndex].GetComponent<priceStock>() != null)
+            {
+                stockPrice = stockMarketSectorActive[cityIndex].GetComponent<priceStock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<priceStock>().StockPrice.Count - 1];
+                DataPlayerKnowsButtonUnlock.chooseStock_Products(stockMarketSectorActive[cityIndex].GetComponent<incomeStatement>());
+            }
+            else
+            {
+                stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
+                DataPlayerKnowsButtonUnlock.chooseStock(stockMarketSectorActive[cityIndex].GetComponent<stock>());
+            }
+
+            
 
             showHistoricData.updateEPSText_GO(stockMarketSectorActive[cityIndex]);
             showHistoricData.updateEPSChangeYearOverYearText_GO(stockMarketSectorActive[cityIndex]);
@@ -107,7 +117,7 @@ public class chooseCompany_1850 : MonoBehaviour
         setAllBoolInactive();
         divDataActive = true;
 
-        if (activeSector == 2)
+        if (activeSector == 2 && stockMarketSectorActive[cityIndex].GetComponent<divPolicyPrefab>() != null)
         {
             
             divPayout = stockMarketSectorActive[cityIndex].GetComponent<divPolicyPrefab>().divPayoutPerShare;
@@ -140,7 +150,11 @@ public class chooseCompany_1850 : MonoBehaviour
 
         else if(activeSector == 2 && StocksUnlockInfo.industriDivPolicyUnlocked[cityIndex] == 1)
         {
+            divPolicyText.text = "Maximum payout ratio: " + stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyMaxPayouRatio + "% and aims to increase the dividend with " + stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyChangeDiv + "% per year.";
+
             //divPolicyText.text = "Maximum payout ratio: " + stockMarketSectorActive[cityIndex].GetComponent<divPolicyPrefab>().divPolicyMaxPayouRatio + "% and aims to increase the dividend with " + stockMarketSectorActive[cityIndex].GetComponent<divPolicyPrefab>().divPolicyChangeDiv + "% per year.";
+
+            if (stockMarketSectorActive[cityIndex].GetComponent<managementPriorites>() != null)
             divPolicyText.text = "Will pay out " + Mathf.Round(stockMarketSectorActive[cityIndex].GetComponent<managementPriorites>().dividendShareOfResult*10000)/100 + "% of the result";
         }
 
@@ -158,7 +172,7 @@ public class chooseCompany_1850 : MonoBehaviour
         //getCityAndSectorIndex();
         //Debug.Log("EPS: " + stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow);
 
-        if (activeSector == 0 || activeSector == 1)
+        if (activeSector == 0 || activeSector == 1 || stockMarketSectorActive[cityIndex].GetComponent<stock>() != null)
         {
             EPSText.text = "EPS: " + Mathf.Round(stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow * 100) / 100;
             PEtext.text = "P/E: " + Mathf.Round((stockPrice / stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow) * 10) / 10;

@@ -72,7 +72,22 @@ public class volatilityCalculation : MonoBehaviour
             stockPrices.Clear();
         }
 
-        last12Month_Products(PriceStocksList);
+        for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
+        {
+            //stockPrices.Clear();
+            for (int a = 0; a < 12; a++)
+            {
+                //Debug.Log("Loop2: " + a);
+                stockPrices.Add(StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().StockPrice.Count - 12 + a]);
+            }
+            //Debug.Log("Priser: " + stockPrices);
+            StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().volatilityAbs = calculateVolatilty(stockPrices);
+            StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().volatilityPercent = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().volatilityAbs / AverageCalculation.listOfFloats(stockPrices);
+
+            stockPrices.Clear();
+        }
+
+        //last12Month_Products(PriceStocksList); //KOMMENTERADE BORT FÖR ATT FUNKA VID V.5.2 UTAN NÅGRA BOLAG MED PRODUKTER
     }
 
     public void last12Month_Products(List<priceStock> ListStockPrices)

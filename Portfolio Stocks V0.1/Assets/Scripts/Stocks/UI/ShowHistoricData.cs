@@ -65,7 +65,7 @@ public class ShowHistoricData : MonoBehaviour
 
     public void updateEPSText(stock Stock)
     {
-        //Debug.Log("UpdateEPSText: " + Stock.nameOfCompany);
+        Debug.Log("UpdateEPSText: " + Stock.nameOfCompany);
         for (int i = 0; i < EPSText.Count; i++)
         {
             //Debug.Log("True or False: " + Stock.GetComponent<stockDataPlayerKnow>().EPSdata[Mathf.Abs(startingYearToRevealData + yearNow + i)] + " - " + Mathf.Abs(startingYearToRevealData + yearNow + i));
@@ -74,6 +74,7 @@ public class ShowHistoricData : MonoBehaviour
             {
                 //Debug.Log(Stock.EPSHistory[(startingYearToRevealData + yearNow + i)]);
                 EPSText[i].text = " " + (Stock.EPSHistory[(startingYearToRevealData + yearNow + i)]);
+                //Debug.Log("EPS: " + Stock.EPSHistory[(startingYearToRevealData + yearNow + i)]);
 
             }
             else
@@ -124,9 +125,18 @@ public class ShowHistoricData : MonoBehaviour
             if (stockPrefab.GetComponent<stockDataPlayerKnow>().EPSdata[Mathf.Abs(startingYearToRevealData + yearNow + i)] == true)
             {
                 //Debug.Log(Stock.EPSHistory[(startingYearToRevealData + yearNow + i)]);
-                EPSText[i].text = " " + Mathf.Round(((stockPrefab.GetComponent<incomeStatement>().EarningPerShareHistory[(startingYearToRevealData + yearNow + i)])/100)*100);
+                if (stockPrefab.GetComponent<incomeStatement>() != null)
+                {
+                    EPSText[i].text = " " + Mathf.Round(((stockPrefab.GetComponent<incomeStatement>().EarningPerShareHistory[(startingYearToRevealData + yearNow + i)]) / 100) * 100);
+                }
 
+                /*else
+                {
+                    Debug.Log("EPS-text uppdatering Prefab");
+                    EPSText[i].text = " " + Mathf.Round(((stockPrefab.GetComponent<stock>().EPSHistory  [(startingYearToRevealData + yearNow + i)] / 100) * 100));
+                }*/
             }
+
             else
             {
                 //EPSText[i].text = " " + (Stock.EPSHistory[(GamePlayScopeManager.yearsToGetHistoricData + yearNow + i - EPSText.Count)]);

@@ -67,7 +67,12 @@ public class showStockInfo_1 : MonoBehaviour
 
             if (showCompanyName == true)
             {
-                companyNameText.text = "Company: " + StockMarketManager_1850.StockPrefabListIndustri[cityManager.getActiveCity()].GetComponent<stockInformation>().nameCompany;
+                if (StockMarketManager_1850.StockPrefabListIndustri[cityManager.getActiveCity()].GetComponent<stockInformation>() != null)
+                    companyNameText.text = "Company: " + StockMarketManager_1850.StockPrefabListIndustri[cityManager.getActiveCity()].GetComponent<stockInformation>().nameCompany;
+
+                else
+                    companyNameText.text = "Company: " + StockMarketManager_1850.StockPrefabListIndustri[cityManager.getActiveCity()].GetComponent<stock>().nameOfCompany;
+
             }
         }
     }
