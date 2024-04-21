@@ -138,7 +138,7 @@ public class eventStockManager : MonoBehaviour
             //Går igenom lista med aktier
             for (int i = 0; i < StockMarketInventory.masterList.Count; i++)
             {
-                Debug.Log("Sektorn påverkas PERMANENT: " + i);
+                //Debug.Log("Sektorn påverkas PERMANENT: " + i);
                 //Om aktien ingår i sektorn som påverkas
                 if (StockMarketInventory.masterList[i].GetComponent<stock>().SectorNameEnum == sectorAffectedList[sectorAffectedList.Count - 1])
                 {
@@ -154,7 +154,7 @@ public class eventStockManager : MonoBehaviour
             //Går igenom lista med aktier
             for (int i = 0; i < StockMarketInventory.masterList.Count; i++)
             {
-                Debug.Log("Sektorn påverkas PERMANENT: " + i);
+                //Debug.Log("Sektorn påverkas PERMANENT: " + i);
                 //Om aktien ingår i sektorn som påverkas
                 if (StockMarketInventory.masterList[i].GetComponent<stock>().SectorNameEnum == sectorAffectedList[sectorAffectedList.Count - 1])
                 {

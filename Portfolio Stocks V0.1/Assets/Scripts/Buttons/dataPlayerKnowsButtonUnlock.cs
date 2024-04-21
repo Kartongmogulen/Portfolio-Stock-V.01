@@ -111,10 +111,22 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
             }
         }
 
-        if (ActiveSector_1850.getActiveSector() == 2)
+        if (ActiveSector_1850.getActiveSector() == 2 && activeCompany.GetComponent<productHolder>() != null)
         {
             //Debug.Log("Active sector: 2");
             unlockDividendChangeYoYyearX_Products(i);
+        }
+
+        else if (ActiveSector_1850.getActiveSector() == 2)
+            {
+            if (ActionPointsManager.remainingAP >= costToUnlock)
+            {
+                if (activeCompany.GetComponent<stockDataPlayerKnow>().DividendYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+                {
+                    activeCompany.GetComponent<stockDataPlayerKnow>().DividendYoYChangedata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+                    ActionPointsManager.actionPointSub(costToUnlock);
+                }
+            }
         }
     }
 
@@ -132,10 +144,22 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
             }
         }
 
-        if (ActiveSector_1850.getActiveSector() == 2)
+        if (ActiveSector_1850.getActiveSector() == 2 && activeCompany.GetComponent<productHolder>() != null)
         {
             //Debug.Log("Active sector: 2");
             unlockPayoutyearX_Products(i);
+        }
+
+        else if (ActiveSector_1850.getActiveSector() == 2)
+        {
+            if (ActionPointsManager.remainingAP >= costToUnlock)
+            {
+                if (activeCompany.GetComponent<stockDataPlayerKnow>().PayoutRatiodata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] == false)
+                {
+                    activeCompany.GetComponent<stockDataPlayerKnow>().PayoutRatiodata[showHistoricData.getStartingYear() + showHistoricData.getYearNow() + i] = true;
+                    ActionPointsManager.actionPointSub(costToUnlock);
+                }
+            }
         }
     }
     //___________________________

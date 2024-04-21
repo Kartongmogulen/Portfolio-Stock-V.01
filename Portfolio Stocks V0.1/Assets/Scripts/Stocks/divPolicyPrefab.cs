@@ -32,6 +32,6 @@ public class divPolicyPrefab : MonoBehaviour
 	public void saveDividendHistory()
 	{
 		dividendPaid.Add(divPayoutPerShare);
-		GetComponent<dividendHistory>().dividendPaid.Add(divPayoutPerShare);
+		GetComponent<dividendHistory>().saveDividendHistory(divPayoutPerShare);
 	}
 }

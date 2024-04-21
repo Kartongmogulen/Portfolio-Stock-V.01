@@ -61,7 +61,7 @@ public class stockPriceManager : MonoBehaviour
 
     public void priceUpdate_RevenueGrowth()
     {
-        Debug.Log("PriceUpdate_RevenueGrowth");
+        //Debug.Log("PriceUpdate_RevenueGrowth");
         for (int i = 0; i < StockMarketGO.GetComponent<stockMarketInventory>().masterList.Count; i++)
         {
             int priceNowTotalCompany = ScriptsStockGO.GetComponent<priceChange>().DCFbasedPrice_HistoricRevenueGrowth(StockMarketGO.GetComponent<stockMarketInventory>().masterList[i].GetComponent<incomeStatement>());

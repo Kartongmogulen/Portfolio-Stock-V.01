@@ -66,12 +66,22 @@ public class ObjectiveManager : MonoBehaviour
         if (dividendIncome[dividendIncomeLevel] < DividendRecieved.divIncomeFromPortfolioNow())
         {
             
-            Debug.Log("Dividend objetive completed!");
+            //Debug.Log("Dividend objetive completed!");
             int availibleCities =  cityManager.getNumberOfAvailbleCities();
-            questCompleted_ShowUI(dividendQuestCompletedText);
-            completedQuest_BonusText.text = dividendQuestCompletedText_Bonus + cityManager.nameCity[availibleCities];
-            //cityManager.activateNextCity();
-            skillsManager.levelUp_UnlockNewCity();
+            Debug.Log("Tillgängliga städer: " + availibleCities);
+
+            //Kontrollera om alla städer redan är upplåsta
+            if (availibleCities == cityManager.getCitiesMaxAvaible())
+            {
+                Debug.Log("Alla städer redan upplåsta!!!");
+            }
+            else
+            {
+                questCompleted_ShowUI(dividendQuestCompletedText);
+                completedQuest_BonusText.text = dividendQuestCompletedText_Bonus + cityManager.nameCity[availibleCities];
+                //cityManager.activateNextCity();
+                skillsManager.levelUp_UnlockNewCity();
+            }
 
             if (dividendIncomeLevel < dividendIncome.Count)
             {
@@ -109,7 +119,7 @@ public class ObjectiveManager : MonoBehaviour
 
     public void checkReturnOnPortfolio()
     {
-        Debug.Log("Kollar avkastning i portföljen");
+        //Debug.Log("Kollar avkastning i portföljen");
         //Är MAX-level uppnådd
         if (returnOnPortfolioPercentLevel == returnOnPortfolioMilestones.Count)
         {
@@ -118,7 +128,7 @@ public class ObjectiveManager : MonoBehaviour
 
         if (returnOnPortfolioMilestones[returnOnPortfolioPercentLevel] < PortfolioStock.totalReturnPortfolioPercent)
         {
-            Debug.Log("Avkastningen på portfölj har nått en milstolpe");
+            //Debug.Log("Avkastningen på portfölj har nått en milstolpe");
             int availibleCities = cityManager.getNumberOfAvailbleCities();
             questCompleted_ShowUI(returnOnPortfolioQuestCompletedText);
             completedQuest_BonusText.text = returnOnPortfolioQuestCompletedText_Bonus + cityManager.nameCity[availibleCities];

@@ -173,7 +173,7 @@ public class priceChange : MonoBehaviour
 
 		dcf.DCFCalculation(discountRate + Random.Range(-discountRateVolatility, 0), revenueToday, HistoricRevenueGrowth(stockPrefab, numberOfYears_RevenueGrowth), period);
 		valueDCFMax = Mathf.RoundToInt(dcf.valueDCF);
-		Debug.Log("DCF min: " + valueDCFMin);
+		//Debug.Log("DCF min: " + valueDCFMin);
 
 		return Mathf.RoundToInt(Random.Range(valueDCFMin, valueDCFMax));
 	}

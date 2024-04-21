@@ -1178,6 +1178,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14123591}
   m_CullTransparentMesh: 1
+--- !u!1 &14604002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3471436335729396843, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+    type: 3}
+  m_PrefabInstance: {fileID: 701000517}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &14604010 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+    type: 3}
+  m_PrefabInstance: {fileID: 701000517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &19506769
 GameObject:
   m_ObjectHideFlags: 0
@@ -12961,6 +12973,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262402956}
   m_CullTransparentMesh: 1
+--- !u!1 &275283288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3471436335729396843, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+    type: 3}
+  m_PrefabInstance: {fileID: 1817438632}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &275283296 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+    type: 3}
+  m_PrefabInstance: {fileID: 1817438632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &275339594
 GameObject:
   m_ObjectHideFlags: 0
@@ -40738,7 +40762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cadab3ab4fb679d4d845aa38275845c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  incomeWorkPerMonth: 0
+  incomeWorkPerMonth: 100
   totalIncomeFromWork: 0
   incomeWorkText: {fileID: 838729664}
 --- !u!114 &678885390
@@ -42076,6 +42100,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 697423157}
   m_CullTransparentMesh: 1
+--- !u!1001 &701000517
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1582775558}
+    m_Modifications:
+    - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: EndRoundButton
+      value: 
+      objectReference: {fileID: 903494711}
+    - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: showHistoricData
+      value: 
+      objectReference: {fileID: 867323548}
+    - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: GamePlayScopeManager
+      value: 
+      objectReference: {fileID: 1774405551}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: EPSnow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: divPayout
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: EPSGrowthMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: EPSGrowthMin
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: nameOfCompany
+      value: Industri_D
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: SectorNameEnum
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471436335729396843, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_Name
+      value: stockCompanyBasicOne_Industri_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8142389932202983004, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8142389932202983004, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: StockScriptGO
+      value: 
+      objectReference: {fileID: 2092176686}
+    - target: {fileID: 8142389932202983004, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: playerPanelGO
+      value: 
+      objectReference: {fileID: 678885383}
+    - target: {fileID: 8142389932202983004, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: StockMarketInventory
+      value: 
+      objectReference: {fileID: 1842650751}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 128bd1b2f9f5faf4a9e5981548c60885, type: 3}
 --- !u!1 &703299267
 GameObject:
   m_ObjectHideFlags: 0
@@ -64814,9 +64972,9 @@ MonoBehaviour:
   - {fileID: 24942615}
   - {fileID: 1364966725}
   StockPrefabListIndustri:
-  - {fileID: 817920865}
-  - {fileID: 113911717}
-  - {fileID: 147867061}
+  - {fileID: 83874716}
+  - {fileID: 275283288}
+  - {fileID: 14604002}
   minesName:
   - Silvercrest Mining Company
   - Ironstone Industries
@@ -94302,6 +94460,8 @@ Transform:
   - {fileID: 113911725}
   - {fileID: 147867069}
   - {fileID: 249302270}
+  - {fileID: 275283296}
+  - {fileID: 14604010}
   m_Father: {fileID: 1842650750}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -107053,6 +107213,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817047335}
   m_CullTransparentMesh: 1
+--- !u!1001 &1817438632
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1582775558}
+    m_Modifications:
+    - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: EndRoundButton
+      value: 
+      objectReference: {fileID: 903494711}
+    - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: showHistoricData
+      value: 
+      objectReference: {fileID: 867323548}
+    - target: {fileID: 2154981163000740535, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: GamePlayScopeManager
+      value: 
+      objectReference: {fileID: 1774405551}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: EPSnow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: divPayout
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: EPSGrowthMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: EPSGrowthMin
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: nameOfCompany
+      value: Industri_D
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: SectorNameEnum
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471436335729396843, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_Name
+      value: stockCompanyBasicOne_Industri_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471696381777332498, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8142389932202983004, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8142389932202983004, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: StockScriptGO
+      value: 
+      objectReference: {fileID: 2092176686}
+    - target: {fileID: 8142389932202983004, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: playerPanelGO
+      value: 
+      objectReference: {fileID: 678885383}
+    - target: {fileID: 8142389932202983004, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
+      propertyPath: StockMarketInventory
+      value: 
+      objectReference: {fileID: 1842650751}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 128bd1b2f9f5faf4a9e5981548c60885, type: 3}
 --- !u!1 &1817828755
 GameObject:
   m_ObjectHideFlags: 0
@@ -108473,10 +108767,9 @@ MonoBehaviour:
   - {fileID: 1049996993}
   - {fileID: 24942615}
   - {fileID: 1364966725}
-  - {fileID: 817920865}
-  - {fileID: 113911717}
-  - {fileID: 147867061}
   - {fileID: 83874716}
+  - {fileID: 275283288}
+  - {fileID: 14604002}
   minesList: []
 --- !u!1 &1845784433
 GameObject:
@@ -118223,7 +118516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1976752774
 Transform:
   m_ObjectHideFlags: 0

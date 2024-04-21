@@ -41,8 +41,8 @@ public class stock : MonoBehaviour
 
 	public void saveDividendHistory()
 	{
-		GetComponent<dividendHistory>().dividendPaid.Add(divPayout);
-		lastDivPayout = GetComponent<dividendHistory>().dividendPaid[GetComponent<dividendHistory>().dividendPaid.Count - 1];
+		GetComponent<dividendHistory>().saveDividendHistory(divPayout);
+		lastDivPayout = GetComponent<dividendHistory>().getHistoricDividend(GetComponent<dividendHistory>().lengthDividendHistory() - 1);
 	}
 
 	public void setEPSChangeYoYHistory()

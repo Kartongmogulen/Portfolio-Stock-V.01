@@ -87,27 +87,27 @@ public class fisherCompanyStats : MonoBehaviour
             if (employees >= boats * BoatStatManager.getBoatSize())
             {
                int employeesOnBoats = boats * BoatStatManager.getBoatSize();
-               Debug.Log("Anställda på båt: " + employeesOnBoats);
+               //Debug.Log("Anställda på båt: " + employeesOnBoats);
                employeesPerZone[whereToFishWithBoat] = employeesOnBoats;
             }
 
             if(boats * BoatStatManager.getBoatSize() >= employees)
             {
                 int employeesOnBoats = employees;
-                Debug.Log("Anställda på båt (Fler båtplatser än anställda): " + employeesOnBoats);
+                //Debug.Log("Anställda på båt (Fler båtplatser än anställda): " + employeesOnBoats);
                 employeesPerZone[whereToFishWithBoat] = employeesOnBoats;
             }
         }
 
         whereToFish = Random.Range(0, Fishzone.getNumberOfZones()-Fishzone.getNumberOfZonesThatNeedBoat());
-        Debug.Log("Zon att fiska som INTE kräver båt: " + whereToFish);
+        //Debug.Log("Zon att fiska som INTE kräver båt: " + whereToFish);
         employeesPerZone[whereToFish] = employees - employeesPerZone[whereToFishWithBoat];
 
     }
 
     public void employeesInvest(float amountToInvest)
     {
-        Debug.Log("Pengar för nyanställningar: " + amountToInvest);
+        //Debug.Log("Pengar för nyanställningar: " + amountToInvest);
         int numberToHire = Mathf.RoundToInt(amountToInvest) / EmployeeStatManager.getPriceToHire();
         //Debug.Log("Antal anställda: " + numberToHire);
         employees += numberToHire;

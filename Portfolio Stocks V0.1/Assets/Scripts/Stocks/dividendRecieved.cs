@@ -150,6 +150,15 @@ public class dividendRecieved : MonoBehaviour
 				industriCompanySharesOwned[i] = PortfolioStock.industriCompanySharesOwned[i];
 				industriCompanyDivRecieved[i] = industriCompanyDivPayout[i] * industriCompanySharesOwned[i];
 			}
+
+			else 
+			{
+				industriCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().divPayout;
+				industriCompanySharesOwned[i] = PortfolioStock.industriCompanySharesOwned[i];
+				industriCompanyDivRecieved[i] = industriCompanyDivPayout[i] * industriCompanySharesOwned[i];
+				//divRecPerYear[year] += industriCompanyDivRecieved[i];
+			}
+
 			divRecPerYear[year] += industriCompanyDivRecieved[i];
 
 		}
@@ -197,6 +206,14 @@ public class dividendRecieved : MonoBehaviour
 			railroadCompanySharesOwned[i] = PortfolioStock.railroadCompanySharesOwned[i];
 			railroadCompanyDivRecieved[i] = railroadCompanyDivPayout[i] * railroadCompanySharesOwned[i];
 			incomeDivFromPortfolioNow += railroadCompanyDivRecieved[i];
+		}
+
+		for (int i = 0; i < StockMarketManager_1850.StockPrefabListIndustri.Count; i++)
+		{
+			industriCompanyDivPayout[i] = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().divPayout;
+			industriCompanySharesOwned[i] = PortfolioStock.industriCompanySharesOwned[i];
+			industriCompanyDivRecieved[i] = industriCompanyDivPayout[i] * industriCompanySharesOwned[i];
+			incomeDivFromPortfolioNow += industriCompanyDivRecieved[i];
 		}
 
 		return incomeDivFromPortfolioNow;

@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class incomeWork : MonoBehaviour
 {
-    public float incomeWorkPerMonth;
+    [Range(90,110)] public float incomeWorkPerMonth;
     public float totalIncomeFromWork;
 
     public Text incomeWorkText;
 
     private void Start()
     {
+        //incomeWorkPerMonth = 200; //TESTA HUR RANGE FUNGERAR
         Invoke("incomeNowUpdate", 0.01f);
         //incomeNowUpdate();
     }

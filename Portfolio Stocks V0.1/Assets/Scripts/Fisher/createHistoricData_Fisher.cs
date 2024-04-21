@@ -44,7 +44,7 @@ public class createHistoricData_Fisher : MonoBehaviour
             }
             if (i % 12 == 0)
             {
-                Debug.Log("End of year");
+                //Debug.Log("End of year");
                 gameLoopManager.yearEndCheck();
             }
 

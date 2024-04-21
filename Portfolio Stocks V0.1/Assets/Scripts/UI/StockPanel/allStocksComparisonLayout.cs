@@ -216,6 +216,15 @@ public class allStocksComparisonLayout : MonoBehaviour
 
                 Trailing12MonthPrice_Índustri[i].value = Trailing12MonthSliderPosition.slidersRelativePoistionFromTwoValues(priceNow, low52Week, high52Week);
             }
+
+            else
+            {
+                priceNow = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().StockPrice.Count - 1];
+                low52Week = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().trailingTwelweMonthLow;
+                high52Week = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().trailingTwelweMonthHigh;
+
+                Trailing12MonthPrice_Índustri[i].value = Trailing12MonthSliderPosition.slidersRelativePoistionFromTwoValues(priceNow, low52Week, high52Week);
+            }
         }
         
     }

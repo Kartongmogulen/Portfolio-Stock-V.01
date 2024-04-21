@@ -49,7 +49,7 @@ public class endRoundButton : MonoBehaviour
 	void Start(){
 		month = 1;
 		DateNowText.text = "Y: " + year + " M: " + month;
-		timePointsLeftText.GetComponent<Text>().enabled = false;
+		//timePointsLeftText.GetComponent<Text>().enabled = false;
 
 		yearsBeforeEndGame = managerScriptsGO.GetComponent<gamePlayScopeManager>().yearsBeforeEndGameMaster;
 

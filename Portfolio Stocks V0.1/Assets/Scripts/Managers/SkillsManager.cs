@@ -137,12 +137,22 @@ public class SkillsManager : MonoBehaviour
 
     public void levelUp_UnlockNewCity()
     {
-        levelUnlockNewCity++; // Ökar lvl
-        cityManager.activateNextCity();
 
-        //Nollställer experince då det är samma poäng som krävs oavsett nuvarande level
-        experienceUnlockNewCity = 0;
-        //activateButtonForNewCompany();
+        //Kontrollera om alla städer redan är upplåsta
+        if (levelUnlockNewCity != maxLevelUnlockNewCity)
+        {
+            levelUnlockNewCity++; // Ökar lvl
+            cityManager.activateNextCity();
+
+            //Nollställer experince då det är samma poäng som krävs oavsett nuvarande level
+            experienceUnlockNewCity = 0;
+            //activateButtonForNewCompany();
+        }
+
+        else
+        {
+            Debug.Log("Alla städer är upplåsta!");
+        }
     }
 
     public void addExperienceUnlockTool_ComparisonPanel(int expPoints)

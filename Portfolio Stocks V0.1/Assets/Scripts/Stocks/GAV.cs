@@ -41,6 +41,7 @@ public class GAV : MonoBehaviour
 
 	private void Update()
 	{
+		
 		if (ActiveSector_1850.getActiveSector() == 0)
 		{
 			updateGAVText("Mines");
@@ -55,6 +56,7 @@ public class GAV : MonoBehaviour
 		{
 			updateGAVText("Industri");
 		}
+		
 	}
 
 	public float GAV_OwnedSharesAndInvestedCapital(float sharesOwned, float totalInvested)
@@ -81,6 +83,7 @@ public class GAV : MonoBehaviour
 			companyGAVText.text = "GAV: " + Mathf.Round(PortfolioStock.industriCompanyGAV[cityManager.getActiveCity()] * 100) / 100;
 	}
 
+	
 	public void minesGAV()
 	{
 		for (int i = 0; i < StockMarketManager_1850.StockPrefabListMines.Count; i++)
@@ -101,6 +104,7 @@ public class GAV : MonoBehaviour
 		updateGAVText("Mines");
 	}
 
+	/*
 	public void utiGAV()
 	{
 		utiCompanySharesOwned = PortfolioStock.utiCompanySharesOwned;
@@ -167,4 +171,5 @@ public class GAV : MonoBehaviour
 			}
 		}
 	}
+	*/
 }

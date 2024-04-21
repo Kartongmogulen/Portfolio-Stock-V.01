@@ -77,9 +77,18 @@ public class volatilityCalculation : MonoBehaviour
             //stockPrices.Clear();
             for (int a = 0; a < 12; a++)
             {
-                //Debug.Log("Loop2: " + a);
-                stockPrices.Add(StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().StockPrice.Count - 12 + a]);
-            }
+                if (StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>() != null)
+                {
+                    //Debug.Log("Loop2: " + a);
+                    stockPrices.Add(StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().StockPrice.Count - 12 + a]);
+                }
+
+                if(StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<productHolder>() != null)
+                {
+
+                }
+                
+                }
             //Debug.Log("Priser: " + stockPrices);
             StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().volatilityAbs = calculateVolatilty(stockPrices);
             StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().volatilityPercent = StockMarketManager_1850.StockPrefabListIndustri[i].GetComponent<stock>().volatilityAbs / AverageCalculation.listOfFloats(stockPrices);

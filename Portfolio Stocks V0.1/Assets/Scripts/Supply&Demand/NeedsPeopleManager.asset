@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dab995975bf0f53419f36cad143175d6, type: 3}
+  m_Name: NeedsPeopleManager
+  m_EditorClassIdentifier: 
+  needsPeoplesList:
+  - {fileID: 11400000, guid: f5e259657141adc4f868bfbb93697030, type: 2}
+  - {fileID: 11400000, guid: 5e7563abee3f0e7489308d9d4eed627c, type: 2}
+  - {fileID: 11400000, guid: df15fa5cb3a71344c993936a8dac0817, type: 2}
+  demandStart: c80000009001000058020000
+  demandRandomStart: 1
+  supplyStartSameValue: 100
+  price_SupplyDemand: {fileID: 11400000, guid: 1d5a6a026596f7e4ab435a5bd0d91037, type: 2}
+  startPrice: 10

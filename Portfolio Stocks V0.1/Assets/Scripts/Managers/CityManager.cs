@@ -82,4 +82,9 @@ public class CityManager : MonoBehaviour
         checkAvailbleCities();
     }
 
+    public int getCitiesMaxAvaible()
+    {
+        return CityInfoList.Count;
+    }
+
 }
