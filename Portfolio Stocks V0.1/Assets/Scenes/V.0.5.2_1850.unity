@@ -105993,22 +105993,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dividendIncome:
-  - 100
+  - 250
   - 500
   dividendIncomeLevel: 0
   DividendRecieved: {fileID: 2092176702}
   dividendQuestCompletedText: Dividend limit reached!
   dividendQuestCompletedText_Bonus: 'New City unlocked: '
   capitalAmountTimesStartingMoney:
+  - 0.5
   - 1
-  - 2
   capitalAmountLevel: 0
   startingMoney: 0
   capitalAmountQuestCompletedText: Capital amount reached!
   capitalAmountQuestCompletedText_Bonus: 'New City unlocked:'
   returnOnPortfolioMilestones:
+  - 25
   - 50
-  - 100
   returnOnPortfolioPercentLevel: 0
   returnOnPortfolioQuestCompletedText: Return on Portfolio  reached!
   returnOnPortfolioQuestCompletedText_Bonus: 'New City unlocked:'

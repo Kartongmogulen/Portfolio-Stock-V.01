@@ -12,6 +12,20 @@ public class projectsUI : MonoBehaviour
     public Button buttonBuy;
 
     [SerializeField] supplyIncreaseProjects activeProject;
+    public SupplyDemandManager supplyDemandManager;
+    [SerializeField] projectsManager ProjectsManager;
+
+    //Kontrollerar valt behov och uppdaterar projekt utifrån det
+    public void updateUIfromNeed()
+    {
+
+        activeProject = ProjectsManager.getProject(supplyDemandManager.getActiveNeedID());
+
+        nameNeed.text = "Need: " + activeProject.NeedsName;
+        cost.text = "Cost: " + activeProject.getPrice();
+        output.text = "Output (units): " + activeProject.getOutput();
+        
+    }
 
     public void updateUIFromProject(supplyIncreaseProjects project)
     {

@@ -16,8 +16,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f5e259657141adc4f868bfbb93697030, type: 2}
   - {fileID: 11400000, guid: 5e7563abee3f0e7489308d9d4eed627c, type: 2}
   - {fileID: 11400000, guid: df15fa5cb3a71344c993936a8dac0817, type: 2}
-  demandStart: c80000009001000058020000
+  activeNeedID: 0
+  demandStart: e8030000e8030000e8030000
   demandRandomStart: 1
-  supplyStartSameValue: 100
+  supplyStartSameValue: 1000
   price_SupplyDemand: {fileID: 11400000, guid: 1d5a6a026596f7e4ab435a5bd0d91037, type: 2}
-  startPrice: 10
+  equilibriumPrice: 10

@@ -143,7 +143,7 @@ public class endRoundButton : MonoBehaviour
 			StockScriptGO.GetComponent<companyNumbersUpdate>().updateYearEnd();
 
 			//Intäkter
-
+			playerScriptsGO.GetComponentInChildren<incomeProduction>().incomeCalc();
 
 			//UI
 			PlayerPerformanceUIScriptsGO.GetComponent<endOfYearPerformanceUI>().activeEndOfYearPanel();

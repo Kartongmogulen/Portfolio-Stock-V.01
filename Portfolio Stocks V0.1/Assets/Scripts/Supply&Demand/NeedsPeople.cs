@@ -17,6 +17,11 @@ public class NeedsPeople : ScriptableObject
         priceNow = price;
     }
 
+    public float getprice()
+    {
+        return priceNow;
+    }
+
     public int getDemand()
     {
         return demandNow;

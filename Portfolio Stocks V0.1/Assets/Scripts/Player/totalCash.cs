@@ -64,6 +64,7 @@ public class totalCash : MonoBehaviour
 
 	public void updateStartingMoney()
 	{
+		Debug.Log("Update Starting Money");
 		moneyText.text = "Money: " + moneyStart;
 		moneyBefore = moneyStart;
 		moneyNow = moneyBefore;
@@ -81,6 +82,17 @@ public class totalCash : MonoBehaviour
 		moneyNow += amount;
 		moneyNow = Mathf.Round(moneyNow * 100) / 100;
 		moneyText.text = "Money: " + moneyNow;
+	}
+	public void transactionMoneyNoUpdateText(float amount)
+	{
+		moneyNow += amount;
+		moneyNow = Mathf.Round(moneyNow * 100) / 100;
+	}
+
+
+	public void setMoneyNoTextUpdate(float amount)
+	{
+		moneyNow = amount;
 	}
 
 	public void incomeWork()

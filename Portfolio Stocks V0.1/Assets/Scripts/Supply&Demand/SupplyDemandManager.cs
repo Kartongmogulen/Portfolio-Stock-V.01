@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +5,7 @@ using UnityEngine;
 public class SupplyDemandManager : ScriptableObject
 {
     public List<NeedsPeople> needsPeoplesList;
+    [SerializeField] int activeNeedID;
     
     [Header("Demand")]
     public List<int> demandStart;
@@ -16,14 +16,16 @@ public class SupplyDemandManager : ScriptableObject
 
     [Header("Pricing")]
     public Price_SupplyDemand price_SupplyDemand;
-    [SerializeField] float startPrice;
+
+    [Tooltip("Jämnviktspris")]
+    [SerializeField] float equilibriumPrice;
 
     private void OnEnable()
     {
         setDemandStart();
         setSupplyStart();
         setPrice();
-        Debug.Log("SupplyDemandManager");
+        //Debug.Log("SupplyDemandManager");
     }
 
     public void setPrice()
@@ -31,7 +33,7 @@ public class SupplyDemandManager : ScriptableObject
         for (int i = 0; i < needsPeoplesList.Count; i++)
         {
 
-            float price = price_SupplyDemand.price(needsPeoplesList[i].getSupply(), needsPeoplesList[i].getDemand(), startPrice);
+            float price = price_SupplyDemand.price(needsPeoplesList[i].getSupply(), needsPeoplesList[i].getDemand(), equilibriumPrice);
             needsPeoplesList[i].setPrice(price);
 
         }
@@ -84,4 +86,13 @@ public class SupplyDemandManager : ScriptableObject
         }
     }
 
+    public void setActiveNeedID(int id)
+    {
+        activeNeedID = id;
+    }
+
+    public int getActiveNeedID()
+    {
+        return activeNeedID;
+    }
 }

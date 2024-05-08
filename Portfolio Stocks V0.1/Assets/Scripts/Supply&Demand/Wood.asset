@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wood
   m_EditorClassIdentifier: 
   nameNeed: Wood
-  demandNow: 200
+  demandNow: 600
   supplyNow: 100
-  priceNow: 20
+  priceNow: 60
   NeedsName: 2

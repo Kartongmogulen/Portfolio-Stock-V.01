@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Food
   m_EditorClassIdentifier: 
   nameNeed: Food
-  demandNow: 600
+  demandNow: 175
   supplyNow: 100
-  priceNow: 60
+  priceNow: 17.5
   NeedsName: 0
