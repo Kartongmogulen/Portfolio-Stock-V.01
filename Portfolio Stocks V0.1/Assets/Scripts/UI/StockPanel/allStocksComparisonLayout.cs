@@ -46,7 +46,7 @@ public class allStocksComparisonLayout : MonoBehaviour
     private void Start ()
     {
         InvokeRepeating("updateAllText_1850", 0.5f, 0.1f); //SÅ ANDRA SCRIPT HINNER KÖRAS
-        //updateAllText_1850();   
+        updateAllText_1850();   
     }
 
     public void updateAllText()
@@ -60,8 +60,8 @@ public class allStocksComparisonLayout : MonoBehaviour
     {
         isPanelActive();
         updateNameText_1850();
-        updatePriceEarningsText_1850();
-        updateTrailing12MonthPrice_1850();
+        //updatePriceEarningsText_1850(); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
+        //updateTrailing12MonthPrice_1850(); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
     }
 
     public void updateNameText()

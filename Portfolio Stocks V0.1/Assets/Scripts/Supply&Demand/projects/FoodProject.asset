@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FoodProject
   m_EditorClassIdentifier: 
   NeedsName: 0
-  price: 200
+  price: 300
   output: 5

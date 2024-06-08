@@ -5,12 +5,19 @@ using UnityEngine.UI;
 
 public class SkillsManager : MonoBehaviour
 {
+    [SerializeField] int activeSkill;
+    [Header("Skills Avalible")]
+    [SerializeField] bool MoreActionPoints_Available;
+    [SerializeField] bool Tools_ComparisonPanel_Available;
+    [SerializeField] bool Events_AffectEarningsSectorOrCompany_Available;
+
     //Hanterar vilka skills splaren kan utveckla
     [Header("More Points to Invest")]
     public int timePointsLvlNow;
     public List <int> costToUnlockMorePoints;
     public int pointsInvestedNowMoreActionPoints;
     public List <int> addedPointsWhenUnlocked;
+    public GameObject moreActionPointsButton;
 
     [Header("Unlock New Companies")]
     [SerializeField] private int levelUnlockNewCompany;
@@ -32,7 +39,11 @@ public class SkillsManager : MonoBehaviour
     [SerializeField] private int experienceUnlock_ComparisonPanel;
     public int maxLevelUnlock_ComparisonPanel;
     public GameObject CompareMultipleStocksButtonGO;
-   
+
+    [Header("Events")]
+    [SerializeField] Text sectorOrCompanyText;
+    [SerializeField] Text posOrNegativeText;
+
     public List<SkillsPlayer> skillsPlayersList;
     public List<GameObject> buttonsSkills;
   
@@ -56,6 +67,77 @@ public class SkillsManager : MonoBehaviour
         {
             //Debug.Log("ButtonsSkill");
             buttonsSkills[0].GetComponentInChildren<Text>().text = skillsPlayersList[0].GetComponent<SkillsPlayer>().getDescription();
+        }
+
+        skillsActiveDuringGamePlay();
+    }
+
+    //Start om "Events" är aktiverade och GameMode är på
+    public void eventsGameModeOn()
+    {
+        sectorOrCompanyText.text = "???";
+        posOrNegativeText.text = "???";
+    }
+
+    //Vilka Skills ska spelaren ha tillgång till under spelet
+    public void skillsActiveDuringGamePlay()
+    {
+       
+        if(MoreActionPoints_Available == true)
+        {
+            moreActionPointsButton.SetActive(true);
+        }
+        else
+        {
+            moreActionPointsButton.SetActive(false);
+        }
+
+        if (Tools_ComparisonPanel_Available == true)
+        {
+            buttonsSkills[0].SetActive(true);
+        }
+        else
+        {
+            buttonsSkills[0].SetActive(false);
+        }
+
+        if (Events_AffectEarningsSectorOrCompany_Available == true)
+        {
+            buttonsSkills[1].SetActive(true);
+            buttonsSkills[2].SetActive(true);
+        }
+        else
+        {
+            buttonsSkills[1].SetActive(false);
+            buttonsSkills[2].SetActive(false);
+        }
+
+
+            
+    }
+
+    public void setActiveSkill(int index)
+    {
+        activeSkill = index;
+    }
+
+    //Har en lista med Skills där input bestämmer vilken som ska gälla. Därmed slipper jag skapa en knapp för varje skill
+    public void addExperienceGeneralSkill()
+    {
+        Debug.Log("Active skill: " + activeSkill);
+        if (activeSkill == 0)
+        {
+            addExperienceUnlockTool_ComparisonPanel(1);
+        }
+
+        else if (activeSkill == 1)
+        {
+            addExperienceUnlockEvents_SectorOrCompany(1);
+        }
+
+        else if (activeSkill == 2)
+        {
+            addExperienceUnlockEvents_PosOrNeg(1);
         }
     }
 
@@ -193,6 +275,84 @@ public class SkillsManager : MonoBehaviour
         }
     }
 
+    public void addExperienceUnlockEvents_SectorOrCompany(int expPoints)
+    {
+        Debug.Log("Add Experience_SectorOrCompany");
+        int index = 1; //UPPDATERAS VID NY SKILL
+        //Finns det poäng kvar att använda. Behålls vid ny skill!
+        if (ActionPointsManager.remainingAP > 0)
+        {
+            //Är max level uppnåd
+            //if (levelUnlockTool_ComparisonPanel < maxLevelUnlock_ComparisonPanel). UPPDATERA INDEX VID NY SKILL
+            if (skillsPlayersList[index].GetComponent<SkillsPlayer>().getCurrentLevel() < skillsPlayersList[index].GetComponent<SkillsPlayer>().maxLevel)
+            {
+
+                //experienceUnlock_ComparisonPanel++;
+                int newExperience = skillsPlayersList[index].GetComponent<SkillsPlayer>().setCurrentExperience(expPoints);
+                ActionPointsManager.actionPointSub(1);
+
+                //Går spelaren upp en level?
+                //if (experienceUnlock_ComparisonPanel == costToUnlock_ComparisonPanel)
+                if (newExperience == skillsPlayersList[index].GetComponent<SkillsPlayer>().costToUnlockNextLvl[skillsPlayersList[index].GetComponent<SkillsPlayer>().getCurrentLevel()])
+                {
+                    // Ökar lvl
+                    //levelUnlockTool_ComparisonPanel++; 
+                    skillsPlayersList[index].GetComponent<SkillsPlayer>().setCurrentLevel_AddOne();
+
+                    //GENOMFÖR VAD SOM HÄNDER VID LVLUPP
+                    skillsPlayersList[index].actionLevelUp();
+
+                    //Nollställer experince då det är samma poäng som krävs oavsett nuvarande level
+                    //experienceUnlock_ComparisonPanel = 0;
+                    skillsPlayersList[index].GetComponent<SkillsPlayer>().setCurrentExperienceToZero();
+                    //activateButtonForNewCompany();
+                }
+            }
+            PointsLeftToUnlock.unlockSkill(skillsPlayersList[index]);
+            //ChooseSkillInSkill.unlockTool_ComparisonPanel();
+            //Debug.Log("XP city: " + experienceUnlockNewCity);
+        }
+    }
+
+    public void addExperienceUnlockEvents_PosOrNeg(int expPoints)
+    {
+        Debug.Log("Add Experience_PosOrNeg");
+        int index = 2; //UPPDATERAS VID NY SKILL
+        //Finns det poäng kvar att använda. Behålls vid ny skill!
+        if (ActionPointsManager.remainingAP > 0)
+        {
+            //Är max level uppnåd
+            //if (levelUnlockTool_ComparisonPanel < maxLevelUnlock_ComparisonPanel). UPPDATERA INDEX VID NY SKILL
+            if (skillsPlayersList[index].GetComponent<SkillsPlayer>().getCurrentLevel() < skillsPlayersList[index].GetComponent<SkillsPlayer>().maxLevel)
+            {
+
+                //experienceUnlock_ComparisonPanel++;
+                int newExperience = skillsPlayersList[index].GetComponent<SkillsPlayer>().setCurrentExperience(expPoints);
+                ActionPointsManager.actionPointSub(1);
+
+                //Går spelaren upp en level?
+                //if (experienceUnlock_ComparisonPanel == costToUnlock_ComparisonPanel)
+                if (newExperience == skillsPlayersList[index].GetComponent<SkillsPlayer>().costToUnlockNextLvl[skillsPlayersList[index].GetComponent<SkillsPlayer>().getCurrentLevel()])
+                {
+                    // Ökar lvl
+                    //levelUnlockTool_ComparisonPanel++; 
+                    skillsPlayersList[index].GetComponent<SkillsPlayer>().setCurrentLevel_AddOne();
+
+                    //GENOMFÖR VAD SOM HÄNDER VID LVLUPP
+                    skillsPlayersList[index].actionLevelUp();
+
+                    //Nollställer experince då det är samma poäng som krävs oavsett nuvarande level
+                    //experienceUnlock_ComparisonPanel = 0;
+                    skillsPlayersList[index].GetComponent<SkillsPlayer>().setCurrentExperienceToZero();
+                    //activateButtonForNewCompany();
+                }
+            }
+            PointsLeftToUnlock.unlockSkill(skillsPlayersList[index]);
+            //ChooseSkillInSkill.unlockTool_ComparisonPanel();
+            //Debug.Log("XP city: " + experienceUnlockNewCity);
+        }
+    }
+
     public int getLevelUnlockNewCompany()
     {
         return levelUnlockNewCompany;
@@ -211,5 +371,22 @@ public class SkillsManager : MonoBehaviour
     public int getExperienceUnlockNewCity()
     {
         return experienceUnlockNewCity;
+    }
+
+    public void setSkillActive_Events_AffectEarningsSectorOrCompany(bool aktiv)
+    {
+        Debug.Log("Activate Events Skills");
+        if (aktiv == true)
+        {
+            Events_AffectEarningsSectorOrCompany_Available = true;
+        }
+        else
+        {
+            Events_AffectEarningsSectorOrCompany_Available = false;
+        }
+
+        //Försäkrar mig om att de aktiveras oavsett i vilken ordning scripten körs
+        skillsActiveDuringGamePlay();
+
     }
 }

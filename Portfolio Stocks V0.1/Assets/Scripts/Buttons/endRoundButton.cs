@@ -101,26 +101,28 @@ public class endRoundButton : MonoBehaviour
 		//Pengar
 		//playerPanelGO.GetComponent<totalCash>().cashflowFromBusiness();
 		playerScriptsGO.GetComponent<totalCash>().incomeWork();
+		//Debug.Log("End Round Button Månad: " + month);
 
 		//Portfölj
 		//playerPanelGO.GetComponent<portfolio>().updatePortfolio(); //Uppdaterar utd för portföljen
 		playerScriptsGO.GetComponent<portfolioStock>().valuePortfolio();
 		//playerScriptsGO.GetComponent<portfolioStock>().showPortfolioData();
 		//StockScriptGO.GetComponent<portfolioStock> ().returnPortfolio(); //Avkastning på portföljen
-
+		
 		//Utdelning
 		playerScriptsGO.GetComponent<incomeDividends>().incomeDivFromPortfolioNow();
-
+		
 		//Spelaren
 		managerScriptsGO.GetComponent<actionPointsManager>().endRound();
 		//playerScriptsGO.GetComponent<portfolioStock>().returnPortfolio();
-
+		
 		//Debug/Övriga spelare
 		//debugPanelGO.GetComponent<Bonds100> ().investBonds ();
 		debugPanelGO.GetComponent<Index100> ().investIndex ();
-		
+
 
 		//MainCanvas.GetComponent<news>().randomNews(); //NYHETER
+		
 
 		if (month > 12) {
 			year++;
@@ -143,6 +145,7 @@ public class endRoundButton : MonoBehaviour
 			StockScriptGO.GetComponent<companyNumbersUpdate>().updateYearEnd();
 
 			//Intäkter
+			if(playerScriptsGO.GetComponentInChildren<incomeProduction>() != null)
 			playerScriptsGO.GetComponentInChildren<incomeProduction>().incomeCalc();
 
 			//UI

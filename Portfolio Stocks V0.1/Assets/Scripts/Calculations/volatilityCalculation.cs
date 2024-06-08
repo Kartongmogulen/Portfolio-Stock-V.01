@@ -15,8 +15,8 @@ public class volatilityCalculation : MonoBehaviour
 
     private void Start()
     {
-        Invoke("last12Month",0.1f);
-        
+        Invoke("last12Month",0.1f); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
+
     }
 
     public float calculateVolatilty(List<float> stockPrices)

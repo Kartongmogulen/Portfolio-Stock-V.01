@@ -11,6 +11,7 @@ public class descriptionTextSkillTree : MonoBehaviour
     public string unlockNewCompany;
     public string unlockNewCity;
     public string unlockTool_ComparisonPanel;// = " You get a Tool";
+    public string unlockEventInfo_SectorOrCompany;// = ;
 
     /*
     public void updateTextUnlockNewCompany()

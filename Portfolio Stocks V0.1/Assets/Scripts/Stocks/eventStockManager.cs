@@ -14,18 +14,40 @@ public class eventStockManager : MonoBehaviour
     [SerializeField] int sectorEventProb; //Slh att det är sektorn som drabbas annars bolag
     [SerializeField] int permanentEffectProb; //Slh att påverkan är permanent annars temporär
     [SerializeField] bool permanentAffect;
+    [SerializeField] List<bool> permanentAffectHistory;
     [SerializeField] bool sectorAffected;
+    [SerializeField] int choosenCompanyIndex;
     [SerializeField] List<sectorNameEnum> sectorAffectedList;
+    [SerializeField] List<string> companyAffectedList;
 
     //[SerializeField] int positiveProbability; // Sannolikheten för en positiv händelse (0 till 100)
 
     [SerializeField] economicClimate EconomicClimate;
     [SerializeField] stockMarketInventory StockMarketInventory;
   
+    public sectorNameEnum getSectorAffected(int index)
+    {
+        return sectorAffectedList[index];
+    }
+
+    public string getCompanyAffected(int index)
+    {
+        return companyAffectedList[index];
+    }
+
+    public string getPositiveOrNegativeAffect(int index)
+    {
+        if (permanentAffectHistory[index] == true)
+        return "Positive";
+        else
+        {
+            return "Negative";
+        }
+    }
 
     public void doesEventOccur(int month)
     {
-        //Debug.Log("Månad: " + month);
+        Debug.Log("Does Event Occur (Månad): " + month);
         if(Frequency == frequency.OncePerYear && month == 1 )
         {
             //Debug.Log("Händelse inträffar 1 ggr per år i januari");
@@ -38,7 +60,7 @@ public class eventStockManager : MonoBehaviour
             applyPermanentEffect();
         }
 
-        resetValues();
+        //resetValues();
         }
     }
 
@@ -57,7 +79,7 @@ public class eventStockManager : MonoBehaviour
             positiveEvent = false;
         }
 
-        
+        permanentAffectHistory.Add(positiveEvent);
     }
 
     public void sectorOrCompanyEvent()
@@ -82,7 +104,10 @@ public class eventStockManager : MonoBehaviour
     public void whichCompanyIsAffected()
     {
         int numberOfCompanies = StockMarketInventory.masterList.Count;
-        Debug.Log("Antal bolag: " + numberOfCompanies);
+        choosenCompanyIndex = Random.Range(0, numberOfCompanies);
+        //Debug.Log("Antal bolag: " + numberOfCompanies);
+        sectorAffectedList.Add(StockMarketInventory.masterList[choosenCompanyIndex].GetComponent<stock>().SectorNameEnum);
+        companyAffectedList.Add(StockMarketInventory.masterList[choosenCompanyIndex].GetComponent<stock>().nameOfCompany);
     }
 
     public void whichSectorIsAffected()
@@ -93,6 +118,7 @@ public class eventStockManager : MonoBehaviour
         int choosenCompanyIndex = Random.Range(0, numberOfCompanies);
         Debug.Log("Sektor som påverkas: " + StockMarketInventory.masterList[choosenCompanyIndex].GetComponent<stock>().SectorNameEnum);
         sectorAffectedList.Add(StockMarketInventory.masterList[choosenCompanyIndex].GetComponent<stock>().SectorNameEnum);
+        companyAffectedList.Add("Sector");
 
         /*
         int numberOfSectors = 1; //Finns alltid minst en sektor
@@ -148,7 +174,7 @@ public class eventStockManager : MonoBehaviour
         }
 
         //Sektor drabbas NEGATIVT
-        if (sectorAffected == true && positiveEvent == false)
+        else if (sectorAffected == true && positiveEvent == false)
         {
 
             //Går igenom lista med aktier
@@ -163,6 +189,17 @@ public class eventStockManager : MonoBehaviour
             }
         }
         //Enskild bolag påverkas
+        else
+        {
+            if (positiveEvent == true)
+            {
+                StockMarketInventory.masterList[choosenCompanyIndex].GetComponent<stock>().adjustEPSGrowth(true, epsGrowthChange);
+            }
+            else
+            {
+                StockMarketInventory.masterList[choosenCompanyIndex].GetComponent<stock>().adjustEPSGrowth(false, -epsGrowthChange);
+            }
+        }
     }
 
     public void resetValues()

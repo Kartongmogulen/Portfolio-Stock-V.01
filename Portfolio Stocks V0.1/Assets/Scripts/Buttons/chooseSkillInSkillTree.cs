@@ -28,4 +28,14 @@ public class chooseSkillInSkillTree : MonoBehaviour
     {
         DescriptionTextSkillTree.descpritionText.text = DescriptionTextSkillTree.unlockTool_ComparisonPanel + "\n You unlock new Tool: Compare multiple stocks";
     }
+
+    public void events_SectorOrCompanyAffected()
+    {
+        DescriptionTextSkillTree.descpritionText.text = DescriptionTextSkillTree.unlockTool_ComparisonPanel + "\n See if event is affecting a whole Sector or the specific company";
+    }
+    public void events_PosOrNegEffect()
+    {
+        DescriptionTextSkillTree.descpritionText.text = DescriptionTextSkillTree.unlockTool_ComparisonPanel + "\n See if event is positive or negative for the EPS";
+    }
+
 }

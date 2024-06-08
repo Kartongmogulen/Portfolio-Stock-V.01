@@ -11,10 +11,16 @@ public class SkillsPlayer : MonoBehaviour
     public List<int> costToUnlockNextLvl; //Antal experience som krävs för att gå upp en level
     [SerializeField] private int experienceCurrentSkill; //Underpoäng av "levelCurrentSkill"
     public int maxLevel;
+    [SerializeField] GameObject activateWhenLvlUp;
 
     private void Start()
     {
         maxLevel = costToUnlockNextLvl.Count;
+    }
+
+    public void actionLevelUp()
+    {
+        activateWhenLvlUp.SetActive(true);
     }
 
     public string getDescription()

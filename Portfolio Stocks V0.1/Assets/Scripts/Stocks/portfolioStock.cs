@@ -501,13 +501,14 @@ public class portfolioStock : MonoBehaviour
 			//Debug.Log("ValuePortfolio");
 			totalValuePortfolio = 0; //Nollställer innan varje körning
 
-			totalValuePortfolio = GetComponent<valuePortfolio>().valueSector(utiCompanySharesOwned, stockListUti);
-			totalValuePortfolio += GetComponent<valuePortfolio>().valueSector(techCompanySharesOwned, stockListTech);
+			//totalValuePortfolio = GetComponent<valuePortfolio>().valueSector(utiCompanySharesOwned, stockListUti);
+			//totalValuePortfolio += GetComponent<valuePortfolio>().valueSector(techCompanySharesOwned, stockListTech);
 			totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabOne(minesCompanySharesOwned, StockMarketManager_1850.StockPrefabListMines);
 			totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabOne(railroadCompanySharesOwned, StockMarketManager_1850.StockPrefabListRailroad);
-			totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabTwo(industriCompanySharesOwned, StockMarketManager_1850.StockPrefabListIndustri);
-		totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabOne(industriCompanySharesOwned, StockMarketManager_1850.StockPrefabListIndustri);
 
+		//totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabTwo(industriCompanySharesOwned, StockMarketManager_1850.StockPrefabListIndustri);
+		//totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabOne(industriCompanySharesOwned, StockMarketManager_1850.StockPrefabListIndustri);
+		//Debug.Log("ValuePortfolio");
 
 		valuePortfolioText.text = "Value: " + totalValuePortfolio;
 		}

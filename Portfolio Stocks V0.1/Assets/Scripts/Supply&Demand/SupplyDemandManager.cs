@@ -9,6 +9,7 @@ public class SupplyDemandManager : ScriptableObject
     
     [Header("Demand")]
     public List<int> demandStart;
+    //public List<int> demandStartCopy; //Får värdena från demandStart och sedan raderas de när de blivit tagna
     public bool demandRandomStart;
 
     [Header("Supply")]
@@ -22,7 +23,7 @@ public class SupplyDemandManager : ScriptableObject
 
     private void OnEnable()
     {
-        setDemandStart();
+        resetDemand();
         setSupplyStart();
         setPrice();
         //Debug.Log("SupplyDemandManager");
@@ -42,6 +43,7 @@ public class SupplyDemandManager : ScriptableObject
 
     public void setDemandStart()
     {
+        
         if (demandRandomStart == true)
         {
             resetDemand();
@@ -56,8 +58,10 @@ public class SupplyDemandManager : ScriptableObject
         }
     }
 
+
     public void setSupplyStart()
     {
+        Debug.Log("SetSupplyStart");
         resetSupply();
 
         for (int i = 0; i < needsPeoplesList.Count; i++)
@@ -73,7 +77,6 @@ public class SupplyDemandManager : ScriptableObject
         for (int i = 0; i < needsPeoplesList.Count; i++)
         {
             needsPeoplesList[i].resetDemand();
-
         }
     }
 

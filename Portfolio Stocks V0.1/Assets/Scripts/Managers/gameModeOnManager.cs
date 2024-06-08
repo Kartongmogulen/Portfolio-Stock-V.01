@@ -14,6 +14,8 @@ public class gameModeOnManager : MonoBehaviour
 
     public bool historicEventsOn;
 
+    [SerializeField] bool eventsAffectingSectorsAndCompaniesOn;
+
     public GameObject stockPanelGO;
     public GameObject portfolioPlayerGO;
     public GameObject portfolioChooseCategoriPanelGO;
@@ -21,10 +23,12 @@ public class gameModeOnManager : MonoBehaviour
 
     public GameObject testButtonPanelGO;
     
-    //Settler
+    [Header("Settler")]
     public GameObject SettlerGO;
-
     public GameObject historicEventsGO;
+
+    [Header("Scripts")]
+    public SkillsManager skillsManager;
 
     private void Start()
     {
@@ -38,6 +42,14 @@ public class gameModeOnManager : MonoBehaviour
         if(historicEventsOn == true)
         {
             historicEventsActive();
+        }
+
+        //Events
+        
+        if (eventsAffectingSectorsAndCompaniesOn == true)
+        {
+            skillsManager.setSkillActive_Events_AffectEarningsSectorOrCompany(true);
+            skillsManager.eventsGameModeOn();
         }
     }
 
