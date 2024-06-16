@@ -68,17 +68,6 @@ public class gameEnd : MonoBehaviour
 		incomeDuringLifeWork = playerGO.GetComponent<incomeWork>().totalIncomeFromWork;
 		incomeDuringLifeDividend = playerGO.GetComponent<incomeDividends>().totalIncome;
 
-
-		utiAmount = PlayerPanelGO.GetComponent<portfolio>().utiAmount;
-		finAmount = PlayerPanelGO.GetComponent<portfolio>().finAmount;
-		techAmount = PlayerPanelGO.GetComponent<portfolio>().techAmount;
-
-		/*
-		utiDiv = MainCanvasGO.GetComponent<infoStockSector>().divUtiNow;
-		finDiv = MainCanvasGO.GetComponent<infoStockSector>().divFinNow;
-		techDiv = MainCanvasGO.GetComponent<infoStockSector>().divTechNow;
-		*/
-
 		divPerYear = playerGO.GetComponent<incomeDividends>().incomeDividendPreviousYear;
 
 		//Value assets
@@ -121,18 +110,18 @@ public class gameEnd : MonoBehaviour
 	//Total return for the player. (Return / Invested capital)
 	public void totalReturn(){
 
-		PlayerPanelGO.GetComponent<portfolio> ().totalInvestedStock ();
-		PlayerPanelGO.GetComponent<portfolio>().totalReturnStock ();
+		//PlayerPanelGO.GetComponent<portfolio> ().totalInvestedStock ();
+		//PlayerPanelGO.GetComponent<portfolio>().totalReturnStock ();
 
 		//Return (Dividend + Interest + Rent + Capital gains)
 		//incomeDuringLifeDividend = PlayerPanelGO.GetComponent<totalCash>().incomeTotDivNow;
 		//incomeBondsLifetime = PlayerPanelGO.GetComponent<totalCash>().incomeBondsLifetime;
 		//incomeRentLifetime = PlayerPanelGO.GetComponent<totalCash> ().incomeRealEstateLifetime;
-		capGainStockAmount = PlayerPanelGO.GetComponent<portfolio>().totalReturnAmountStocks;
+		//capGainStockAmount = PlayerPanelGO.GetComponent<portfolio>().totalReturnAmountStocks;
 		
 
 		//Invested capital (Stocks + Bonds + Real Estate + Business)
-		stocksInvestmentTotAmount = PlayerPanelGO.GetComponent<portfolio>().totalStockInvestment;
+		//stocksInvestmentTotAmount = PlayerPanelGO.GetComponent<portfolio>().totalStockInvestment;
 		bondsInvestmentTotAmount = PlayerPanelGO.GetComponent<bondsPortfolio>().totalBondsInvest;
 		realEstateInvestmentTotAmount = PlayerPanelGO.GetComponent<realEstatePortfolio>().totInvestRealEstate;
 		businessInvestmentTotAmount = PlayerPanelGO.GetComponent<ownedBusiness>().totalInvestAmount;

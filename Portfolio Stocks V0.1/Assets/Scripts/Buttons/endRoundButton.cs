@@ -224,7 +224,7 @@ public class endRoundButton : MonoBehaviour
 
 
 	}
-		playerPanelGO.GetComponent<portfolio>().updatePortfolio(); //Uppdaterar utd för portföljen
+		//playerPanelGO.GetComponent<portfolio>().updatePortfolio(); //Uppdaterar utd för portföljen
 }
 
 	/*public void timePointsLeft()//Om inte alla poäng (research/time) har använts.

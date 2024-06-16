@@ -375,7 +375,7 @@ public class SkillsManager : MonoBehaviour
 
     public void setSkillActive_Events_AffectEarningsSectorOrCompany(bool aktiv)
     {
-        Debug.Log("Activate Events Skills");
+        //Debug.Log("Activate Events Skills");
         if (aktiv == true)
         {
             Events_AffectEarningsSectorOrCompany_Available = true;

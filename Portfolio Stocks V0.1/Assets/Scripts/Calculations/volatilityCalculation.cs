@@ -15,7 +15,7 @@ public class volatilityCalculation : MonoBehaviour
 
     private void Start()
     {
-        Invoke("last12Month",0.1f); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
+        //Invoke("last12Month",0.1f); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
 
     }
 

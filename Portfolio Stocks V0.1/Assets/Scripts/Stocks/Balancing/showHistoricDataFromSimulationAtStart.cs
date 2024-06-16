@@ -21,7 +21,7 @@ public class showHistoricDataFromSimulationAtStart : MonoBehaviour
     private void Start()
     {
         showName();
-        Invoke("priceAppreciationShow",0.2f); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
+        //Invoke("priceAppreciationShow",0.2f); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
         Invoke("volatilityPriceShow",0.2f);
     }
 

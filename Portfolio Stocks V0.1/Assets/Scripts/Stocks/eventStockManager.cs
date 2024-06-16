@@ -5,7 +5,7 @@ using UnityEngine;
 public class eventStockManager : MonoBehaviour
 {
     //[SerializeField] int frequency; //Hur ofta en händelse inträffar
-    [SerializeField] enum frequency { None, OncePerYear, Quarterly, Montlhy };
+    [SerializeField] enum frequency { None, OncePerYear, Quarterly, Monthly };
     [SerializeField] frequency Frequency;
 
     [SerializeField] bool positiveEvent;
@@ -24,7 +24,10 @@ public class eventStockManager : MonoBehaviour
 
     [SerializeField] economicClimate EconomicClimate;
     [SerializeField] stockMarketInventory StockMarketInventory;
-  
+    [SerializeField] createButton CreateButton;
+    [SerializeField] GameObject EventPanel; //Sätts av och på då ny knapp skapas för att få in rätt data på knappen
+    [SerializeField] GameObject alertPlayerWhenEventOccur;
+   
     public sectorNameEnum getSectorAffected(int index)
     {
         return sectorAffectedList[index];
@@ -55,7 +58,13 @@ public class eventStockManager : MonoBehaviour
             permanentOrOneTimeEffect();
             sectorOrCompanyEvent();
 
-        if (permanentAffect == true)
+            //Skapa knapp samt panelen måste vara aktiv för att rätt data ska hamna på knappen
+            EventPanel.SetActive(true);
+            CreateButton.buttonSpawn();
+            EventPanel.SetActive(false);
+            alertPlayerWhenEventOccur.SetActive(true);
+
+            if (permanentAffect == true)
         {
             applyPermanentEffect();
         }

@@ -5,23 +5,50 @@ using UnityEngine;
 public class onOffGameObjectsTool : MonoBehaviour
 {
     public GameObject objectToActivate;
+    public List<GameObject> objectS_ToActivate;
     public List<GameObject> objectsToTurnOff;
     [SerializeField] bool stayActiveEvenWhenButtonPress; //Om objektet ska vara aktivt även om man trycker på samma knapp
     [SerializeField] bool activateAtStart;
+    [SerializeField] bool inactivateAtStart;
 
     private void Start()
     {
         if (activateAtStart == true)
         {
-            activateObject();
+            if (objectToActivate != null)
+            {
+                activateObject();
+                objectToActivate.SetActive(true);
+            }
+
+            else
+            {
+                activateObjectS();
+            }
         }  
+
+        if(inactivateAtStart == true)
+        {
+            turnOffObjects();
+        }
     }
 
-    public void activateObject()
+    public void activateObjectS()
     {
-        if (objectToActivate.activeSelf && stayActiveEvenWhenButtonPress == false)
+       
+        for (int i = 0; i < objectS_ToActivate.Count; i++)
         {
-            objectToActivate.SetActive(false);
+            objectS_ToActivate[i].SetActive(true);
+        }
+    }
+
+public void activateObject()
+    {
+        //Debug.Log("Aktivera objekt: " + objectToActivate.name);
+        if (objectToActivate.activeSelf == true && stayActiveEvenWhenButtonPress == false)
+        {
+            
+                objectToActivate.SetActive(false);
         }
         else
         {

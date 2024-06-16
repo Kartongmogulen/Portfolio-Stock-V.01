@@ -45618,6 +45618,7 @@ MonoBehaviour:
   unlockNewCompany: 
   unlockNewCity: You research about a new cities companies
   unlockTool_ComparisonPanel: 
+  unlockEventInfo_SectorOrCompany: 
 --- !u!114 &769020706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56130,6 +56131,7 @@ MonoBehaviour:
   costToUnlockNextLvl: 0a000000
   experienceCurrentSkill: 0
   maxLevel: 0
+  activateWhenLvlUp: {fileID: 0}
 --- !u!1 &850131045
 GameObject:
   m_ObjectHideFlags: 0
@@ -62120,10 +62122,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63ea1a6cd5b0eb4aa4731486a65355c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeSkill: 0
+  MoreActionPoints_Available: 0
+  Tools_ComparisonPanel_Available: 0
+  Events_AffectEarningsSectorOrCompany_Available: 0
   timePointsLvlNow: 0
   costToUnlockMorePoints: 060000000a0000000f000000
   pointsInvestedNowMoreActionPoints: 0
   addedPointsWhenUnlocked: 010000000100000001000000
+  moreActionPointsButton: {fileID: 0}
   levelUnlockNewCompany: 0
   costToUnlockNewCompany: 0
   experienceUnlockNewCompany: 0
@@ -62139,6 +62146,8 @@ MonoBehaviour:
   experienceUnlock_ComparisonPanel: 0
   maxLevelUnlock_ComparisonPanel: 0
   CompareMultipleStocksButtonGO: {fileID: 1217983040}
+  sectorOrCompanyText: {fileID: 0}
+  posOrNegativeText: {fileID: 0}
   skillsPlayersList:
   - {fileID: 845382342}
   buttonsSkills:
@@ -99408,6 +99417,7 @@ MonoBehaviour:
   unlockNewCompany: 
   unlockNewCity: You research about a new cities companies
   unlockTool_ComparisonPanel: You learn about a new way to analyze
+  unlockEventInfo_SectorOrCompany: 
 --- !u!1001 &1684772840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -105879,6 +105889,7 @@ MonoBehaviour:
   settlerOn: 0
   startingYear_1850: 1
   historicEventsOn: 0
+  eventsAffectingSectorsAndCompaniesOn: 0
   stockPanelGO: {fileID: 572861973}
   portfolioPlayerGO: {fileID: 591398742}
   portfolioChooseCategoriPanelGO: {fileID: 1566977984}
@@ -105886,6 +105897,7 @@ MonoBehaviour:
   testButtonPanelGO: {fileID: 1027863629}
   SettlerGO: {fileID: 384878681}
   historicEventsGO: {fileID: 1762276803}
+  skillsManager: {fileID: 0}
 --- !u!114 &1774405553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105933,10 +105945,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63ea1a6cd5b0eb4aa4731486a65355c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeSkill: 0
+  MoreActionPoints_Available: 0
+  Tools_ComparisonPanel_Available: 0
+  Events_AffectEarningsSectorOrCompany_Available: 0
   timePointsLvlNow: 0
   costToUnlockMorePoints: 060000000a0000000f000000
   pointsInvestedNowMoreActionPoints: 0
   addedPointsWhenUnlocked: 020000000200000002000000
+  moreActionPointsButton: {fileID: 0}
   levelUnlockNewCompany: 0
   costToUnlockNewCompany: 8
   experienceUnlockNewCompany: 0
@@ -105952,6 +105969,8 @@ MonoBehaviour:
   experienceUnlock_ComparisonPanel: 0
   maxLevelUnlock_ComparisonPanel: 0
   CompareMultipleStocksButtonGO: {fileID: 0}
+  sectorOrCompanyText: {fileID: 0}
+  posOrNegativeText: {fileID: 0}
   skillsPlayersList: []
   buttonsSkills: []
   ActionPointsManager: {fileID: 1774405550}
@@ -105976,10 +105995,15 @@ MonoBehaviour:
   sectorEventProb: 50
   permanentEffectProb: 100
   permanentAffect: 0
+  permanentAffectHistory: 
   sectorAffected: 0
+  choosenCompanyIndex: 0
   sectorAffectedList: 
+  companyAffectedList: []
   EconomicClimate: {fileID: 1764841515}
   StockMarketInventory: {fileID: 1842650751}
+  CreateButton: {fileID: 0}
+  EventPanel: {fileID: 0}
 --- !u!114 &1774405557
 MonoBehaviour:
   m_ObjectHideFlags: 0

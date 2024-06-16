@@ -62,7 +62,7 @@ public class sellStock : MonoBehaviour
 
 	void Awake()
 	{
-		ChooseStockSector = GetComponent<chooseStockSector> ();
+		ChooseStockSector = GetComponent<chooseStockSector>();
 
 	}
 
@@ -148,7 +148,7 @@ public class sellStock : MonoBehaviour
 		}
 
 		orderValue = amountOrder * stockPrice;
-		
+
 		//Har spelaren tillräckligt med aktier
 		if (amountOrder <= playerStockCount)
 		{
@@ -180,137 +180,6 @@ public class sellStock : MonoBehaviour
 			playerScriptsGO.GetComponent<portfolioStock>().valuePortfolio();//Uppdaterar värdet av portfölj
 		}
 	}
+}
 
 	
-
-		//_______________________________________________________________
-
-
-
-		public void sellUtilitiesOne (){
-		priceUti = PanelStockSector.GetComponent<priceChange>().utiStockPriceNow;
-		priceUtiText.text = "Price: " + priceUti;
-		numStockUti = playerPanel.GetComponent<portfolio>().utiAmount;
-
-		if (numStockUti > 0) {
-			playerPanel.GetComponent<portfolio>().sellUtiAmount (1);
-			//playerPanel.GetComponent<totalCash>().sellStockUti (1);
-			//playerPanel.GetComponent<portfolio>().GAV();
-		}
-	}
-
-	public void sellUtilitiesTen (){
-		priceUti = PanelStockSector.GetComponent<priceChange>().utiStockPriceNow;
-		priceUtiText.text = "Price: " + priceUti;
-		numStockUti = playerPanel.GetComponent<portfolio>().utiAmount;
-
-		if (numStockUti >= 10) {
-			playerPanel.GetComponent<portfolio>().sellUtiAmount (10);
-			//playerPanel.GetComponent<totalCash>().sellStockUti (10);
-			//playerPanel.GetComponent<portfolio>().GAV();
-		}
-	}
-
-	public void sellUtilitiesHundred (){
-		priceUti = PanelStockSector.GetComponent<priceChange>().utiStockPriceNow;
-		priceUtiText.text = "Price: " + priceUti;
-		numStockUti = playerPanel.GetComponent<portfolio>().utiAmount;
-
-		if (numStockUti >= 100) {
-			playerPanel.GetComponent<portfolio>().sellUtiAmount (100);
-			//playerPanel.GetComponent<totalCash>().sellStockUti (100);
-			//playerPanel.GetComponent<portfolio>().GAV();
-		}
-	}
-
-	public void sellFinanceOne (){
-		Debug.Log ("Sell Fin 1");
-		priceFin = PanelStockSector.GetComponent<priceChange>().finStockPriceNow;
-		priceFinText.text = "Price: " + priceFin;
-
-		numStockFin = playerPanel.GetComponent<portfolio>().finAmount;
-
-		if (numStockFin > 0) {
-			playerPanel.GetComponent<portfolio>().sellFinAmount (1);
-			//playerPanel.GetComponent<totalCash>().sellStockFin (1);
-			//playerPanel.GetComponent<portfolio>().GAV();
-		}
-	}
-
-	public void sellFinanceTen (){
-		priceFin = PanelStockSector.GetComponent<priceChange>().finStockPriceNow;
-		priceFinText.text = "Price: " + priceFin;
-		numStockFin = playerPanel.GetComponent<portfolio>().finAmount;
-
-		if (numStockFin >= 10) {
-			playerPanel.GetComponent<portfolio>().sellFinAmount (10);
-			//playerPanel.GetComponent<totalCash>().sellStockFin (10);
-			//playerPanel.GetComponent<portfolio>().GAV();
-		}
-	}
-
-	public void sellFinanceHundred (){
-		priceFin = PanelStockSector.GetComponent<priceChange>().finStockPriceNow;
-		priceFinText.text = "Price: " + priceFin;
-		numStockFin = playerPanel.GetComponent<portfolio>().finAmount;
-
-		if (numStockFin >= 100) {
-			playerPanel.GetComponent<portfolio>().sellFinAmount (100);
-			//playerPanel.GetComponent<totalCash>().sellStockFin (100);
-			//playerPanel.GetComponent<portfolio>().GAV();
-		}
-	}
-
-	public void sellTechOne (){
-		priceTech = PanelStockSector.GetComponent<priceChange>().techStockPriceNow;
-		priceTechText.text = "Price: " + priceTech;
-		numStockTech = playerPanel.GetComponent<portfolio>().techAmount;
-
-		if (numStockTech > 0) {
-			playerPanel.GetComponent<portfolio>().sellTechAmount (1);
-			//playerPanel.GetComponent<totalCash>().sellStockTech (1);
-			//playerPanel.GetComponent<portfolio>().GAV();
-		}
-	}
-
-	public void sellTechTen (){
-		priceTech = PanelStockSector.GetComponent<priceChange>().techStockPriceNow;
-		priceTechText.text = "Price: " + priceTech;
-		numStockTech = playerPanel.GetComponent<portfolio>().techAmount;
-
-		if (numStockTech >= 10) {
-			playerPanel.GetComponent<portfolio>().sellTechAmount (10);
-			//playerPanel.GetComponent<totalCash>().sellStockTech (10);
-			//playerPanel.GetComponent<portfolio>().GAV();
-		}
-	}
-
-	public void sellTechHundred (){
-		priceTech = PanelStockSector.GetComponent<priceChange>().techStockPriceNow;
-		priceTechText.text = "Price: " + priceTech;
-		numStockTech = playerPanel.GetComponent<portfolio>().techAmount;
-
-		if (numStockTech >= 100) {
-			playerPanel.GetComponent<portfolio>().sellTechAmount (100);
-			//playerPanel.GetComponent<totalCash>().sellStockTech (100);
-			//playerPanel.GetComponent<portfolio>().GAV();
-		}
-	}
-
-	public void sellIndex (){
-		indexNAV= BottomPanelGO.GetComponent<indexFunds>().NAVIndexFund;
-
-		amountOrderIndex = float.Parse (inputAmountIndex.text);	
-
-		priceIndexText.text = "NAV: " + indexNAV;
-		indexShareSell = amountOrderIndex/indexNAV;
-
-		numStockIndex = playerPanel.GetComponent<portfolio>().indexAmount;
-
-		if (numStockIndex > indexShareSell) {
-			playerPanel.GetComponent<portfolio>().sellIndexAmount (indexShareSell, amountOrderIndex);
-			//playerPanel.GetComponent<totalCash>().sellStockIndex	(amountOrderIndex);
-
-		}
-	}
-}

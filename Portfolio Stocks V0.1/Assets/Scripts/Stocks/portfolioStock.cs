@@ -157,43 +157,11 @@ public class portfolioStock : MonoBehaviour
 		industriTotalInvestAmount = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListIndustri.Count);
 		industriTotalReturnAmount = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListIndustri.Count);
 		industriCompanyGAV = CreateListWithLength.listWithRightLengthFloat(StockMarketManager_1850.StockPrefabListIndustri.Count);
+		
+		//Text vid start
+		valuePortfolioText.text = "Value: " + totalValuePortfolio; ;
+		returnPortfolioText.text = "Return stocks: " + totalReturnPortfolioPercent;
 	}
-
-	/*
-	public void addUtiShares(int shares, int activeCompany) {
-		utiCompanySharesOwned[activeCompany] += shares;
-		GetComponent<GAV>().utiGAV();
-
-	}
-
-	public void sellUtiShares(int shares, int activeCompany, float orderValue)
-	{
-		utiCompanySharesOwned[activeCompany] -= shares;
-		utiTotalInvest[activeCompany] -= orderValue;
-		GetComponent<GAV>().utiGAVSell();
-	}
-
-	public void addTechShares(int shares, int activeCompany) {
-		techCompanySharesOwned[activeCompany] += shares;
-		GetComponent<GAV>().techGAV();
-
-	}
-
-	public void sellTechShares(int shares, int activeCompany) {
-		techCompanySharesOwned[activeCompany] -= shares;
-		GetComponent<GAV>().techGAVSell();
-	}
-
-	public void addMaterialShares(int shares, int activeCompany) {
-		materialsCompanySharesOwned[activeCompany] += shares;
-
-	}
-
-	public void sellMaterialShares(int shares, int activeCompany) {
-		materialsCompanySharesOwned[activeCompany] -= shares;
-
-	}
-	*/
 
 	public void addMineShares(int shares, int activeCompany)
 	{
@@ -406,6 +374,7 @@ public class portfolioStock : MonoBehaviour
 		//Debug.Log("Värde portfölj: " + totalValuePortfolio);
 		//Debug.Log("Investerat i portfölj: " + totalInvestAmountPortfolio);
 		totalReturnPortfolioPercent = (totalValuePortfolio / totalInvestAmountPortfolio)-1;
+		returnPortfolioText.text = "Return stocks: " + Mathf.Round(totalReturnPortfolioPercent*100) + "%";
 		savePortfolioReturnEachTurn();
 	}
 

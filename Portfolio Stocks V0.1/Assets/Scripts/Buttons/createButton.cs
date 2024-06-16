@@ -12,6 +12,7 @@ public class createButton : MonoBehaviour
 
     public void buttonSpawn()
     {
+        Debug.Log("ButtonSpawn");
         GameObject buttonInstance = Instantiate(buttonPrefab, parentTransform);
 
         // Ställ in knappens text
@@ -22,17 +23,10 @@ public class createButton : MonoBehaviour
         }
 
         //Koppla info till knappen
-        //Button button = buttonInstance.GetComponent<Button>();
         ShowEventInfo = FindObjectOfType<showEventInfo>();
         ShowEventInfo.index = latestID;
-        //buttonInstance.GetComponent<Button>().onClick.AddListener(() => ShowEventInfo.updateUI());
-        //button.onClick.AddListener(OnButtonClick);     
-
+       
         latestID++;
     }
 
-    public void OnButtonClick()
-    {
-        Debug.Log("Knapp");
-    }
 }

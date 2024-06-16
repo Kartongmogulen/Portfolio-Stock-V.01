@@ -25,7 +25,9 @@ public class gameModeOnManager : MonoBehaviour
     
     [Header("Settler")]
     public GameObject SettlerGO;
+    public GameObject SettlerScriptsGO;
     public GameObject historicEventsGO;
+    public GameObject imageStartGO;
 
     [Header("Scripts")]
     public SkillsManager skillsManager;
@@ -37,6 +39,10 @@ public class gameModeOnManager : MonoBehaviour
         if (settlerOn == true)
         {
             settlerModeActive();
+        }
+        else
+        {
+            SettlerScriptsGO.SetActive(false);
         }
 
         if(historicEventsOn == true)
@@ -62,11 +68,14 @@ public class gameModeOnManager : MonoBehaviour
         SettlerGO.SetActive(false);
         historicEventsGO.SetActive(false);
         testButtonPanelGO.SetActive(false);
+        imageStartGO.SetActive(false);
     }
 
     public void settlerModeActive()
     {
         SettlerGO.SetActive(true);
+        imageStartGO.SetActive(true);
+
     }
 
     public void historicEventsActive()

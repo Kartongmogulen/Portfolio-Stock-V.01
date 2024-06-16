@@ -64,7 +64,7 @@ public class totalCash : MonoBehaviour
 
 	public void updateStartingMoney()
 	{
-		Debug.Log("Update Starting Money");
+		//Debug.Log("Update Starting Money");
 		moneyText.text = "Money: " + moneyStart;
 		moneyBefore = moneyStart;
 		moneyNow = moneyBefore;
