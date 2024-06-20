@@ -3,36 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class mouseOverObject_ShowInfo : MonoBehaviour
+public class mouseOverObject_ShowInfo : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public bool mouseOverObject;
+    //public bool mouseOverObject;
     public GameObject objectToActivate;
 
-    private void Update()
+    public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        isMouseOverUI();
-        if (mouseOverObject == true)
-        {
-            objectToActivate.SetActive(true);
-            
-        }
-        else
-            objectToActivate.SetActive(false);
-
+        objectToActivate.SetActive(true);
     }
 
-    private bool isMouseOverUI()
+   public void OnPointerExit(PointerEventData pointerEventData)
     {
-
-
-        if (EventSystem.current.IsPointerOverGameObject() == true)
-        {
-            mouseOverObject = true;
-        }
-        else
-            mouseOverObject = false;
-
-        return mouseOverObject;
+        objectToActivate.SetActive(false);
     }
-
 }

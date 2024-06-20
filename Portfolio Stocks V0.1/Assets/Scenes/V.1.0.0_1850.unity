@@ -20706,6 +20706,7 @@ MonoBehaviour:
   progressTextList:
   - {fileID: 1575346111}
   activeIndex: 0
+  objectiveManager: {fileID: 1774405557}
 --- !u!1 &518227274
 GameObject:
   m_ObjectHideFlags: 0
@@ -53975,71 +53976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38de1fffdb3c0a346a7f93d628ca3bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelSector: {fileID: 0}
-  MainCanvasGO: {fileID: 9171632}
-  playerPanelGO: {fileID: 940463959}
-  bottomPanelGO: {fileID: 1753404193}
-  StockScriptGO: {fileID: 2092176686}
-  globalEcoClimate: 0
-  incomeDivPerYear: {fileID: 1453885825}
-  portfolioValue: 0
-  portfolioValueText: {fileID: 1008488136}
-  totalStockInvestment: 0
-  returnPort: 0
-  returnPortText: {fileID: 1261505474}
-  totalReturnAmountStocks: 0
-  utiAmount: 0
-  textUtiAmount: {fileID: 0}
-  utiDivPerEcoClimate: 0
-  utiDivPortfolio: 0
-  utiShareOfPortfolio: 0
-  utiSharePrice: 0
-  utiShareOfPortfolioText: {fileID: 0}
-  totalInvestUti: 0
-  totalAmountUtiBuy: 0
-  utiGAV: 0
-  utiGAVtext: {fileID: 0}
-  returnUti: 0
-  returnUtiText: {fileID: 0}
-  finAmount: 0
-  textFinAmount: {fileID: 0}
-  finDivPerEcoClimate: 0
-  finDivPortfolio: 0
-  finShareOfPortfolio: 0
-  finSharePrice: 0
-  finShareOfPortfolioText: {fileID: 0}
-  totalInvestFin: 0
-  totalAmountFinBuy: 0
-  finGAV: 0
-  finGAVtext: {fileID: 0}
-  returnFin: 0
-  returnFinText: {fileID: 0}
-  techAmount: 0
-  textTechAmount: {fileID: 0}
-  techDivPerEcoClimate: 0
-  techDivPortfolio: 0
-  techShareOfPortfolio: 0
-  techSharePrice: 0
-  techShareOfPortfolioText: {fileID: 0}
-  totalInvestTech: 0
-  totalAmountTechBuy: 0
-  techGAV: 0
-  techGAVtext: {fileID: 0}
-  returnTech: 0
-  returnTechText: {fileID: 0}
-  indexAmount: 0
-  textIndexAmount: {fileID: 0}
-  indexDivPerEcoClimate: 0
-  totalInvestIndex: 0
-  indexGAV: 0
-  indexGAVtext: {fileID: 0}
-  indexNAV: 0
-  indexShareOfPortfolio: 0
-  indexShareOfPortfolioText: {fileID: 0}
-  returnIndex: 0
-  returnIndexText: {fileID: 0}
-  dividendPerRound: 0
-  dividendPerYear: 0
 --- !u!114 &940463966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64723,6 +64659,7 @@ GameObject:
   - component: {fileID: 1138381156}
   - component: {fileID: 1138381155}
   - component: {fileID: 1138381154}
+  - component: {fileID: 1138381157}
   m_Layer: 5
   m_Name: QuestPanel_1 (3)
   m_TagString: Untagged
@@ -64814,6 +64751,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138381152}
   m_CullTransparentMesh: 1
+--- !u!114 &1138381157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138381152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bde8a76f2aec94a4183a90b84d5e470c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisObjectsIndex: 2
+  ObjectiveProgressUI: {fileID: 514381904}
 --- !u!1 &1139543337
 GameObject:
   m_ObjectHideFlags: 0
@@ -80411,7 +80362,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1492748620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83238,10 +83189,10 @@ RectTransform:
   m_Father: {fileID: 1492748622}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 76.72, y: -46.3315}
+  m_SizeDelta: {x: 153.44, y: 92.663}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1581008490
 GameObject:
@@ -91313,8 +91264,6 @@ GameObject:
   - component: {fileID: 1760524743}
   - component: {fileID: 1760524742}
   - component: {fileID: 1760524741}
-  - component: {fileID: 1760524744}
-  - component: {fileID: 1760524746}
   - component: {fileID: 1760524745}
   m_Layer: 5
   m_Name: QuestPanel_1
@@ -91407,20 +91356,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760524739}
   m_CullTransparentMesh: 1
---- !u!114 &1760524744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760524739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94918364afdcdd84399ad20602fdd705, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseOverObject: 0
-  objectToActivate: {fileID: 1492748619}
 --- !u!114 &1760524745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91435,32 +91370,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisObjectsIndex: 0
   ObjectiveProgressUI: {fileID: 514381904}
---- !u!61 &1760524746
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760524739}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &1762276803
 GameObject:
   m_ObjectHideFlags: 0
@@ -107454,7 +107363,6 @@ GameObject:
   - component: {fileID: 2035383117}
   - component: {fileID: 2035383116}
   - component: {fileID: 2035383115}
-  - component: {fileID: 2035383119}
   m_Layer: 5
   m_Name: QuestPanel_1 (2)
   m_TagString: Untagged
@@ -107546,20 +107454,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035383113}
   m_CullTransparentMesh: 1
---- !u!114 &2035383119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035383113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94918364afdcdd84399ad20602fdd705, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseOverObject: 0
-  objectToActivate: {fileID: 1492748619}
 --- !u!1001 &2037196751
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108082,6 +107976,7 @@ GameObject:
   - component: {fileID: 2044189073}
   - component: {fileID: 2044189072}
   - component: {fileID: 2044189071}
+  - component: {fileID: 2044189074}
   m_Layer: 5
   m_Name: ObjectivePanel
   m_TagString: Untagged
@@ -108175,6 +108070,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044189069}
   m_CullTransparentMesh: 1
+--- !u!114 &2044189074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044189069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94918364afdcdd84399ad20602fdd705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToActivate: {fileID: 1492748619}
 --- !u!1 &2047882169
 GameObject:
   m_ObjectHideFlags: 0

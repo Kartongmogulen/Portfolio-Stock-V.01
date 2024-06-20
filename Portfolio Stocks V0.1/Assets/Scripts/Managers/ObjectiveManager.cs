@@ -161,4 +161,25 @@ public class ObjectiveManager : MonoBehaviour
 
     }
 
+    public float getDividendIncomeNeededToLvlUp()
+    {
+        if (dividendIncomeLevel < dividendIncome.Count)
+            return dividendIncome[dividendIncomeLevel];
+        else return 0; 
+    }
+
+    public float getCapitalNeededToLvlUp()
+    {
+        if (capitalAmountLevel < capitalAmountTimesStartingMoney.Count)
+            return (capitalAmountTimesStartingMoney[capitalAmountLevel]*startingMoney + startingMoney);
+        else return 0;
+    }
+
+    public float getReturnPortfolio()
+    {
+        if (returnOnPortfolioPercentLevel < returnOnPortfolioMilestones.Count)
+            return (returnOnPortfolioMilestones[returnOnPortfolioPercentLevel]);
+        else return 0;
+    }
+
 }
