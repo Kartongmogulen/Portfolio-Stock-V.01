@@ -10,8 +10,9 @@ public class chooseSkillInSkillTree : MonoBehaviour
 
     public void morePointsToInvestButton()
     {
-        if (skillsManager.timePointsLvlNow < skillsManager.costToUnlockMorePoints.Count)
-            DescriptionTextSkillTree.descpritionText.text = DescriptionTextSkillTree.morePointsToInvest + "\n You get " + skillsManager.addedPointsWhenUnlocked[skillsManager.timePointsLvlNow] + " more TimePoints";
+        //  if (skillsManager.timePointsLvlNow < skillsManager.costToUnlockMorePoints.Count)
+        //DescriptionTextSkillTree.descpritionText.text = DescriptionTextSkillTree.morePointsToInvest + "\n You get " + skillsManager.addedPointsWhenUnlocked[skillsManager.timePointsLvlNow] + " more TimePoints";
+        DescriptionTextSkillTree.descpritionText.text = DescriptionTextSkillTree.morePointsToInvest + "\n You get "+ skillsManager.skillsPlayersList[0].getPointsIncreaseLevelUp() + " more TimePoints";
     }
 
     public void unlockNewCompany()

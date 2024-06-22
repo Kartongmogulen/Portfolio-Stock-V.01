@@ -12,6 +12,7 @@ public class SkillsPlayer : MonoBehaviour
     [SerializeField] private int experienceCurrentSkill; //Underpoäng av "levelCurrentSkill"
     public int maxLevel;
     [SerializeField] GameObject activateWhenLvlUp;
+    [SerializeField] int pointsIncreaseLvlUp;
 
     private void Start()
     {
@@ -21,6 +22,11 @@ public class SkillsPlayer : MonoBehaviour
     public void actionLevelUp()
     {
         activateWhenLvlUp.SetActive(true);
+    }
+
+    public int getPointsIncreaseLevelUp()
+    {
+        return pointsIncreaseLvlUp;
     }
 
     public string getDescription()

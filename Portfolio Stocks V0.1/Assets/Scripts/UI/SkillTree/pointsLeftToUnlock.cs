@@ -13,6 +13,7 @@ public class pointsLeftToUnlock : MonoBehaviour
 
     //public string pointsInvestedAndLeftToUnlockString;
 
+        /*
     public void getMoreActionPoints()
     {
         if (skillsManager.timePointsLvlNow < skillsManager.costToUnlockMorePoints.Count)
@@ -42,6 +43,7 @@ public class pointsLeftToUnlock : MonoBehaviour
             skillNrTwo_Text.text = "Max lvl reached";
         }
     }
+    */
 
     public void unlockSkill(SkillsPlayer skill)
     {
