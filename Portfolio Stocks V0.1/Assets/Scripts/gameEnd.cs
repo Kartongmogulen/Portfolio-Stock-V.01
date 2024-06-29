@@ -9,6 +9,9 @@ public class gameEnd : MonoBehaviour
 	public GameObject playerScriptsGO;
 	public GameObject calcutaionToolsScriptsGO;
 
+	public HighscoreManager highscoreManager;
+	public totalCash TotalCash;
+
 	public GameObject MainCanvasGO;
 	public GameObject endGamePanel;
 	public GameObject PlayerPanelGO;
@@ -48,6 +51,7 @@ public class gameEnd : MonoBehaviour
 
 	public float incomeRentLifetime;
 
+	[SerializeField] float wealthValue;
 	public float assetsValue;
 	public float stockPortfolioValue;
 	public float bondPortfolioValue;
@@ -71,7 +75,9 @@ public class gameEnd : MonoBehaviour
 		divPerYear = playerGO.GetComponent<incomeDividends>().incomeDividendPreviousYear;
 
 		//Value assets
-		playerScriptsGO.GetComponent<portfolioStock>().showPortfolioData();
+		//playerScriptsGO.GetComponent<portfolioStock>().showPortfolioData();
+
+		playerScriptsGO.GetComponent<portfolioStock>().showPortfolioData_1850();
 
 		stockPortfolioValue = playerScriptsGO.GetComponent<portfolioStock>().totalValuePortfolio;
 		//bondPortfolioValue = PlayerPanelGO.GetComponent<bondsPortfolio>().totalValueBonds;
@@ -89,9 +95,10 @@ public class gameEnd : MonoBehaviour
 
 		//totalReturn ();
 
-		playerScriptsGO.GetComponent<portfolioStock>().returnPortfolio();
-		capGainStockAmount = playerScriptsGO.GetComponent<portfolioStock>().totalReturnPortfolioAmount;
-		capGainStockPercent = playerScriptsGO.GetComponent<portfolioStock>().totalReturnPortfolioPercent;
+		//playerScriptsGO.GetComponent<portfolioStock>().returnPortfolio();
+		playerScriptsGO.GetComponent<portfolioStock>().returnFromSector_1850();
+		//capGainStockAmount = playerScriptsGO.GetComponent<portfolioStock>().totalReturnPortfolioAmount;
+		//capGainStockPercent = playerScriptsGO.GetComponent<portfolioStock>().totalReturnPortfolioPercent;
 
 		textEndGame.text = "The end!";
 		incomeWorkText.text = "Income from Work: " + incomeDuringLifeWork;
@@ -103,8 +110,18 @@ public class gameEnd : MonoBehaviour
 		sharpeRatioText.text = "Sharpe Ratio Portfolio: " + calcutaionToolsScriptsGO.GetComponent<sharpeKvotPortfolio>().getSharpeRatio();
 		totalReturnAssets.text = "Total Return Assets: " + Mathf.Round((assetsValue / totalInvestAssets-1)*100) + " %";
 		playerReturnVsIndexText.text = "Players return (%): " + Mathf.Round(capGainStockPercent * 10000) / 100 + " Vs Index (%): " + (EconomyScriptsGO.GetComponent<economicClimate>().totalBNPlist[EconomyScriptsGO.GetComponent<economicClimate>().totalBNPlist.Count-1]-100);
-		playerReturnVsBestStockText.text = "Players return (%): " + Mathf.Round(capGainStockPercent * 10000) / 100 + " Vs Best stock (%): " + Mathf.Round(playerScriptsGO.GetComponent<compareStockReturn>().highestReturn() * 10000) / 10000;
+		//playerReturnVsBestStockText.text = "Players return (%): " + Mathf.Round(capGainStockPercent * 10000) / 100 + " Vs Best stock (%): " + Mathf.Round(playerScriptsGO.GetComponent<compareStockReturn>().highestReturn() * 10000) / 10000;
 
+		saveHighScore();
+	}
+
+	public void saveHighScore()
+	{
+		stockPortfolioValue = playerScriptsGO.GetComponent<portfolioStock>().totalValuePortfolio;
+		wealthValue = stockPortfolioValue + TotalCash.moneyNow;
+		//assetsValue = 5000;
+		//SPARA RESULTAT
+		highscoreManager.AddHighscore(Mathf.RoundToInt(wealthValue));
 	}
 
 	//Total return for the player. (Return / Invested capital)

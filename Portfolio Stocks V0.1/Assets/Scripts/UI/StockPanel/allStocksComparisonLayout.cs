@@ -46,7 +46,7 @@ public class allStocksComparisonLayout : MonoBehaviour
     private void Start ()
     {
         InvokeRepeating("updateAllText_1850", 0.5f, 0.1f); //SÅ ANDRA SCRIPT HINNER KÖRAS
-        updateAllText_1850();   
+        //updateAllText_1850();   
     }
 
     public void updateAllText()
@@ -60,8 +60,8 @@ public class allStocksComparisonLayout : MonoBehaviour
     {
         isPanelActive();
         updateNameText_1850();
-        //updatePriceEarningsText_1850(); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
-        //updateTrailing12MonthPrice_1850(); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
+        updatePriceEarningsText_1850(); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
+        updateTrailing12MonthPrice_1850(); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
     }
 
     public void updateNameText()
@@ -76,6 +76,7 @@ public class allStocksComparisonLayout : MonoBehaviour
     public void updateNameText_1850()
     {
         //Debug.Log(StockMarketInventory.Stock.Count);
+        //Debug.Log("UppdateraText1850-Script");
         for (int i = 0; i < StockMarketManager_1850.StockPrefabListMines.Count; i++)
         {
             nameStocksList[i].text = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().nameOfCompany;
@@ -231,6 +232,7 @@ public class allStocksComparisonLayout : MonoBehaviour
 
     public void isPanelActive()
     {
+        //Debug.Log("Panel Aktiv Script");
         if (minesActive == true)
         {
             nameGO_Mines.SetActive(true);

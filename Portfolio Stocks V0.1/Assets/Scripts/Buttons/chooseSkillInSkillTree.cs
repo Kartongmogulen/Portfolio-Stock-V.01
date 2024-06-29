@@ -22,7 +22,7 @@ public class chooseSkillInSkillTree : MonoBehaviour
 
     public void unlockNewCity()
     {
-        DescriptionTextSkillTree.descpritionText.text = DescriptionTextSkillTree.unlockNewCompany + "\n You get one new city to invest in";
+        DescriptionTextSkillTree.descpritionText.text = DescriptionTextSkillTree.unlockNewCity + "\n You get one new city to invest in";
     }
 
     public void unlockTool_ComparisonPanel()

@@ -102,10 +102,12 @@ public class orderValue : MonoBehaviour
 				stockPrice = StockMarketManager_1850.StockPrefabListIndustri[cityManager.getActiveCity()].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[0].GetComponent<stock>().StockPrice.Count - 1];
 			}
 
-			if (orderValueText.text == "")
+			/*
+			else if (orderValueText.text == "")
 			{
 				amountOrder = 0;
 			}
+			*/
 			else
 				amountOrder = int.Parse(inputOrderAmount_1850.text);
 

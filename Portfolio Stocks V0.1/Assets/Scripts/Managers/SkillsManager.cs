@@ -131,18 +131,22 @@ public class SkillsManager : MonoBehaviour
         {
             addExperienceActionPointsIncrease(1);
         }
-
         if (activeSkill == 1)
+        {
+            addExperienceNewCity(1);
+        }
+
+        if (activeSkill == 2)
         {
             addExperienceUnlockTool_ComparisonPanel(1);
         }
 
-        else if (activeSkill == 2)
+        else if (activeSkill == 3)
         {
             addExperienceUnlockEvents_SectorOrCompany(1);
         }
 
-        else if (activeSkill == 3)
+        else if (activeSkill == 4)
         {
             addExperienceUnlockEvents_PosOrNeg(1);
         }
@@ -285,9 +289,46 @@ public class SkillsManager : MonoBehaviour
         }
     }
 
-    public void addExperienceUnlockTool_ComparisonPanel(int expPoints)
+    public void addExperienceNewCity(int expPoints)
     {
         int index = 1;
+        //Finns det poäng kvar att använda
+        if (ActionPointsManager.remainingAP > 0)
+        {
+            //Är max level uppnåd
+            //if (levelUnlockTool_ComparisonPanel < maxLevelUnlock_ComparisonPanel)
+            if (skillsPlayersList[index].GetComponent<SkillsPlayer>().getCurrentLevel() < skillsPlayersList[index].GetComponent<SkillsPlayer>().maxLevel)
+            {
+
+                //experienceUnlock_ComparisonPanel++;
+                int newExperience = skillsPlayersList[index].GetComponent<SkillsPlayer>().setCurrentExperience(expPoints);
+                ActionPointsManager.actionPointSub(1);
+
+                //Går spelaren upp en level?
+                //if (experienceUnlock_ComparisonPanel == costToUnlock_ComparisonPanel)
+                if (newExperience == skillsPlayersList[index].GetComponent<SkillsPlayer>().costToUnlockNextLvl[skillsPlayersList[index].GetComponent<SkillsPlayer>().getCurrentLevel()])
+                {
+                    Debug.Log("Lvl up: New City");
+                    // Ökar lvl
+                    skillsPlayersList[index].GetComponent<SkillsPlayer>().setCurrentLevel_AddOne();
+
+                    //GENOMFÖR VAD SOM HÄNDER VID LVLUPP
+                    skillsPlayersList[index].actionLevelUp();
+
+                    //Nollställer experince då det är samma poäng som krävs oavsett nuvarande level
+                    skillsPlayersList[index].GetComponent<SkillsPlayer>().setCurrentExperienceToZero();
+                    //activateButtonForNewCompany();
+                }
+            }
+            PointsLeftToUnlock.unlockSkill(skillsPlayersList[index]);
+            //ChooseSkillInSkill.morePointsToInvestButton();
+            //Debug.Log("XP city: " + experienceUnlockNewCity);
+        }
+    }
+
+    public void addExperienceUnlockTool_ComparisonPanel(int expPoints)
+    {
+        int index = 2;
         //Finns det poäng kvar att använda
         if (ActionPointsManager.remainingAP > 0)
         {
@@ -327,7 +368,7 @@ public class SkillsManager : MonoBehaviour
     public void addExperienceUnlockEvents_SectorOrCompany(int expPoints)
     {
         Debug.Log("Add Experience_SectorOrCompany");
-        int index = 2; //UPPDATERAS VID NY SKILL
+        int index = 3; //UPPDATERAS VID NY SKILL
         //Finns det poäng kvar att använda. Behålls vid ny skill!
         if (ActionPointsManager.remainingAP > 0)
         {
@@ -366,7 +407,7 @@ public class SkillsManager : MonoBehaviour
     public void addExperienceUnlockEvents_PosOrNeg(int expPoints)
     {
         Debug.Log("Add Experience_PosOrNeg");
-        int index = 3; //UPPDATERAS VID NY SKILL
+        int index = 4; //UPPDATERAS VID NY SKILL
         //Finns det poäng kvar att använda. Behålls vid ny skill!
         if (ActionPointsManager.remainingAP > 0)
         {

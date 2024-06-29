@@ -438,13 +438,15 @@ public class portfolioStock : MonoBehaviour
 
 		public void returnPortfolio()
 		{
-			//Utilites
+		//Utilites
+		if (stockListUti != null)
+		{
 			returnUtiCompanies = playerUtiGO.GetComponent<returnPortfolio>().returnStocksPercent(stockListUti, utiGAV);
 			utiTotalReturnAmount = playerUtiGO.GetComponent<returnPortfolio>().returnSector(stockListUti, utiGAV, utiCompanySharesOwned);
 
 			utiTotalReturnPercent = utiTotalReturnAmount / utiTotalInvestAmount;
 			utiReturnText.text = " " + Mathf.Round(utiTotalReturnPercent * 10000) / 100 + "%";
-
+		}
 			//Tech
 			returnTechCompanies = playerTechGO.GetComponent<returnPortfolio>().returnStocksPercent(stockListTech, techGAV);
 			techTotalReturnAmount = playerTechGO.GetComponent<returnPortfolio>().returnSector(stockListTech, techGAV, techCompanySharesOwned);

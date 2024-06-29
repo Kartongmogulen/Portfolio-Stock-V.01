@@ -10,7 +10,7 @@ public class objectiveProgressSetActiveIndex : MonoBehaviour, IPointerEnterHandl
 
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        Debug.Log("Index: " + thisObjectsIndex);
+        //Debug.Log("Index: " + thisObjectsIndex);
         ObjectiveProgressUI.setActiveIndex(thisObjectsIndex);
     }
 

@@ -27,7 +27,7 @@ public class eventStockManager : MonoBehaviour
     [SerializeField] createButton CreateButton;
     [SerializeField] GameObject EventPanel; //Sätts av och på då ny knapp skapas för att få in rätt data på knappen
     [SerializeField] GameObject alertPlayerWhenEventOccur;
-   
+    
     public sectorNameEnum getSectorAffected(int index)
     {
         return sectorAffectedList[index];
@@ -50,7 +50,7 @@ public class eventStockManager : MonoBehaviour
 
     public void doesEventOccur(int month)
     {
-        Debug.Log("Does Event Occur (Månad): " + month);
+        //Debug.Log("Does Event Occur (Månad): " + month);
         if(Frequency == frequency.OncePerYear && month == 1 )
         {
             //Debug.Log("Händelse inträffar 1 ggr per år i januari");
@@ -78,13 +78,13 @@ public class eventStockManager : MonoBehaviour
     {
        if (EconomicClimate.RecessionOrExpanssionEnum == recessionOrExpanssionEnum.Expanssion)
         {
-            Debug.Log("Positiv händelse!");
+            //Debug.Log("Positiv händelse!");
             positiveEvent = true;
         }
 
         if (EconomicClimate.RecessionOrExpanssionEnum == recessionOrExpanssionEnum.Rececssion)
         {
-            Debug.Log("Negativ händelse!");
+            //Debug.Log("Negativ händelse!");
             positiveEvent = false;
         }
 
@@ -96,13 +96,13 @@ public class eventStockManager : MonoBehaviour
         int random = Random.Range(0, 100);
         if(random <= sectorEventProb)
         {
-            Debug.Log("Sektorn drabbas: " + random);
+            //Debug.Log("Sektorn drabbas: " + random);
             whichSectorIsAffected();
             sectorAffected = true;
         }
         else
         {
-            Debug.Log("Bolag drabbas: " + random);
+            //Debug.Log("Bolag drabbas: " + random);
             whichCompanyIsAffected();
             sectorAffected = false;
         }
