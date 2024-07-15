@@ -113,6 +113,7 @@ public class gameEnd : MonoBehaviour
 		//playerReturnVsBestStockText.text = "Players return (%): " + Mathf.Round(capGainStockPercent * 10000) / 100 + " Vs Best stock (%): " + Mathf.Round(playerScriptsGO.GetComponent<compareStockReturn>().highestReturn() * 10000) / 10000;
 
 		saveHighScore();
+		highscoreManager.endGame();
 	}
 
 	public void saveHighScore()

@@ -123,10 +123,15 @@ public class SkillsManager : MonoBehaviour
         activeSkill = index;
     }
 
+    public int getActiveSkill()
+    {
+        return activeSkill;
+    }
+
     //Har en lista med Skills där input bestämmer vilken som ska gälla. Därmed slipper jag skapa en knapp för varje skill
     public void addExperienceGeneralSkill()
     {
-        Debug.Log("Active skill: " + activeSkill);
+        //Debug.Log("Active skill: " + activeSkill);
         if (activeSkill == 0)
         {
             addExperienceActionPointsIncrease(1);
@@ -252,6 +257,7 @@ public class SkillsManager : MonoBehaviour
 
     public void addExperienceActionPointsIncrease(int expPoints)
     {
+        Debug.Log("More ActionPoints");
         int index = 0;
         //Finns det poäng kvar att använda
         if (ActionPointsManager.remainingAP > 0)

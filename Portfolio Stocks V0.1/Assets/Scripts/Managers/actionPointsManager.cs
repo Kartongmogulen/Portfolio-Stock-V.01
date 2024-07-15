@@ -8,16 +8,45 @@ public class actionPointsManager : MonoBehaviour
     //Hanterar allt som kräver Action Points
 
     public int startAP;
-    public int baseAP; //Spelarens nyvarande AP vid ny runda
+    public int baseAP; //Spelarens nuvarande AP vid ny runda
     public int remainingAP;
 
     public Text actionPointsText;
+
+    public actionPointsLeft_AutoUse ActionPointsLeft_AutoUse;
+    public SkillsManager skillsManager;
 
   void Start()
     {
         remainingAP = startAP;
         baseAP = startAP;
         actionPointsText.text = " AP: " + remainingAP;
+    }
+
+    public void checkIfPointsRemain()
+    {
+        if (remainingAP > 0)
+        {
+            //Debug.Log("Active Skill: " + skillsManager.getActiveSkill());
+            //Sätter activeSkill till samma som vald
+            skillsManager.setActiveSkill(ActionPointsLeft_AutoUse.getSavedIndex());
+            //Debug.Log("Active Skill: " + skillsManager.getActiveSkill());
+        }
+
+        while(remainingAP > 0)
+        {
+            skillsManager.addExperienceGeneralSkill();
+            //Debug.Log("Active Skill: " + skillsManager.getActiveSkill());
+
+        }
+        
+        /*for (int i = 0; remainingAP >= i; i++)
+        {
+            //remainingAP--;
+            skillsManager.addExperienceGeneralSkill();
+            Debug.Log("Active Skill: " + skillsManager.getActiveSkill() + "-" + i);
+        }*/
+
     }
 
     public void actionPointSub(int amountAP)
@@ -32,6 +61,7 @@ public class actionPointsManager : MonoBehaviour
 
     public void endRound()
     {
+        checkIfPointsRemain();
         remainingAP = baseAP;
         updateAP();
     }
