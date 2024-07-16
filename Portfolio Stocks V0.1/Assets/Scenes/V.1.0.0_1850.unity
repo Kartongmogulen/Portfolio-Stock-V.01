@@ -57867,7 +57867,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'Portfolio:'
 --- !u!222 &1008488137
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -59139,7 +59139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1027863630
 RectTransform:
   m_ObjectHideFlags: 0
@@ -69774,7 +69774,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'Money:'
 --- !u!222 &1255697985
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -70073,7 +70073,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'Return:'
 --- !u!222 &1261505475
 CanvasRenderer:
   m_ObjectHideFlags: 0

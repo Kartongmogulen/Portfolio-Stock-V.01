@@ -28,8 +28,11 @@ public class gamePlayAssetClasses : MonoBehaviour
         }
         else
         {
-            bondsButtonPanel.SetActive(false);
-            bondsButtonPanel_1850.SetActive(false);
+            if (bondsButtonPanel != null)
+            {
+                bondsButtonPanel.SetActive(false);
+                bondsButtonPanel_1850.SetActive(false);
+            }
 
             for (int i = 0; i < stocksAndBondsUpdateButton.Count; i++) 
             {
