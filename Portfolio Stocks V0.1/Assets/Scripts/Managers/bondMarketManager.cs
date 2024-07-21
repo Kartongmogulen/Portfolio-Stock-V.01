@@ -42,8 +42,11 @@ public class bondMarketManager : MonoBehaviour
     public void updateEachRound()
     {
         BondsPortfolio.addPlaceInList();
-        bondsScriptsGO.GetComponent<bondsCollectCoupon>().CollectCoupon();
-        bondsScriptsGO.GetComponent<bondMaturityCheck>().checkIfMaturePassed();
+        if (bondsScriptsGO != null)
+        {
+            bondsScriptsGO.GetComponent<bondsCollectCoupon>().CollectCoupon();
+            bondsScriptsGO.GetComponent<bondMaturityCheck>().checkIfMaturePassed();
+        }
         BondsPortfolio.bondsOwnedTotal();
     }
 }

@@ -40,8 +40,6 @@ public class endRoundButton : MonoBehaviour
 
 	public int yearsBeforeEndGame;
 
-	public Text timePointsLeftText;
-
 	// SIMULERING 12 MÅNADER
 	public bool stop12MonthSim= false;
 	public int countMultiMonthSim;
@@ -76,8 +74,6 @@ public class endRoundButton : MonoBehaviour
 
 	public void endTurn() //Uppdaterar tid samt texten för vilken aktuell tid det är
 	{
-		timePointsLeftText.GetComponent<Text>().enabled = false;
-
 		//month = month + 10;
 		month++;//Add 1 to the month;
 		DateNowText.text = "Y: " + year + " M: " + month;
@@ -96,7 +92,7 @@ public class endRoundButton : MonoBehaviour
 
 
 		//Företag
-		playerPanelGO.GetComponent<ownedBusiness>().playerCashflow();
+		//playerPanelGO.GetComponent<ownedBusiness>().playerCashflow();
 
 		//Pengar
 		//playerPanelGO.GetComponent<totalCash>().cashflowFromBusiness();

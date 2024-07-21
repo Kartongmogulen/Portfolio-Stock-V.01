@@ -89,8 +89,16 @@ public class gameEnd : MonoBehaviour
 
 		//Update text
 		endGamePanel.SetActive (true);
-		realEstatePanelGO.SetActive (false);
-		bondsPanelGO.SetActive (false);
+
+		if (realEstatePanelGO != null)
+		{
+			realEstatePanelGO.SetActive(false);
+		}
+
+		if (bondsPanelGO != null)
+		{
+			bondsPanelGO.SetActive(false);
+		}
 		//SectorPanelGO.SetActive (false);
 
 		//totalReturn ();

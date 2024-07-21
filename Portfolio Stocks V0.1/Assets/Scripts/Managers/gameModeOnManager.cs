@@ -62,9 +62,21 @@ public class gameModeOnManager : MonoBehaviour
     public void inactivateGameObjectsAtStart()
     {
         stockPanelGO.SetActive(false);
-        portfolioPlayerGO.SetActive(false);
-        portfolioChooseCategoriPanelGO.SetActive(false);
-        bondsPanelGO.SetActive(false);
+
+        if (portfolioPlayerGO != null)
+        {
+            portfolioPlayerGO.SetActive(false);
+        }
+
+        if (portfolioChooseCategoriPanelGO != null)
+        {
+            portfolioChooseCategoriPanelGO.SetActive(false);
+        }
+
+        if (bondsPanelGO != null)
+        {
+            bondsPanelGO.SetActive(false);
+        }
         SettlerGO.SetActive(false);
         historicEventsGO.SetActive(false);
         testButtonPanelGO.SetActive(false);

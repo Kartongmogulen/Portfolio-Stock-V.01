@@ -257,7 +257,7 @@ public class SkillsManager : MonoBehaviour
 
     public void addExperienceActionPointsIncrease(int expPoints)
     {
-        Debug.Log("More ActionPoints");
+        //Debug.Log("More ActionPoints");
         int index = 0;
         //Finns det poäng kvar att använda
         if (ActionPointsManager.remainingAP > 0)
@@ -289,6 +289,11 @@ public class SkillsManager : MonoBehaviour
                     //activateButtonForNewCompany();
                 }
             }
+            else
+            {
+                index++;
+            }
+            
             PointsLeftToUnlock.unlockSkill(skillsPlayersList[index]);
             ChooseSkillInSkill.morePointsToInvestButton();
             //Debug.Log("XP city: " + experienceUnlockNewCity);

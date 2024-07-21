@@ -120,7 +120,7 @@ public class sellStock : MonoBehaviour
 	}
 	public void sellStocks_1850()
 	{
-		Debug.Log("Sälj aktie");
+		//Debug.Log("Sälj aktie");
 		activeSector = ActiveSector_1850.getActiveSector();
 		amountOrder = int.Parse(inputAmountOrder.text);
 

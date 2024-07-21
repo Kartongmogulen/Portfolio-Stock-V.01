@@ -25,6 +25,7 @@ public class actionPointsManager : MonoBehaviour
 
     public void checkIfPointsRemain()
     {
+        int remaningAPInterim = remainingAP;
         if (remainingAP > 0)
         {
             //Debug.Log("Active Skill: " + skillsManager.getActiveSkill());
@@ -33,8 +34,10 @@ public class actionPointsManager : MonoBehaviour
             //Debug.Log("Active Skill: " + skillsManager.getActiveSkill());
         }
 
-        while(remainingAP > 0)
+        //while(remainingAP > 0)
+        for (int i = 0; remaningAPInterim >= i; i++)
         {
+           
             skillsManager.addExperienceGeneralSkill();
             //Debug.Log("Active Skill: " + skillsManager.getActiveSkill());
 

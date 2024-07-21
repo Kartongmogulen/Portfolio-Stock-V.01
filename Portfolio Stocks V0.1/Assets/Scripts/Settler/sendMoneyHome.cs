@@ -13,6 +13,7 @@ public class sendMoneyHome : MonoBehaviour
     [SerializeField] int moneyNeededPerYear;
     [SerializeField] int startSendingMoneyTimepoint;
 
+    public Text textStartingLetter;
     public Text textOne;
 
     public GameObject infoPanel;
@@ -23,18 +24,21 @@ public class sendMoneyHome : MonoBehaviour
 
     private void Start()
     {
-        textOne.text = "" + introText + "\n" + moneyNeededText + moneyNeededPerYear + "\n" + startSeendingMoneyText + startSendingMoneyTimepoint;
+        textStartingLetter.text = "" + introText + "\n" + moneyNeededText + moneyNeededPerYear + "\n" + startSeendingMoneyText + startSendingMoneyTimepoint;
         sendMoneyButton.SetActive(false);
+
+        textOne.text = sendMoneyText + " " + moneyNeededPerYear + "\n" + effectOnFamilyNoMoneyText + "-" + FamilyStatusManager.getFamilyStatusChange();
+
     }
 
     public void timeForPlayerToSendMoney(int yearNow)
     {
         //Debug.Log("År: " + yearNow);
-        Debug.Log("Börja skicka pengar (år): " + startSendingMoneyTimepoint);
+        //Debug.Log("Börja skicka pengar (år): " + startSendingMoneyTimepoint);
 
         if (yearNow >= startSendingMoneyTimepoint)
         {
-            Debug.Log("Send money!");
+            //Debug.Log("Send money!");
             textOne.text = sendMoneyText + " " + moneyNeededPerYear + "\n" + effectOnFamilyNoMoneyText + "-" + FamilyStatusManager.getFamilyStatusChange();
             infoPanel.SetActive(true);
             sendMoneyButton.SetActive(true);

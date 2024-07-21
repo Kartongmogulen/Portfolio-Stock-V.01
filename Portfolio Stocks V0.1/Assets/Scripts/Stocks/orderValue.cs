@@ -108,7 +108,7 @@ public class orderValue : MonoBehaviour
 				amountOrder = 0;
 			}
 			*/
-			else
+			//else
 				amountOrder = int.Parse(inputOrderAmount_1850.text);
 
 			orderValueText_1850.text = "Value order: " + amountOrder * stockPrice;

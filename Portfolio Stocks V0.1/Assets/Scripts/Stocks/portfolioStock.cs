@@ -478,7 +478,7 @@ public class portfolioStock : MonoBehaviour
 			totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabOne(railroadCompanySharesOwned, StockMarketManager_1850.StockPrefabListRailroad);
 
 		//totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabTwo(industriCompanySharesOwned, StockMarketManager_1850.StockPrefabListIndustri);
-		//totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabOne(industriCompanySharesOwned, StockMarketManager_1850.StockPrefabListIndustri);
+		totalValuePortfolio += GetComponent<valuePortfolio>().valueSectorGameObjects_PrefabOne(industriCompanySharesOwned, StockMarketManager_1850.StockPrefabListIndustri);
 		//Debug.Log("ValuePortfolio");
 
 		valuePortfolioText.text = "Value: " + totalValuePortfolio;

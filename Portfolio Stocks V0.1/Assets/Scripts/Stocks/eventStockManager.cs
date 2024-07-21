@@ -153,13 +153,13 @@ public class eventStockManager : MonoBehaviour
         int random = Random.Range(0, 100);
         if (random <= permanentEffectProb)
         {
-            Debug.Log("Permanent effekt: " + random);
+            //Debug.Log("Permanent effekt: " + random);
             permanentAffect = true;
 
         }
         else
         {
-            Debug.Log("Temporär effekt: " + random);
+            //Debug.Log("Temporär effekt: " + random);
             permanentAffect = false;
         }
     }

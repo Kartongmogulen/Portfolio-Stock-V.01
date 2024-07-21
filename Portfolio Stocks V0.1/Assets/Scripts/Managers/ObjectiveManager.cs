@@ -18,6 +18,7 @@ public class ObjectiveManager : MonoBehaviour
     //Viss nivå av totalt kapital
     [Header("CapitalAmount")]
     [SerializeField] List<float> capitalAmountTimesStartingMoney;
+    [SerializeField] float capitalPlayer; //Spelarens kapital (Likvider + Aktier)
     [SerializeField] int capitalAmountLevel;
     [SerializeField] float startingMoney; //Spar hur mycket pengar man har vi start
     public string capitalAmountQuestCompletedText;
@@ -36,6 +37,7 @@ public class ObjectiveManager : MonoBehaviour
     public CityManager cityManager;
     public SkillsManager skillsManager;
     public portfolioStock PortfolioStock;
+    public totalCash TotalCash;
     public List<Text> progessText;
 
     private void Start()
@@ -100,8 +102,8 @@ public class ObjectiveManager : MonoBehaviour
         }
 
         //Spelarens kapital (Likvider + Aktieportfölj)
-        float capitalPlayer = GetComponent<moneyManager>().moneyNow + PortfolioStock.totalValuePortfolio;
-        //Debug.Log("Spelarens totala kapital: " + capitalPlayer);
+        capitalPlayer = TotalCash.moneyNow + PortfolioStock.totalValuePortfolio;
+        Debug.Log("Spelarens totala kapital: " + capitalPlayer);
 
         if ((startingMoney  + capitalAmountTimesStartingMoney[capitalAmountLevel] * startingMoney) < capitalPlayer)
         {
