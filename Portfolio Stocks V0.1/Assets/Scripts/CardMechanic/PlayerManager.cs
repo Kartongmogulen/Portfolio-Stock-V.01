@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using InvestmentData;  // Se till att referera till InvestmentData
 
 
 public class PlayerManager : MonoBehaviour
 {
-        public float playerCapital = 0f; // Spelarens totala kapital
+        [SerializeField] float playerCapital = 0f; // Spelarens totala kapital
+        public Text playerCapitalText;
+
         public List<InvestmentInstance> activeInvestments = new List<InvestmentInstance>(); // Lista över aktiva investeringar (individuella instanser)
 
-        // Funktion för att lägga till en ny investering till spelarens lista
-        public void AddInvestment(InvestmentInstance investment)
+    private void Start()
+    {
+        updateMoneyText();
+    }
+
+    // Funktion för att lägga till en ny investering till spelarens lista
+    public void AddInvestment(InvestmentInstance investment)
     {
         activeInvestments.Add(investment);
         Debug.Log("Ny investering tillagd: " + investment.investmentType.name + ", Potentiell avkastning: " + investment.potentialReturn);
@@ -19,8 +27,9 @@ public class PlayerManager : MonoBehaviour
     // Funktion för att samla in avkastningen från en investering
     public void CollectReturn(InvestmentInstance investment)
     {
-        playerCapital += investment.potentialReturn;
+        playerCapital += (investment.potentialReturn + investment.investmentType.cost);
         Debug.Log("Avkastning från " + investment.investmentType.name + " samlad in! Spelarens kapital: " + playerCapital);
+        updateMoneyText();
     }
 
     // Funktion för att uppdatera investeringarnas ålder och ta bort gamla
@@ -38,5 +47,21 @@ public class PlayerManager : MonoBehaviour
         }
 
         Debug.Log("Aktiva investeringar uppdaterade. Kvarvarande: " + activeInvestments.Count);
+    }
+
+    void updateMoneyText()
+    {
+        playerCapitalText.text = "Money: " + playerCapital;
+    }
+
+    public float playerCapitalGet()
+    {
+        return playerCapital;
+    }
+
+    public void playerCapitalSet(float transaction)
+    {
+        playerCapital += transaction;
+        updateMoneyText();
     }
 }

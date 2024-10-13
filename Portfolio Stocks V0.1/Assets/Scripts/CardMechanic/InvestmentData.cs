@@ -26,11 +26,12 @@ namespace InvestmentData
     [System.Serializable]
     public class InvestmentInstance
     {
-        public InvestmentType investmentType;  // Typ av investering
+        //public InvestmentType investmentType;  // Typ av 
+        public InvestmentTypeData investmentType;
         public int currentAge;                 // Nuvarande ålder på investeringen
         public float potentialReturn;          // Potentiell avkastning om investeringen lyckas
 
-        public InvestmentInstance(InvestmentType type)
+        public InvestmentInstance(InvestmentTypeData type)
         {
             this.investmentType = type;
             this.currentAge = 0;
