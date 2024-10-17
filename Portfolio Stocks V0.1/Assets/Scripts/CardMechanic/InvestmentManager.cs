@@ -6,8 +6,10 @@ using InvestmentData;  // Se till att referera till InvestmentData
 public class InvestmentManager : MonoBehaviour
 {
     public List<InvestmentTypeData> availableInvestments;  // Lista över ScriptableObject-baserade investeringstyper
+    public List<InvestmentTypeData> investmentsLevelTwo;  // Lista över ScriptableObject-baserade investeringstyper
     //public List<InvestmentType> availableInvestments = new List<InvestmentType>();  // Lista över tillgängliga investeringstyper
     public PlayerManager playerManager; // Referens till PlayerManager
+    public actionPointsManager ActionPointsManager;
     public InvestInfoUI investInfoUI;
     [SerializeField] int investmentIndex; //Aktuell investering
     //public List<InvestmentInstance> activeInvestments = new List<InvestmentInstance>(); // Lista över aktiva investeringar (individuella instanser)
@@ -32,10 +34,21 @@ public class InvestmentManager : MonoBehaviour
         //UpdateInvestments();
     }
 
-    public void createProject(int index)
+    public void addNewProjectsWhenPlayerLevelUp(int level)
     {
-        availableInvestments.Add(availableInvestments[index]);
-        investInfoUI.updateInvestInfo(availableInvestments[index], index);
+        if (level == 1)
+        {
+            foreach (InvestmentTypeData newProjects in investmentsLevelTwo)
+            {
+                availableInvestments.Add(newProjects);
+            }
+        }
+
+        else
+        {
+            Debug.Log("MAX LEVEL");
+            return;
+        }
     }
 
     public void chooseProjectIndex(int index)
@@ -47,9 +60,9 @@ public class InvestmentManager : MonoBehaviour
     {
         InvestmentTypeData chosenInvestmentType = availableInvestments[investmentIndex];
 
-        if (playerManager.playerCapitalGet() >= chosenInvestmentType.cost)
+        if (playerManager.playerCapitalGet() >= chosenInvestmentType.cost && ActionPointsManager.remainingAP > 0)
         {
-
+            playerManager.investedCapital(chosenInvestmentType.cost); //Sparar totalt kapital som spelaren investerar. För statistik
             Debug.Log("Tillräckligt med kapital finns");
             playerManager.playerCapitalSet(-chosenInvestmentType.cost);
 
@@ -139,34 +152,5 @@ public class InvestmentManager : MonoBehaviour
         investInfoUI.updateInvestInfo(availableInvestments[investmentIndex], investmentIndex);
     }
 
-    /*
-   public void UpdateInvestments()
-    {
-        // Öka åldern på alla aktiva investeringar
-        foreach (InvestmentInstance inv in activeInvestments)
-        {
-            inv.IncrementAge();
-        }
-
-        // Gå igenom listan och samla in avkastningen för investeringar som har uppnått sin livslängd
-        for (int i = activeInvestments.Count - 1; i >= 0; i--)
-        {
-            if (activeInvestments[i].HasReachedEndOfLifetime())
-            {
-                CollectReturn(activeInvestments[i]);
-                activeInvestments.RemoveAt(i); // Ta bort investeringen från listan
-            }
-        }
-
-        Debug.Log("Aktiva investeringar uppdaterade. Kvarvarande: " + activeInvestments.Count);
-    }
-
-    void CollectReturn(InvestmentInstance investment)
-    {
-        // Lägg till den potentiella avkastningen till spelarens kapital
-        playerCapital += investment.potentialReturn;
-        Debug.Log("Avkastning från " + investment.investmentType.name + " samlad in! Spelarens kapital: " + playerCapital);
-    }
-    */
 }
 

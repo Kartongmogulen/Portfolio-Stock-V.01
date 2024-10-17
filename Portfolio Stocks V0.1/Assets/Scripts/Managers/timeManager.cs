@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class timeManager : MonoBehaviour
 {
 	public int year;
 	public int month;
+	public Text roundText;
 	[Tooltip("Antal månader som ska simuleras vid varje aktivering")]
 	public int multiMonthSim;
 
@@ -27,8 +29,19 @@ public class timeManager : MonoBehaviour
 		{
 			year++;
 			month = 1;
-			HistoricEventManager.newEventHappened();
+			//HistoricEventManager.newEventHappened();
 		}
 		
+	}
+
+	//Om varje runda representerar 1 år
+	public void endTurnYearlyRounds()
+	{
+		year++;
+	}
+
+	public void updateUI()
+	{
+		roundText.text = "Y: " + year + " M: " + month;
 	}
 }

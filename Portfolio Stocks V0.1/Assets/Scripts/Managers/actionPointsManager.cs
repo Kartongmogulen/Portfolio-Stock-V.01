@@ -64,7 +64,10 @@ public class actionPointsManager : MonoBehaviour
 
     public void endRound()
     {
-        checkIfPointsRemain();
+        if (skillsManager != null)
+        {
+            checkIfPointsRemain();
+        }
         remainingAP = baseAP;
         updateAP();
     }
