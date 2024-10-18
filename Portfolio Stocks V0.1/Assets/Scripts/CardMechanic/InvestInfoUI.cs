@@ -16,6 +16,7 @@ public class InvestInfoUI : MonoBehaviour
 
     public void updateInvestInfo(InvestmentTypeData project, int index)
     {
+        Debug.Log("Index: " + index);    
         investmentIndexText.text = "" + index;
 
         nameText.text = project.name;
@@ -24,5 +25,14 @@ public class InvestInfoUI : MonoBehaviour
         costText.text = "Cost: " + project.cost;
         ROIpotentialText.text = "Potential return: " + project.ROIpotential * 100 + "%";
 
+    }
+    
+    public void noMoreProjectsToChooseFrom()
+    {
+        nameText.text = "NO MORE PROJECTS";
+        successProbabilityText.text = "NO MORE PROJECTS";
+        lifetimeText.text = "NO MORE PROJECTS";
+        costText.text = "NO MORE PROJECTS";
+        ROIpotentialText.text = "NO MORE PROJECTS";
     }
 }

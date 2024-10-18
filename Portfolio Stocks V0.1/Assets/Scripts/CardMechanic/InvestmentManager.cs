@@ -5,19 +5,44 @@ using InvestmentData;  // Se till att referera till InvestmentData
 
 public class InvestmentManager : MonoBehaviour
 {
+    public bool fixedProjects;
+    public bool randomProjects;
+    [SerializeField] int numberOfProjects;
+
     public List<InvestmentTypeData> availableInvestments;  // Lista över ScriptableObject-baserade investeringstyper
+    public List<InvestmentTypeData> possibleInvestments;  // Lista över ScriptableObject-baserade investeringstyper som spelaren eventuellt kan få välja av
+    public List<InvestmentTypeData> investmentsLevelOne;  // Lista över ScriptableObject-baserade investeringstyper
     public List<InvestmentTypeData> investmentsLevelTwo;  // Lista över ScriptableObject-baserade investeringstyper
     //public List<InvestmentType> availableInvestments = new List<InvestmentType>();  // Lista över tillgängliga investeringstyper
     public PlayerManager playerManager; // Referens till PlayerManager
     public actionPointsManager ActionPointsManager;
     public InvestInfoUI investInfoUI;
     [SerializeField] int investmentIndex; //Aktuell investering
-    //public List<InvestmentInstance> activeInvestments = new List<InvestmentInstance>(); // Lista över aktiva investeringar (individuella instanser)
+                                          //public List<InvestmentInstance> activeInvestments = new List<InvestmentInstance>(); // Lista över aktiva investeringar (individuella instanser)
 
     //public float playerCapital = 0f; // Spelarens totala kapital
 
+   
+
     void Start()
     {
+        if(fixedProjects == true)
+        {
+            foreach(InvestmentTypeData projects in investmentsLevelOne)
+            {
+                availableInvestments.Add(projects);
+            }
+        }
+
+        else if (randomProjects == true)
+        {
+            for (int i = 0; i < numberOfProjects; i++)
+            {
+                int randomInt = Random.Range(0, investmentsLevelOne.Count);
+                availableInvestments.Add(investmentsLevelOne[randomInt]);
+                possibleInvestments.Add(investmentsLevelOne[randomInt]);
+            }
+        }
         chooseProjectIndex(investmentIndex);
 
         /*
@@ -29,9 +54,20 @@ public class InvestmentManager : MonoBehaviour
 
         // Utför investeringsprocessen
         //ChooseRandomInvestment();
-
         // Simulera åldrande av investeringar och rensa gamla investeringar
         //UpdateInvestments();
+    }
+
+    public void addProjectsToAvailableList()
+    {
+        if (randomProjects == true)
+        {
+            for (int i = 0; i < numberOfProjects; i++)
+            {
+                int randomInt = Random.Range(0, possibleInvestments.Count - 1);
+                availableInvestments.Add(possibleInvestments[randomInt]);
+            }
+        }
     }
 
     public void addNewProjectsWhenPlayerLevelUp(int level)
@@ -40,7 +76,7 @@ public class InvestmentManager : MonoBehaviour
         {
             foreach (InvestmentTypeData newProjects in investmentsLevelTwo)
             {
-                availableInvestments.Add(newProjects);
+                possibleInvestments.Add(newProjects);
             }
         }
 
@@ -53,41 +89,59 @@ public class InvestmentManager : MonoBehaviour
 
     public void chooseProjectIndex(int index)
     {
-        investInfoUI.updateInvestInfo(availableInvestments[index], index);
+        if (availableInvestments.Count > 0)
+        {
+            investInfoUI.updateInvestInfo(availableInvestments[index], index);
+        }
+        else
+        {
+            investInfoUI.noMoreProjectsToChooseFrom();
+        }
+    }
+
+    public void removeProject()
+    {
+        availableInvestments.RemoveAt(investmentIndex);
     }
 
     public void investInProject()
     {
-        InvestmentTypeData chosenInvestmentType = availableInvestments[investmentIndex];
-
-        if (playerManager.playerCapitalGet() >= chosenInvestmentType.cost && ActionPointsManager.remainingAP > 0)
+        if (availableInvestments.Count > 0)
         {
-            playerManager.investedCapital(chosenInvestmentType.cost); //Sparar totalt kapital som spelaren investerar. För statistik
-            Debug.Log("Tillräckligt med kapital finns");
-            playerManager.playerCapitalSet(-chosenInvestmentType.cost);
+            InvestmentTypeData chosenInvestmentType = availableInvestments[investmentIndex];
 
-            // Slumpa ett tal mellan 0 och 1 för att avgöra om investeringen lyckas
-            float randomChance = Random.Range(0f, 1f);
-
-            if (randomChance <= chosenInvestmentType.successProbability)
+            if (playerManager.playerCapitalGet() >= chosenInvestmentType.cost && ActionPointsManager.remainingAP > 0)
             {
-                // Om investeringen lyckas, skapa en ny individuell investering
-                InvestmentInstance newInvestment = new InvestmentInstance(chosenInvestmentType);
-                playerManager.AddInvestment(newInvestment); // Lägg till investeringen i spelarens aktiva investeringar
+                playerManager.investedCapital(chosenInvestmentType.cost); //Sparar totalt kapital som spelaren investerar. För statistik
+                Debug.Log("Tillräckligt med kapital finns");
+                playerManager.playerCapitalSet(-chosenInvestmentType.cost);
 
-                Debug.Log(chosenInvestmentType.name + " lyckades! Kostnad: " + chosenInvestmentType.cost +
-                          ", Potentiell avkastning: " + newInvestment.potentialReturn);
+                // Slumpa ett tal mellan 0 och 1 för att avgöra om investeringen lyckas
+                float randomChance = Random.Range(0f, 1f);
+
+                if (randomChance <= chosenInvestmentType.successProbability)
+                {
+                    // Om investeringen lyckas, skapa en ny individuell investering
+                    InvestmentInstance newInvestment = new InvestmentInstance(chosenInvestmentType);
+                    playerManager.AddInvestment(newInvestment); // Lägg till investeringen i spelarens aktiva investeringar
+
+                    Debug.Log(chosenInvestmentType.name + " lyckades! Kostnad: " + chosenInvestmentType.cost +
+                              ", Potentiell avkastning: " + newInvestment.potentialReturn);
+                }
+                else
+                {
+                    Debug.Log(chosenInvestmentType.name + " misslyckades.");
+                }
             }
             else
             {
-                Debug.Log(chosenInvestmentType.name + " misslyckades.");
+                Debug.Log("Inte tillräckligt med pengar");
             }
         }
         else
         {
-            Debug.Log("Inte tillräckligt med pengar");
+            investInfoUI.noMoreProjectsToChooseFrom();
         }
-
     }
 
     
@@ -132,25 +186,37 @@ public class InvestmentManager : MonoBehaviour
                 Debug.Log("Inga tillgängliga investeringar.");
             }
         }
-    
+
 
     public void investmentIndexChange(int changeValue)
     {
         investmentIndex += changeValue;
-        
-        //Kontrollerar så inte värdet passerar maxindex
-        if(investmentIndex > availableInvestments.Count - 1)
-        {
-            investmentIndex = availableInvestments.Count - 1;
-        }
-        //Kontrollerar så inte värdet blir negativt
-        else if (investmentIndex < 0)
-        {
-            investmentIndex = 0;
-        }
 
-        investInfoUI.updateInvestInfo(availableInvestments[investmentIndex], investmentIndex);
+        if (availableInvestments.Count == 0)
+        {
+            investInfoUI.noMoreProjectsToChooseFrom();
+        }
+        else
+        {
+            //Kontrollerar så inte värdet passerar maxindex
+            if (investmentIndex > availableInvestments.Count - 1)
+            {
+                investmentIndex = availableInvestments.Count - 1;
+                investInfoUI.updateInvestInfo(availableInvestments[investmentIndex], investmentIndex);
+            }
+
+            //Kontrollerar så inte värdet blir negativt
+            else if (investmentIndex < 0)
+            {
+                investmentIndex = 0;
+                //investInfoUI.noMoreProjectsToChooseFrom();
+            }
+
+            else
+            {
+                investInfoUI.updateInvestInfo(availableInvestments[investmentIndex], investmentIndex);
+            }
+        }
     }
-
 }
 
