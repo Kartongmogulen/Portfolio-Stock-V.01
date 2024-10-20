@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bfc8e2ac76fae64d9e003ba417cf6ab, type: 3}
   m_Name: InvestmentTypeA_1
   m_EditorClassIdentifier: 
-  investmentName: Investment A
-  successProbability: 0.5
-  lifetime: 2
+  investmentName: Investment A_1
+  successProbability: 0.8
+  lifetime: 3
   cost: 100
-  ROIpotential: 0.5
+  ROIpotential: 0.25
+  expectedAnnualReturnPercentage: 6.666667

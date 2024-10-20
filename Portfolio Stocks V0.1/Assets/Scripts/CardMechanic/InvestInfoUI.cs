@@ -12,12 +12,13 @@ public class InvestInfoUI : MonoBehaviour
     public Text lifetimeText;                // Livslängd på investeringen i år
     public Text costText;                  // Kostnaden för investeringen
     public Text ROIpotentialText;      // Multiplikator för att beräkna avkastningen
+    public InvestmentManager investmentManager;
 
 
     public void updateInvestInfo(InvestmentTypeData project, int index)
     {
-        Debug.Log("Index: " + index);    
-        investmentIndexText.text = "" + index;
+        //Debug.Log("Index: " + index);    
+        investmentIndexText.text = "" + (index+1) + "/" + investmentManager.availableInvestments.Count;
 
         nameText.text = project.name;
         successProbabilityText.text = "Prob to succed: " + project.successProbability*100 + "%";
@@ -29,6 +30,8 @@ public class InvestInfoUI : MonoBehaviour
     
     public void noMoreProjectsToChooseFrom()
     {
+        investmentIndexText.text = "0/0"; 
+
         nameText.text = "NO MORE PROJECTS";
         successProbabilityText.text = "NO MORE PROJECTS";
         lifetimeText.text = "NO MORE PROJECTS";

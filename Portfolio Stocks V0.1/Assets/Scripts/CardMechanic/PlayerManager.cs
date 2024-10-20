@@ -14,8 +14,11 @@ public class PlayerManager : MonoBehaviour
     public List<InvestmentInstance> activeInvestments = new List<InvestmentInstance>(); // Lista över aktiva investeringar (individuella instanser)
 
     [Header("Key figures")]
-    [SerializeField] float investedCapitalTotal;
-    [SerializeField] float returnTotal;
+    //public float investedCapitalTotal { get; private set; }
+    public float investedCapitalTotal;
+    //public float returnTotal { get; private set; }
+    public float returnTotal;
+    public float depreciationTotal;
 
     [Header("Player Level")]
     public Text playerLevelText;
@@ -40,7 +43,8 @@ public class PlayerManager : MonoBehaviour
     public void AddInvestment(InvestmentInstance investment)
     {
         activeInvestments.Add(investment);
-        Debug.Log("Ny investering tillagd: " + investment.investmentType.name + ", Potentiell avkastning: " + investment.potentialReturn);
+        depreciationTotal += investment.investmentType.cost;
+        //Debug.Log("Ny investering tillagd: " + investment.investmentType.name + ", Potentiell avkastning: " + investment.potentialReturn);
     }
 
     // Funktion för att samla in avkastningen från en investering
@@ -48,7 +52,7 @@ public class PlayerManager : MonoBehaviour
     {
         playerCapital += (investment.potentialReturn + investment.investmentType.cost);
         returnTotal += (investment.potentialReturn);
-        Debug.Log("Avkastning från " + investment.investmentType.name + " samlad in! Spelarens kapital: " + playerCapital);
+        //Debug.Log("Avkastning från " + investment.investmentType.name + " samlad in! Spelarens kapital: " + playerCapital);
         updateMoneyText();
     }
 
@@ -71,7 +75,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        Debug.Log("Aktiva investeringar uppdaterade. Kvarvarande: " + activeInvestments.Count);
+        //Debug.Log("Aktiva investeringar uppdaterade. Kvarvarande: " + activeInvestments.Count);
     }
 
     void updateMoneyText()
@@ -98,9 +102,16 @@ public class PlayerManager : MonoBehaviour
 
     public void investActionPointsToLevelUp()
     {
-        FindObjectOfType<actionPointsManager>().actionPointSub(1);
-        playerExpPointsInvested++;
+        int actionPointsLeft = FindObjectOfType<actionPointsManager>().remainingAP;
+       
+        //Kontrollera om ActionPoints finns kvar
+        if (actionPointsLeft > 0)
+        {
+            FindObjectOfType<actionPointsManager>().actionPointSub(1);
+            playerExpPointsInvested++;
+        }
 
+        //Lvl-up spelaren
         if(playerExpPointsInvested == levelUpCost)
         {
             levelUpPlayer();

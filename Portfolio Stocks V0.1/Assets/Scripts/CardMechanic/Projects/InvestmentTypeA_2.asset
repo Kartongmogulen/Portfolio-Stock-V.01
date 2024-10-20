@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: InvestmentTypeA_2
   m_EditorClassIdentifier: 
   investmentName: Investment A_2
-  successProbability: 0.55
-  lifetime: 2
-  cost: 150
-  ROIpotential: 0.55
+  successProbability: 0.8
+  lifetime: 3
+  cost: 100
+  ROIpotential: 0.3
+  expectedAnnualReturnPercentage: 8

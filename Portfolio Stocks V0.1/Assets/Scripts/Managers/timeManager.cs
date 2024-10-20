@@ -16,6 +16,7 @@ public class timeManager : MonoBehaviour
 	public int countMultiMonthSim;
 
 	public historicEventManager HistoricEventManager;
+	public gamePlayScopeManager GamePlayScopeManager;
 
 	public void endTurn() //Uppdaterar tid samt texten för vilken aktuell tid det är
 	{
@@ -38,6 +39,10 @@ public class timeManager : MonoBehaviour
 	public void endTurnYearlyRounds()
 	{
 		year++;
+		if(year == GamePlayScopeManager.yearsBeforeEndGameMaster)
+		{
+			FindObjectOfType<endGame>().gameEnd();
+		}
 	}
 
 	public void updateUI()

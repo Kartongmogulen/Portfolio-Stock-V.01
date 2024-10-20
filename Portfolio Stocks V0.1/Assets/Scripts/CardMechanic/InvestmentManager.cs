@@ -7,28 +7,39 @@ public class InvestmentManager : MonoBehaviour
 {
     public bool fixedProjects;
     public bool randomProjects;
-    [SerializeField] int numberOfProjects;
+    [SerializeField] int numberOfProjectsStart;
 
     public List<InvestmentTypeData> availableInvestments;  // Lista över ScriptableObject-baserade investeringstyper
     public List<InvestmentTypeData> possibleInvestments;  // Lista över ScriptableObject-baserade investeringstyper som spelaren eventuellt kan få välja av
     public List<InvestmentTypeData> investmentsLevelOne;  // Lista över ScriptableObject-baserade investeringstyper
     public List<InvestmentTypeData> investmentsLevelTwo;  // Lista över ScriptableObject-baserade investeringstyper
+    public List<InvestmentTypeData> investmentsLevelThree;  // Lista över ScriptableObject-baserade investeringstyper
     //public List<InvestmentType> availableInvestments = new List<InvestmentType>();  // Lista över tillgängliga investeringstyper
     public PlayerManager playerManager; // Referens till PlayerManager
     public actionPointsManager ActionPointsManager;
     public InvestInfoUI investInfoUI;
     [SerializeField] int investmentIndex; //Aktuell investering
-                                          //public List<InvestmentInstance> activeInvestments = new List<InvestmentInstance>(); // Lista över aktiva investeringar (individuella instanser)
+    public gamePlayScopeManager GamePlayScopeManager;
 
-    //public float playerCapital = 0f; // Spelarens totala kapital
 
-   
 
     void Start()
     {
-        if(fixedProjects == true)
+        while (possibleInvestments.Count < numberOfProjectsStart)
         {
-            foreach(InvestmentTypeData projects in investmentsLevelOne)
+            Debug.Log("Lägg till projekt Start");
+            addProjectsToAvailableList();
+        }
+
+        chooseProjectIndex(investmentIndex);
+
+    }
+
+    public void addProjectsToAvailableList()
+    {
+        if (fixedProjects == true)
+        {
+            foreach (InvestmentTypeData projects in investmentsLevelOne)
             {
                 availableInvestments.Add(projects);
             }
@@ -36,38 +47,37 @@ public class InvestmentManager : MonoBehaviour
 
         else if (randomProjects == true)
         {
-            for (int i = 0; i < numberOfProjects; i++)
-            {
+
+            //for (int i = 0; i < numberOfProjects; i++)
+            //{
                 int randomInt = Random.Range(0, investmentsLevelOne.Count);
-                availableInvestments.Add(investmentsLevelOne[randomInt]);
-                possibleInvestments.Add(investmentsLevelOne[randomInt]);
+
+                if (GamePlayScopeManager.Difficulty == gamePlayScopeManager.difficulty.Easy)
+                {
+                    if (investmentsLevelOne[randomInt].expectedAnnualReturnPercentage >= 5f)
+                    {
+                        availableInvestments.Add(investmentsLevelOne[randomInt]);
+                        possibleInvestments.Add(investmentsLevelOne[randomInt]);
+                    }
+                    else
+                    {
+                        Debug.Log("För låg förväntad ROI, nytt försök");
+
+                    }
+                }
+
+                if (GamePlayScopeManager.Difficulty == gamePlayScopeManager.difficulty.Medium)
+                {
+
+                    availableInvestments.Add(investmentsLevelOne[randomInt]);
+                    possibleInvestments.Add(investmentsLevelOne[randomInt]);
+                }
+                else
+                {
+                    Debug.Log("För låg förväntad ROI");
+                }
             }
-        }
-        chooseProjectIndex(investmentIndex);
-
-        /*
-        // Exempel: Lägg till några investeringar till den tillgängliga listan
-        availableInvestments.Add(new InvestmentType("Investment A", 100, 1f, 1, 0.2f));
-        availableInvestments.Add(new InvestmentType("Investment B", 100, 1f, 2, 0.5f));
-        availableInvestments.Add(new InvestmentType("Investment C", 100, 1f, 3, 0.1f));
-        */
-
-        // Utför investeringsprocessen
-        //ChooseRandomInvestment();
-        // Simulera åldrande av investeringar och rensa gamla investeringar
-        //UpdateInvestments();
-    }
-
-    public void addProjectsToAvailableList()
-    {
-        if (randomProjects == true)
-        {
-            for (int i = 0; i < numberOfProjects; i++)
-            {
-                int randomInt = Random.Range(0, possibleInvestments.Count - 1);
-                availableInvestments.Add(possibleInvestments[randomInt]);
-            }
-        }
+        //}
     }
 
     public void addNewProjectsWhenPlayerLevelUp(int level)
@@ -101,7 +111,10 @@ public class InvestmentManager : MonoBehaviour
 
     public void removeProject()
     {
-        availableInvestments.RemoveAt(investmentIndex);
+        if (availableInvestments.Count > 0)
+        {
+            availableInvestments.RemoveAt(investmentIndex);
+        }
     }
 
     public void investInProject()
@@ -115,6 +128,7 @@ public class InvestmentManager : MonoBehaviour
                 playerManager.investedCapital(chosenInvestmentType.cost); //Sparar totalt kapital som spelaren investerar. För statistik
                 Debug.Log("Tillräckligt med kapital finns");
                 playerManager.playerCapitalSet(-chosenInvestmentType.cost);
+                ActionPointsManager.actionPointSub(1);
 
                 // Slumpa ett tal mellan 0 och 1 för att avgöra om investeringen lyckas
                 float randomChance = Random.Range(0f, 1f);
