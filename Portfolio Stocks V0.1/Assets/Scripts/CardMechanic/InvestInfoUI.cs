@@ -20,7 +20,7 @@ public class InvestInfoUI : MonoBehaviour
         //Debug.Log("Index: " + index);    
         investmentIndexText.text = "" + (index+1) + "/" + investmentManager.availableInvestments.Count;
 
-        nameText.text = project.name;
+        nameText.text = project.investmentName;
         successProbabilityText.text = "Prob to succed: " + project.successProbability*100 + "%";
         lifetimeText.text = "Lifetime: " + project.lifetime;
         costText.text = "Cost: " + project.cost;

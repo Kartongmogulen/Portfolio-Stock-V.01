@@ -10,18 +10,18 @@ public class InvestmentTypeData : ScriptableObject
     public int lifetime;                // Livslängd på investeringen i år
     public float cost;                  // Kostnaden för investeringen
     public float ROIpotential;      // Multiplikator för att beräkna avkastningen
-    public float expectedAnnualReturnPercentage;  // Väntevärdet av årlig avkastning
+    public float expectedValue;  // Väntevärdet av årlig avkastning
 
     private void OnValidate()
     {
         // Beräkna procentuell förväntad årlig avkastning
         if (lifetime > 0) // Kontroll för att undvika division med 0
         {
-            expectedAnnualReturnPercentage = (successProbability * ROIpotential / lifetime) * 100;
+            expectedValue = Mathf.Round((successProbability * ROIpotential *cost) - cost * (1-successProbability));
         }
         else
         {
-            expectedAnnualReturnPercentage = 0;
+            expectedValue = 0;
         }
     }
 }

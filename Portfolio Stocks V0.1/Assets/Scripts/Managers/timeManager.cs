@@ -18,6 +18,13 @@ public class timeManager : MonoBehaviour
 	public historicEventManager HistoricEventManager;
 	public gamePlayScopeManager GamePlayScopeManager;
 
+	private void Start()
+	{
+		if (roundText != null)
+		{
+			updateUI();
+		}
+	}
 	public void endTurn() //Uppdaterar tid samt texten för vilken aktuell tid det är
 	{
 

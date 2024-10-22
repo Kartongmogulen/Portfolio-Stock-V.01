@@ -1400,7 +1400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Difficulty: 1
-  yearsBeforeEndGameMaster: 10
+  yearsBeforeEndGameMaster: 20
   yearsToGetHistoricData: 0
 --- !u!1001 &440007944
 PrefabInstance:
@@ -2602,17 +2602,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fixedProjects: 0
   randomProjects: 1
-  numberOfProjectsStart: 3
+  numberOfProjectsStart: 5
   availableInvestments: []
   possibleInvestments: []
   investmentsLevelOne:
   - {fileID: 11400000, guid: 6efdb99a68ffb234e9b5089ecf596e80, type: 2}
-  - {fileID: 11400000, guid: bc4f5c5be011c0c48a077621493c76d9, type: 2}
-  - {fileID: 11400000, guid: 96a239765f0728e48ac9821817e50aaf, type: 2}
-  - {fileID: 11400000, guid: c9ede69ea334f7844a1b32381562cbf2, type: 2}
-  investmentsLevelTwo:
+  - {fileID: 11400000, guid: 931f4bad4f32a2f4680271e440863fbb, type: 2}
   - {fileID: 11400000, guid: 6fef0344ea9c3734bbb933c2088b1dd7, type: 2}
+  - {fileID: 11400000, guid: 4237f9abd040cf44caf88a1671f86056, type: 2}
+  - {fileID: 11400000, guid: 8f4f29cdbc9435c4788d00ef77f17c0f, type: 2}
+  - {fileID: 11400000, guid: 96a239765f0728e48ac9821817e50aaf, type: 2}
+  - {fileID: 11400000, guid: e2694a17cf0e72443a2ca7fe381bc641, type: 2}
+  - {fileID: 11400000, guid: c5542f9dc93a7b04cba235ce3c978a02, type: 2}
+  - {fileID: 11400000, guid: de17117531fd7d94aaa616b4d5ec82c8, type: 2}
+  - {fileID: 11400000, guid: 84c87d631aee9ed4c8d04054d87663bf, type: 2}
+  - {fileID: 11400000, guid: c9ede69ea334f7844a1b32381562cbf2, type: 2}
+  - {fileID: 11400000, guid: 96389b4ba6bb0cb499419566d18907b4, type: 2}
+  investmentsLevelTwo:
+  - {fileID: 11400000, guid: 088346a8a33ed7049902f7b48f34dca9, type: 2}
+  - {fileID: 11400000, guid: 7bae5740ff1ea134c8e3bf5ddc1b4032, type: 2}
   - {fileID: 11400000, guid: 75133a96245f8de4888d8a8f23d2ddcb, type: 2}
+  - {fileID: 11400000, guid: e09c042018bc2cf41ac45d3422acd58d, type: 2}
+  - {fileID: 11400000, guid: 3dfc5bb539aa57b42800483f9f69eec2, type: 2}
   - {fileID: 11400000, guid: fc9f43c7facc6474cb7653d943c8ff76, type: 2}
   investmentsLevelThree:
   - {fileID: 11400000, guid: d39078f43cca86546a266816afe70f83, type: 2}
@@ -2623,6 +2634,7 @@ MonoBehaviour:
   investInfoUI: {fileID: 516061934}
   investmentIndex: 0
   GamePlayScopeManager: {fileID: 386499502}
+  randomInt: 0
 --- !u!4 &1097535056
 Transform:
   m_ObjectHideFlags: 0
@@ -3507,7 +3519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1501487731
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4175,11 +4187,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1097535055}
         m_TargetAssemblyTypeName: InvestmentManager, Assembly-CSharp
         m_MethodName: addProjectsToAvailableList
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

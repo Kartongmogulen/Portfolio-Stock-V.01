@@ -21,21 +21,24 @@ public class InvestmentManager : MonoBehaviour
     [SerializeField] int investmentIndex; //Aktuell investering
     public gamePlayScopeManager GamePlayScopeManager;
 
+    [SerializeField] int randomInt;
+
 
 
     void Start()
     {
+       
         while (possibleInvestments.Count < numberOfProjectsStart)
         {
             Debug.Log("Lägg till projekt Start");
-            addProjectsToAvailableList();
+            addProjectsToAvailableListStart();
         }
 
         chooseProjectIndex(investmentIndex);
 
     }
 
-    public void addProjectsToAvailableList()
+    public void addProjectsToAvailableListStart()
     {
         if (fixedProjects == true)
         {
@@ -47,37 +50,92 @@ public class InvestmentManager : MonoBehaviour
 
         else if (randomProjects == true)
         {
+            //Kontrollera så samtliga möjliga investeringar kan väljas
+            if (possibleInvestments.Count < numberOfProjectsStart)
+            {
+                randomInt = Random.Range(0, investmentsLevelOne.Count);
+            }
+            else
+            {
+                randomInt = Random.Range(0, possibleInvestments.Count);
+            }
 
-            //for (int i = 0; i < numberOfProjects; i++)
-            //{
-                int randomInt = Random.Range(0, investmentsLevelOne.Count);
+            if (GamePlayScopeManager.Difficulty == gamePlayScopeManager.difficulty.Easy)
+            {
+                if (possibleInvestments[randomInt].expectedValue >= 0)
+                {
+                    availableInvestments.Add(investmentsLevelOne[randomInt]);
+                    possibleInvestments.Add(investmentsLevelOne[randomInt]);
+                }
+                else
+                {
+                    Debug.Log("För låg förväntad ROI, nytt försök");
+                    addProjectsToAvailableList(1);
+                }
+            }
+
+            if (GamePlayScopeManager.Difficulty == gamePlayScopeManager.difficulty.Medium)
+            {
+
+                availableInvestments.Add(investmentsLevelOne[randomInt]);
+                possibleInvestments.Add(investmentsLevelOne[randomInt]);
+            }
+            else
+            {
+                Debug.Log("För låg förväntad ROI, nytt försök");
+
+            }
+        }
+    }
+
+    public void addProjectsToAvailableList(int numberToAdd)
+    {
+        Debug.Log("AddProjects");
+
+        if (fixedProjects == true)
+        {
+            foreach (InvestmentTypeData projects in investmentsLevelOne)
+            {
+                availableInvestments.Add(projects);
+            }
+        }
+
+        else if (randomProjects == true)
+        {
+            //Kontrollera så samtliga möjliga investeringar kan väljas
+
+            for (int i = 0; i < numberToAdd; i++)
+            {
+                randomInt = Random.Range(0, possibleInvestments.Count);
 
                 if (GamePlayScopeManager.Difficulty == gamePlayScopeManager.difficulty.Easy)
                 {
-                    if (investmentsLevelOne[randomInt].expectedAnnualReturnPercentage >= 5f)
+                    if (possibleInvestments[randomInt].expectedValue >= 0)
                     {
-                        availableInvestments.Add(investmentsLevelOne[randomInt]);
-                        possibleInvestments.Add(investmentsLevelOne[randomInt]);
+                        availableInvestments.Add(possibleInvestments[randomInt]);
+                        //possibleInvestments.Add(investmentsLevelOne[randomInt]);
                     }
                     else
                     {
                         Debug.Log("För låg förväntad ROI, nytt försök");
-
+                        addProjectsToAvailableList(1);
                     }
                 }
 
                 if (GamePlayScopeManager.Difficulty == gamePlayScopeManager.difficulty.Medium)
                 {
 
-                    availableInvestments.Add(investmentsLevelOne[randomInt]);
-                    possibleInvestments.Add(investmentsLevelOne[randomInt]);
+                    availableInvestments.Add(possibleInvestments[randomInt]);
+                    //possibleInvestments.Add(investmentsLevelOne[randomInt]);
                 }
                 else
                 {
-                    Debug.Log("För låg förväntad ROI");
+                    Debug.Log("För låg förväntad ROI, nytt försök");
+
                 }
             }
-        //}
+            
+        }
     }
 
     public void addNewProjectsWhenPlayerLevelUp(int level)
