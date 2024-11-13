@@ -43,8 +43,4 @@ public class moneyManager : MonoBehaviour
         else
             return false;
     }
-
-   
-
-
 }

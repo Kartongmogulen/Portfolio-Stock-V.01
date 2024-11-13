@@ -57,6 +57,3 @@ public class Index100 : MonoBehaviour
 		returnPortfolioText.text = "Return: " + Mathf.Round((totalValuePortfolio / totalInvestment - 1)*10000)/100 + "%";
 		}
 }
-
-	
-
