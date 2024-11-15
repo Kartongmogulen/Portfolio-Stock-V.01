@@ -66,15 +66,6 @@ public class buyStock : MonoBehaviour
 
 	}
 
-	public void refactorTest(moneyManager MoneyManager)
-	{
-		///TEST REFACTOR
-		MoneyManager.buyTransaction(100);
-
-		Debug.Log("Pengar nu: " + MoneyManager.MoneyNow);
-
-	}
-
 	public void buyStocks()
 	{
 		//Identifiera sektor

@@ -20,13 +20,25 @@ public class moneyManager : MonoBehaviour, ITransaction
 
     private ITotalCash totalCash;
     private IIncomeWork incomeWork;
+    private IMoneyVisualizer moneyVisualizer;
     [SerializeField] public float MoneyNow { get; private set; }
 
     private void Awake()
     {
         MoneyNow = startingCapital;
         Debug.Log("MoneyStart: " + MoneyNow);
-       
+
+        moneyVisualizer = GetComponent<IMoneyVisualizer>();
+
+        if (moneyVisualizer != null)
+        {
+            moneyVisualizer.UpdateMoneyDisplay(MoneyNow);
+        }
+        else
+        {
+            Debug.LogWarning("No money visualizer attached!");
+        }
+
     }
 
     public moneyManager(ITotalCash totalCash, IIncomeWork incomeWork)
@@ -52,11 +64,13 @@ public class moneyManager : MonoBehaviour, ITransaction
     {
         MoneyNow -= amount;
         Debug.Log("MonyeNow: " + MoneyNow);
+        moneyVisualizer?.UpdateMoneyDisplay(MoneyNow);
     }
 
     public void sellTransaction(float amount)
     {
         MoneyNow += amount;
+        moneyVisualizer?.UpdateMoneyDisplay(MoneyNow);
     }
 }
 
