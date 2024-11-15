@@ -97,7 +97,7 @@ public class totalCash : MonoBehaviour
 
 	public void incomeWork()
 	{
-		moneyNow = MoneyManager.moneyTransaction(moneyNow,GetComponent<incomeWork>().incomeWorkPerMonth);
+		//moneyNow = MoneyManager.ApplyTransaction(GetComponent<incomeWork>().incomeWorkPerMonth);
 		updateMoney();
 		GetComponent<incomeWork>().incomeDuringLife();
 		/*
@@ -109,12 +109,14 @@ public class totalCash : MonoBehaviour
 	*/
 	}
 
+	/*
 	public void incomeDividend(float incomeDiv)
 	{
 		moneyNow = MoneyManager.moneyTransaction(moneyNow, incomeDiv);
 		updateMoney();
 		GetComponent<incomeDividends>().updateIncomeDividends();
 	}
+	*/
 
 	public void incomeRealEstate(){
 		moneyBefore = moneyNow;

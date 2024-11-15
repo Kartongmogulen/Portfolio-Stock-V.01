@@ -24,7 +24,7 @@ public class earningsUpdate : MonoBehaviour
         //Påverkar ekonomiska klimatet EPS
         if (GameModeOnManager.economicClimateEffectEPS == true)
         {
-            earningsMacro = earningsFromMacro(Stock);
+            //earningsMacro = earningsFromMacro(Stock);
         }
         /*else
         {
@@ -93,7 +93,7 @@ public class earningsUpdate : MonoBehaviour
         //Debug.Log("EarningsMacro");
         if (Stock.SectorNameEnum == sectorNameEnum.Utilities)
         {
-            earningsMacro = (EconomicClimate.yearlyBNPGrowthRate * SectorEffectFromEconomic.utilitesFactor)/(100*100);
+            //earningsMacro = (EconomicClimate.yearlyBNPGrowthRate * SectorEffectFromEconomic.utilitesFactor)/(100*100);
         }
 
         if (Stock.SectorNameEnum == sectorNameEnum.Technology)

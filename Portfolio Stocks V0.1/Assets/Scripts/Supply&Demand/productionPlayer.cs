@@ -19,7 +19,7 @@ public class productionPlayer : MonoBehaviour
     {
         project = ProjectsUI.getActiveProject();
         
-        moneyEnough = MoneyManager.enoughMoney(TotalCash.moneyNow, project.getPrice());
+        moneyEnough = MoneyManager.HasEnoughMoney(project.getPrice());
         
         Debug.Log("Name Project: " + project.NeedsName);
         Debug.Log("Tillräckligt med pengar: " + moneyEnough);

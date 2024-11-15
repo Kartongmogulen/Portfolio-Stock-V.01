@@ -35,7 +35,7 @@ public class buyBonds : MonoBehaviour
 		costBond = BondMarketManager.bondMarketListGO[activeBond].GetComponent<bondInfoPrefab>().costBond;
 		
 		//Kontrollerar om spelaren har tillräckligt med pengar
-		enoughMoneyBool = MoneyManager.enoughMoney(TotalCash.moneyNow, costBond);
+		enoughMoneyBool = MoneyManager.HasEnoughMoney(costBond);
 		
 		if (enoughMoneyBool == true)
 		{

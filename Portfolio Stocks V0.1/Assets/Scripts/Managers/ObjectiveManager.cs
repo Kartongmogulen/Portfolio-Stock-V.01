@@ -44,7 +44,7 @@ public class ObjectiveManager : MonoBehaviour
     {
         skillsManager = FindObjectOfType<SkillsManager>();
         PortfolioStock = FindObjectOfType<portfolioStock>();
-        startingMoney = GetComponent<moneyManager>().moneyStart;
+        startingMoney = FindObjectOfType<moneyManager>().MoneyNow;
         updateProgessText();
     }
 

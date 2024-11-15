@@ -17,7 +17,7 @@ public class projects_AI : MonoBehaviour
 
     private void Start()
     {
-        moneyNow = MoneyManager.moneyStart;
+        moneyNow = MoneyManager.MoneyNow;
         GetComponent<totalCash>().setMoneyNoTextUpdate(moneyNow);
     }
 

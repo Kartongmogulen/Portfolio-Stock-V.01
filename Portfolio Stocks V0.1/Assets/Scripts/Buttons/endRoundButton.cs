@@ -131,7 +131,7 @@ public class endRoundButton : MonoBehaviour
 			
 			PlayerScriptsGO.GetComponent<incomeDividends>().updateIncomeDividends();
 		
-			PlayerScriptsGO.GetComponent<totalCash>().incomeDividend(playerScriptsGO.GetComponent<incomeDividends>().incomeDividendPreviousYear);
+			//PlayerScriptsGO.GetComponent<totalCash>().incomeDividend(playerScriptsGO.GetComponent<incomeDividends>().incomeDividendPreviousYear);
 			//Debug.Log("Money 4: " + PlayerScriptsGO.GetComponent<totalCash>().moneyNow);
 			//PlayerScriptsGO.GetComponent<totalCash>().incomeBondsOncePerYear();
 

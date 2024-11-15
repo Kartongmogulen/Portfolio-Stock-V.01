@@ -35,7 +35,7 @@ public class stockSpecificCompany100 : MonoBehaviour
 
 		//strategyName.text = "Index: 100%";
 
-		startMoney = playerPanelGO.GetComponent<totalCash> ().moneyStart;
+		startMoney = playerPanelGO.GetComponent<moneyManager> ().MoneyNow;
 		incomeFromWork = playerPanelGO.GetComponent<incomeWork>().incomeWorkPerMonth; //Hämtar inkomst
 		moneyNow = startMoney; //Hur mycket pengar spelaren har vid start
 		//investCompany();
