@@ -169,6 +169,7 @@ public class totalCash : MonoBehaviour
 		}*/
 	}
 
+	/*
 	public void buyStockUti(int amount){
 		stockPriceUti = PanelSector.GetComponent<buyStock>().priceUti;
 		moneyNow = moneyNow - stockPriceUti*amount;
@@ -256,7 +257,7 @@ public class totalCash : MonoBehaviour
 		moneyNow = moneyNow - costBook;
 		moneyText.text = "Money: " + moneyNow;
 	}
-
+	*/
 
 }
 

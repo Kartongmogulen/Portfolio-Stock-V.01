@@ -160,21 +160,21 @@ public class sellStock : MonoBehaviour
 			if (activeSector == 0)
 			{
 				playerScriptsGO.GetComponent<portfolioStock>().mineTotalInvestAmount[cityManager.getActiveCity()] -= orderValue;
-				playerScriptsGO.GetComponent<portfolioStock>().addMineShares(-amountOrder, cityManager.getActiveCity());
+				//playerScriptsGO.GetComponent<portfolioStock>().addMineShares(-amountOrder, cityManager.getActiveCity());
 
 			}
 
 			else if (activeSector == 1)
 			{
 				playerScriptsGO.GetComponent<portfolioStock>().railroadTotalInvestAmount[cityManager.getActiveCity()] -= orderValue;
-				playerScriptsGO.GetComponent<portfolioStock>().addRailroadShares(-amountOrder, cityManager.getActiveCity());
+				//playerScriptsGO.GetComponent<portfolioStock>().addRailroadShares(-amountOrder, cityManager.getActiveCity());
 
 			}
 
 			else if (activeSector == 2)
 			{
 				playerScriptsGO.GetComponent<portfolioStock>().industriTotalInvestAmount[cityManager.getActiveCity()] -= orderValue;
-				playerScriptsGO.GetComponent<portfolioStock>().addIndustriShares(-amountOrder, cityManager.getActiveCity());
+				//playerScriptsGO.GetComponent<portfolioStock>().addIndustriShares(-amountOrder, cityManager.getActiveCity());
 
 			}
 			playerScriptsGO.GetComponent<portfolioStock>().valuePortfolio();//Uppdaterar värdet av portfölj

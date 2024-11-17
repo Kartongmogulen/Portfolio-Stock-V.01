@@ -43,7 +43,7 @@ public class buyBonds : MonoBehaviour
 			BondsPortfolio.addBonds(activeBond);
 
 			//Minskar spelaren pengar
-			TotalCash.buyBonds(costBond);
+			//TotalCash.buyBonds(costBond);
 
 			//Adderar till kassaflödet
 			//BondsPortfolio.cashFlowBondsAdd(BondMarketManager.bondMarketListGO[activeBond].GetComponent<bondInfoPrefab>().rate * costBond/100);

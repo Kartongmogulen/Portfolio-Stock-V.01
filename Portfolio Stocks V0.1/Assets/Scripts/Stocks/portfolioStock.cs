@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class portfolioStock : MonoBehaviour
 {
-	public GameObject stockScriptsGO;
 	public GameObject stockMarketGO;
 	public createListWithLength CreateListWithLength;
 	public stockMarketManager_1850 StockMarketManager_1850;
 	public GameObject stockMarket_1850GO;
-	public GAV GAV_;
 
+	public GAV GAV_;
+	
 	public GameObject playerUtiGO;
 	public GameObject playerTechGO;
 
@@ -123,6 +123,7 @@ public class portfolioStock : MonoBehaviour
 		UtilitiesInfoStock = GetComponent<utilitiesInfoStock>();
 		TechInfoStock = GetComponent<techInfoStock>();
 
+		
 		if (stockMarketGO.GetComponent<stockMarketManager>() != null)
 		stockListUti = stockMarketGO.GetComponent<stockMarketManager>().StockUtiList;
 
@@ -161,8 +162,10 @@ public class portfolioStock : MonoBehaviour
 		//Text vid start
 		valuePortfolioText.text = "Value: " + totalValuePortfolio; ;
 		returnPortfolioText.text = "Return stocks: " + totalReturnPortfolioPercent;
+		
 	}
 
+	/*
 	public void addMineShares(int shares, int activeCompany)
 	{
 		minesCompanySharesOwned[activeCompany] += shares;
@@ -177,6 +180,7 @@ public class portfolioStock : MonoBehaviour
 	{
 		industriCompanySharesOwned[activeCompany] += shares;
 	}
+	*/
 
 	public void checkIfAllStocksAreSold_ResetValues()
 	{

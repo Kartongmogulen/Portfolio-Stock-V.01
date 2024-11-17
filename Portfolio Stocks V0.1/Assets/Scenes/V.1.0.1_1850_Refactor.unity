@@ -14453,7 +14453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerPortfolioAllAssets: {fileID: 678885394}
   PortfolioStock: {fileID: 678885388}
-  BondsPortfolio: {fileID: 678885393}
+  BondsPortfolio: {fileID: 0}
   TotalCash: {fileID: 0}
   nameHeadline: {fileID: 0}
   assetClassOne: {fileID: 0}
@@ -27045,7 +27045,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 678885384}
-  - component: {fileID: 678885393}
   - component: {fileID: 678885386}
   - component: {fileID: 678885392}
   - component: {fileID: 678885387}
@@ -27057,6 +27056,8 @@ GameObject:
   - component: {fileID: 678885388}
   - component: {fileID: 678885391}
   - component: {fileID: 678885396}
+  - component: {fileID: 678885397}
+  - component: {fileID: 678885398}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -27159,8 +27160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e01bd38970fbf545b1e138ab5dd8885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stockScriptsGO: {fileID: 2092176686}
-  stockMarketGO: {fileID: 1010759428}
+  stockMarketGO: {fileID: 1842650749}
   CreateListWithLength: {fileID: 1721568488}
   StockMarketManager_1850: {fileID: 1010759431}
   stockMarket_1850GO: {fileID: 1010759428}
@@ -27347,29 +27347,6 @@ MonoBehaviour:
   - 0
   - 0
   - 0
---- !u!114 &678885393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 678885383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f1ff3fb13bb500448a9302cf1b00f74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bondsPanel: {fileID: 0}
-  bottomPanel: {fileID: 0}
-  bondsOwned: 000000000000000000000000
-  bondsOwned1Year: 
-  bondsOwned5Year: 
-  totalValueBonds: 0
-  totalBondsInvest: 0
-  totalBondsInvestLifetime: 0
-  bondsGAVOne: 0
-  cashFlowBondsNow: 0
-  cashFlowBondsNowText: {fileID: 0}
 --- !u!114 &678885394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27382,7 +27359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d17072cf81329b040b21ca9143696c72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BondsPortfolio: {fileID: 678885393}
+  BondsPortfolio: {fileID: 0}
   PortfolioStock: {fileID: 678885388}
   stockShareTotalPortfolio: 0
   bondsShareTotalPortfolio: 0
@@ -27423,6 +27400,41 @@ MonoBehaviour:
   numberOfUnknownCompaniesUti: 0
   calcIndex: 0
   SaveIndexFalseValues: {fileID: 1721568486}
+--- !u!114 &678885397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678885383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1367d3e40e99374b88547e9c24a2e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActiveSector_1850: {fileID: 2023206896}
+  cityManager: {fileID: 1504227176}
+  StockMarketManager_1850: {fileID: 1010759431}
+  inputAmountOrder: {fileID: 767324854}
+  playerScriptsGO: {fileID: 678885383}
+  mineStockCompany: {fileID: 0}
+--- !u!114 &678885398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678885383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5038c7e808e6df04bbe8eced96e4a529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portfolioEntries: []
+  ActiveSector_1850: {fileID: 2023206896}
+  cityManager: {fileID: 1504227176}
+  StockMarketManager_1850: {fileID: 1010759431}
+  inputAmountOrder: {fileID: 767324854}
 --- !u!1 &680764307
 GameObject:
   m_ObjectHideFlags: 0
@@ -29125,6 +29137,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1803240043}
+  - {fileID: 861114552}
   m_Father: {fileID: 1791898185}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29966,7 +29979,7 @@ GameObject:
   - component: {fileID: 767324855}
   - component: {fileID: 767324854}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: OrderAmountInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39801,6 +39814,139 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850131045}
   m_CullTransparentMesh: 1
+--- !u!1 &861114551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 861114552}
+  - component: {fileID: 861114555}
+  - component: {fileID: 861114554}
+  - component: {fileID: 861114553}
+  m_Layer: 5
+  m_Name: TEST_BuyStock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &861114552
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861114551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1612792627}
+  m_Father: {fileID: 740183918}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -824.97, y: 153}
+  m_SizeDelta: {x: 270.051, y: 110.3075}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &861114553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861114551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 861114554}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 678885397}
+        m_TargetAssemblyTypeName: stockTransaction, Assembly-CSharp
+        m_MethodName: TestBuyStock
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 678885398}
+          m_ObjectArgumentAssemblyTypeName: PortfolioManager, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &861114554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861114551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &861114555
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861114551}
+  m_CullTransparentMesh: 1
 --- !u!1 &862074081
 GameObject:
   m_ObjectHideFlags: 0
@@ -40049,7 +40195,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 678885388}
         m_TargetAssemblyTypeName: portfolioStock, Assembly-CSharp
         m_MethodName: showPortfolioData_1850
@@ -40061,10 +40207,22 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 678885388}
         m_TargetAssemblyTypeName: portfolioStock, Assembly-CSharp
         m_MethodName: checkIfAllStocksAreSold_ResetValues
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
+      - m_Target: {fileID: 678885397}
+        m_TargetAssemblyTypeName: stockTransaction, Assembly-CSharp
+        m_MethodName: sellStocks_1850_Refactor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -43764,6 +43922,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 991794577}
+  - component: {fileID: 991794578}
+  - component: {fileID: 991794579}
   m_Layer: 0
   m_Name: Companies_Mine
   m_TagString: Untagged
@@ -43790,6 +43950,35 @@ Transform:
   m_Father: {fileID: 1842650750}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &991794578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991794576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089bdc5ca38c77145bec440f0210aba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sectorName: Mines
+  companies:
+  - {fileID: 0}
+--- !u!114 &991794579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991794576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 089bdc5ca38c77145bec440f0210aba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sectorName: Railroad
+  companies: []
 --- !u!1 &992864025
 GameObject:
   m_ObjectHideFlags: 0
@@ -47980,18 +48169,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2023206900}
-        m_TargetAssemblyTypeName: buyStock, Assembly-CSharp
-        m_MethodName: buyStocks_1850
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
       - m_Target: {fileID: 678885388}
         m_TargetAssemblyTypeName: portfolioStock, Assembly-CSharp
         m_MethodName: showPortfolioData_1850
@@ -48016,8 +48193,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 0
-      - m_Target: {fileID: 2023206900}
-        m_TargetAssemblyTypeName: buyStock, Assembly-CSharp
+      - m_Target: {fileID: 678885397}
+        m_TargetAssemblyTypeName: stockTransaction, Assembly-CSharp
         m_MethodName: buyStocks_1850_Refactor
         m_Mode: 2
         m_Arguments:
@@ -64259,6 +64436,87 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 456028147}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1612792626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1612792627}
+  - component: {fileID: 1612792629}
+  - component: {fileID: 1612792628}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1612792627
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612792626}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 861114552}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1612792628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612792626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 28
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'BuyStock
+
+'
+--- !u!222 &1612792629
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612792626}
+  m_CullTransparentMesh: 1
 --- !u!1 &1618563949
 GameObject:
   m_ObjectHideFlags: 0
@@ -66999,7 +67257,7 @@ MonoBehaviour:
   totalInvestedBondPortfolio: 0
   BondMarketManager: {fileID: 1985270149}
   PortfolioStock: {fileID: 678885388}
-  BondsPortfolio: {fileID: 678885393}
+  BondsPortfolio: {fileID: 0}
   TotalCash: {fileID: 0}
 --- !u!114 &1721568483
 MonoBehaviour:
@@ -70044,7 +70302,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774405546}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 744d363262179a448ae286ce1a9cc0df, type: 3}
   m_Name: 
@@ -72457,6 +72715,7 @@ MonoBehaviour:
   - {fileID: 83874716}
   - {fileID: 1667853724}
   - {fileID: 1569333924}
+  - {fileID: 0}
   minesList: []
 --- !u!1 &1842958532
 GameObject:
@@ -79070,7 +79329,7 @@ MonoBehaviour:
   - {fileID: 2023184439}
   - {fileID: 1607959639}
   bondsScriptsGO: {fileID: 0}
-  BondsPortfolio: {fileID: 678885393}
+  BondsPortfolio: {fileID: 0}
   yield10YearBondAverage: 3
   yield10YearBondStandardDev: 2
 --- !u!1 &1992351948
@@ -80675,17 +80934,6 @@ MonoBehaviour:
   stockGO: {fileID: 0}
   ChooseStockSector: {fileID: 0}
   inputAmountOrder: {fileID: 767324854}
-  PanelStockSector: {fileID: 0}
-  BottomPanelGO: {fileID: 0}
-  priceUtiText: {fileID: 0}
-  priceFinText: {fileID: 0}
-  priceTechText: {fileID: 0}
-  priceUti: 0
-  priceFin: 0
-  priceTech: 0
-  indexNAV: 0
-  amountOrderIndex: 0
-  indexSharesAdd: 0
   MainCanvas: {fileID: 0}
   moneyBeforeBuy: 0
   inputAmountIndex: {fileID: 0}

@@ -41,7 +41,7 @@ public class GAV : MonoBehaviour
 
 	private void Update()
 	{
-		
+		/*
 		if (ActiveSector_1850.getActiveSector() == 0)
 		{
 			updateGAVText("Mines");
@@ -56,6 +56,7 @@ public class GAV : MonoBehaviour
 		{
 			updateGAVText("Industri");
 		}
+		*/
 		
 	}
 

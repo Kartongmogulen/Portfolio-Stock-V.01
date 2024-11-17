@@ -23,7 +23,7 @@ public class bondsCollectCoupon : MonoBehaviour
             valueBonds = amountBonds * BondMarketManager.bondMarketListGO[0].GetComponent<bondInfoPrefab>().costBond;
             //Ränta betalas till Spelaren
             TotalCash.incomeBonds(valueBonds * BondMarketManager.bondMarketListGO[0].GetComponent<bondInfoPrefab>().rate / 100);
-            TotalCash.sellBonds(valueBonds);
+            //TotalCash.sellBonds(valueBonds);
         }
 
         //______________________________
@@ -38,7 +38,7 @@ public class bondsCollectCoupon : MonoBehaviour
             amountBonds = BondsPortfolio.bondsOwned5Year[BondsPortfolio.bondsOwned5Year.Count - 13];
             valueBonds = amountBonds * BondMarketManager.bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond;
             TotalCash.incomeBonds(valueBonds * BondMarketManager.bondMarketListGO[1].GetComponent<bondInfoPrefab>().rate / 100);
-            TotalCash.sellBonds(valueBonds);
+            //TotalCash.sellBonds(valueBonds);
             //Debug.Log(amountBonds);
         }
 
@@ -51,7 +51,7 @@ public class bondsCollectCoupon : MonoBehaviour
                 amountBonds = BondsPortfolio.bondsOwned5Year[BondsPortfolio.bondsOwned5Year.Count - (12*i+1)];
                 valueBonds = amountBonds * BondMarketManager.bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond;
                 TotalCash.incomeBonds(valueBonds * BondMarketManager.bondMarketListGO[1].GetComponent<bondInfoPrefab>().rate / 100);
-                TotalCash.sellBonds(valueBonds);
+                //TotalCash.sellBonds(valueBonds);
                 //Debug.Log(amountBonds);
             }
         }
@@ -65,7 +65,7 @@ public class bondsCollectCoupon : MonoBehaviour
                 amountBonds = BondsPortfolio.bondsOwned5Year[BondsPortfolio.bondsOwned5Year.Count - (12 * i+1)];
                 valueBonds = amountBonds * BondMarketManager.bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond;
                 TotalCash.incomeBonds(valueBonds * BondMarketManager.bondMarketListGO[1].GetComponent<bondInfoPrefab>().rate / 100);
-                TotalCash.sellBonds(valueBonds);
+                //TotalCash.sellBonds(valueBonds);
                 //Debug.Log(amountBonds);
             }
         }
@@ -79,7 +79,7 @@ public class bondsCollectCoupon : MonoBehaviour
                 amountBonds = BondsPortfolio.bondsOwned5Year[BondsPortfolio.bondsOwned5Year.Count - (12 * i + 1)];
                 valueBonds = amountBonds * BondMarketManager.bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond;
                 TotalCash.incomeBonds(valueBonds * BondMarketManager.bondMarketListGO[1].GetComponent<bondInfoPrefab>().rate / 100);
-                TotalCash.sellBonds(valueBonds);
+                //TotalCash.sellBonds(valueBonds);
                 //Debug.Log(amountBonds);
             }
         }
@@ -90,7 +90,7 @@ public class bondsCollectCoupon : MonoBehaviour
             amountBonds = BondsPortfolio.bondsOwned5Year[0];
             valueBonds = amountBonds * BondMarketManager.bondMarketListGO[1].GetComponent<bondInfoPrefab>().costBond;
             TotalCash.incomeBonds(valueBonds * BondMarketManager.bondMarketListGO[1].GetComponent<bondInfoPrefab>().rate / 100);
-            TotalCash.sellBonds(valueBonds);
+            //TotalCash.sellBonds(valueBonds);
            
         }
     }

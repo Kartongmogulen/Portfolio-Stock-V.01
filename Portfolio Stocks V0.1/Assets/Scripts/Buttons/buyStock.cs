@@ -26,6 +26,7 @@ public class buyStock : MonoBehaviour
 
 	public InputField inputAmountOrder;
 
+	/*
 	//Innan Steg 3.1
 	public GameObject PanelStockSector;
 	//public GameObject playerPanelGO;
@@ -48,6 +49,7 @@ public class buyStock : MonoBehaviour
 	public float indexNAV;
 	public float amountOrderIndex;
 	public float indexSharesAdd;
+	*/
 
 	//Har jag tillräckligt med pengar?
 	public GameObject MainCanvas;
@@ -66,6 +68,7 @@ public class buyStock : MonoBehaviour
 
 	}
 
+	/*
 	public void buyStocks()
 	{
 		//Identifiera sektor
@@ -136,9 +139,10 @@ public class buyStock : MonoBehaviour
 		playerScriptsGO.GetComponent<portfolioStock>().valuePortfolio(); //Uppdaterar värdet av portfölj
 
 
-
+	
 	}
-
+	*/
+	/*
 	public void buyStocks_1850()
 	{
 		activeSector = ActiveSector_1850.getActiveSector();
@@ -212,6 +216,7 @@ public class buyStock : MonoBehaviour
 
 		}
 	}
+	*/
 
 	public void buyStocks_1850_Refactor(moneyManager MoneyManager)
 	{
@@ -278,18 +283,18 @@ public class buyStock : MonoBehaviour
 		{
 			case 0: // Gruvor
 				portfolio.mineTotalInvestAmount[city] += orderValue;
-				portfolio.addMineShares(amountOrder, city);
+				//portfolio.addMineShares(amountOrder, city);
 				playerScriptsGO.GetComponent<GAV>().minesGAV();
 				break;
 
 			case 1: // Järnvägar
 				portfolio.railroadTotalInvestAmount[city] += orderValue;
-				portfolio.addRailroadShares(amountOrder, city);
+				//portfolio.addRailroadShares(amountOrder, city);
 				break;
 
 			case 2: // Industri
 				portfolio.industriTotalInvestAmount[city] += orderValue;
-				portfolio.addIndustriShares(amountOrder, city);
+				//portfolio.addIndustriShares(amountOrder, city);
 				break;
 
 			default:
