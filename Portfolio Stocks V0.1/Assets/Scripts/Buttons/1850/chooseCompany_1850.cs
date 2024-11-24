@@ -38,7 +38,7 @@ public class chooseCompany_1850 : MonoBehaviour
 
     private void Update()
     {
-        chooseCompany();
+        //chooseCompany();
         //getCityAndSectorIndex();
     }
 

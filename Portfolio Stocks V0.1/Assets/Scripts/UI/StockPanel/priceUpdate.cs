@@ -14,8 +14,8 @@ public class priceUpdate : MonoBehaviour
 
     private void Update()
     {
-        if (StockMarketManager_1850 != null)
-        updatePriceText_1850();
+        //if (StockMarketManager_1850 != null)
+        //updatePriceText_1850();
     }
 
     public void updatePriceText_1850()

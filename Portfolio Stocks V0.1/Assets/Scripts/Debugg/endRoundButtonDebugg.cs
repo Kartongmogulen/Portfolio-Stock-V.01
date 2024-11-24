@@ -11,11 +11,12 @@ public class endRoundButtonDebugg : MonoBehaviour
 
     public void investInOnlyOneCompany()
     {
-
+        /*
         for (int i = 0; i < StockMarketInventory.Stock.Count; i++)
         {
             StockMarketInventory.Stock[i].GetComponent<stockSpecificCompany100>().investCompany(i);
         }
+        */  
         //StockMarketInventory.Stock[0].GetComponent<stockSpecificCompany100>().investCompany(0);
        // StockMarketInventory.Stock[1].GetComponent<stockSpecificCompany100>().investCompany(1);
     }

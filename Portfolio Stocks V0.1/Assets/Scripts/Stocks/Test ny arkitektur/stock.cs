@@ -31,9 +31,23 @@ public class stock : MonoBehaviour
 	public float lastDivPayout;
 	public float volatilityAbs;
 	public float volatilityPercent;
+	private PriceCalculator _priceCalculator;
+
+		public void Initialize(PriceCalculator priceCalculator)
+	{
+		_priceCalculator = priceCalculator;
+	}
+
+	public void UpdatePrice()
+	{
+		
+		priceNow = _priceCalculator.CalculateDCFPrice(EPSnow, Random.Range(EPSGrowthMin,EPSGrowthMax), 1);
+		Debug.Log($"[Company: {name}] Nytt pris: {priceNow}");
+		
+	}
 
 
-	public void updatePriceNow(float priceNew)
+public void updatePriceNow(float priceNew)
 	{
 		StockPrice.Add(priceNew);
 		//priceNow = StockPrice[StockPrice.Count - 1];

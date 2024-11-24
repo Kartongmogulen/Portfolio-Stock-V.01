@@ -25,7 +25,7 @@ public class moneyManager : MonoBehaviour, ITransaction
     private void Awake()
     {
         MoneyNow = startingCapital;
-        Debug.Log("MoneyStart: " + MoneyNow);
+        //Debug.Log("MoneyStart: " + MoneyNow);
 
         moneyVisualizer = GetComponent<IMoneyVisualizer>();
 
