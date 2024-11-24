@@ -12,12 +12,28 @@ public class HighscoreManager : MonoBehaviour
 
     public List<TextMeshProUGUI> highscoreTextList; // Lista med TextMeshProUGUI-objekt för att visa highscores
     public GameObject highScoreUI;
+    private IMoneyVisualizer moneyVisualizer;
 
     void Start()
     {
         LoadHighscores();
         UpdateHighscoreDisplay();
         highScoreUI.SetActive(false);// Inaktiverar vid start
+        visualizeTopScore();
+    }
+
+    public void visualizeTopScore()
+    {
+        moneyVisualizer = GetComponent<IMoneyVisualizer>();
+
+        if (moneyVisualizer != null)
+        {
+            moneyVisualizer.UpdateMoneyDisplay(highscores[0]);
+        }
+        else
+        {
+            Debug.LogWarning("No money visualizer attached!");
+        }
     }
 
     public void endGame()
