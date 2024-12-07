@@ -67,7 +67,7 @@ public class chooseCompany_1850 : MonoBehaviour
         if(activeSector == 0)
         {
             stockMarketSectorActive = StockMarketManager_1850.StockPrefabListMines;
-            stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
+            //stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
             DataPlayerKnowsButtonUnlock.chooseStock(stockMarketSectorActive[cityIndex].GetComponent<stock>());
             
             showHistoricData.updateAllHistoricDataWithGameObject(stockMarketSectorActive[cityIndex]);
@@ -79,7 +79,7 @@ public class chooseCompany_1850 : MonoBehaviour
         if (activeSector == 1)
         {
             stockMarketSectorActive = StockMarketManager_1850.StockPrefabListRailroad;
-            stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
+            //stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
             DataPlayerKnowsButtonUnlock.chooseStock(stockMarketSectorActive[cityIndex].GetComponent<stock>());
 
             showHistoricData.updateAllHistoricDataWithGameObject(stockMarketSectorActive[cityIndex]);
@@ -91,12 +91,12 @@ public class chooseCompany_1850 : MonoBehaviour
 
             if (stockMarketSectorActive[cityIndex].GetComponent<priceStock>() != null)
             {
-                stockPrice = stockMarketSectorActive[cityIndex].GetComponent<priceStock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<priceStock>().StockPrice.Count - 1];
+                //stockPrice = stockMarketSectorActive[cityIndex].GetComponent<priceStock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<priceStock>().StockPrice.Count - 1];
                 DataPlayerKnowsButtonUnlock.chooseStock_Products(stockMarketSectorActive[cityIndex].GetComponent<incomeStatement>());
             }
             else
             {
-                stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
+                //stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
                 DataPlayerKnowsButtonUnlock.chooseStock(stockMarketSectorActive[cityIndex].GetComponent<stock>());
             }
 

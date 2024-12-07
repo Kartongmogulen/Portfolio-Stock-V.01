@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class timeManager : MonoBehaviour
 {
 	public int year;
 	public int month;
-	public Text roundText;
+	//public Text roundText;
+	public TextMeshProUGUI roundText_TMP;
 	[Tooltip("Antal månader som ska simuleras vid varje aktivering")]
 	public int multiMonthSim;
 
@@ -20,7 +22,7 @@ public class timeManager : MonoBehaviour
 
 	private void Start()
 	{
-		if (roundText != null)
+		if (roundText_TMP != null)
 		{
 			updateUI();
 		}
@@ -39,7 +41,10 @@ public class timeManager : MonoBehaviour
 			month = 1;
 			//HistoricEventManager.newEventHappened();
 		}
-		
+		updateUI();
+
+		//Debug.Log("Runda slut: Y: " + year + " M: " + month);
+
 	}
 
 	//Om varje runda representerar 1 år
@@ -54,6 +59,6 @@ public class timeManager : MonoBehaviour
 
 	public void updateUI()
 	{
-		roundText.text = "Y: " + year + " M: " + month;
+		roundText_TMP.text = "Y: " + year + " M: " + month;
 	}
 }

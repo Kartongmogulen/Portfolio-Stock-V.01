@@ -48,6 +48,15 @@ public class PortfolioManager : MonoBehaviour
 
     }
 
+    public int getSharesAmount()
+    {
+        GameObject company = findCompany();//Hitta Gameobject för bolaget
+
+        var existingEntry = portfolioEntries.Find(entry => entry.Company == company);
+
+        return existingEntry.NumberOfShares;
+    }
+
     public GameObject findCompany()
     {
         int sector = ActiveSector_1850.getActiveSector();

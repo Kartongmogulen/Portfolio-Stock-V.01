@@ -78,7 +78,7 @@ public class stockMarketUI : MonoBehaviour
 
 		//PayoutRatioText.text = "Payout ratio: " + (Mathf.Round((iui.Stock.payout / iui.Stock.EPSnow)*100)/100)*100 + "%";
 
-		priceNow = iui.Stock.priceNow;
+		priceNow = iui.Stock.basePrice;
 
 		Debug.Log ("Price: " + priceNow);
 

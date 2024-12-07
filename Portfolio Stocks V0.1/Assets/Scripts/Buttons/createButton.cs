@@ -12,7 +12,7 @@ public class createButton : MonoBehaviour
 
     public void buttonSpawn()
     {
-        Debug.Log("ButtonSpawn");
+        //Debug.Log("ButtonSpawn");
         GameObject buttonInstance = Instantiate(buttonPrefab, parentTransform);
 
         // Ställ in knappens text

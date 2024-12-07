@@ -17,10 +17,9 @@ public class stockPriceManager : MonoBehaviour
 
     public float priceNow;
 
-
-  
     private MarketDataProvider _marketDataProvider;
     private PriceCalculator _priceCalculator;
+    private MarketTrendManager _marketTrendManager;
 
     [Header("Refactor")]
     // Initiala marknadsparametrar
@@ -32,7 +31,8 @@ public class stockPriceManager : MonoBehaviour
 
     private void Awake()
     {
-        StockMarketManager = StockMarketGO.GetComponent<stockMarketManager>(); 
+        StockMarketManager = StockMarketGO.GetComponent<stockMarketManager>();
+        _marketTrendManager = GetComponent<MarketTrendManager>();
     }
 
     public void Start()
@@ -75,12 +75,13 @@ public class stockPriceManager : MonoBehaviour
             var company = companyGO.GetComponent<stock>();
             if (company != null)
             {
-                company.Initialize(_priceCalculator);
+                company.Initialize(_priceCalculator, _marketTrendManager);
 
                 // Exempeldata för test
                 //company.EPS = Random.Range(1f, 5f); // Slumpmässig EPS
                 //company.GrowthRate = Random.Range(0.05f, 0.2f); // Tillväxt mellan 5% och 20%
                 //company.ForecastPeriod = 10; // Prognos för 10 år
+                //company.Sector = Random.Range(0, 2) == 0 ? "Railroad" : "Mine"; // Exempel: Tech eller Finance
             }
         }
     }

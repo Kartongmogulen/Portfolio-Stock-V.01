@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
+
 
 public class priceUpdate : MonoBehaviour
 {
-    public Text priceText;
+    [SerializeField] private TextMeshProUGUI priceText;
     public CityManager cityManager;
     public activeSector_1850 ActiveSector_1850;
     public stockMarketManager_1850 StockMarketManager_1850;
@@ -15,11 +16,34 @@ public class priceUpdate : MonoBehaviour
     private void Update()
     {
         //if (StockMarketManager_1850 != null)
-        //updatePriceText_1850();
+        updatePriceText_1850();
     }
 
     public void updatePriceText_1850()
     {
+        int activeSector = ActiveSector_1850.getActiveSector();
+        int activeCity = cityManager.getActiveCity();
+
+        switch (activeSector)
+        {
+            case 0:
+                stockPrice = StockMarketManager_1850.StockPrefabListMines[activeCity].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[activeCity].GetComponent<stock>().StockPrice.Count - 1];
+                break;
+            case 1:
+                stockPrice = StockMarketManager_1850.StockPrefabListRailroad[activeCity].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[activeCity].GetComponent<stock>().StockPrice.Count - 1];
+                break;
+            case 2:
+                if (StockMarketManager_1850.StockPrefabListIndustri[activeCity].GetComponent<priceStock>() != null)
+                    stockPrice = StockMarketManager_1850.StockPrefabListIndustri[activeCity].GetComponent<priceStock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[activeCity].GetComponent<priceStock>().StockPrice.Count - 1];
+                else
+                stockPrice = StockMarketManager_1850.StockPrefabListIndustri[activeCity].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListIndustri[activeCity].GetComponent<stock>().StockPrice.Count - 1];
+                break;
+               
+        }
+
+        priceText.text = $"Price: ${stockPrice:F2}"; // Uppdatera texten med nuvarande pengar
+
+        /*
         if (ActiveSector_1850.getActiveSector() == 0)
         {
             {
@@ -46,8 +70,9 @@ public class priceUpdate : MonoBehaviour
 
             }
         }
+        */
 
-        priceText.text = "Price: " + stockPrice;
+
     }
 
     public void updatePriceOnClick(priceStock stockPriceInfo)

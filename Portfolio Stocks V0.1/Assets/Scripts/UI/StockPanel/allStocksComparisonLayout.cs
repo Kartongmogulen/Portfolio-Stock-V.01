@@ -60,8 +60,9 @@ public class allStocksComparisonLayout : MonoBehaviour
     {
         isPanelActive();
         updateNameText_1850();
-        updatePriceEarningsText_1850(); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
-        updateTrailing12MonthPrice_1850(); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
+        UpdatePriceEarningsText();
+        //updatePriceEarningsText_1850(); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
+        //updateTrailing12MonthPrice_1850(); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
     }
 
     public void updateNameText()
@@ -115,6 +116,7 @@ public class allStocksComparisonLayout : MonoBehaviour
         }
     }
 
+    /*
     public void updatePriceEarningsText_1850()
     {
         //Debug.Log("Uppdatera text 1850");
@@ -125,10 +127,12 @@ public class allStocksComparisonLayout : MonoBehaviour
             float priceNow = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().StockPrice.Count - 1];
             //Debug.Log("Pris: " + priceNow);
             float EPSNow = StockMarketManager_1850.StockPrefabListMines[i].GetComponent<stock>().EPSnow;
+            //Debug.Log("EPS: " + EPSNow);
             PriceEarningsList[i].text = "" + Mathf.Round(priceNow / EPSNow*100)/100;
         }
-        //Debug.Log("Gruvor färdig");
+        Debug.Log("Gruvor färdig");
 
+        Debug.Log("Antal railroad: ");
        for (int i = 0; i < StockMarketManager_1850.StockPrefabListRailroad.Count; i++)
        {
            float priceNow = StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().StockPrice[StockMarketManager_1850.StockPrefabListRailroad[i].GetComponent<stock>().StockPrice.Count - 1];
@@ -165,6 +169,7 @@ public class allStocksComparisonLayout : MonoBehaviour
         }
 
     }
+    */
 
     public void updateTrailing12MonthPrice()
     {
@@ -272,6 +277,105 @@ public class allStocksComparisonLayout : MonoBehaviour
             //week52IntervalGO_Railroad.SetActive(false);
         }
 
+    }
+
+    //REFACTOR
+
+    public void UpdatePriceEarningsText()
+    {
+     
+        UpdateSectorPriceEarnings(
+            StockMarketManager_1850.StockPrefabListMines,
+            PriceEarningsList,
+            "Mines"
+        );
+
+        UpdateSectorPriceEarnings(
+            StockMarketManager_1850.StockPrefabListRailroad,
+            PriceEarningsListRailroad,
+            "Railroads"
+        );
+
+        
+        UpdateSectorPriceEarnings(
+            StockMarketManager_1850.StockPrefabListIndustri,
+            PriceEarningsListIndustri,
+            "Industry"
+        );
+        
+    }
+
+    /// <summary>
+    /// Uppdaterar UI-texter för en given sektor baserat på deras pris och EPS.
+    /// </summary>
+    /// <param name="stockList">Listan med aktieobjekt.</param>
+    /// <param name="uiTextList">UI-textkomponenterna som ska uppdateras.</param>
+    /// <param name="sectorName">Sektorns namn för loggning.</param>
+    private void UpdateSectorPriceEarnings(
+        List<GameObject> stockList,
+        List<Text> uiTextList,
+        string sectorName)
+    {
+        if (stockList == null || uiTextList == null)
+        {
+            Debug.LogWarning($"Stock list or UI text list is null for sector: {sectorName}");
+            return;
+        }
+
+        for (int i = 0; i < stockList.Count; i++)
+        {
+            var stock = stockList[i];
+            var stockComponent = stock.GetComponent<stock>();
+            var priceStockComponent = stock.GetComponent<priceStock>();
+            var incomeStatementComponent = stock.GetComponent<incomeStatement>();
+
+            if (stockComponent != null)
+            {
+                float priceNow = stockComponent.StockPrice[stockComponent.StockPrice.Count-1]; // Senaste priset
+                float epsNow = stockComponent.EPSnow;
+
+                if (epsNow > 0) // Undviker division med 0
+                {
+                    uiTextList[i].text = FormatPriceEarnings(priceNow, epsNow);
+                }
+                else
+                {
+                    uiTextList[i].text = "N/A";
+                }
+            }
+            else if (priceStockComponent != null && incomeStatementComponent != null)
+            {
+                float priceNow = priceStockComponent.StockPrice[priceStockComponent.StockPrice.Count-1]; // Senaste priset
+                float epsNow = incomeStatementComponent.getEarningsPerShareNow();
+
+                if (epsNow > 0) // Undviker division med 0
+                {
+                    uiTextList[i].text = FormatPriceEarnings(priceNow, epsNow);
+                }
+                else
+                {
+                    uiTextList[i].text = "N/A";
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"Missing components for stock in sector: {sectorName}, index: {i}");
+                uiTextList[i].text = "N/A";
+            }
+        }
+
+        //Debug.Log($"{sectorName} updated successfully.");
+    }
+
+    /// <summary>
+    /// Formaterar P/E-talet som en sträng med två decimaler.
+    /// </summary>
+    /// <param name="price">Aktiens pris.</param>
+    /// <param name="eps">EPS-värdet.</param>
+    /// <returns>Formaterad sträng för P/E-talet.</returns>
+    private string FormatPriceEarnings(float price, float eps)
+    {
+        return (Mathf.Round(price / eps * 100) / 100).ToString("F2");
     }
 
 }

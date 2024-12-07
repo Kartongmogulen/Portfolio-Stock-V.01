@@ -3,6 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 
 #pragma warning disable 0618 // Disabled warning due to SetVertices being deprecated until new release with SetMesh() is available.
@@ -492,8 +493,11 @@ namespace TMPro.Examples
 
             // Restore UV0S
             // UVS0
-            Vector2[] src_uv0s = m_cachedMeshInfoVertexData[materialIndex].uvs0;
-            Vector2[] dst_uv0s = m_TextMeshPro.textInfo.meshInfo[materialIndex].uvs0;
+            Vector4[] src_uv0s_vector4 = m_cachedMeshInfoVertexData[materialIndex].uvs0;
+            Vector2[] src_uv0s = src_uv0s_vector4.Select(v => new Vector2(v.x, v.y)).ToArray(); // Konvertering;
+
+            Vector4[] dst_uv0s_vector4 = m_TextMeshPro.textInfo.meshInfo[materialIndex].uvs0;
+            Vector2[] dst_uv0s = dst_uv0s_vector4.Select(v => new Vector2(v.x, v.y)).ToArray(); // Konvertering;
             dst_uv0s[vertexIndex + 0] = src_uv0s[vertexIndex + 0];
             dst_uv0s[vertexIndex + 1] = src_uv0s[vertexIndex + 1];
             dst_uv0s[vertexIndex + 2] = src_uv0s[vertexIndex + 2];
@@ -526,8 +530,8 @@ namespace TMPro.Examples
             dst_colors[lastIndex + 3] = src_colors[lastIndex + 3];
 
             // UVS0
-            src_uv0s = m_cachedMeshInfoVertexData[materialIndex].uvs0;
-            dst_uv0s = m_TextMeshPro.textInfo.meshInfo[materialIndex].uvs0;
+            src_uv0s_vector4 = m_cachedMeshInfoVertexData[materialIndex].uvs0;
+            dst_uv0s_vector4 = m_TextMeshPro.textInfo.meshInfo[materialIndex].uvs0;
             dst_uv0s[lastIndex + 0] = src_uv0s[lastIndex + 0];
             dst_uv0s[lastIndex + 1] = src_uv0s[lastIndex + 1];
             dst_uv0s[lastIndex + 2] = src_uv0s[lastIndex + 2];

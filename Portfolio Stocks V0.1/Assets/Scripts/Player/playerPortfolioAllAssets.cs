@@ -13,7 +13,7 @@ public class playerPortfolioAllAssets : MonoBehaviour
     public float shareStockTotalPortfolio()
     {
         PortfolioStock.valuePortfolio();
-        stockShareTotalPortfolio = PortfolioStock.totalValuePortfolio/(PortfolioStock.totalValuePortfolio+BondsPortfolio.totalBondsInvest);
+        stockShareTotalPortfolio = PortfolioStock.totalValuePortfolio / (PortfolioStock.totalValuePortfolio);//+BondsPortfolio.totalBondsInvest);
         //Debug.Log(stockShareTotalPortfolio);
 
         return stockShareTotalPortfolio;

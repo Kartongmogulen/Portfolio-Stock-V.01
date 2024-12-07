@@ -25,33 +25,54 @@ public class stock : MonoBehaviour
 	[Header("Other")]
 	public string nameOfCompany;
 	public int indexPrefabList; //Alla prefabs får ett nummer som motsvarar denna i listan för alla prefabs. Underlätta vid script för att hämta data för specifikt bolag.
-	public float priceNow;
+	public float basePrice;
+	public float CurrentPrice;
 	public float trailingTwelweMonthHigh;
 	public float trailingTwelweMonthLow;
 	public float lastDivPayout;
 	public float volatilityAbs;
 	public float volatilityPercent;
 	private PriceCalculator _priceCalculator;
+	private MarketTrendManager _marketTrendManager;
 
-		public void Initialize(PriceCalculator priceCalculator)
+	public void Initialize(PriceCalculator priceCalculator, MarketTrendManager marketTrendManager)
 	{
 		_priceCalculator = priceCalculator;
+		_marketTrendManager = marketTrendManager;
 	}
 
 	public void UpdatePrice()
 	{
 		
-		priceNow = _priceCalculator.CalculateDCFPrice(EPSnow, Random.Range(EPSGrowthMin,EPSGrowthMax), 1);
-		Debug.Log($"[Company: {name}] Nytt pris: {priceNow}");
-		
+		basePrice = _priceCalculator.CalculateDCFPrice(EPSnow, Random.Range(EPSGrowthMin,EPSGrowthMax)/100, 10); //Har "period" hårdkodad till 10 då det finns tillräckligt med slump i beräkningen redan
+																												  // Kontrollera om företaget är "hett"
+		float multiplier = _marketTrendManager.GetCompanyMultiplier(gameObject);
+
+		// Kontrollera om sektorn är "het"
+		if (_marketTrendManager.IsSectorHot(SectorNameEnum))
+		{
+			multiplier += _marketTrendManager.PricePremium/100; // Lägg till extra boost om sektorn också är het
+		}
+
+		//Debug.Log($"[Company: {name}] Baspris utan prispremium: {basePrice})");
+		CurrentPrice = basePrice * multiplier;
+		//Debug.Log($"[Company: {name}] Nytt pris: {CurrentPrice} (Multiplier: {multiplier})");
+
+		savePrice(CurrentPrice);
 	}
 
+	public void savePrice(float priceNew)
+	{
+		StockPrice.Add(priceNew);
+	}
 
-public void updatePriceNow(float priceNew)
+	/*
+	public void updatePriceNow(float priceNew)
 	{
 		StockPrice.Add(priceNew);
 		//priceNow = StockPrice[StockPrice.Count - 1];
 	}
+	*/
 
 	public void saveDividendHistory()
 	{
@@ -71,19 +92,19 @@ public void updatePriceNow(float priceNew)
 
 	public void adjustEPSGrowth(bool max, float change)
 	{
-		Debug.Log("EPS Growth script");
+		//Debug.Log("EPS Growth script");
 		if (max == true)
 		{
 			EPSGrowthMax += change;
 			EPSGrowthMin += change;
-			Debug.Log("EPS growth MAX ändrad med: " + change);
+			//Debug.Log("EPS growth MAX ändrad med: " + change);
 		}
 
 		if(max == false)
 		{
 			EPSGrowthMax += change;
 			EPSGrowthMin += change;
-			Debug.Log("EPS growth MIN ändrad med: " + change);
+			//Debug.Log("EPS growth MIN ändrad med: " + change);
 		}
 	}
 }

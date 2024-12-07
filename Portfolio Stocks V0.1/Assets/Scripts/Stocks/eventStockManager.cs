@@ -125,7 +125,7 @@ public class eventStockManager : MonoBehaviour
         //Slumpar ett bolag och hämtar sektorn
         int numberOfCompanies = StockMarketInventory.masterList.Count;
         int choosenCompanyIndex = Random.Range(0, numberOfCompanies);
-        Debug.Log("Sektor som påverkas: " + StockMarketInventory.masterList[choosenCompanyIndex].GetComponent<stock>().SectorNameEnum);
+        //Debug.Log("Sektor som påverkas: " + StockMarketInventory.masterList[choosenCompanyIndex].GetComponent<stock>().SectorNameEnum);
         sectorAffectedList.Add(StockMarketInventory.masterList[choosenCompanyIndex].GetComponent<stock>().SectorNameEnum);
         companyAffectedList.Add("Sector");
 

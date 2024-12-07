@@ -33,7 +33,7 @@ public class showShareAssets : MonoBehaviour
     public void stockAndBondsSharePortfolio()
     {
         shareStockTotalPortfolio = PlayerPortfolioAllAssets.shareStockTotalPortfolio();
-        shareBondsTotalPortfolio = PlayerPortfolioAllAssets.shareBondsTotalPortfolio();
+        //shareBondsTotalPortfolio = PlayerPortfolioAllAssets.shareBondsTotalPortfolio();
         //Debug.Log("Aktier andel av portfölj: " + shareStockTotalPortfolio);
     }
 

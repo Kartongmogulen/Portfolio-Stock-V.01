@@ -75,8 +75,8 @@ public class endRoundButton : MonoBehaviour
 	public void endTurn() //Uppdaterar tid samt texten för vilken aktuell tid det är
 	{
 		//month = month + 10;
-		month++;//Add 1 to the month;
-		DateNowText.text = "Y: " + year + " M: " + month;
+		//month++;//Add 1 to the month;
+		//DateNowText.text = "Y: " + year + " M: " + month;
 
 		//Debug.Log("End Round Button Månad: " + month);
 
@@ -96,7 +96,7 @@ public class endRoundButton : MonoBehaviour
 
 		//Pengar
 		//playerPanelGO.GetComponent<totalCash>().cashflowFromBusiness();
-		playerScriptsGO.GetComponent<totalCash>().incomeWork();
+		//playerScriptsGO.GetComponent<totalCash>().incomeWork();
 		//Debug.Log("End Round Button Månad: " + month);
 
 		//Portfölj
@@ -119,11 +119,12 @@ public class endRoundButton : MonoBehaviour
 
 		//MainCanvas.GetComponent<news>().randomNews(); //NYHETER
 		
+		
 
-		if (month > 12) {
-			year++;
-			month = 1;
-			DateNowText.text = "Y: " + year + " M: " + month;
+		if (FindObjectOfType<timeManager>().month > 12) {
+			//year++;
+			//month = 1;
+			//DateNowText.text = "Y: " + year + " M: " + month;
 
 			//Utdelningar från föregående år innan värden uppdateras för bolagen
 			
@@ -180,7 +181,7 @@ public class endRoundButton : MonoBehaviour
 			}
 
 			//Settler
-			Debug.Log("År: " + year);
+			//Debug.Log("År: " + year);
 			SendMoneyHome.timeForPlayerToSendMoney(year);
 
 		}
