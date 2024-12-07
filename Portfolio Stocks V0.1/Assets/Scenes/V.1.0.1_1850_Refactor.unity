@@ -3854,6 +3854,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1930121734}
+        m_TargetAssemblyTypeName: stocksOwnedAmount_UpdateText, Assembly-CSharp
+        m_MethodName: updateText_1850
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 678885398}
+          m_ObjectArgumentAssemblyTypeName: PortfolioManager, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &134736185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6884,6 +6896,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
         type: 3}
+      propertyPath: dividendPerShareStart
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
       propertyPath: divPolicyMaxPayouRatio
       value: 80
       objectReference: {fileID: 0}
@@ -7906,6 +7923,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1930121734}
+        m_TargetAssemblyTypeName: stocksOwnedAmount_UpdateText, Assembly-CSharp
+        m_MethodName: updateText_1850
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 678885398}
+          m_ObjectArgumentAssemblyTypeName: PortfolioManager, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -26042,6 +26071,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 678885390}
+        m_TargetAssemblyTypeName: moneyManager, Assembly-CSharp
+        m_MethodName: AddIncome
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &630657659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27467,7 +27508,6 @@ GameObject:
   - component: {fileID: 678885386}
   - component: {fileID: 678885392}
   - component: {fileID: 678885387}
-  - component: {fileID: 678885389}
   - component: {fileID: 678885390}
   - component: {fileID: 678885395}
   - component: {fileID: 678885394}
@@ -27682,21 +27722,6 @@ MonoBehaviour:
   dividendPerYearText: {fileID: 1453885825}
   UtilitiesInfoStock: {fileID: 0}
   TechInfoStock: {fileID: 0}
---- !u!114 &678885389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 678885383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cadab3ab4fb679d4d845aa38275845c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  incomeWorkPerMonth: 90
-  totalIncomeFromWork: 0
-  incomeWorkText: {fileID: 838729664}
 --- !u!114 &678885390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27710,6 +27735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingCapital: 5000
+  incomeWorkPerMonth: 100
 --- !u!114 &678885391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39933,6 +39959,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1930121734}
+        m_TargetAssemblyTypeName: stocksOwnedAmount_UpdateText, Assembly-CSharp
+        m_MethodName: updateText_1850
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 678885398}
+          m_ObjectArgumentAssemblyTypeName: PortfolioManager, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &841541420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40670,6 +40708,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 0
+      - m_Target: {fileID: 678885397}
+        m_TargetAssemblyTypeName: stockTransaction, Assembly-CSharp
+        m_MethodName: sellStocks_1850_Refactor
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 678885398}
+          m_ObjectArgumentAssemblyTypeName: PortfolioManager, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 678885388}
         m_TargetAssemblyTypeName: portfolioStock, Assembly-CSharp
         m_MethodName: showPortfolioData_1850
@@ -40694,13 +40744,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 0
-      - m_Target: {fileID: 678885397}
-        m_TargetAssemblyTypeName: stockTransaction, Assembly-CSharp
-        m_MethodName: sellStocks_1850_Refactor
-        m_Mode: 1
+      - m_Target: {fileID: 1930121734}
+        m_TargetAssemblyTypeName: stocksOwnedAmount_UpdateText, Assembly-CSharp
+        m_MethodName: updateText_1850
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 678885398}
+          m_ObjectArgumentAssemblyTypeName: PortfolioManager, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -47003,6 +47053,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
         type: 3}
+      propertyPath: dividendPerShareStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2773773203410686542, guid: 128bd1b2f9f5faf4a9e5981548c60885,
+        type: 3}
       propertyPath: divPolicyMaxPayouRatio
       value: 80
       objectReference: {fileID: 0}
@@ -49780,6 +49835,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1930121734}
+        m_TargetAssemblyTypeName: stocksOwnedAmount_UpdateText, Assembly-CSharp
+        m_MethodName: updateText_1850
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 678885398}
+          m_ObjectArgumentAssemblyTypeName: PortfolioManager, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -75155,6 +75222,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1930121734}
+        m_TargetAssemblyTypeName: stocksOwnedAmount_UpdateText, Assembly-CSharp
+        m_MethodName: updateText_1850
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 678885398}
+          m_ObjectArgumentAssemblyTypeName: PortfolioManager, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1872273214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82586,40 +82665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69797ab0c0fc25148bec27a26308f778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScriptsGO: {fileID: 678885383}
-  playerGO: {fileID: 678885383}
-  ActiveSector_1850: {fileID: 2023206896}
-  cityManager: {fileID: 1504227176}
-  StockMarketManager_1850: {fileID: 1010759431}
-  activeSector: 0
-  activeCompany: 0
-  amountOrder: 0
-  orderValue: 0
-  moneyPlayer: 0
-  stockPrice: 0
-  playerStockCount: 0
-  stockGO: {fileID: 0}
-  ChooseStockSector: {fileID: 0}
-  inputAmountOrder: {fileID: 767324854}
-  PanelStockSector: {fileID: 0}
-  BottomPanelGO: {fileID: 0}
-  inputAmountIndex: {fileID: 0}
-  priceUtiText: {fileID: 0}
-  priceFinText: {fileID: 0}
-  priceTechText: {fileID: 0}
-  priceIndexText: {fileID: 0}
-  priceUti: 0
-  priceFin: 0
-  priceTech: 0
-  priceIndex: 0
-  indexNAV: 0
-  playerPanel: {fileID: 0}
-  numStockUti: 0
-  numStockFin: 0
-  numStockTech: 0
-  numStockIndex: 0
-  amountOrderIndex: 0
-  indexShareSell: 0
 --- !u!1 &2024039547
 GameObject:
   m_ObjectHideFlags: 0
@@ -85240,6 +85285,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1930121734}
+        m_TargetAssemblyTypeName: stocksOwnedAmount_UpdateText, Assembly-CSharp
+        m_MethodName: updateText_1850
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 678885398}
+          m_ObjectArgumentAssemblyTypeName: PortfolioManager, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

@@ -127,7 +127,7 @@ public class chooseCompany_1850 : MonoBehaviour
         }
         else
         {
-            divPayout = stockMarketSectorActive[cityIndex].GetComponent<stock>().divPayout;
+            divPayout = stockMarketSectorActive[cityIndex].GetComponent<stock>().DividendPerShare;
             payoutRatioOnEPS = divPayout / stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow;
 
         }

@@ -8,17 +8,13 @@ using UnityEngine;
         void UpdateStartingMoney();
     }
 
-    public interface IIncomeWork
-    {
-        float IncomeWorkPerMonth { get; set; }
-    }
 
 public class moneyManager : MonoBehaviour, ITransaction
 {
     [SerializeField] private float startingCapital;
+    [SerializeField] private float incomeWorkPerMonth; // Direkt hantering av lönen.
 
     private ITotalCash totalCash;
-    private IIncomeWork incomeWork;
     private IMoneyVisualizer moneyVisualizer;
     [SerializeField] public float MoneyNow { get; private set; }
 
@@ -40,10 +36,10 @@ public class moneyManager : MonoBehaviour, ITransaction
 
     }
 
-    public moneyManager(ITotalCash totalCash, IIncomeWork incomeWork)
+    public moneyManager(ITotalCash totalCash)//, IIncomeWork incomeWork)
     {
         this.totalCash = totalCash;
-        this.incomeWork = incomeWork;
+        //this.incomeWork = incomeWork;
     }
 
     public bool HasEnoughMoney(float transactionAmount)
@@ -56,7 +52,7 @@ public class moneyManager : MonoBehaviour, ITransaction
     {
         totalCash.MoneyStart = moneyStart;
         totalCash.UpdateStartingMoney();
-        incomeWork.IncomeWorkPerMonth = incomeWorkPerMonth;
+        //incomeWork.IncomeWorkPerMonth = incomeWorkPerMonth;
     }
 
     public void buyTransaction(float amount)
@@ -69,6 +65,12 @@ public class moneyManager : MonoBehaviour, ITransaction
     public void sellTransaction(float amount)
     {
         MoneyNow += amount;
+        moneyVisualizer?.UpdateMoneyDisplay(MoneyNow);
+    }
+
+    public void AddIncome()
+    {
+        MoneyNow += incomeWorkPerMonth; // Lägg till lönen.
         moneyVisualizer?.UpdateMoneyDisplay(MoneyNow);
     }
 }

@@ -10,8 +10,6 @@ public class chooseCompany : MonoBehaviour
 
 	public chooseStockSector ChooseStockSector;
 	public GameObject ScriptsGO;
-	public chooseUtiCompany ChooseUtiCompany;
-	public chooseTechCompany ChooseTechCompany;
 
 	public GameObject companyOneButton;
 	public GameObject companyTwoButton;
@@ -25,9 +23,7 @@ public class chooseCompany : MonoBehaviour
 
 	void Awake() {
 		ChooseStockSector = GetComponent<chooseStockSector>();
-		ChooseUtiCompany = ScriptsGO.GetComponent<chooseUtiCompany>();
-		ChooseTechCompany = ScriptsGO.GetComponent<chooseTechCompany>();
-
+		
 		//StockMarketInventory = stockMarketGO.GetComponent<stockMarketManager>().StockMarketInventory;
 	}
 
@@ -57,6 +53,7 @@ public class chooseCompany : MonoBehaviour
 
 	}
 
+	/*
 	public void chooseCompanyInt(int activeCompanyIndex)
 	{
 		activeSector = ChooseStockSector.activeSector;
@@ -92,6 +89,7 @@ public class chooseCompany : MonoBehaviour
 		}
 
 	}
+	*/
 
 	public void chosenCompanyOne() {
 		activeSector = ChooseStockSector.activeSector;
@@ -103,13 +101,13 @@ public class chooseCompany : MonoBehaviour
 
 		if (activeSector == 1) {
 			activeCompany = 1;
-			ChooseUtiCompany.companyOne();
+			//ChooseUtiCompany.companyOne();
 
 		}
 
 		if (activeSector == 2) {
 			activeCompany = 1;
-			ChooseTechCompany.companyOne();
+			//ChooseTechCompany.companyOne();
 
 		}
 
@@ -124,13 +122,13 @@ public class chooseCompany : MonoBehaviour
 
 		if (activeSector == 1) {
 			activeCompany = 2;
-			ChooseUtiCompany.companyTwo();
+			//ChooseUtiCompany.companyTwo();
 
 		}
 
 		if (activeSector == 2) {
 			activeCompany = 2;
-			ChooseTechCompany.companyTwo();
+			//ChooseTechCompany.companyTwo();
 
 		}
 	}
@@ -145,14 +143,14 @@ public class chooseCompany : MonoBehaviour
 		if (activeSector == 1)
 		{
 			activeCompany = 3;
-			ChooseUtiCompany.companyThree();
+			//ChooseUtiCompany.companyThree();
 			Debug.Log("Aktivt företag: " + activeCompany);
 		}
 
 		if (activeSector == 2)
 		{
 			activeCompany = 3;
-			ChooseTechCompany.companyThree();
+			//ChooseTechCompany.companyThree();
 			Debug.Log("Aktivt företag: " + activeCompany);
 		}
 	}
@@ -167,14 +165,14 @@ public class chooseCompany : MonoBehaviour
 		if (activeSector == 1)
 		{
 			activeCompany = 4;
-			ChooseUtiCompany.companyFour();
+			//ChooseUtiCompany.companyFour();
 			Debug.Log("Aktivt företag: " + activeCompany);
 		}
 
 		if (activeSector == 2)
 		{
 			activeCompany = 4;
-			ChooseTechCompany.companyNumber(activeCompany-1);
+			//ChooseTechCompany.companyNumber(activeCompany-1);
 			Debug.Log("Aktivt företag: " + activeCompany);
 		}
 	}

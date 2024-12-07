@@ -41,14 +41,15 @@ public class stockTransaction : MonoBehaviour
 
 	}
 
-	public void sellStocks_1850_Refactor()
+	public void sellStocks_1850_Refactor(PortfolioManager portfolio)
 	{
 		int activeSector = ActiveSector_1850.getActiveSector();
 		int city = cityManager.getActiveCity();
 		float stockAmountPlayerHas;
 		int amountOrder = int.Parse(inputAmountOrder.text);
-		var portfolio = playerScriptsGO.GetComponent<portfolioStock>();
+		//var portfolio = playerScriptsGO.GetComponent<portfolioStock>();
 
+		/*
 		switch (activeSector)
 		{
 			case 0: // Gruvor
@@ -66,11 +67,12 @@ public class stockTransaction : MonoBehaviour
 			default:
 				throw new ArgumentException("Invalid sector.");
 		}
+		*/
 
-		Debug.Log("Antal aktier spelaren har: " + stockAmountPlayerHas);
-		Debug.Log("Orderstorlek: " + amountOrder);
+		//Debug.Log("Antal aktier spelaren har: " + stockAmountPlayerHas);
+		//Debug.Log("Orderstorlek: " + amountOrder);
 		//Om spelaren har tillräckligt med aktier utförs säljorder
-		if (stockAmountPlayerHas >= amountOrder)
+		if (portfolio.getSharesAmount() >= amountOrder)
 		{
 			// Hämta aktiepriset
 			float stockPrice = GetStockPrice(activeSector, city);

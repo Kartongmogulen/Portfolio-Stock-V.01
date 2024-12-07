@@ -54,7 +54,8 @@ public class PortfolioManager : MonoBehaviour
 
         var existingEntry = portfolioEntries.Find(entry => entry.Company == company);
 
-        return existingEntry.NumberOfShares;
+        return existingEntry != null ? existingEntry.NumberOfShares : 0;
+        //return existingEntry.NumberOfShares;
     }
 
     public GameObject findCompany()

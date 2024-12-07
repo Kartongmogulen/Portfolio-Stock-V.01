@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class sellStock : MonoBehaviour
 //Script för när man väljer att köpa en aktie
 {
+	/*
 	public GameObject playerScriptsGO;
 	public GameObject playerGO;
 
@@ -180,6 +181,7 @@ public class sellStock : MonoBehaviour
 			playerScriptsGO.GetComponent<portfolioStock>().valuePortfolio();//Uppdaterar värdet av portfölj
 		}
 	}
+	*/
 }
 
 	

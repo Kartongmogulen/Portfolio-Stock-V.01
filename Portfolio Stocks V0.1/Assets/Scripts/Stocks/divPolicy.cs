@@ -21,9 +21,9 @@ public class divPolicy : MonoBehaviour
 
 	public void endOfYearUpdate(stock Stock)
 	{
-		oldDividend = Stock.divPayout;
+		oldDividend = Stock.DividendPerShare;
 		
-		oldDivShare = Stock.divPayout/Stock.EPSnow;
+		oldDivShare = Stock.DividendPerShare / Stock.EPSnow;
 
 		divPolicyRaise = Stock.divPolicyChangeDiv;
 
@@ -34,13 +34,13 @@ public class divPolicy : MonoBehaviour
 		//Utdelningstak
 		if (divPayoutRatioAfter <= Stock.divPolicyMaxPayouRatio / 100 && Stock.divPolicyMaxPayouRatio >= 0) //Utrymme att höja utdelning
 		{
-			Stock.divPayout = newDividend;
+			Stock.DividendPerShare = newDividend;
 		}
 
 		if (divPayoutRatioAfter > Stock.divPolicyMaxPayouRatio/100)
 		{
 			newDividend = Stock.EPSnow * Stock.divPolicyMaxPayouRatio/100;
-			Stock.divPayout = newDividend;
+			Stock.DividendPerShare = newDividend;
 		}
 	}
 	/*

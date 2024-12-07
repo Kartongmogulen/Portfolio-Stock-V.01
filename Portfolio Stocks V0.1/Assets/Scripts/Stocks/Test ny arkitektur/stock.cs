@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class stock : MonoBehaviour
+public class stock : MonoBehaviour, IDividendPayingCompany
 {
 	[Header("Starting values")]
 	//public string sectorName;
@@ -10,8 +10,19 @@ public class stock : MonoBehaviour
 	public float divPolicyMaxPayouRatio;
 	public bool companyPaysDividend;
 	public float startPayDividendWhenEPS;
-	public float divPayout;
-	
+	[SerializeField] private float dividendPerShare;
+	[SerializeField] private float dividendPerShareStart;
+
+	//[SerializeField] private float dividendPerShare;
+
+	//public float DividendPerShare => dividendPerShare; // Returnerar utdelning per aktie
+
+	public float DividendPerShare
+	{
+		get => dividendPerShare;
+		set => dividendPerShare = dividendPerShareStart;
+	}
+
 	public float EPSnow;
 	public sectorNameEnum SectorNameEnum;
 	public float EPSGrowthMin;
@@ -35,10 +46,30 @@ public class stock : MonoBehaviour
 	private PriceCalculator _priceCalculator;
 	private MarketTrendManager _marketTrendManager;
 
+
 	public void Initialize(PriceCalculator priceCalculator, MarketTrendManager marketTrendManager)
 	{
 		_priceCalculator = priceCalculator;
 		_marketTrendManager = marketTrendManager;
+	}
+
+	public void UpdateDividendsEndOfYear()
+	{
+		// Höj utdelningen med den angivna procenten.
+		float newDividend = dividendPerShare * (1 + divPolicyChangeDiv / 100f);
+
+		// Kontrollera att utdelningen ligger inom det tillåtna intervallet.
+		if (newDividend > divPolicyMaxPayouRatio* EPSnow)
+		{
+			DividendPerShare = divPolicyMaxPayouRatio * EPSnow; // Justera till maxvärdet.
+		}
+		else
+		{
+			DividendPerShare = newDividend; // Använd höjningen.
+		}
+
+		//return DividendPerShare;
+		Debug.Log($"New dividend per share: {DividendPerShare}");
 	}
 
 	public void UpdatePrice()
@@ -76,7 +107,7 @@ public class stock : MonoBehaviour
 
 	public void saveDividendHistory()
 	{
-		GetComponent<dividendHistory>().saveDividendHistory(divPayout);
+		GetComponent<dividendHistory>().saveDividendHistory(dividendPerShare);
 		lastDivPayout = GetComponent<dividendHistory>().getHistoricDividend(GetComponent<dividendHistory>().lengthDividendHistory() - 1);
 	}
 

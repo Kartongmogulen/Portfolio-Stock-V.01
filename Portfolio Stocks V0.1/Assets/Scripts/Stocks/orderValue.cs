@@ -36,12 +36,13 @@ public class orderValue : MonoBehaviour
 		onChangeInput_1850();
 	}
 
+	/*
 	public void onChangeInput()
 	{
 		if (inputOrderAmount.text != "")
 		{
 			activeSector = ChooseStockSector.activeSector;
-
+			
 			//Identifera vilket företag (nr)
 			if (activeSector == 1)
 			{
@@ -70,7 +71,9 @@ public class orderValue : MonoBehaviour
 
 			orderValueText.text = "Value order: " + amountOrder * stockPrice;
 		}
+		
 	}
+	*/
 
 	public void onChangeInput_1850()
 	{

@@ -36,7 +36,7 @@ public class stockSpecificCompany100 : MonoBehaviour
 		//strategyName.text = "Index: 100%";
 
 		startMoney = playerPanelGO.GetComponent<moneyManager> ().MoneyNow;
-		incomeFromWork = playerPanelGO.GetComponent<incomeWork>().incomeWorkPerMonth; //Hämtar inkomst
+		//incomeFromWork = playerPanelGO.GetComponent<incomeWork>().incomeWorkPerMonth; //Hämtar inkomst
 		moneyNow = startMoney; //Hur mycket pengar spelaren har vid start
 		//investCompany();
 	}
@@ -51,7 +51,7 @@ public class stockSpecificCompany100 : MonoBehaviour
 		amountToInvestThisRound = newSharesThisRound * priceStock; //Hur mycket som investeras under rundan
 		totalInvestment += amountToInvestThisRound;
 		moneyNow = moneyNow - amountToInvestThisRound; //Värdet av köpta aktier subtraheras
-		moneyNow = moneyNow + incomeFromWork;
+		//moneyNow = moneyNow + incomeFromWork;
 
 		totalValuePortfolio.Add(totalSharesPortfolio * priceStock);
 		//returnOnInvestment.Add((totalSharesPortfolio * priceStock) / totalInvestment-1);
