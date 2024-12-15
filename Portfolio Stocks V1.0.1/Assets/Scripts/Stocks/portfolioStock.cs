@@ -350,7 +350,7 @@ public class portfolioStock : MonoBehaviour
 	public void showPortfolioData_1850()
 		{
 
-		Debug.Log("PortfolioData 1850");
+		//Debug.Log("PortfolioData 1850");
 		totalInvest_1850();
 		returnFromSector_1850();
 

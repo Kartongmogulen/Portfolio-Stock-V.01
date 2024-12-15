@@ -25,7 +25,7 @@ public class ShowHistoricData : MonoBehaviour
     private void Start()
     {
         TimeManager = FindAnyObjectByType<timeManager>();
-         startingYearToRevealData = GamePlayScopeManager.yearsToGetHistoricData - yearsHeader.Count;
+        startingYearToRevealData = GamePlayScopeManager.yearsToGetHistoricData - yearsHeader.Count;
     }
 
     public void updateAllHistoricData(stock Stock)
