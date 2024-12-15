@@ -38,7 +38,7 @@ public class chooseCompany_1850 : MonoBehaviour
 
     private void Update()
     {
-        //chooseCompany();
+        chooseCompany();
         //getCityAndSectorIndex();
     }
 
@@ -131,8 +131,8 @@ public class chooseCompany_1850 : MonoBehaviour
             payoutRatioOnEPS = divPayout / stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow;
 
         }
-        divYieldText.text = "Div. yield: " + Mathf.Round(divPayout / stockPrice * 10000) / 100 + "%";
-        divPayoutText.text = "Annual dividend: " + Mathf.Round(divPayout * 100) / 100;
+        //divYieldText.text = "Div. yield: " + Mathf.Round(divPayout / stockPrice * 10000) / 100 + "%";
+        //divPayoutText.text = "Annual dividend: " + Mathf.Round(divPayout * 100) / 100;
 
         
         divPayoutShareText.text = "Payout-ratio: " + Mathf.Round(payoutRatioOnEPS * 100) + "%";

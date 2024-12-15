@@ -13,7 +13,7 @@ public class DividendUIUpdater : MonoBehaviour
 
     public void UpdateDividendUI(float dividendYield, float annualDividend, float payoutRatio)
     {
-        divYieldText.text = $"Div. yield: {Mathf.Round(dividendYield * 10000) / 100}%";
+        divYieldText.text = $"Div. Yield: {Mathf.Round(dividendYield * 10000)/100}%";
         divPayoutText.text = $"Annual dividend: {Mathf.Round(annualDividend * 100) / 100}";
         divPayoutShareText.text = $"Payout-ratio: {Mathf.Round(payoutRatio * 100)}%";
     }

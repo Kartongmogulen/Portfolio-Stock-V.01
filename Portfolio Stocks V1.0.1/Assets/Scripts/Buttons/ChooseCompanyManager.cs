@@ -11,6 +11,11 @@ public class ChooseCompanyManager : MonoBehaviour, ICompanyChooser
     [SerializeField] private DividendUIUpdater dividendUIUpdater;
     [SerializeField] private KeyDataUiUpdater keyDataUiUpdater;
 
+    private void Start()
+    {
+        chosseCompanyButton();
+    }
+
     public void ChooseCompany(int cityIndex, int sectorIndex)
     {
         List <GameObject> stockMarketSector = sectorDataProvider.GetStockMarketSector(sectorIndex);
@@ -20,8 +25,9 @@ public class ChooseCompanyManager : MonoBehaviour, ICompanyChooser
         float stockPrice = sectorDataProvider.GetStockPrice(selectedCompany);
         float dividendPayout = sectorDataProvider.GetDividendPayout(selectedCompany);
         float payoutRatioOnEPS = sectorDataProvider.GetPayoutRatioOnEPS(selectedCompany);
-        
+
         float dividendYield = dividendPayout / stockPrice;
+        Debug.Log("Dir.avk: " + dividendYield);
         dividendUIUpdater.UpdateDividendUI(dividendYield, dividendPayout, payoutRatioOnEPS);
 
         updateUIKeyData(selectedCompany);
@@ -43,8 +49,4 @@ public class ChooseCompanyManager : MonoBehaviour, ICompanyChooser
         ChooseCompany(cityIndex, sectorIndex);
     }
 
-    private void Start()
-    {
-        //chosseCompanyButton();
-    }
 }

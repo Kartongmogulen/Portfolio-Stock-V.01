@@ -265,7 +265,7 @@ public class infoStockSector : MonoBehaviour
 
 		//Steg 1
 	
-		utiStockPrice = StockScriptGO.GetComponent<priceChange>().utiStockPriceNow;
+		//utiStockPrice = StockScriptGO.GetComponent<priceChange>().utiStockPriceNow;
 		divPerYear.text = "Annual payout: " + divUtiNow;
 		divYield.text = "Div. Yield: " + Mathf.Round(divUtiNow/utiStockPrice*10000)/100 + "%";//Avrunda till 2 decimaler
 		utiPENow = utiStockPrice/utiEPSNow;
@@ -297,7 +297,7 @@ public class infoStockSector : MonoBehaviour
 
 		activeSector = 2;
 
-		finPriceNow = StockScriptGO.GetComponent<priceChange>().finStockPriceNow;
+		//finPriceNow = StockScriptGO.GetComponent<priceChange>().finStockPriceNow;
 		divPerYear.text = "Annual payout: " + divFinNow;
 		divYield.text = "Div. Yield: " + Mathf.Round(divFinNow/finPriceNow*10000)/100 + "%";//Avrunda till 2 decimaler
 		finPENow = finPriceNow/finEPSNow;
@@ -322,7 +322,7 @@ public class infoStockSector : MonoBehaviour
 	public void infoTech(){
 		activeSector = 3;
 
-		techPriceNow = StockScriptGO.GetComponent<priceChange>().techStockPriceNow;
+		//techPriceNow = StockScriptGO.GetComponent<priceChange>().techStockPriceNow;
 		divPerYear.text = "Annual payout: " + divTechNow;
 		divYield.text = "Div. Yield: " + Mathf.Round(divTechNow/techPriceNow*10000)/100 + "%";//Avrunda till 2 decimaler
 		techPENow = techPriceNow/techEPSNow;
@@ -346,15 +346,15 @@ public class infoStockSector : MonoBehaviour
 
 	public void updatePE(){
 
-		utiStockPrice = StockScriptGO.GetComponent<priceChange>().utiStockPriceNow;
+		//utiStockPrice = StockScriptGO.GetComponent<priceChange>().utiStockPriceNow;
 		utiPENow = utiStockPrice/utiEPSNow;
 		PEUtiText2.text = "P/E: " + Mathf.Round(utiPENow*100)/100;
 
-		finPriceNow = StockScriptGO.GetComponent<priceChange>().finStockPriceNow;
+		//finPriceNow = StockScriptGO.GetComponent<priceChange>().finStockPriceNow;
 		finPENow = finPriceNow/finEPSNow;
 		PEFinText2.text = "P/E: " + Mathf.Round(finPENow*100)/100;
 
-		techPriceNow = StockScriptGO.GetComponent<priceChange>().techStockPriceNow;
+		//techPriceNow = StockScriptGO.GetComponent<priceChange>().techStockPriceNow;
 		techPENow = techPriceNow/techEPSNow;
 		PETechText2.text = "P/E: " + Mathf.Round(techPENow*100)/100;
 	}

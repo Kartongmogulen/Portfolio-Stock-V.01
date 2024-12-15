@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnlockEPSData : MonoBehaviour, IUnlockStrategy
+public class UnlockEPSData : IUnlockStrategy
 {
 
     /// <summary>
@@ -14,9 +14,9 @@ public class UnlockEPSData : MonoBehaviour, IUnlockStrategy
 
     private actionPointsManager ActionPointsManager;
     private stockDataPlayerKnow StockDataPlayerKnow;
-    [SerializeField ]private int cost;
+    [SerializeField ] private int cost = 1;
 
-    public void EPSUnlockStrategy(actionPointsManager apManager, stockDataPlayerKnow stockData, int cost)
+    public UnlockEPSData(actionPointsManager apManager, stockDataPlayerKnow stockData, int cost)
     {
         ActionPointsManager = apManager;
         this.StockDataPlayerKnow = stockData;

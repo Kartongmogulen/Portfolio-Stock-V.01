@@ -17,7 +17,6 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
     {
         //Debug.Log("ChooseStock: " + Stock.nameOfCompany);
         showHistoricData.updateAllHistoricData(Stock);
-
         activeCompany = Stock;
     }
 
@@ -26,8 +25,42 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
         activeCompany_IncomeStatement = IncomeStatement;
     }
 
+    public void UnlockData(int yearOffset, string dataType)
+    {
+        Debug.Log("Unlock data: " + dataType);
+        int year = showHistoricData.getStartingYear() + showHistoricData.getYearNow() + yearOffset;
+        stockDataPlayerKnow stockData = activeCompany.GetComponent<stockDataPlayerKnow>();
+        IUnlockStrategy unlockDataPoint;
+
+        switch (dataType)
+        {
+            case "EPS":
+                unlockDataPoint = new UnlockEPSData(ActionPointsManager, stockData, costToUnlock);
+                break;
+        
+        default:
+                Debug.LogError("Invalid data type for unlocking: " + dataType);
+        return;
+        }
+
+        if (unlockDataPoint.CanUnlock(year))
+        {
+            unlockDataPoint.Unlock(year);
+        }
+        else
+        {
+            Debug.Log("Cannot unlock data for year: " + year);
+        } 
+    }
+
+    public void OnUnlockEPSButtonClicked(int yearOffset)
+    {
+        UnlockData(yearOffset, "EPS"); // Lås upp EPS-data för X år tillbaka
+    }
+
     //Att-göra
     //1. Hämta Prefab för bolaget. Görs i "chooseStock";
+    /*
     public void unlockEPSyearX(int i)
     {
         //Debug.Log(showHistoricData.getStartingYear());
@@ -62,6 +95,7 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
             }
         }
     }
+    */
 
     public void unlockEPSChangeYoYyearX(int i)
     {

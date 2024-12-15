@@ -79,7 +79,8 @@ public class stock : MonoBehaviour, IDividendPayingCompany
 
 	public void UpdatePrice()
 	{
-		
+		//Debug.Log("EPS tillväxt: " + Random.Range(EPSGrowthMin, EPSGrowthMax) / 100);
+
 		basePrice = _priceCalculator.CalculateDCFPrice(EPSnow, Random.Range(EPSGrowthMin,EPSGrowthMax)/100, 10); //Har "period" hårdkodad till 10 då det finns tillräckligt med slump i beräkningen redan
 																												  // Kontrollera om företaget är "hett"
 		float multiplier = _marketTrendManager.GetCompanyMultiplier(gameObject);

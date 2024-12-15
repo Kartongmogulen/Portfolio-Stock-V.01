@@ -35,8 +35,6 @@ public class priceChange : MonoBehaviour
 	public float valueDCFMin;
 	public float valueDCFMax;
 	
-	
-
 	public float stockPriceNow;
 
 	//Script för att ändra priset på aktien
@@ -48,6 +46,11 @@ public class priceChange : MonoBehaviour
 
 	public int amountPriceChange; //Hur många gånger har scriptet priceChange körts.
 
+	//Indistri
+	public float minEPSGrowth_Industri; //SCHABLON FÖR ATT BLI KLAR MED SNABBARE
+	public float maxEPSGrowth_Industri; //SCHABLON FÖR ATT BLI KLAR MED SNABBARE
+
+	/*
 	//Utilities
 	public float utiStockPriceBefore;
 	public float utiStockPriceNow; //Priset för en aktie nu
@@ -67,10 +70,8 @@ public class priceChange : MonoBehaviour
 	public float techStockPriceBefore;
 	public float techStockPriceNow; //Priset för en aktie nu
 	public float vollaTech;
-
-	//Indistri
-	public float minEPSGrowth_Industri; //SCHABLON FÖR ATT BLI KLAR MED SNABBARE
-	public float maxEPSGrowth_Industri; //SCHABLON FÖR ATT BLI KLAR MED SNABBARE
+	*/
+	
 
 	//Text
 	public Text utiPriceText;
@@ -204,9 +205,11 @@ public class priceChange : MonoBehaviour
 
 	public void showInfoStock ()
 	{
+		/*
 		utiPriceText.text = "Price: " + utiStockPriceNow;
 		finPriceText.text = "Price: " + finStockPriceNow;
 		techPriceText.text = "Price: " + techStockPriceNow;
+		*/
 	}
 
 	public void changePriceStockTest()
