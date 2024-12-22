@@ -38,6 +38,10 @@ public class PortfolioManager : MonoBehaviour, IMoneyVisualizer
         {
             float totalValue = GetTotalPortfolioValue();
             valueVisualizer?.UpdateMoneyDisplay(totalValue);
+
+        float totalReturn = (GetTotalUnrealizedReturn()/GetTotalValueInvested())*100;
+            Debug.Log("Orealiserad avkastning: " + totalReturn);
+            valueVisualizer?.percentWithDecimals(totalReturn);
         }
 
     /// <summary>
@@ -112,11 +116,19 @@ public class PortfolioManager : MonoBehaviour, IMoneyVisualizer
     /// <returns>Orealiserad avkastning som en float.</returns>
     public float GetUnrealizedReturn(GameObject company)
     {
+        //Debug.Log("Avkastning bolag Script: " + company.name);
         var entry = portfolioEntries.Find(e => e.Company == company);
 
         if (entry != null && company.TryGetComponent(out ICompany companyScript))
         {
+            //Debug.Log("Bolag: " + company.name);
             return (companyScript.StockPrice * entry.NumberOfShares) - entry.InvestmentValue;
+        }
+
+        else if (entry != null && company.TryGetComponent(out stock Stock))
+        {
+            //Debug.Log("Bolag: " + company.name);
+            return (Stock.CurrentPrice * entry.NumberOfShares) - entry.InvestmentValue;
         }
 
         return 0f;
@@ -141,12 +153,29 @@ public class PortfolioManager : MonoBehaviour, IMoneyVisualizer
 
         foreach (var entry in portfolioEntries)
         {
-            Debug.Log("Söker aktier");
+            //Debug.Log("Söker aktier");
             if (entry.Company.TryGetComponent(out stock companyScript))// FUNKAR EJ FÖR INDUSTRIS FÖR TILLFÄLLET
             {
-                Debug.Log("Hittat matchande aktie");
+                //Debug.Log("Hittat matchande aktie");
                 totalValue += companyScript.CurrentPrice * entry.NumberOfShares;
             }
+        }
+
+        return totalValue;
+    }
+
+    public float GetTotalValueInvested()
+    {
+        float totalValue = 0f;
+
+        foreach (var entry in portfolioEntries)
+        {
+            //Debug.Log("Söker aktier");
+            //if (entry.Company.TryGetComponent(out stock companyScript))// FUNKAR EJ FÖR INDUSTRIS FÖR TILLFÄLLET
+            //{
+            //Debug.Log("Hittat matchande aktie");
+            totalValue += entry.InvestmentValue; // * entry.NumberOfShares;
+            //}
         }
 
         return totalValue;
@@ -183,6 +212,7 @@ public class PortfolioManager : MonoBehaviour, IMoneyVisualizer
         foreach (var entry in portfolioEntries)
         {
             totalUnrealizedReturn += GetUnrealizedReturn(entry.Company);
+            Debug.Log("Orealiserad avkastning: ForLoop " + totalUnrealizedReturn);
         }
 
         return totalUnrealizedReturn;

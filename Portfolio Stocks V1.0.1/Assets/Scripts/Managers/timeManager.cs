@@ -19,9 +19,12 @@ public class timeManager : MonoBehaviour
 
 	public historicEventManager HistoricEventManager;
 	public gamePlayScopeManager GamePlayScopeManager;
+	public gameEnd GameEnd;
 
 	private void Start()
 	{
+		GameEnd = FindAnyObjectByType<gameEnd>();
+
 		if (roundText_TMP != null)
 		{
 			updateUI();
@@ -35,13 +38,21 @@ public class timeManager : MonoBehaviour
 		//month = month + 10;
 		month++;//Add 1 to the month;
 
+		//Debug.Log("Spelets läng i år: " + GamePlayScopeManager.yearsBeforeEndGameMaster);
 		if (month > 12)
 		{
 			year++;
 			month = 1;
 			//HistoricEventManager.newEventHappened();
+			if (year == GamePlayScopeManager.yearsBeforeEndGameMaster)
+			{
+				endGame();
+			}
+			Debug.Log("Year: " + year);
 		}
 		updateUI();
+
+		
 
 		//Debug.Log("Runda slut: Y: " + year + " M: " + month);
 
@@ -53,12 +64,18 @@ public class timeManager : MonoBehaviour
 		year++;
 		if(year == GamePlayScopeManager.yearsBeforeEndGameMaster)
 		{
-			FindObjectOfType<endGame>().gameEnd();
+			endGame();
 		}
 	}
 
 	public void updateUI()
 	{
 		roundText_TMP.text = "Y: " + year + " M: " + month;
+	}
+
+	public void endGame()
+	{
+		Debug.Log("Game ended");
+		GameEnd.endOfGame();
 	}
 }

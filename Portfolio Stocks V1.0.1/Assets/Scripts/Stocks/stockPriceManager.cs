@@ -89,7 +89,7 @@ public class stockPriceManager : MonoBehaviour
     public void updateStockMarketPrice()
         {
 
-        Debug.Log("Updatera priser");
+        //Debug.Log("Updatera priser");
             foreach (var companyGO in Companies)
             {
                 var company = companyGO.GetComponent<stock>();

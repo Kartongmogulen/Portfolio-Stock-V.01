@@ -16,7 +16,7 @@ public class moneyManager : MonoBehaviour, ITransaction
 
     private ITotalCash totalCash;
     private IMoneyVisualizer moneyVisualizer;
-   
+
     [SerializeField] public float MoneyNow { get; private set; }
 
     private void Awake()
@@ -61,6 +61,7 @@ public class moneyManager : MonoBehaviour, ITransaction
         MoneyNow -= amount;
         //Debug.Log("MonyeNow: " + MoneyNow);
         moneyVisualizer?.UpdateMoneyDisplay(MoneyNow);
+
     }
 
     public void sellTransaction(float amount)

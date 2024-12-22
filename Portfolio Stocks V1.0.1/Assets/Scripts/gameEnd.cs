@@ -68,6 +68,7 @@ public class gameEnd : MonoBehaviour
 
 	public void endOfGame()
     {
+		/*
 		//Income
 		incomeDuringLifeWork = playerGO.GetComponent<incomeWork>().totalIncomeFromWork;
 		incomeDuringLifeDividend = playerGO.GetComponent<incomeDividends>().totalIncome;
@@ -107,8 +108,10 @@ public class gameEnd : MonoBehaviour
 		playerScriptsGO.GetComponent<portfolioStock>().returnFromSector_1850();
 		//capGainStockAmount = playerScriptsGO.GetComponent<portfolioStock>().totalReturnPortfolioAmount;
 		//capGainStockPercent = playerScriptsGO.GetComponent<portfolioStock>().totalReturnPortfolioPercent;
+		*/
 
 		textEndGame.text = "The end!";
+		/*
 		incomeWorkText.text = "Income from Work: " + incomeDuringLifeWork;
 		incomeDivText.text = "Income from Dividends: " + incomeDuringLifeDividend;
 		assetsValueText.text = "Assets value: " + assetsValue;
@@ -119,6 +122,7 @@ public class gameEnd : MonoBehaviour
 		totalReturnAssets.text = "Total Return Assets: " + Mathf.Round((assetsValue / totalInvestAssets-1)*100) + " %";
 		playerReturnVsIndexText.text = "Players return (%): " + Mathf.Round(capGainStockPercent * 10000) / 100 + " Vs Index (%): " + (EconomyScriptsGO.GetComponent<economicClimate>().totalBNPlist[EconomyScriptsGO.GetComponent<economicClimate>().totalBNPlist.Count-1]-100);
 		//playerReturnVsBestStockText.text = "Players return (%): " + Mathf.Round(capGainStockPercent * 10000) / 100 + " Vs Best stock (%): " + Mathf.Round(playerScriptsGO.GetComponent<compareStockReturn>().highestReturn() * 10000) / 10000;
+		*/
 
 		saveHighScore();
 		highscoreManager.endGame();
@@ -126,8 +130,8 @@ public class gameEnd : MonoBehaviour
 
 	public void saveHighScore()
 	{
-		stockPortfolioValue = playerScriptsGO.GetComponent<portfolioStock>().totalValuePortfolio;
-		wealthValue = stockPortfolioValue + TotalCash.moneyNow;
+		stockPortfolioValue = playerScriptsGO.GetComponent<PortfolioManager>().GetTotalPortfolioValue();
+		wealthValue = stockPortfolioValue + playerScriptsGO.GetComponent <moneyManager>().MoneyNow;
 		//assetsValue = 5000;
 		//SPARA RESULTAT
 		highscoreManager.AddHighscore(Mathf.RoundToInt(wealthValue));

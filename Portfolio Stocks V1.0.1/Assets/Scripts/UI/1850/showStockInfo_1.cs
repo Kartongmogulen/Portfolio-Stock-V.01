@@ -24,14 +24,58 @@ public class showStockInfo_1 : MonoBehaviour
         Invoke("showDataBasic", 0.1f);
     }
 
-    public void showDataBasic()
+    public void cityNameUI()
     {
         if (showCityName == true)
         {
             cityNameText.text = "City name: " + cityManager.nameCity[cityManager.activeCity];
         }
-        //Sektor
-        if (ActiveSector_1850.getActiveSector() == 0)
+    }
+
+    public void showDataBasic()
+    {
+        cityNameUI();
+
+        int activeSector = ActiveSector_1850.getActiveSector();
+
+        if (showSectorName == true)
+        {
+            switch (activeSector)
+            {
+                case 0:
+                    sectorNameText.text = "Sector: Mines";
+                    break;
+                case 1: sectorNameText.text = "Sector: Railroad";
+                    break;
+                case 2: sectorNameText.text = "Sector: Industri";
+                    break;
+                default: sectorNameText.text = "Sector: None";
+                    break;
+            }
+        }
+
+        if (showCompanyName == true)
+        {
+            switch (activeSector)
+            {
+                case 0:
+                    companyNameText.text = "Company: " + StockMarketManager_1850.StockPrefabListMines[cityManager.activeCity].GetComponent<stock>().nameOfCompany;
+                    break;
+                case 1:
+                    companyNameText.text = "Company: " + StockMarketManager_1850.StockPrefabListRailroad[cityManager.activeCity].GetComponent<stock>().nameOfCompany;
+                    break;
+                case 2:
+                    companyNameText.text = "Company: " + StockMarketManager_1850.StockPrefabListIndustri[cityManager.activeCity].GetComponent<stock>().nameOfCompany;
+                    break;
+                default:
+                    companyNameText.text = "Company: ???";
+                    break;
+            }
+        }
+    }
+    /*
+    //Sektor
+    if (ActiveSector_1850.getActiveSector() == 0)
         {
             if (showSectorName == true)
             {
@@ -76,4 +120,5 @@ public class showStockInfo_1 : MonoBehaviour
             }
         }
     }
+    */
 }

@@ -16,6 +16,7 @@ public class HighscoreManager : MonoBehaviour
 
     void Start()
     {
+      
         LoadHighscores();
         UpdateHighscoreDisplay();
         highScoreUI.SetActive(false);// Inaktiverar vid start
@@ -24,15 +25,24 @@ public class HighscoreManager : MonoBehaviour
 
     public void visualizeTopScore()
     {
+        //Debug.Log("VisualizeTopScore");
         moneyVisualizer = GetComponent<IMoneyVisualizer>();
 
         if (moneyVisualizer != null)
         {
-            moneyVisualizer.UpdateMoneyDisplay(highscores[0]);
+            //Debug.Log("MoneyViz != null");
+            if (highscores[0] != null)
+            {
+                //Debug.Log("MoneyViz: UpdateMoneyDisplay");
+                moneyVisualizer.UpdateMoneyDisplay(highscores[0]);
+               
+            }
+
+            else moneyVisualizer.UpdateMoneyDisplay(0);
         }
         else
         {
-            Debug.LogWarning("No money visualizer attached!");
+            //Debug.LogWarning("No money visualizer attached!");
         }
     }
 
@@ -60,7 +70,9 @@ public class HighscoreManager : MonoBehaviour
 
     private void LoadHighscores()
     {
+        //Debug.Log("Loading Highscore");
         highscores = new List<int>();
+        //highscores.Add(10000);
 
         for (int i = 0; i < MaxHighscores; i++)
         {
@@ -111,6 +123,7 @@ public class HighscoreManager : MonoBehaviour
 
     private void UpdateHighscoreDisplay()
     {
+        //Debug.Log("UpdateHighscoreDisplay");
         for (int i = 0; i < highscoreTextList.Count; i++)
         {
             if (i < highscores.Count)

@@ -27,7 +27,7 @@ public class ChooseCompanyManager : MonoBehaviour, ICompanyChooser
         float payoutRatioOnEPS = sectorDataProvider.GetPayoutRatioOnEPS(selectedCompany);
 
         float dividendYield = dividendPayout / stockPrice;
-        Debug.Log("Dir.avk: " + dividendYield);
+        //Debug.Log("Dir.avk: " + dividendYield);
         dividendUIUpdater.UpdateDividendUI(dividendYield, dividendPayout, payoutRatioOnEPS);
 
         updateUIKeyData(selectedCompany);

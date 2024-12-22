@@ -15,8 +15,15 @@ public class endGame : MonoBehaviour
     public void gameEnd()
     {
         gameEndPanelGO.SetActive(true);
-        returnProjects.text = "Return Capital: " + playerManager.returnTotal;
-        returnPercentProjects.text = "Return Capital: " + Mathf.Round(((playerManager.returnTotal + playerManager.depreciationTotal) / playerManager.investedCapitalTotal-1) *100) + "%";
 
+        if (returnProjects != null)
+        {
+            returnProjects.text = "Return Capital: " + playerManager.returnTotal;
+        }
+
+        if (returnPercentProjects != null)
+        {
+            returnPercentProjects.text = "Return Capital: " + Mathf.Round(((playerManager.returnTotal + playerManager.depreciationTotal) / playerManager.investedCapitalTotal - 1) * 100) + "%";
+        }
     }
 }
