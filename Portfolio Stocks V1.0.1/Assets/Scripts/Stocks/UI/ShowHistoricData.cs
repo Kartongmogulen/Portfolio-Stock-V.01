@@ -185,7 +185,7 @@ public class ShowHistoricData : MonoBehaviour
 
     public void updateDividendGrowthYoY(GameObject stockPrefab)
     {
-
+        Debug.Log("DivGrowth YoY");
         //KAN UPPSTÅ PROBLEM OM DET INTE FINNS TILLRÄCKLIGT MED HISTORISKA VÄRDEN
         //DividendGrowthYoYText[0].text = Mathf.Round((stockPrefab.GetComponent<dividendHistory>().dividendPaid[(startingYearToRevealData + yearNow)] / stockPrefab.GetComponent<dividendHistory>().dividendPaid[(startingYearToRevealData + yearNow - 1)] - 1) * 100) + " %";
         
@@ -197,7 +197,7 @@ public class ShowHistoricData : MonoBehaviour
             //Debug.Log(DividendGrowthYoYText.Count);
             if (stockPrefab.GetComponent<stockDataPlayerKnow>().DividendYoYChangedata.Count > 1 && stockPrefab.GetComponent<stockDataPlayerKnow>().DividendYoYChangedata[Mathf.Abs(startingYearToRevealData + yearNow + i)] == true)
             {
-                Debug.Log("1");
+                //Debug.Log("1");
                 DividendGrowthYoYText[i].text = Mathf.Round((stockPrefab.GetComponent<dividendHistory>().getHistoricDividend(startingYearToRevealData + yearNow + i) / stockPrefab.GetComponent<dividendHistory>().getHistoricDividend(startingYearToRevealData + yearNow + i - 1) - 1) * 10000)/100 + " %";
                 //stockPrefab.GetComponent<stockDataPlayerKnow>().DividendYoYChangedata[(startingYearToRevealData + yearNow + i)] / GetComponent<stockDataPlayerKnow>().DividendYoYChangedata[(startingYearToRevealData + yearNow + i - 1)] - 1) * 100) + " %";
 

@@ -171,10 +171,12 @@ public class endRoundButton : MonoBehaviour
 			*/
 			//playerPanelGO.GetComponent<incomeWork>().incomeLifeFromWork();
 
+			/*
 			if (TimeManager.year == yearsBeforeEndGame) //Vad som händer när spelet är slut
 			{
 				StartCoroutine(waitSoOtherScriptsCanFinish());
 			}
+			*/
 
 			//Settler
 			//Debug.Log("År: " + year);

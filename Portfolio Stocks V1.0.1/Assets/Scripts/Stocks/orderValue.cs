@@ -79,7 +79,7 @@ public class orderValue : MonoBehaviour
 	{
 		if (inputOrderAmount_1850.text != "")
 		{
-			activeSector = ActiveSector_1850.getActiveSector();
+			activeSector = ActiveSector_1850.activeSector;
 			//Debug.Log("Get active sector: " + activeSector);
 
 			//Identifera vilket företag (nr)

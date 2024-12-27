@@ -31,7 +31,7 @@ public class stocks_UnlockInfo_1850 : MonoBehaviour
 
 	public void unlockDivPolicy()
 	{
-		activeSector = ActiveSector_1850.getActiveSector();
+		activeSector = ActiveSector_1850.activeSector;
 		activeCity = cityManager.activeCity;
 
 		Debug.Log("Unlock div policy");

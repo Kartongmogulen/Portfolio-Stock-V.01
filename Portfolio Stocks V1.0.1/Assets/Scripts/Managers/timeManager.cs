@@ -44,10 +44,12 @@ public class timeManager : MonoBehaviour
 			year++;
 			month = 1;
 			//HistoricEventManager.newEventHappened();
+
 			if (year == GamePlayScopeManager.yearsBeforeEndGameMaster)
 			{
 				endGame();
 			}
+			
 			Debug.Log("Year: " + year);
 		}
 		updateUI();

@@ -14,6 +14,11 @@ public class HighscoreManager : MonoBehaviour
     public GameObject highScoreUI;
     private IMoneyVisualizer moneyVisualizer;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject); // Gör så att detta objekt inte förstörs när scenen byts
+    }
+
     void Start()
     {
       
@@ -54,7 +59,7 @@ public class HighscoreManager : MonoBehaviour
 
     public void AddHighscore(int score)
     {
-        //Debug.Log("Score: " + score);
+        Debug.Log("Score: " + score);
         highscores.Add(score);
         highscores.Sort((a, b) => b.CompareTo(a)); // Sortera i fallande ordning
 
@@ -68,7 +73,7 @@ public class HighscoreManager : MonoBehaviour
         
     }
 
-    private void LoadHighscores()
+    public void LoadHighscores()
     {
         //Debug.Log("Loading Highscore");
         highscores = new List<int>();
@@ -88,6 +93,7 @@ public class HighscoreManager : MonoBehaviour
 
     private void SaveHighscores()
     {
+        Debug.Log("Save Highscore");
         for (int i = 0; i < MaxHighscores; i++)
         {
             if (i < highscores.Count)
@@ -123,7 +129,7 @@ public class HighscoreManager : MonoBehaviour
 
     private void UpdateHighscoreDisplay()
     {
-        //Debug.Log("UpdateHighscoreDisplay");
+        //Debug.Log("UpdateHighscoreDisplay, Längd Lista: " + highscoreTextList.Count);
         for (int i = 0; i < highscoreTextList.Count; i++)
         {
             if (i < highscores.Count)

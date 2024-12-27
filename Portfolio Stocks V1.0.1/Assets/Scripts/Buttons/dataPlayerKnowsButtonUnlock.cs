@@ -99,7 +99,7 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
 
     public void unlockEPSChangeYoYyearX(int i)
     {
-        if (ActiveSector_1850.getActiveSector() == 0 || ActiveSector_1850.getActiveSector() == 1)
+        if (ActiveSector_1850.activeSector == 0 || ActiveSector_1850.activeSector == 1)
         {
             if (ActionPointsManager.remainingAP >= costToUnlock)
             {
@@ -111,13 +111,13 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
             }
         }
 
-        if (ActiveSector_1850.getActiveSector() == 2 && activeCompany.GetComponent<productHolder>() != null)
+        if (ActiveSector_1850.activeSector == 2 && activeCompany.GetComponent<productHolder>() != null)
         {
             //Debug.Log("Active sector: 2");
             unlockEPSChangeYoYyearX_Products(i);
         }
 
-        else if (ActiveSector_1850.getActiveSector() == 2)
+        else if (ActiveSector_1850.activeSector == 2)
         {
             if (ActionPointsManager.remainingAP >= costToUnlock)
             {
@@ -133,7 +133,7 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
     public void unlockDividendChangeYoYyearX(int i)
     {
 
-        if (ActiveSector_1850.getActiveSector() == 0 || ActiveSector_1850.getActiveSector() == 1)
+        if (ActiveSector_1850.activeSector == 0 || ActiveSector_1850.activeSector == 1)
         {
             if (ActionPointsManager.remainingAP >= costToUnlock)
             {
@@ -145,13 +145,13 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
             }
         }
 
-        if (ActiveSector_1850.getActiveSector() == 2 && activeCompany.GetComponent<productHolder>() != null)
+        if (ActiveSector_1850.activeSector == 2 && activeCompany.GetComponent<productHolder>() != null)
         {
             //Debug.Log("Active sector: 2");
             unlockDividendChangeYoYyearX_Products(i);
         }
 
-        else if (ActiveSector_1850.getActiveSector() == 2)
+        else if (ActiveSector_1850.activeSector == 2)
             {
             if (ActionPointsManager.remainingAP >= costToUnlock)
             {
@@ -166,7 +166,7 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
 
     public void unlockPayoutyearX(int i)
     {
-        if (ActiveSector_1850.getActiveSector() == 0 || ActiveSector_1850.getActiveSector() == 1)
+        if (ActiveSector_1850.activeSector == 0 || ActiveSector_1850.activeSector == 1)
         {
             if (ActionPointsManager.remainingAP >= costToUnlock)
             {
@@ -178,13 +178,13 @@ public class dataPlayerKnowsButtonUnlock : MonoBehaviour
             }
         }
 
-        if (ActiveSector_1850.getActiveSector() == 2 && activeCompany.GetComponent<productHolder>() != null)
+        if (ActiveSector_1850.activeSector == 2 && activeCompany.GetComponent<productHolder>() != null)
         {
             //Debug.Log("Active sector: 2");
             unlockPayoutyearX_Products(i);
         }
 
-        else if (ActiveSector_1850.getActiveSector() == 2)
+        else if (ActiveSector_1850.activeSector == 2)
         {
             if (ActionPointsManager.remainingAP >= costToUnlock)
             {

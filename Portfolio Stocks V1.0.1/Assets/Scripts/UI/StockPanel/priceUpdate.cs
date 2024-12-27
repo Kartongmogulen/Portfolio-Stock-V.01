@@ -21,7 +21,7 @@ public class priceUpdate : MonoBehaviour
 
     public void updatePriceText_1850()
     {
-        int activeSector = ActiveSector_1850.getActiveSector();
+        int activeSector = ActiveSector_1850.activeSector;
         int activeCity = cityManager.activeCity;
 
         switch (activeSector)

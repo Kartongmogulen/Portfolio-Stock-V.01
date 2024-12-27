@@ -15,7 +15,7 @@ public class stockTransaction : MonoBehaviour
 
 	public void buyStocks_1850_Refactor(moneyManager MoneyManager)
 	{
-		int activeSector = ActiveSector_1850.getActiveSector();
+		int activeSector = ActiveSector_1850.activeSector;
 		int city = cityManager.activeCity;
 		int amountOrder = int.Parse(inputAmountOrder.text);
 
@@ -44,7 +44,7 @@ public class stockTransaction : MonoBehaviour
 
 	public void sellStocks_1850_Refactor(PortfolioManager portfolio)
 	{
-		int activeSector = ActiveSector_1850.getActiveSector();
+		int activeSector = ActiveSector_1850.activeSector;
 		int city = cityManager.activeCity;
 		float stockAmountPlayerHas;
 		int amountOrder = int.Parse(inputAmountOrder.text);

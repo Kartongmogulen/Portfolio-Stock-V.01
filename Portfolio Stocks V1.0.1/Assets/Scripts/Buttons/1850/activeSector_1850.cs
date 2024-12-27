@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class activeSector_1850 : MonoBehaviour
 {
-    [SerializeField] int activeSector;
+    public int activeSector { get; set; }
 
+    /*
     public void setActiveSector(int index)
     {
         activeSector = index;
@@ -15,4 +16,5 @@ public class activeSector_1850 : MonoBehaviour
     {
         return activeSector;
     }
+    */
 }

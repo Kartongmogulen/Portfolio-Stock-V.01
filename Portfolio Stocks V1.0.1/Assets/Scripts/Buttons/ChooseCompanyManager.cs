@@ -45,7 +45,7 @@ public class ChooseCompanyManager : MonoBehaviour, ICompanyChooser
     public void chosseCompanyButton()
     {
         int cityIndex = cityManager.activeCity;
-        int sectorIndex = ActiveSectorManager.getActiveSector();
+        int sectorIndex = ActiveSectorManager.activeSector;
         ChooseCompany(cityIndex, sectorIndex);
     }
 

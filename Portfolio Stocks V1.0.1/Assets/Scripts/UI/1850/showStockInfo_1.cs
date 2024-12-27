@@ -28,7 +28,7 @@ public class showStockInfo_1 : MonoBehaviour
     {
         if (showCityName == true)
         {
-            cityNameText.text = "City name: " + cityManager.nameCity[cityManager.activeCity];
+            cityNameText.text = " City name: " + cityManager.nameCity[cityManager.activeCity];
         }
     }
 
@@ -36,20 +36,20 @@ public class showStockInfo_1 : MonoBehaviour
     {
         cityNameUI();
 
-        int activeSector = ActiveSector_1850.getActiveSector();
+        int activeSector = ActiveSector_1850.activeSector;
 
         if (showSectorName == true)
         {
             switch (activeSector)
             {
                 case 0:
-                    sectorNameText.text = "Sector: Mines";
+                    sectorNameText.text = " Sector: Mines";
                     break;
-                case 1: sectorNameText.text = "Sector: Railroad";
+                case 1: sectorNameText.text = " Sector: Railroad";
                     break;
-                case 2: sectorNameText.text = "Sector: Industri";
+                case 2: sectorNameText.text = " Sector: Industri";
                     break;
-                default: sectorNameText.text = "Sector: None";
+                default: sectorNameText.text = " Sector: None";
                     break;
             }
         }
@@ -59,16 +59,16 @@ public class showStockInfo_1 : MonoBehaviour
             switch (activeSector)
             {
                 case 0:
-                    companyNameText.text = "Company: " + StockMarketManager_1850.StockPrefabListMines[cityManager.activeCity].GetComponent<stock>().nameOfCompany;
+                    companyNameText.text = " Company: " + StockMarketManager_1850.StockPrefabListMines[cityManager.activeCity].GetComponent<stock>().nameOfCompany;
                     break;
                 case 1:
-                    companyNameText.text = "Company: " + StockMarketManager_1850.StockPrefabListRailroad[cityManager.activeCity].GetComponent<stock>().nameOfCompany;
+                    companyNameText.text = " Company: " + StockMarketManager_1850.StockPrefabListRailroad[cityManager.activeCity].GetComponent<stock>().nameOfCompany;
                     break;
                 case 2:
-                    companyNameText.text = "Company: " + StockMarketManager_1850.StockPrefabListIndustri[cityManager.activeCity].GetComponent<stock>().nameOfCompany;
+                    companyNameText.text = " Company: " + StockMarketManager_1850.StockPrefabListIndustri[cityManager.activeCity].GetComponent<stock>().nameOfCompany;
                     break;
                 default:
-                    companyNameText.text = "Company: ???";
+                    companyNameText.text = " Company: ???";
                     break;
             }
         }

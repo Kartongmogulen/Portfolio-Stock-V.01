@@ -40,7 +40,7 @@ public class PortfolioManager : MonoBehaviour, IMoneyVisualizer
             valueVisualizer?.UpdateMoneyDisplay(totalValue);
 
         float totalReturn = (GetTotalUnrealizedReturn()/GetTotalValueInvested())*100;
-            Debug.Log("Orealiserad avkastning: " + totalReturn);
+            //Debug.Log("Orealiserad avkastning: " + totalReturn);
             valueVisualizer?.percentWithDecimals(totalReturn);
         }
 
@@ -95,7 +95,7 @@ public class PortfolioManager : MonoBehaviour, IMoneyVisualizer
 
     public GameObject findCompany()
     {
-        int sector = ActiveSector_1850.getActiveSector();
+        int sector = ActiveSector_1850.activeSector;
         int city = cityManager.activeCity;
 
         GameObject stockPrefab = sector switch

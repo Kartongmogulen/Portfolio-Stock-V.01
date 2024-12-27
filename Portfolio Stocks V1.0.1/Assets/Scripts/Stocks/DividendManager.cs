@@ -59,7 +59,7 @@ public class DividendManager: MonoBehaviour
                 totalDividendsReceivedThisYear = 0;
             }
 
-            Debug.Log($"Total dividends received this year: {totalDividendsReceivedThisYear}");
+            //Debug.Log($"Total dividends received this year: {totalDividendsReceivedThisYear}");
         }
     }
 

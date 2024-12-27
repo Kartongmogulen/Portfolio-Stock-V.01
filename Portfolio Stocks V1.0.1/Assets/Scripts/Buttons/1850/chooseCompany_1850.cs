@@ -62,9 +62,11 @@ public class chooseCompany_1850 : MonoBehaviour
     public void getCityAndSectorIndex()
     {
         cityIndex = cityManager.activeCity;
-        activeSector = ActiveSector_1850.getActiveSector();
+        activeSector = ActiveSector_1850.activeSector;
+        //Debug.Log("CityIndex: " + cityIndex);
+        //Debug.Log("ActiveSector: " + activeSector);
 
-        if(activeSector == 0)
+        if (activeSector == 0)
         {
             stockMarketSectorActive = StockMarketManager_1850.StockPrefabListMines;
             //stockPrice = stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice[stockMarketSectorActive[cityIndex].GetComponent<stock>().StockPrice.Count - 1];
@@ -100,8 +102,6 @@ public class chooseCompany_1850 : MonoBehaviour
                 DataPlayerKnowsButtonUnlock.chooseStock(stockMarketSectorActive[cityIndex].GetComponent<stock>());
             }
 
-            
-
             showHistoricData.updateEPSText_GO(stockMarketSectorActive[cityIndex]);
             showHistoricData.updateEPSChangeYearOverYearText_GO(stockMarketSectorActive[cityIndex]);
             showHistoricData.updateAllHistoricDataWithGameObject(stockMarketSectorActive[cityIndex]);
@@ -129,7 +129,7 @@ public class chooseCompany_1850 : MonoBehaviour
         {
             divPayout = stockMarketSectorActive[cityIndex].GetComponent<stock>().DividendPerShare;
             payoutRatioOnEPS = divPayout / stockMarketSectorActive[cityIndex].GetComponent<stock>().EPSnow;
-
+           
         }
         //divYieldText.text = "Div. yield: " + Mathf.Round(divPayout / stockPrice * 10000) / 100 + "%";
         //divPayoutText.text = "Annual dividend: " + Mathf.Round(divPayout * 100) / 100;
@@ -140,7 +140,9 @@ public class chooseCompany_1850 : MonoBehaviour
         //Info spelaren måste låsa upp
         if (activeSector == 0 && StocksUnlockInfo.minesDivPolicyUnlocked[cityIndex] == 1)
         {
-            divPolicyText.text = "Maximum payout ratio: " + stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyMaxPayouRatio + "% and aims to increase the dividend with " + stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyChangeDiv + "% per year.";
+            float maxPayoutRatio = stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyMaxPayouRatio;
+            float divChangePolicy = stockMarketSectorActive[cityIndex].GetComponent<stock>().divPolicyChangeDiv;
+            divPolicyText.text = "Maximum payout ratio: " + maxPayoutRatio + "% and aims to increase the dividend with " + divChangePolicy + "% per year.";
         }
 
         else if (activeSector == 1 && StocksUnlockInfo.railroadDivPolicyUnlocked[cityIndex] == 1)
@@ -162,6 +164,8 @@ public class chooseCompany_1850 : MonoBehaviour
         {
             divPolicyText.text = "Div.Policy: LOCKED. Cost (Time Points): " + StocksUnlockInfo.getCost_UnlockDivPolicy();
         }
+
+
     }
 
     public void keyDataPanel()
