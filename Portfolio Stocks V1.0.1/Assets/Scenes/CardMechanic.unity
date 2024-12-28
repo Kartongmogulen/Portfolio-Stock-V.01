@@ -4155,6 +4155,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 736206872}
+  - component: {fileID: 736206874}
+  - component: {fileID: 736206873}
   m_Layer: 0
   m_Name: ---OPPONENTS---
   m_TagString: Untagged
@@ -4178,6 +4180,34 @@ Transform:
   - {fileID: 1496738815}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &736206873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736206871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269563e424e8a214e88bfabf19af1ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OpponentsManager: {fileID: 736206874}
+  TimeManager: {fileID: 0}
+--- !u!114 &736206874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736206871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9672b087b205ffd46bb414551b930483, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  opponentsList:
+  - {fileID: 1496738814}
 --- !u!1 &770695915
 GameObject:
   m_ObjectHideFlags: 0
@@ -6229,7 +6259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff22302db679f6d459f435699c700605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startAP: 3
+  startAP: 5
   baseAP: 0
   remainingAP: 0
   actionPointsText: {fileID: 0}

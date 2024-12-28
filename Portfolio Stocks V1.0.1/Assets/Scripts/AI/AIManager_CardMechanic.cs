@@ -24,7 +24,7 @@ public class AIManager_CardMechanic : MonoBehaviour
     {
         ActionPointsManager = GetComponent<actionPointsManager>();
         //StartCoroutine(AutoInvest());
-        investInProject();
+        Invoke("investInProject", 0.1f);
     }
 
     /*
@@ -50,11 +50,15 @@ public class AIManager_CardMechanic : MonoBehaviour
 
         public void investInProject()
     {
-        
         while (ActionPointsManager.remainingAP > 0)
         {
             Debug.Log("InvestInProject");
-            activeInvestments.Add(investmentManager.ChooseRandomInvestment());
+
+            InvestmentInstance project = investmentManager.ChooseRandomInvestment();
+            if (project != null)
+            {
+                activeInvestments.Add(project);
+            }
             ActionPointsManager.actionPointSub(1);
         }
     }
@@ -86,7 +90,7 @@ public class AIManager_CardMechanic : MonoBehaviour
         activeInvestments.Add(investment);
         depreciationTotal += investment.investmentType.cost;
     }
-
+    */
     public void UpdateInvestments()
     {
         for (int i = activeInvestments.Count - 1; i >= 0; i--)
@@ -106,6 +110,6 @@ public class AIManager_CardMechanic : MonoBehaviour
         MoneyManager.sellTransaction(investment.potentialReturn + investment.investmentType.cost);
         returnTotal += investment.potentialReturn;
     }
-    */
+    
     
 }

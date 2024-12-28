@@ -64,7 +64,10 @@ public class timeManager : MonoBehaviour
 	public void endTurnYearlyRounds()
 	{
 		year++;
-		if(year == GamePlayScopeManager.yearsBeforeEndGameMaster)
+
+		handleYearEndRounds();
+
+		if (year == GamePlayScopeManager.yearsBeforeEndGameMaster)
 		{
 			endGame();
 		}
@@ -73,6 +76,11 @@ public class timeManager : MonoBehaviour
 	public void updateUI()
 	{
 		roundText_TMP.text = "Y: " + year + " M: " + month;
+	}
+
+	public void handleYearEndRounds()
+	{
+		FindAnyObjectByType<yearEnd_AI>().incrementAgeProject();
 	}
 
 	public void endGame()

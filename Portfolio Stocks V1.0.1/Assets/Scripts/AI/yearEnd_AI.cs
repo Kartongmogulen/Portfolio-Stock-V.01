@@ -26,7 +26,19 @@ public class yearEnd_AI : MonoBehaviour
     {
         for (int i = 0; i < OpponentsManager.opponentsList.Count; i++)
         {
+            if(OpponentsManager.opponentsList[i].GetComponent<incomeProduction>() != null)
             OpponentsManager.opponentsList[i].GetComponent<incomeProduction>().incomeCalc();
+        }
+    }
+
+    public void incrementAgeProject()
+    {
+
+        Debug.Log("Uppdatera ålder av projekt");
+        for (int i = 0; i < OpponentsManager.opponentsList.Count; i++)
+        {
+            if (OpponentsManager.opponentsList[i].GetComponent<AIManager_CardMechanic>() != null)
+                OpponentsManager.opponentsList[i].GetComponent<AIManager_CardMechanic>().UpdateInvestments();
         }
     }
 }
