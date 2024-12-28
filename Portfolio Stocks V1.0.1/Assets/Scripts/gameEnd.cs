@@ -12,14 +12,14 @@ public class gameEnd : MonoBehaviour
 	public HighscoreManager highscoreManager;
 	public totalCash TotalCash;
 
-	public GameObject MainCanvasGO;
-	public GameObject endGamePanel;
+	//public GameObject MainCanvasGO;
+	//public GameObject endGamePanel;
 	public GameObject PlayerPanelGO;
 	public GameObject EconomyScriptsGO;
 	//public GameObject SectorPanelGO;
-	public GameObject bottomPanelGO;
-	public GameObject realEstatePanelGO;
-	public GameObject bondsPanelGO;
+	//public GameObject bottomPanelGO;
+	//public GameObject realEstatePanelGO;
+	//public GameObject bondsPanelGO;
 
 	public Text textEndGame;
 	public Text incomeWorkText;
@@ -37,6 +37,7 @@ public class gameEnd : MonoBehaviour
 	public float incomeDuringLifeDividend;
 	public float incomeDividendRestOfLifePerYear;
 
+	/*
 	public float utiAmount;
 	public float finAmount;
 	public float techAmount;
@@ -44,6 +45,7 @@ public class gameEnd : MonoBehaviour
 	public float utiDiv;
 	public float finDiv;
 	public float techDiv;
+	*/
 
 	public float divPerYear;
 
@@ -110,7 +112,7 @@ public class gameEnd : MonoBehaviour
 		//capGainStockPercent = playerScriptsGO.GetComponent<portfolioStock>().totalReturnPortfolioPercent;
 		*/
 
-		textEndGame.text = "The end!";
+		//textEndGame.text = "The end!";
 		/*
 		incomeWorkText.text = "Income from Work: " + incomeDuringLifeWork;
 		incomeDivText.text = "Income from Dividends: " + incomeDuringLifeDividend;
@@ -130,8 +132,13 @@ public class gameEnd : MonoBehaviour
 
 	public void saveHighScore()
 	{
-		stockPortfolioValue = playerScriptsGO.GetComponent<PortfolioManager>().GetTotalPortfolioValue();
+		if (playerScriptsGO.GetComponent<PortfolioManager>() != null)
+		{
+			stockPortfolioValue = playerScriptsGO.GetComponent<PortfolioManager>().GetTotalPortfolioValue();
+		}
+
 		wealthValue = stockPortfolioValue + playerScriptsGO.GetComponent <moneyManager>().MoneyNow;
+		//Debug.Log("Förmögenhet: " + wealthValue);
 		//assetsValue = 5000;
 		//SPARA RESULTAT
 		highscoreManager.AddHighscore(Mathf.RoundToInt(wealthValue));

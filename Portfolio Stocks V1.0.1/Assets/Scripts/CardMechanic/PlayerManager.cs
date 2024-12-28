@@ -7,9 +7,9 @@ using InvestmentData;  // Se till att referera till InvestmentData
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] float playerCapitalStart;    
+    //[SerializeField] float playerCapitalStart;    
     public float playerCapital { get; private set; }
-    public Text playerCapitalText;
+    //public Text playerCapitalText;
 
     public List<InvestmentInstance> activeInvestments = new List<InvestmentInstance>(); // Lista över aktiva investeringar (individuella instanser)
 
@@ -26,12 +26,15 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] int playerExpPointsInvested; //Antal poäng som investerats innan level upp
     [SerializeField] int levelUpCost;
 
+    public moneyManager MoneyManager;
+
     private void Start()
     {
-        playerCapital = playerCapitalStart;
+        //playerCapital = playerCapitalStart;
+        playerCapital = MoneyManager.MoneyNow;
 
         updateUI();
-        updateMoneyText();
+        //updateMoneyText();
     }
 
     public void updateUI()
@@ -50,10 +53,11 @@ public class PlayerManager : MonoBehaviour
     // Funktion för att samla in avkastningen från en investering
     public void CollectReturn(InvestmentInstance investment)
     {
-        playerCapital += (investment.potentialReturn + investment.investmentType.cost);
+        //playerCapital += (investment.potentialReturn + investment.investmentType.cost);
+        MoneyManager.sellTransaction(investment.potentialReturn + investment.investmentType.cost);
         returnTotal += (investment.potentialReturn);
         //Debug.Log("Avkastning från " + investment.investmentType.name + " samlad in! Spelarens kapital: " + playerCapital);
-        updateMoneyText();
+        //updateMoneyText();
     }
 
     public void investedCapital(float amount)
@@ -78,10 +82,12 @@ public class PlayerManager : MonoBehaviour
         //Debug.Log("Aktiva investeringar uppdaterade. Kvarvarande: " + activeInvestments.Count);
     }
 
+    /*
     void updateMoneyText()
     {
         playerCapitalText.text = "Money: " + playerCapital;
     }
+    */
 
     public float playerCapitalGet()
     {
@@ -91,7 +97,7 @@ public class PlayerManager : MonoBehaviour
     public void playerCapitalSet(float transaction)
     {
         playerCapital += transaction;
-        updateMoneyText();
+        //updateMoneyText();
     }
 
     public void levelUpPlayer()

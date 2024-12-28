@@ -12,7 +12,7 @@ public class HighscoreManager : MonoBehaviour
 
     public List<TextMeshProUGUI> highscoreTextList; // Lista med TextMeshProUGUI-objekt för att visa highscores
     public GameObject highScoreUI;
-    private IMoneyVisualizer moneyVisualizer;
+    public IMoneyVisualizer moneyVisualizer;
 
     void Awake()
     {
@@ -21,11 +21,15 @@ public class HighscoreManager : MonoBehaviour
 
     void Start()
     {
-      
         LoadHighscores();
         UpdateHighscoreDisplay();
         highScoreUI.SetActive(false);// Inaktiverar vid start
         visualizeTopScore();
+    }
+
+    private void CreateDefaultHighscores()
+    {
+        highscores = new List<int> { 1000, 900, 800, 700, 600 }; // Exempel på standardvärden
     }
 
     public void visualizeTopScore()
@@ -38,7 +42,7 @@ public class HighscoreManager : MonoBehaviour
             //Debug.Log("MoneyViz != null");
             if (highscores[0] != null)
             {
-                //Debug.Log("MoneyViz: UpdateMoneyDisplay");
+                Debug.Log("MoneyViz: UpdateMoneyDisplay");
                 moneyVisualizer.UpdateMoneyDisplay(highscores[0]);
                
             }
@@ -47,7 +51,7 @@ public class HighscoreManager : MonoBehaviour
         }
         else
         {
-            //Debug.LogWarning("No money visualizer attached!");
+            Debug.LogWarning("No money visualizer attached!");
         }
     }
 
@@ -73,6 +77,11 @@ public class HighscoreManager : MonoBehaviour
         
     }
 
+    private string GetSceneHighscoreKey(int index)
+    {
+        return $"{UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}_Highscore{index}";
+    }
+
     public void LoadHighscores()
     {
         //Debug.Log("Loading Highscore");
@@ -81,11 +90,18 @@ public class HighscoreManager : MonoBehaviour
 
         for (int i = 0; i < MaxHighscores; i++)
         {
-            string key = "Highscore" + i;
+            string key = GetSceneHighscoreKey(i);
+            
             if (PlayerPrefs.HasKey(key))
             {
                 highscores.Add(PlayerPrefs.GetInt(key));
             }
+        }
+
+        if (highscores.Count == 0) // Om inga highscores finns, skapa standardvärden
+        {
+            CreateDefaultHighscores();
+            SaveHighscores(); // Spara standardvärden i PlayerPrefs
         }
 
         highscores.Sort((a, b) => b.CompareTo(a)); // Sortera i fallande ordning
@@ -96,13 +112,14 @@ public class HighscoreManager : MonoBehaviour
         Debug.Log("Save Highscore");
         for (int i = 0; i < MaxHighscores; i++)
         {
+            string key = GetSceneHighscoreKey(i);
             if (i < highscores.Count)
             {
-                PlayerPrefs.SetInt("Highscore" + i, highscores[i]);
+                PlayerPrefs.SetInt(key, highscores[i]);
             }
             else
             {
-                PlayerPrefs.DeleteKey("Highscore" + i);
+                PlayerPrefs.DeleteKey(key);
             }
         }
 
@@ -120,7 +137,8 @@ public class HighscoreManager : MonoBehaviour
 
         for (int i = 0; i < MaxHighscores; i++)
         {
-            PlayerPrefs.DeleteKey("Highscore" + i);
+            string key = GetSceneHighscoreKey(i);
+            PlayerPrefs.DeleteKey(key);
         }
 
         PlayerPrefs.Save();

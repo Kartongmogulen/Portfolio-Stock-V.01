@@ -16,6 +16,7 @@ public class InvestmentManager : MonoBehaviour
     public List<InvestmentTypeData> investmentsLevelThree;  // Lista över ScriptableObject-baserade investeringstyper
     //public List<InvestmentType> availableInvestments = new List<InvestmentType>();  // Lista över tillgängliga investeringstyper
     public PlayerManager playerManager; // Referens till PlayerManager
+    public moneyManager MoneyManager;
     public actionPointsManager ActionPointsManager;
     public InvestInfoUI investInfoUI;
     [SerializeField] int investmentIndex; //Aktuell investering
@@ -30,7 +31,7 @@ public class InvestmentManager : MonoBehaviour
        
         while (possibleInvestments.Count < numberOfProjectsStart)
         {
-            Debug.Log("Lägg till projekt Start");
+            //Debug.Log("Lägg till projekt Start");
             addProjectsToAvailableListStart();
         }
 
@@ -90,7 +91,7 @@ public class InvestmentManager : MonoBehaviour
 
     public void addProjectsToAvailableList(int numberToAdd)
     {
-        Debug.Log("AddProjects");
+        //Debug.Log("AddProjects");
 
         if (fixedProjects == true)
         {
@@ -181,11 +182,11 @@ public class InvestmentManager : MonoBehaviour
         {
             InvestmentTypeData chosenInvestmentType = availableInvestments[investmentIndex];
 
-            if (playerManager.playerCapitalGet() >= chosenInvestmentType.cost && ActionPointsManager.remainingAP > 0)
+            if (MoneyManager.MoneyNow >= chosenInvestmentType.cost && ActionPointsManager.remainingAP > 0)
             {
                 playerManager.investedCapital(chosenInvestmentType.cost); //Sparar totalt kapital som spelaren investerar. För statistik
                 Debug.Log("Tillräckligt med kapital finns");
-                playerManager.playerCapitalSet(-chosenInvestmentType.cost);
+                MoneyManager.buyTransaction(chosenInvestmentType.cost);
                 ActionPointsManager.actionPointSub(1);
 
                 // Slumpa ett tal mellan 0 och 1 för att avgöra om investeringen lyckas
@@ -226,10 +227,10 @@ public class InvestmentManager : MonoBehaviour
                 InvestmentTypeData chosenInvestmentType = availableInvestments[randomIndex];
 
                 //Kontrollera om tillräckligt med kapital finns
-                if (playerManager.playerCapitalGet() >= chosenInvestmentType.cost)
+                if (MoneyManager.MoneyNow >= chosenInvestmentType.cost)
                 {
                     Debug.Log("Tillräckligt med kapital finns");
-                    playerManager.playerCapitalSet(-chosenInvestmentType.cost);
+                    MoneyManager.buyTransaction(chosenInvestmentType.cost);
                     // Slumpa ett tal mellan 0 och 1 för att avgöra om investeringen lyckas
                     float randomChance = Random.Range(0f, 1f);
 

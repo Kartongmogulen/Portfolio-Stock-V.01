@@ -77,7 +77,7 @@ public class timeManager : MonoBehaviour
 
 	public void endGame()
 	{
-		Debug.Log("Game ended");
+		//Debug.Log("Game ended");
 		GameEnd.endOfGame();
 	}
 }
