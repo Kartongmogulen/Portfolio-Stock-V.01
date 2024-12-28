@@ -158,12 +158,13 @@ public class InvestmentManager : MonoBehaviour
 
     public void chooseProjectIndex(int index)
     {
-        if (availableInvestments.Count > 0)
+        if (availableInvestments.Count > 0 && investInfoUI!=null)
         {
             investInfoUI.updateInvestInfo(availableInvestments[index], index);
         }
         else
         {
+            if(investInfoUI != null)
             investInfoUI.noMoreProjectsToChooseFrom();
         }
     }
@@ -218,7 +219,7 @@ public class InvestmentManager : MonoBehaviour
     }
 
     
-        public void ChooseRandomInvestment()
+        public InvestmentInstance ChooseRandomInvestment()
         {
             if (availableInvestments.Count > 0)
             {
@@ -229,7 +230,7 @@ public class InvestmentManager : MonoBehaviour
                 //Kontrollera om tillräckligt med kapital finns
                 if (MoneyManager.MoneyNow >= chosenInvestmentType.cost)
                 {
-                    Debug.Log("Tillräckligt med kapital finns");
+                    //Debug.Log("Tillräckligt med kapital finns");
                     MoneyManager.buyTransaction(chosenInvestmentType.cost);
                     // Slumpa ett tal mellan 0 och 1 för att avgöra om investeringen lyckas
                     float randomChance = Random.Range(0f, 1f);
@@ -238,11 +239,13 @@ public class InvestmentManager : MonoBehaviour
                     {
                         // Om investeringen lyckas, skapa en ny individuell investering
                         InvestmentInstance newInvestment = new InvestmentInstance(chosenInvestmentType);
-                        playerManager.AddInvestment(newInvestment); // Lägg till investeringen i spelarens aktiva investeringar
-
-                        Debug.Log(chosenInvestmentType.name + " lyckades! Kostnad: " + chosenInvestmentType.cost +
+                    //playerManager.AddInvestment(newInvestment); // Lägg till investeringen i spelarens aktiva investeringar
+                   
+                    Debug.Log(chosenInvestmentType.name + " lyckades! Kostnad: " + chosenInvestmentType.cost +
                                   ", Potentiell avkastning: " + newInvestment.potentialReturn);
-                    }
+
+                    return newInvestment;
+                }
                     else
                     {
                         Debug.Log(chosenInvestmentType.name + " misslyckades.");
@@ -258,6 +261,7 @@ public class InvestmentManager : MonoBehaviour
             {
                 Debug.Log("Inga tillgängliga investeringar.");
             }
+        return null;
         }
 
 

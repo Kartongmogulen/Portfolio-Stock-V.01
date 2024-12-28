@@ -20,6 +20,8 @@ public class actionPointsManager : MonoBehaviour
     {
         remainingAP = startAP;
         baseAP = startAP;
+
+        if(actionPointsText != null)
         actionPointsText.text = " AP: " + remainingAP;
     }
 
@@ -74,6 +76,7 @@ public class actionPointsManager : MonoBehaviour
 
     public void updateAP()
     {
+        if(actionPointsText != null)
         actionPointsText.text = "AP: " + remainingAP;
     }
 

@@ -38,7 +38,7 @@ namespace InvestmentData
             this.currentAge = 0;
             this.potentialReturn = type.cost * type.ROIpotential;
             this.expectedYearlyReturn = Mathf.Pow(type.successProbability * type.ROIpotential, 1/type.lifetime) ;
-            Debug.Log(1 / type.lifetime);
+            //Debug.Log(1 / type.lifetime);
         }
 
         public void IncrementAge()

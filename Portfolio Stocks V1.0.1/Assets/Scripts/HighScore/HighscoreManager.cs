@@ -42,7 +42,7 @@ public class HighscoreManager : MonoBehaviour
             //Debug.Log("MoneyViz != null");
             if (highscores[0] != null)
             {
-                Debug.Log("MoneyViz: UpdateMoneyDisplay");
+                //Debug.Log("MoneyViz: UpdateMoneyDisplay");
                 moneyVisualizer.UpdateMoneyDisplay(highscores[0]);
                
             }

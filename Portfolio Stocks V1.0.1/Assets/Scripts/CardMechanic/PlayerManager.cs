@@ -8,7 +8,7 @@ using InvestmentData;  // Se till att referera till InvestmentData
 public class PlayerManager : MonoBehaviour
 {
     //[SerializeField] float playerCapitalStart;    
-    public float playerCapital { get; private set; }
+    //public float playerCapital { get; private set; }
     //public Text playerCapitalText;
 
     public List<InvestmentInstance> activeInvestments = new List<InvestmentInstance>(); // Lista över aktiva investeringar (individuella instanser)
@@ -30,11 +30,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        //playerCapital = playerCapitalStart;
-        playerCapital = MoneyManager.MoneyNow;
-
         updateUI();
-        //updateMoneyText();
     }
 
     public void updateUI()
@@ -87,7 +83,7 @@ public class PlayerManager : MonoBehaviour
     {
         playerCapitalText.text = "Money: " + playerCapital;
     }
-    */
+    
 
     public float playerCapitalGet()
     {
@@ -99,7 +95,7 @@ public class PlayerManager : MonoBehaviour
         playerCapital += transaction;
         //updateMoneyText();
     }
-
+    */
     public void levelUpPlayer()
     {
         playerLevel++;
