@@ -186,7 +186,7 @@ public class InvestmentManager : MonoBehaviour
             if (MoneyManager.MoneyNow >= chosenInvestmentType.cost && ActionPointsManager.remainingAP > 0)
             {
                 playerManager.investedCapital(chosenInvestmentType.cost); //Sparar totalt kapital som spelaren investerar. För statistik
-                Debug.Log("Tillräckligt med kapital finns");
+                //Debug.Log("Tillräckligt med kapital finns");
                 MoneyManager.buyTransaction(chosenInvestmentType.cost);
                 ActionPointsManager.actionPointSub(1);
 
@@ -241,14 +241,14 @@ public class InvestmentManager : MonoBehaviour
                         InvestmentInstance newInvestment = new InvestmentInstance(chosenInvestmentType);
                     //playerManager.AddInvestment(newInvestment); // Lägg till investeringen i spelarens aktiva investeringar
                    
-                    Debug.Log(chosenInvestmentType.name + " lyckades! Kostnad: " + chosenInvestmentType.cost +
-                                  ", Potentiell avkastning: " + newInvestment.potentialReturn);
+                    //Debug.Log(chosenInvestmentType.name + " lyckades! Kostnad: " + chosenInvestmentType.cost +
+                     //             ", Potentiell avkastning: " + newInvestment.potentialReturn);
 
                     return newInvestment;
                 }
                     else
                     {
-                        Debug.Log(chosenInvestmentType.name + " misslyckades.");
+                        //Debug.Log(chosenInvestmentType.name + " misslyckades.");
                     }
                 }
 

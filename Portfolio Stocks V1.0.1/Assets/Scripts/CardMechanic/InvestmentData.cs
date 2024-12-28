@@ -30,15 +30,18 @@ namespace InvestmentData
         public InvestmentTypeData investmentType;
         public int currentAge;                 // Nuvarande ålder på investeringen
         public float potentialReturn;          // Potentiell avkastning om investeringen lyckas
-        public float expectedYearlyReturn;          // Väntevärde för projektet
+        public float expectedYearlyReturn;          // Årlig avkastning
 
         public InvestmentInstance(InvestmentTypeData type)
         {
             this.investmentType = type;
             this.currentAge = 0;
             this.potentialReturn = type.cost * type.ROIpotential;
-            this.expectedYearlyReturn = Mathf.Pow(type.successProbability * type.ROIpotential, 1/type.lifetime) ;
-            //Debug.Log(1 / type.lifetime);
+            this.expectedYearlyReturn = Mathf.Pow(type.successProbability * type.ROIpotential, (1.0f /type.lifetime)) ;
+            Debug.Log("Investeringstyp: " + investmentType + " /Förväntad avkast: " + type.successProbability * type.ROIpotential);
+            Debug.Log("Livslängd: " + type.lifetime);
+            Debug.Log("Upphöjt i: " + (1.0f / type.lifetime));
+            //Debug.Log("Årlig avkastning: " + expectedYearlyReturn);
         }
 
         public void IncrementAge()

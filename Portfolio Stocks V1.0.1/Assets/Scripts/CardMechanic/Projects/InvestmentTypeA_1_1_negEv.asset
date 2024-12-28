@@ -17,4 +17,4 @@ MonoBehaviour:
   lifetime: 3
   cost: 100
   ROIpotential: 0.5
-  expectedValue: -9.999996
+  expectedValue: -10

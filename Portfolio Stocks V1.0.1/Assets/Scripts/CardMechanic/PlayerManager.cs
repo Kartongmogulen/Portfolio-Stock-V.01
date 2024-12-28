@@ -42,7 +42,7 @@ public class PlayerManager : MonoBehaviour
     public void AddInvestment(InvestmentInstance investment)
     {
         activeInvestments.Add(investment);
-        depreciationTotal += investment.investmentType.cost;
+        //depreciationTotal += investment.investmentType.cost;
         //Debug.Log("Ny investering tillagd: " + investment.investmentType.name + ", Potentiell avkastning: " + investment.potentialReturn);
     }
 
@@ -50,7 +50,7 @@ public class PlayerManager : MonoBehaviour
     public void CollectReturn(InvestmentInstance investment)
     {
         //playerCapital += (investment.potentialReturn + investment.investmentType.cost);
-        MoneyManager.sellTransaction(investment.potentialReturn + investment.investmentType.cost);
+        MoneyManager.sellTransaction(investment.potentialReturn);
         returnTotal += (investment.potentialReturn);
         //Debug.Log("Avkastning från " + investment.investmentType.name + " samlad in! Spelarens kapital: " + playerCapital);
         //updateMoneyText();

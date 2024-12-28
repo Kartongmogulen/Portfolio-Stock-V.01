@@ -81,6 +81,7 @@ public class timeManager : MonoBehaviour
 	public void handleYearEndRounds()
 	{
 		FindAnyObjectByType<yearEnd_AI>().incrementAgeProject();
+		FindAnyObjectByType<yearEnd_AI>().resetActonPoints();
 	}
 
 	public void endGame()

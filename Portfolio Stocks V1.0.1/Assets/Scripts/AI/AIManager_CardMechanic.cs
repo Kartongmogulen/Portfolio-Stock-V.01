@@ -15,14 +15,19 @@ public class AIManager_CardMechanic : MonoBehaviour
     public moneyManager MoneyManager;
     public InvestmentManager investmentManager;
     public actionPointsManager ActionPointsManager;
+    public gamePlayScopeManager GamePlayScopeManager;
+    public timeManager TimeManager;
 
     [Header("AI Behavior")]
     //[SerializeField] private float investmentFrequency = 5f; // Hur ofta AI gör investeringar (i sekunder)
-    [SerializeField] private float riskTolerance = 0.5f; // AI:s risktolerans (0–1)
+    [SerializeField] private float expectedValueThreshold;
+    [SerializeField] private float stopInvestYearsBeforeGameEnds = 5; // Antal år innan AI slutar investerar för att samla kapital
 
     private void Start()
     {
         ActionPointsManager = GetComponent<actionPointsManager>();
+        GamePlayScopeManager = FindAnyObjectByType<gamePlayScopeManager>();
+        TimeManager = FindObjectOfType<timeManager>();
         //StartCoroutine(AutoInvest());
         Invoke("investInProject", 0.1f);
     }
@@ -50,16 +55,24 @@ public class AIManager_CardMechanic : MonoBehaviour
 
         public void investInProject()
     {
-        while (ActionPointsManager.remainingAP > 0)
+        //Slutar investera när viss tid återstår av spelet för att samla kapital
+        if (GamePlayScopeManager.yearsBeforeEndGameMaster >= TimeManager.year + stopInvestYearsBeforeGameEnds)
         {
-            Debug.Log("InvestInProject");
-
-            InvestmentInstance project = investmentManager.ChooseRandomInvestment();
-            if (project != null)
+            //Debug.Log(GamePlayScopeManager.yearsBeforeEndGameMaster >= TimeManager.year + stopInvestYearsBeforeGameEnds);
+            while (ActionPointsManager.remainingAP > 0)
             {
-                activeInvestments.Add(project);
+                //Debug.Log("InvestInProject");
+
+                InvestmentInstance project = investmentManager.ChooseRandomInvestment();
+
+                //Debug.Log("Potentiell avkastning: " + project.potentialReturn);
+                //Debug.Log("Gränsvärde för att genomföra investering: " + expectedValueThreshold);
+                if (project != null && project.potentialReturn > expectedValueThreshold)
+                {
+                    activeInvestments.Add(project);
+                }
+                ActionPointsManager.actionPointSub(1);
             }
-            ActionPointsManager.actionPointSub(1);
         }
     }
 

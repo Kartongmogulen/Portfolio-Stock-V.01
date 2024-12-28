@@ -59,7 +59,7 @@ public class moneyManager : MonoBehaviour, ITransaction
     public void buyTransaction(float amount)
     {
         MoneyNow -= amount;
-        Debug.Log("MonyeNow: " + MoneyNow);
+        //Debug.Log("MonyeNow: " + MoneyNow);
         moneyVisualizer?.UpdateMoneyDisplay(MoneyNow);
 
     }

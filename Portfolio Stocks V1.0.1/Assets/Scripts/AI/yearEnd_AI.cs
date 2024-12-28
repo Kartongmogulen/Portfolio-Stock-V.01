@@ -41,4 +41,14 @@ public class yearEnd_AI : MonoBehaviour
                 OpponentsManager.opponentsList[i].GetComponent<AIManager_CardMechanic>().UpdateInvestments();
         }
     }
+
+    public void resetActonPoints()
+    {
+        Debug.Log("Återställ AP");
+        for (int i = 0; i < OpponentsManager.opponentsList.Count; i++)
+        {
+            if (OpponentsManager.opponentsList[i].GetComponent<actionPointsManager>() != null)
+                OpponentsManager.opponentsList[i].GetComponent<actionPointsManager>().endRound();
+        }
+    }
 }

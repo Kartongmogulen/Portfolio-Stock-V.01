@@ -23,7 +23,7 @@ public class endGame : MonoBehaviour
 
         if (returnPercentProjects != null)
         {
-            returnPercentProjects.text = "Return Capital: " + Mathf.Round(((playerManager.returnTotal + playerManager.depreciationTotal) / playerManager.investedCapitalTotal - 1) * 100) + "%";
+            returnPercentProjects.text = "Return Capital: " + Mathf.Round(((playerManager.returnTotal) / playerManager.investedCapitalTotal - 1) * 100) + "%";
         }
     }
 }
