@@ -67,7 +67,7 @@ public class AIManager_CardMechanic : MonoBehaviour
 
                 //Debug.Log("Potentiell avkastning: " + project.potentialReturn);
                 //Debug.Log("Gränsvärde för att genomföra investering: " + expectedValueThreshold);
-                if (project != null && project.potentialReturn > expectedValueThreshold)
+                if (project != null && project.investmentType.expectedValue > expectedValueThreshold)
                 {
                     activeInvestments.Add(project);
                 }
