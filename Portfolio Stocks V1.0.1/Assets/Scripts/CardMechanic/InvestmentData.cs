@@ -11,7 +11,7 @@ namespace InvestmentData
         public float successProbability;    // Sannolikheten att investeringen lyckas (0-1)
         public int lifetime;                // Livslängd på investeringen i år
         public float cost;                  // Kostnaden för investeringen
-        public float ROIpotential;      // Multiplikator för att beräkna avkastningen
+        public float ROI;      // Multiplikator för att beräkna avkastningen
 
         public InvestmentType(string name, int cost, float successProbability, int lifetime, float ROIpotential)
         {
@@ -19,7 +19,7 @@ namespace InvestmentData
             this.successProbability = successProbability;
             this.lifetime = lifetime;
             this.cost = cost;
-            this.ROIpotential = ROIpotential;
+            this.ROI = ROIpotential;
         }
     }
 
@@ -36,9 +36,9 @@ namespace InvestmentData
         {
             this.investmentType = type;
             this.currentAge = 0;
-            this.potentialReturn = type.cost * type.ROIpotential;
-            this.expectedYearlyReturn = Mathf.Pow(type.successProbability * type.ROIpotential, (1.0f /type.lifetime)) ;
-            Debug.Log("Investeringstyp: " + investmentType + " /Förväntad årlig avkast: " + expectedYearlyReturn);
+            this.potentialReturn = type.cost * type.ROI;
+            this.expectedYearlyReturn = Mathf.Pow(type.successProbability * type.ROI, (1.0f /type.lifetime)) ;
+            //Debug.Log("Investeringstyp: " + investmentType + " /Förväntad årlig avkast: " + expectedYearlyReturn);
             //Debug.Log("Livslängd: " + type.lifetime);
             //Debug.Log("Upphöjt i: " + (1.0f / type.lifetime));
             //Debug.Log("Årlig avkastning: " + expectedYearlyReturn);

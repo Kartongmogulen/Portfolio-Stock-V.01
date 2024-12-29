@@ -15,8 +15,7 @@ public class PlayerManager : MonoBehaviour
     public float investedCapitalTotal;
     //public float returnTotal { get; private set; }
     public float returnTotal;
-    public float depreciationTotal;
-
+    
     [Header("Player Level")]
     public Text playerLevelText;
     public int playerLevel { get; private set; }
@@ -24,10 +23,15 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] int levelUpCost;
 
     public moneyManager MoneyManager;
+    public actionPointsManager ActionPointsManager;
+    public InvestmentManager investmentManager;
 
     private void Start()
     {
         updateUI();
+
+        ActionPointsManager = GetComponent<actionPointsManager>();
+        investmentManager = GetComponent<InvestmentManager>();
     }
 
     public void updateUI()
@@ -83,12 +87,12 @@ public class PlayerManager : MonoBehaviour
 
     public void investActionPointsToLevelUp()
     {
-        int actionPointsLeft = FindObjectOfType<actionPointsManager>().remainingAP;
+        int actionPointsLeft = ActionPointsManager.remainingAP;
        
         //Kontrollera om ActionPoints finns kvar
         if (actionPointsLeft > 0)
         {
-            FindObjectOfType<actionPointsManager>().actionPointSub(1);
+            ActionPointsManager.actionPointSub(1);
             playerExpPointsInvested++;
         }
 
@@ -96,7 +100,7 @@ public class PlayerManager : MonoBehaviour
         if(playerExpPointsInvested == levelUpCost)
         {
             levelUpPlayer();
-            FindObjectOfType<InvestmentManager>().addNewProjectsWhenPlayerLevelUp(playerLevel);
+            investmentManager.addNewProjectsWhenPlayerLevelUp(playerLevel);
             playerExpPointsInvested = 0;
         }
 

@@ -24,7 +24,7 @@ public class InvestInfoUI : MonoBehaviour
         successProbabilityText.text = "Prob to succed: " + project.successProbability*100 + "%";
         lifetimeText.text = "Lifetime: " + project.lifetime;
         costText.text = "Cost: " + project.cost;
-        ROIpotentialText.text = "Potential return: " + project.ROIpotential * 100 + "%";
+        ROIpotentialText.text = "Potential return: " + project.ROI * 100 + "%";
 
     }
     

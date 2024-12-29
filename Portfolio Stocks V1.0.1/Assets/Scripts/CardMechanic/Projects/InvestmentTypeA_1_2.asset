@@ -16,7 +16,7 @@ MonoBehaviour:
   successProbability: 0.75
   lifetime: 3
   cost: 100
-  ROIpotential: 1.8
-  expectedValue: 10
-  annualReturn: 0.216
-  annualReturnWithRisk: -0.20770913
+  ROI: 1.85
+  expectedValue: 14
+  annualReturn: 0.228
+  annualReturnWithRisk: 0.044

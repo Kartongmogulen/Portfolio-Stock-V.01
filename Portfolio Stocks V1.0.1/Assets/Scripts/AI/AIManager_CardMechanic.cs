@@ -10,7 +10,6 @@ public class AIManager_CardMechanic : MonoBehaviour
     [Header("Key Figures")]
     public float investedCapitalTotal;
     public float returnTotal;
-    public float depreciationTotal;
 
     public moneyManager MoneyManager;
     public InvestmentManager investmentManager;
@@ -20,7 +19,13 @@ public class AIManager_CardMechanic : MonoBehaviour
 
     [Header("AI Behavior")]
     //[SerializeField] private float investmentFrequency = 5f; // Hur ofta AI gör investeringar (i sekunder)
+    [SerializeField]
+    private int newProjectsEachRound;
+    [Tooltip("Lägsta väntevärde spelaren accepterar")]
     [SerializeField] private float expectedValueThreshold;
+    [Tooltip("Lägsta sannolikheten att investeringen lyckas")]
+    [SerializeField] private float riskTolerance;
+
     [SerializeField] private float stopInvestYearsBeforeGameEnds = 5; // Antal år innan AI slutar investerar för att samla kapital
 
     private void Start()
@@ -67,11 +72,28 @@ public class AIManager_CardMechanic : MonoBehaviour
 
                 //Debug.Log("Potentiell avkastning: " + project.potentialReturn);
                 //Debug.Log("Gränsvärde för att genomföra investering: " + expectedValueThreshold);
-                if (project != null && project.investmentType.expectedValue > expectedValueThreshold)
+                if (project != null)
                 {
-                    activeInvestments.Add(project);
+                    if (project.investmentType.expectedValue > expectedValueThreshold)
+                        {
+                        //Debug.Log("" + project.investmentType.name + "Klarar väntevärdeskrav");
+                        if (project.investmentType.successProbability >= riskTolerance)
+                        {
+                            activeInvestments.Add(project);
+                        }
+                        else
+                        {
+                            //Debug.Log("" + project.investmentType.name + "För riskfyllt projekt!");
+                        }
+                    }
+                    else
+                    {
+                        //Debug.Log("" + project.investmentType.name + "INTE tillräckligt lönsamt");
+                    }
                 }
                 ActionPointsManager.actionPointSub(1);
+                investmentManager.removeProject();
+                investmentManager.addProjectsToAvailableList(newProjectsEachRound);
             }
         }
     }

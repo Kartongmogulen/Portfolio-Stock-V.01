@@ -24,8 +24,6 @@ public class InvestmentManager : MonoBehaviour
 
     [SerializeField] int randomInt;
 
-
-
     void Start()
     {
        
@@ -199,8 +197,8 @@ public class InvestmentManager : MonoBehaviour
                     InvestmentInstance newInvestment = new InvestmentInstance(chosenInvestmentType);
                     playerManager.AddInvestment(newInvestment); // Lägg till investeringen i spelarens aktiva investeringar
 
-                    Debug.Log(chosenInvestmentType.name + " lyckades! Kostnad: " + chosenInvestmentType.cost +
-                              ", Potentiell avkastning: " + newInvestment.potentialReturn);
+                    //Debug.Log(chosenInvestmentType.name + " lyckades! Kostnad: " + chosenInvestmentType.cost +
+                              //", Potentiell avkastning: " + newInvestment.potentialReturn);
                 }
                 else
                 {
@@ -216,6 +214,7 @@ public class InvestmentManager : MonoBehaviour
         {
             investInfoUI.noMoreProjectsToChooseFrom();
         }
+        removeProject();
     }
 
     
@@ -268,6 +267,7 @@ public class InvestmentManager : MonoBehaviour
     public void investmentIndexChange(int changeValue)
     {
         investmentIndex += changeValue;
+        Debug.Log("index: " + investmentIndex);
 
         if (availableInvestments.Count == 0)
         {
@@ -286,6 +286,7 @@ public class InvestmentManager : MonoBehaviour
             else if (investmentIndex < 0)
             {
                 investmentIndex = 0;
+                investInfoUI.updateInvestInfo(availableInvestments[investmentIndex], investmentIndex);
                 //investInfoUI.noMoreProjectsToChooseFrom();
             }
 

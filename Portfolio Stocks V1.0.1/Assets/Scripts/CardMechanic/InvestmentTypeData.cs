@@ -11,7 +11,7 @@ public class InvestmentTypeData : ScriptableObject
     public float successProbability;    // Sannolikheten att investeringen lyckas (0-1)
     public int lifetime;                // Livslängd på investeringen i år
     public float cost;                  // Kostnaden för investeringen
-    public float ROIpotential;      // Multiplikator för att beräkna avkastningen
+    public float ROI;      // Multiplikator för att beräkna avkastningen
     public float expectedValue;  // Väntevärdet av årlig avkastning
     
     public float annualReturn;     // Årlig avkastning
@@ -24,12 +24,12 @@ public class InvestmentTypeData : ScriptableObject
         {
 
             // Calculate potential outcomes
-            float successOutcome = cost * ROIpotential;
+            float successOutcome = cost * ROI;
             float failureOutcome = cost * (1 - successProbability);
 
             expectedValue = Mathf.Round(((successProbability * successOutcome) - failureOutcome) - cost);
 
-            annualReturn = Mathf.Round((Mathf.Pow(ROIpotential, (1.0f / lifetime)) - 1) * 1000) / 1000;
+            annualReturn = Mathf.Round((Mathf.Pow(ROI, (1.0f / lifetime)) - 1) * 1000) / 1000;
         }
         else
         {
@@ -49,12 +49,13 @@ public class InvestmentTypeData : ScriptableObject
         }
 
         // Outcomes
-        float successOutcome = Mathf.Pow(ROIpotential, 1.0f / lifetime) - 1; // Annualized return if successful
-        Debug.Log("Succes Outcome: " + successOutcome);
-        float failureOutcome = Mathf.Pow((1 - successProbability), 1.0f / lifetime) - 1; // Annualized return if failed
-        Debug.Log("Failure Outcome: " + failureOutcome);
+        float successOutcome = ROI * successProbability;
+        //Debug.Log("Succes Outcome: " + successOutcome);
+        float failureOutcome = (1 - successProbability) * cost / 100;
+        //Debug.Log("Failure Outcome: " + failureOutcome);
         // Expected annual return
-        annualReturnWithRisk = successProbability * successOutcome +  failureOutcome;
+        float returnWithNoRounding = Mathf.Pow(successOutcome - failureOutcome, 1f / lifetime) - 1;
+        annualReturnWithRisk = Mathf.Round(returnWithNoRounding*1000)/1000;
     }
 }
 
