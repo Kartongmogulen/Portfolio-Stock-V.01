@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3bfc8e2ac76fae64d9e003ba417cf6ab, type: 3}
-  m_Name: InvestmentTEST
+  m_Name: InvestmentTypeA_2_1
   m_EditorClassIdentifier: 
-  investmentName: TEST
-  successProbability: 1
+  investmentName: Investment A_2
+  successProbability: 0.8
   lifetime: 3
-  cost: 100
+  cost: 200
   ROI: 2
-  expectedValue: 100
+  expectedValue: 80
   annualReturn: 0.26
-  annualReturnWithRisk: 0.26
+  annualReturnWithRisk: 0.063

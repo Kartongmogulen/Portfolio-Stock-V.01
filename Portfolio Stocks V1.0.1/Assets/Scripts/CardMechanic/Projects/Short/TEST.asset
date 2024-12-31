@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3bfc8e2ac76fae64d9e003ba417cf6ab, type: 3}
-  m_Name: InvestmentTypeB_1_1_negEV
+  m_Name: TEST
   m_EditorClassIdentifier: 
-  investmentName: Investment B_1
-  successProbability: 0.7
-  lifetime: 4
+  investmentName: TEST
+  successProbability: 1
+  lifetime: 3
   cost: 100
-  ROIpotential: 0.4
-  expectedValue: -2
+  ROI: 2
+  expectedValue: 100
+  annualReturn: 0.26
+  annualReturnWithRisk: 0.26

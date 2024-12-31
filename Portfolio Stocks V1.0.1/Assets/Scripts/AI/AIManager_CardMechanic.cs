@@ -11,6 +11,10 @@ public class AIManager_CardMechanic : MonoBehaviour
     public float investedCapitalTotal;
     public float returnTotal;
 
+    [SerializeField] int succesfullInvestments;
+    [SerializeField] int failedInvestments;
+    [SerializeField] int skippedInvestments;
+
     public moneyManager MoneyManager;
     public InvestmentManager investmentManager;
     public actionPointsManager ActionPointsManager;
@@ -25,7 +29,6 @@ public class AIManager_CardMechanic : MonoBehaviour
     [SerializeField] private float expectedValueThreshold;
     [Tooltip("Lägsta sannolikheten att investeringen lyckas")]
     [SerializeField] private float riskTolerance;
-
     [SerializeField] private float stopInvestYearsBeforeGameEnds = 5; // Antal år innan AI slutar investerar för att samla kapital
 
     private void Start()
@@ -67,34 +70,56 @@ public class AIManager_CardMechanic : MonoBehaviour
             while (ActionPointsManager.remainingAP > 0)
             {
                 //Debug.Log("InvestInProject");
-
+                ActionPointsManager.actionPointSub(1);
                 InvestmentInstance project = investmentManager.ChooseRandomInvestment();
 
-                //Debug.Log("Potentiell avkastning: " + project.potentialReturn);
-                //Debug.Log("Gränsvärde för att genomföra investering: " + expectedValueThreshold);
+                // Slumpa ett tal mellan 0 och 1 för att avgöra om investeringen lyckas
+                float randomChance = Random.Range(0f, 1f);
+
+                //Debug.Log("InvestInProject");
                 if (project != null)
                 {
-                    if (project.investmentType.expectedValue > expectedValueThreshold)
+                    if (MoneyManager.MoneyNow >= project.investmentType.cost)
+                    {
+                        //Debug.Log("Pengar och Projekt finns");
+                        if (randomChance <= project.investmentType.successProbability)
                         {
-                        //Debug.Log("" + project.investmentType.name + "Klarar väntevärdeskrav");
-                        if (project.investmentType.successProbability >= riskTolerance)
-                        {
-                            activeInvestments.Add(project);
+                            if (project.investmentType.expectedValue > expectedValueThreshold)
+                            {
+                                //Debug.Log("" + project.investmentType.name + "Klarar väntevärdeskrav");
+                                if (project.investmentType.successProbability >= riskTolerance)
+                                {
+                                    activeInvestments.Add(project);
+                                    succesfullInvestments++;
+                                }
+                                else
+                                {
+                                    //Debug.Log("" + project.investmentType.name + "För riskfyllt projekt!");
+                                    skippedInvestments++;
+                                }
+                            }
+                            else
+                            {
+                                //Debug.Log("" + project.investmentType.name + "INTE tillräckligt lönsamt");
+                            }
                         }
+
                         else
                         {
-                            //Debug.Log("" + project.investmentType.name + "För riskfyllt projekt!");
+                            //Debug.Log("Pengar och Projekt finns INTE");
+                            failedInvestments++;
                         }
+
+                        investmentManager.removeProject();
+
                     }
-                    else
-                    {
-                        //Debug.Log("" + project.investmentType.name + "INTE tillräckligt lönsamt");
-                    }
+                    
                 }
-                ActionPointsManager.actionPointSub(1);
-                investmentManager.removeProject();
-                investmentManager.addProjectsToAvailableList(newProjectsEachRound);
+                
             }
+
+            investmentManager.addProjectsToAvailableList(newProjectsEachRound);
+
         }
     }
 

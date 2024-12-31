@@ -34,7 +34,7 @@ public class yearEnd_AI : MonoBehaviour
     public void incrementAgeProject()
     {
 
-        Debug.Log("Uppdatera ålder av projekt");
+        //Debug.Log("Uppdatera ålder av projekt");
         for (int i = 0; i < OpponentsManager.opponentsList.Count; i++)
         {
             if (OpponentsManager.opponentsList[i].GetComponent<AIManager_CardMechanic>() != null)
@@ -44,7 +44,7 @@ public class yearEnd_AI : MonoBehaviour
 
     public void resetActonPoints()
     {
-        Debug.Log("Återställ AP");
+        //Debug.Log("Återställ AP");
         for (int i = 0; i < OpponentsManager.opponentsList.Count; i++)
         {
             if (OpponentsManager.opponentsList[i].GetComponent<actionPointsManager>() != null)

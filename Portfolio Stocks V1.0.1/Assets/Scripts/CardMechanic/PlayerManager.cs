@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     public int playerLevel { get; private set; }
     [SerializeField] int playerExpPointsInvested; //Antal poäng som investerats innan level upp
     [SerializeField] int levelUpCost;
+    [SerializeField] int numberOfNewProjectsEachRoundStartValue;
 
     public moneyManager MoneyManager;
     public actionPointsManager ActionPointsManager;

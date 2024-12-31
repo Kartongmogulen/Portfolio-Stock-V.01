@@ -15,6 +15,8 @@ MonoBehaviour:
   investmentName: Investment A_2
   successProbability: 0.65
   lifetime: 3
-  cost: 100
-  ROIpotential: 0.8
-  expectedValue: 17
+  cost: 200
+  ROI: 3
+  expectedValue: 120
+  annualReturn: 0.442
+  annualReturnWithRisk: 0.077

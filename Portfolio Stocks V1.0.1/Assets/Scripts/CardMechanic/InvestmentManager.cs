@@ -89,7 +89,7 @@ public class InvestmentManager : MonoBehaviour
 
     public void addProjectsToAvailableList(int numberToAdd)
     {
-        //Debug.Log("AddProjects");
+        
 
         if (fixedProjects == true)
         {
@@ -121,9 +121,9 @@ public class InvestmentManager : MonoBehaviour
                     }
                 }
 
-                if (GamePlayScopeManager.Difficulty == gamePlayScopeManager.difficulty.Medium)
+                else if (GamePlayScopeManager.Difficulty == gamePlayScopeManager.difficulty.Medium)
                 {
-
+                    //Debug.Log("AddProjects Medium: " + numberToAdd);
                     availableInvestments.Add(possibleInvestments[randomInt]);
                     //possibleInvestments.Add(investmentsLevelOne[randomInt]);
                 }
@@ -267,7 +267,7 @@ public class InvestmentManager : MonoBehaviour
     public void investmentIndexChange(int changeValue)
     {
         investmentIndex += changeValue;
-        Debug.Log("index: " + investmentIndex);
+        //Debug.Log("index: " + investmentIndex);
 
         if (availableInvestments.Count == 0)
         {

@@ -25,6 +25,12 @@ public class actionPointsManager : MonoBehaviour
         actionPointsText.text = " AP: " + remainingAP;
     }
 
+    public void changeBaseActionPoints(int amount)
+    {
+        baseAP += amount;
+        updateAP();
+    }
+
     public void checkIfPointsRemain()
     {
         int remaningAPInterim = remainingAP;

@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3bfc8e2ac76fae64d9e003ba417cf6ab, type: 3}
-  m_Name: InvestmentTypeC_2_2
+  m_Name: InvestmentTypeC_1
   m_EditorClassIdentifier: 
-  investmentName: Investment C_2
-  successProbability: 0.6
-  lifetime: 5
+  investmentName: Investment C_1
+  successProbability: 0.9
+  lifetime: 7
   cost: 100
-  ROIpotential: 0.75
-  expectedAnnualReturnPercentage: 9
+  ROI: 1.35
+  expectedValue: 11
+  annualReturn: 0.044
+  annualReturnWithRisk: 0.016
