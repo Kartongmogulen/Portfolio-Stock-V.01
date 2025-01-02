@@ -6,12 +6,28 @@ public class BaseUpgradeManager : MonoBehaviour
 {
     [SerializeField] private List<IUpgrade> _upgrades = new List<IUpgrade>();
 
+    [SerializeField] private Transform houseLocation;
+    [SerializeField] private GameObject[] housePrefabs;
+
+    [SerializeField] private actionPointsManager ActionPointsManager;
+
     private void Start()
     {
-        AddUpgrade(new HouseUpgrade(GetComponent<actionPointsManager>()));
+        ActionPointsManager = GetComponent<actionPointsManager>();
+        InitializeUpgrades();
     }
 
-    public void AddUpgrade(IUpgrade upgrade)
+    private void InitializeUpgrades()
+    {
+        // Skapa och lägg till HouseUpgrade
+        var houseUpgrade = new HouseUpgrade(ActionPointsManager, houseLocation, housePrefabs);
+        _upgrades.Add(houseUpgrade);
+        houseUpgrade.Initialize(); // Initiera med första prefaben
+        //Upgrade("House");
+
+    }
+
+        public void AddUpgrade(IUpgrade upgrade)
     {
         _upgrades.Add(upgrade);
     }

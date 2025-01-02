@@ -5199,7 +5199,7 @@ GameObject:
   - component: {fileID: 846200733}
   - component: {fileID: 846200732}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: HousePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7938,7 +7938,7 @@ GameObject:
   - component: {fileID: 1610327785}
   - component: {fileID: 1610327784}
   m_Layer: 5
-  m_Name: Button
+  m_Name: LevelUpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8640,7 +8640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 89, y: 95.15109}
+  m_AnchoredPosition: {x: 34, y: 116.04001}
   m_SizeDelta: {x: -717.93, y: -697.2852}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1736771585
@@ -9416,6 +9416,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e60c6bfd626d62b46bb4631ca733a5a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  houseLocation: {fileID: 8558727899037402152}
+  housePrefabs:
+  - {fileID: 1442212574104368617, guid: 32c5bad353bd0414292dcf55933e0c50, type: 3}
+  - {fileID: 6108327556119569836, guid: 41db31b3c9db6c14885345fe7bc4abef, type: 3}
+  - {fileID: -927199367670048503, guid: 558a10379b25fdb4eb58a073571fd21d, type: 3}
+  ActionPointsManager: {fileID: 0}
 --- !u!1 &1944389399
 GameObject:
   m_ObjectHideFlags: 0
@@ -13570,7 +13576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &7129309042512266203
 MeshFilter:
   m_ObjectHideFlags: 0
