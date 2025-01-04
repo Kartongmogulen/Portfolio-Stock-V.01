@@ -15,6 +15,10 @@ public class HouseUpgrade: IUpgrade
     // Standardrotation för initial prefab
     private readonly Quaternion _initialRotation = Quaternion.Euler(0, 90, -25);
 
+    //Prefab lvl 2
+    private readonly Quaternion _levelTwoRotation = Quaternion.Euler(12, 180, 0);
+    private readonly Vector3 _levelTwoPosition = new Vector3(-3.5f, -3.5f, 3);
+
     public HouseUpgrade(actionPointsManager ActionPointsManager, Transform houseLocation, GameObject[] housePrefabs)
     {
         _actionPointsManager = ActionPointsManager;
@@ -24,12 +28,9 @@ public class HouseUpgrade: IUpgrade
     }
 
     public void Initialize()
-    {
-        
+    {        
             _currentInstance = GameObject.Instantiate(_housePrefabs[0], _houseLocation.position, _initialRotation);
         _currentInstance.SetActive(true);
-
-
     }
 
     public void ApplyUpgrade()
@@ -44,14 +45,28 @@ public class HouseUpgrade: IUpgrade
                 GameObject.Destroy(_currentInstance);
             }
 
+            //Justera Lvl 2 Hus
+            if(_level == 2)
+            {
+                Debug.Log("House lvl: " + _level);
+                _currentInstance = GameObject.Instantiate(_housePrefabs[_level], _houseLocation.position, _levelTwoRotation);
+                _currentInstance.transform.localScale = new Vector3(0.5f, 0.5f, 0.2f);
+                _currentInstance.transform.position= _levelTwoPosition;
+                Debug.Log("Position: " + _currentInstance.transform.position);
+            }
+            else
+            {
+          
             // Instansiera nästa husnivå
             _currentInstance = GameObject.Instantiate(_housePrefabs[_level], _houseLocation.position, Quaternion.identity);
-            //GameObject newHouse = Object.Instantiate(_housePrefabs[_level], _houseLocation);
-            //newHouse.transform.localPosition = Vector3.zero;
-                       
+                //GameObject newHouse = Object.Instantiate(_housePrefabs[_level], _houseLocation);
+                //newHouse.transform.localPosition = Vector3.zero;
+            }
+            _actionPointsManager.changeBaseActionPoints(4); // Öka action points för varje uppgradering
+
         }
 
-        _actionPointsManager.changeBaseActionPoints(4); // Öka action points med 10 för varje uppgradering
+       
         Debug.Log($"House upgraded to level {_level}.");
     }
 

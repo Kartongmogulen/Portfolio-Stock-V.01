@@ -21,7 +21,13 @@ public class PlayerManager : MonoBehaviour
     public int playerLevel { get; private set; }
     [SerializeField] int playerExpPointsInvested; //Antal poäng som investerats innan level upp
     [SerializeField] int levelUpCost;
-    [SerializeField] int numberOfNewProjectsEachRoundStartValue;
+    [SerializeField] int levelMax = 2;
+    [SerializeField] int numberOfNewProjectsEachRoundValueStart;
+    [SerializeField] int numberOfNewProjectsEachRound;// ValueStart;
+    public int maxNumberOfAviableProjects { get; private set; }
+    [SerializeField] int maxNumberOfAviableProjectsStart;
+
+    //public int numberOfNewProjectsEachRoundValueNow { get; private set; }
 
     public moneyManager MoneyManager;
     public actionPointsManager ActionPointsManager;
@@ -29,15 +35,28 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        updateUI();
-
+        updateUI(false);
+        
         ActionPointsManager = GetComponent<actionPointsManager>();
         investmentManager = GetComponent<InvestmentManager>();
+
+        numberOfNewProjectsEachRound = numberOfNewProjectsEachRoundValueStart;
+        maxNumberOfAviableProjects = maxNumberOfAviableProjectsStart; 
     }
 
-    public void updateUI()
+    public int getNewProjectsToAvailiableList()
     {
+        return numberOfNewProjectsEachRound;
+    }
+
+    public void updateUI(bool maxlevelReached)
+    {
+        if (maxlevelReached == false)
         playerLevelText.text = "Player level: " + playerLevel + " (Points to Level up: " + playerExpPointsInvested + "/" + levelUpCost +")";
+        else
+        {
+            playerLevelText.text = "Player level: " + playerLevel + "(MAX)";
+        }
     }
 
     // Funktion för att lägga till en ny investering till spelarens lista
@@ -82,29 +101,45 @@ public class PlayerManager : MonoBehaviour
 
     public void levelUpPlayer()
     {
-        playerLevel++;
-        updateUI();
+        if (playerLevel < levelMax)
+        {
+            playerLevel++;
+            updateUI(false);
+        }
+
+        if (playerLevel == levelMax)
+        {
+            updateUI(true);
+        }
     }
 
     public void investActionPointsToLevelUp()
     {
         int actionPointsLeft = ActionPointsManager.remainingAP;
-       
-        //Kontrollera om ActionPoints finns kvar
-        if (actionPointsLeft > 0)
+        
+        //Kontroll om spelaren uppnått MAX-level
+        if (playerLevel < levelMax)
         {
-            ActionPointsManager.actionPointSub(1);
-            playerExpPointsInvested++;
-        }
+            //Kontrollera om ActionPoints finns kvar
+            if (actionPointsLeft > 0)
+            {
+                ActionPointsManager.actionPointSub(1);
+                playerExpPointsInvested++;
+            }
 
-        //Lvl-up spelaren
-        if(playerExpPointsInvested == levelUpCost)
+            //Lvl-up spelaren
+            if (playerExpPointsInvested == levelUpCost)
+            {
+                levelUpPlayer();
+                investmentManager.addNewProjectsWhenPlayerLevelUp(playerLevel);
+                playerExpPointsInvested = 0;
+            }
+            updateUI(false);
+        }
+        
+        if(playerLevel == levelMax)
         {
-            levelUpPlayer();
-            investmentManager.addNewProjectsWhenPlayerLevelUp(playerLevel);
-            playerExpPointsInvested = 0;
+            updateUI(true);
         }
-
-        updateUI();
     }
 }

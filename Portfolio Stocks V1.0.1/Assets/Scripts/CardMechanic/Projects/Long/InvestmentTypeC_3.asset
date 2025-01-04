@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bfc8e2ac76fae64d9e003ba417cf6ab, type: 3}
   m_Name: InvestmentTypeC_3
   m_EditorClassIdentifier: 
-  investmentName: C_2
+  investmentName: C_3
   successProbability: 0.6
-  lifetime: 5
-  cost: 100
-  ROI: 0
-  expectedValue: -140
-  annualReturn: -1
-  annualReturnWithRisk: NaN
+  lifetime: 7
+  cost: 500
+  ROI: 12
+  expectedValue: 2900
+  annualReturn: 0.426
+  annualReturnWithRisk: 0.266
