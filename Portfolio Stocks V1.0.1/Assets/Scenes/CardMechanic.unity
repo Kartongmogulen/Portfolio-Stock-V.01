@@ -9277,7 +9277,7 @@ MonoBehaviour:
   returnTotal: 0
   playerLevelText: {fileID: 2057946716}
   playerExpPointsInvested: 0
-  levelUpCost: 1
+  levelUpCost: 10
   levelMax: 2
   numberOfNewProjectsEachRoundValueStart: 2
   numberOfNewProjectsEachRound: 0
