@@ -27,7 +27,7 @@ public class PortfolioSectorUIUpdater : MonoBehaviour
     public void UpdateSectorDistribution()
     {
         mineTotalValue = portfolioManager.GetSectorValue(sectorNameEnum.Mine);
-        Debug.Log("Mines (värde): " + mineTotalValue);
+        //Debug.Log("Mines (värde): " + mineTotalValue);
         railroadTotalValue = portfolioManager.GetSectorValue(sectorNameEnum.Railroad);
         industryTotalValue = portfolioManager.GetSectorValue(sectorNameEnum.Industri);
 
@@ -39,9 +39,10 @@ public class PortfolioSectorUIUpdater : MonoBehaviour
         float railroadSharePortfolio = railroadTotalValue / totalValuePortfolio;
         float industrySharePortfolio = industryTotalValue / totalValuePortfolio;
 
-        //minesReturnText.text = $" {Mathf.Round(mineTotalReturnPercent * 10000) / 100}%";
-        //railroadReturnText.text = $" {Mathf.Round(railroadTotalReturnPercent * 10000) / 100}%";
-        //industryReturnText.text = $" {Mathf.Round(industryTotalReturnPercent * 10000) / 100}%";
+        Debug.Log("Mines avkastning: " + mineTotalReturnPercent);
+        minesReturnText.text = $" {Mathf.Round(mineTotalReturnPercent * 10000) / 100}%";
+        railroadReturnText.text = $" {Mathf.Round(railroadTotalReturnPercent * 10000) / 100}%";
+        industryReturnText.text = $" {Mathf.Round(industryTotalReturnPercent * 10000) / 100}%";
 
         shareOfStockPortfolioMines.text = $" {Mathf.Round(mineSharePortfolio * 100)}%";
         shareOfStockPortfolioRailroad.text = $" {Mathf.Round(railroadSharePortfolio * 100)}%";

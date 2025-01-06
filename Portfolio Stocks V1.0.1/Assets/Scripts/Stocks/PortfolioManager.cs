@@ -17,10 +17,13 @@ public class PortfolioManager : MonoBehaviour, IMoneyVisualizer
     
     [Header("UI")]
     private PortfolioValueVisualizer valueVisualizer;
+    [SerializeField]
+    private TextMeshProUGUI averageCostDisplay; // Text för genomsnittlig anskaffningskostnad
 
     private void Awake()
     {
         valueVisualizer = GetComponent<PortfolioValueVisualizer>();
+        UpdateAverageCostUI();
 
         if (valueVisualizer != null)
         {
@@ -56,26 +59,56 @@ public class PortfolioManager : MonoBehaviour, IMoneyVisualizer
 
         var existingEntry = portfolioEntries.Find(entry => entry.Company == company);
 
-        if (existingEntry != null)
+        //Om man redan äger något i bolaget justeras värdet
+        if (existingEntry != null && numberOfShares > 0)
         {
             existingEntry.NumberOfShares += numberOfShares;
             existingEntry.InvestmentValue += investmentValue;
+            existingEntry.AverageAqusitionCost = existingEntry.InvestmentValue / existingEntry.NumberOfShares;
 
+            //Om antalet aktier blir 0 (säljer hela posten) tas "entry" bort
             if (existingEntry.NumberOfShares == 0)
             {
                 portfolioEntries.Remove(existingEntry);
             }
         }
+
+        //Lägger till ny "entry" för innehav i bolaget om det inte redan existerar
         else if (numberOfShares > 0)
         {
             portfolioEntries.Add(new PortfolioEntry
             {
                 Company = company,
                 NumberOfShares = numberOfShares,
-                InvestmentValue = investmentValue
-            });
+                InvestmentValue = investmentValue,
+                AverageAqusitionCost = investmentValue / numberOfShares
+            }) ; ;
+        }
+        //Säljer aktier
+        else if (existingEntry != null && numberOfShares < 0)
+        {
+            Debug.Log("Säljer aktier");
+            
+            //existingEntry.InvestmentValue -= (existingEntry.InvestmentValue)
         }
 
+        UpdateAverageCostUI();
+
+    }
+
+    public void UpdateAverageCostUI()
+    {
+        GameObject company = findCompany(); // Hitta det valda företaget
+        var entry = portfolioEntries.Find(e => e.Company == company);
+
+        if (entry != null)
+        {
+            averageCostDisplay.text = $"GAV: {entry.AverageAqusitionCost:F2}";// $/aktie";
+        }
+        else
+        {
+            averageCostDisplay.text = "GAV: N/A";//"Inga aktier i detta bolag.";
+        }
     }
 
     public void UpdateMoneyDisplay(float value)
@@ -212,7 +245,7 @@ public class PortfolioManager : MonoBehaviour, IMoneyVisualizer
         foreach (var entry in portfolioEntries)
         {
             totalUnrealizedReturn += GetUnrealizedReturn(entry.Company);
-            Debug.Log("Orealiserad avkastning: ForLoop " + totalUnrealizedReturn);
+            //Debug.Log("Orealiserad avkastning: ForLoop " + totalUnrealizedReturn);
         }
 
         return totalUnrealizedReturn;
@@ -228,4 +261,5 @@ public class PortfolioEntry
     public GameObject Company;        // Företaget som aktien gäller
     public int NumberOfShares;        // Antalet aktier spelaren äger i företaget
     public float InvestmentValue;    // Det totala beloppet spelaren investerat i företaget
+    public float AverageAqusitionCost;
 }
