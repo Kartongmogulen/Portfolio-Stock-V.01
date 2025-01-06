@@ -185,7 +185,7 @@ public class ShowHistoricData : MonoBehaviour
 
     public void updateDividendGrowthYoY(GameObject stockPrefab)
     {
-        Debug.Log("DivGrowth YoY");
+        //Debug.Log("DivGrowth YoY");
         //KAN UPPSTÅ PROBLEM OM DET INTE FINNS TILLRÄCKLIGT MED HISTORISKA VÄRDEN
         //DividendGrowthYoYText[0].text = Mathf.Round((stockPrefab.GetComponent<dividendHistory>().dividendPaid[(startingYearToRevealData + yearNow)] / stockPrefab.GetComponent<dividendHistory>().dividendPaid[(startingYearToRevealData + yearNow - 1)] - 1) * 100) + " %";
         

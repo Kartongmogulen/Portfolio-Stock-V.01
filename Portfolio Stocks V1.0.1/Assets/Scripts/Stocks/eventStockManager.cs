@@ -2,19 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class eventStockManager : MonoBehaviour
+public class EventStockManager : MonoBehaviour
 {
     //[SerializeField] int frequency; //Hur ofta en händelse inträffar
+    /*
     [SerializeField] enum frequency { None, OncePerYear, Quarterly, Monthly };
     [SerializeField] frequency Frequency;
+    */
+    public EventFrequencyManager eventFrequencyManager;
 
     [SerializeField] bool positiveEvent;
     [SerializeField] float epsGrowthChange;
+    //[SerializeField] float epsChangeTempEventTEST;
+    [SerializeField] int tempEffectDuration;
 
-    [SerializeField] int sectorEventProb; //Slh att det är sektorn som drabbas annars bolag
-    [SerializeField] int permanentEffectProb; //Slh att påverkan är permanent annars temporär
+    [SerializeField] [Range(0,100)]int sectorEventProb; //Slh att det är sektorn som drabbas annars bolag
+    [SerializeField] [Range(0, 100)] int permanentEffectProb; //Slh att påverkan är permanent annars temporär
     [SerializeField] bool permanentAffect;
-    [SerializeField] List<bool> permanentAffectHistory;
+    [SerializeField] List<bool> permanentEffectHistory;
+    [SerializeField] List<bool> positiveEffectHistory;
     [SerializeField] bool sectorAffected;
     [SerializeField] int choosenCompanyIndex;
     [SerializeField] List<sectorNameEnum> sectorAffectedList;
@@ -27,69 +33,94 @@ public class eventStockManager : MonoBehaviour
     [SerializeField] createButton CreateButton;
     [SerializeField] GameObject EventPanel; //Sätts av och på då ny knapp skapas för att få in rätt data på knappen
     [SerializeField] GameObject alertPlayerWhenEventOccur;
-    
-    public sectorNameEnum getSectorAffected(int index)
-    {
-        return sectorAffectedList[index];
-    }
 
-    public string getCompanyAffected(int index)
-    {
-        return companyAffectedList[index];
-    }
+    //---TEMPORÄRA EFFEKTER---
+    [Header("Temporary Effects")]
+    [Tooltip("List of active temporary effects affecting stocks.")]
+    // Temporär lista för effekter
+    [SerializeField] private List<TemporaryEffect> activeEffects = new List<TemporaryEffect>();
+    // Ger åtkomst till aktiva effekter för inspektorn
+    public List<TemporaryEffect> GetActiveEffects() => activeEffects;
 
-    public string getPositiveOrNegativeAffect(int index)
+    private void Start()
     {
-        if (permanentAffectHistory[index] == true)
-        return "Positive";
-        else
-        {
-            return "Negative";
-        }
+        //doesEventOccur(1);//FÖR TEST!!!
     }
 
     public void doesEventOccur(int month)
     {
         //Debug.Log("Does Event Occur (Månad): " + month);
-        if(Frequency == frequency.OncePerYear && month == 1 )
+        if(eventFrequencyManager.ShouldEventOccur(month) == true )
         {
             //Debug.Log("Händelse inträffar 1 ggr per år i januari");
+            //TA BORT KOMMENTARER EFTER TEST
             positiveOrNegativeEvent();
             permanentOrOneTimeEffect();
             sectorOrCompanyEvent();
+
+            //TEST
+            //positiveEvent = true;
+            //whichCompanyIsAffected();
 
             //Skapa knapp samt panelen måste vara aktiv för att rätt data ska hamna på knappen
             EventPanel.SetActive(true);
             CreateButton.buttonSpawn();
             EventPanel.SetActive(false);
             alertPlayerWhenEventOccur.SetActive(true);
+            
 
             if (permanentAffect == true)
-        {
-            applyPermanentEffect();
-        }
+            {
+                applyPermanentEffect();
+            }
+            else
+            {
+                ApplyEffect();
+            }
 
-        //resetValues();
+            Invoke("UpdateEffects", 0.1f);
+            //resetValues();
         }
     }
 
+    
     //Sker en positiv eller negativ händelse
     public void positiveOrNegativeEvent()
     {
        if (EconomicClimate.RecessionOrExpanssionEnum == recessionOrExpanssionEnum.Expanssion)
         {
-            //Debug.Log("Positiv händelse!");
+            Debug.Log("Positiv händelse!");
             positiveEvent = true;
         }
 
         if (EconomicClimate.RecessionOrExpanssionEnum == recessionOrExpanssionEnum.Rececssion)
         {
-            //Debug.Log("Negativ händelse!");
+            Debug.Log("Negativ händelse!");
             positiveEvent = false;
         }
 
-        permanentAffectHistory.Add(positiveEvent);
+        positiveEffectHistory.Add(positiveEvent);
     }
+
+    //Är påverkan permanent eller endast temporär
+    public void permanentOrOneTimeEffect()
+    {
+        int random = Random.Range(0, 100);
+        if (random <= permanentEffectProb)
+        {
+            Debug.Log("Permanent effekt: " + random);
+            permanentAffect = true;
+
+        }
+        else
+        {
+            Debug.Log("Temporär effekt: " + random);
+            permanentAffect = false;
+        }
+
+        permanentEffectHistory.Add(permanentAffect);
+    }
+
 
     public void sectorOrCompanyEvent()
     {
@@ -114,9 +145,25 @@ public class eventStockManager : MonoBehaviour
     {
         int numberOfCompanies = StockMarketInventory.masterList.Count;
         choosenCompanyIndex = Random.Range(0, numberOfCompanies);
+        //choosenCompanyIndex = 0; //TEST
         //Debug.Log("Antal bolag: " + numberOfCompanies);
         sectorAffectedList.Add(StockMarketInventory.masterList[choosenCompanyIndex].GetComponent<stock>().SectorNameEnum);
         companyAffectedList.Add(StockMarketInventory.masterList[choosenCompanyIndex].GetComponent<stock>().nameOfCompany);
+
+        
+        var companyToAffect = StockMarketInventory.masterList[choosenCompanyIndex].GetComponent<stock>();
+        float epsAmountToChange = (epsGrowthChange / 100) * companyToAffect.EPSnow;
+        Debug.Log("EPS påverkan: " + epsAmountToChange);
+
+        if (positiveEvent == true)
+        {
+            companyToAffect.updateEPS(epsAmountToChange + companyToAffect.EPSnow);
+        }
+        else
+        {
+            companyToAffect.updateEPS(-(epsAmountToChange + companyToAffect.EPSnow));
+        }
+        
     }
 
     public void whichSectorIsAffected()
@@ -147,23 +194,7 @@ public class eventStockManager : MonoBehaviour
 
     }
 
-    //Är påverkan permanent eller endast temporär
-    public void permanentOrOneTimeEffect()
-    {
-        int random = Random.Range(0, 100);
-        if (random <= permanentEffectProb)
-        {
-            //Debug.Log("Permanent effekt: " + random);
-            permanentAffect = true;
-
-        }
-        else
-        {
-            //Debug.Log("Temporär effekt: " + random);
-            permanentAffect = false;
-        }
-    }
-
+   
     public void applyPermanentEffect()
     {
         //Sektor drabbas POSITIVT
@@ -177,6 +208,7 @@ public class eventStockManager : MonoBehaviour
                 //Om aktien ingår i sektorn som påverkas
                 if (StockMarketInventory.masterList[i].GetComponent<stock>().SectorNameEnum == sectorAffectedList[sectorAffectedList.Count - 1])
                 {
+                    Debug.Log("Permanent påverkan på sektor med: " + epsGrowthChange + "% på EPS");
                     StockMarketInventory.masterList[i].GetComponent<stock>().adjustEPSGrowth(true, epsGrowthChange);
                 }
             }
@@ -217,5 +249,54 @@ public class eventStockManager : MonoBehaviour
         sectorAffected = false;
     }
 
-    
+    //TEMPORÄR EFFEKT
+    public void ApplyEffect()
+    {
+        var companyToAffect = StockMarketInventory.masterList[choosenCompanyIndex].GetComponent<stock>();
+        Debug.Log("Bolag som påverkas: " + companyToAffect.nameOfCompany);
+        activeEffects.Add(new TemporaryEffect(companyToAffect, epsGrowthChange, positiveEvent, tempEffectDuration));
+
+        float valueToEffectEPS = (epsGrowthChange / 100) * companyToAffect.EPSnow;
+        Debug.Log("Inför temporär effekt på EPS med: " + valueToEffectEPS);
+        companyToAffect.updateEPS(positiveEvent ? valueToEffectEPS + companyToAffect.EPSnow : -valueToEffectEPS + companyToAffect.EPSnow);
+
+
+    }
+
+    public void UpdateEffects()
+    {
+        //Debug.Log("Update Effects");
+        for (int i = activeEffects.Count - 1; i >= 0; i--)
+        {
+
+            if (activeEffects[i].Tick())
+            {
+                activeEffects.RemoveAt(i); // Ta bort effekten om den har gått ut
+            }
+        }
+
+    }
+
+    //HÄMTA/SKICKA DATA
+    public sectorNameEnum getSectorAffected(int index)
+    {
+        return sectorAffectedList[index];
+    }
+
+    public string getCompanyAffected(int index)
+    {
+        return companyAffectedList[index];
+    }
+
+    public string getPositiveOrNegativeAffect(int index)
+    {
+        if (positiveEffectHistory[index] == true)
+            return "Positive";
+        else
+        {
+            return "Negative";
+        }
+    }
+
+
 }

@@ -13,7 +13,7 @@ public class ChooseCompanyManager : MonoBehaviour, ICompanyChooser
 
     private void Start()
     {
-        chosseCompanyButton();
+        Invoke("chosseCompanyButton",0.2f);
     }
 
     public void ChooseCompany(int cityIndex, int sectorIndex)

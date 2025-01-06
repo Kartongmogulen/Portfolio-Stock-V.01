@@ -66,7 +66,7 @@ public class CityManager : MonoBehaviour
     {
         int availbleCitiesCount = 0;
 
-        for (int i = 0; i < avaibleCities.Count-1; i++)
+        for (int i = 0; i < avaibleCities.Count; i++)
         {
             if (avaibleCities[i] == true)
             {

@@ -7,6 +7,7 @@ public class allStocksComparisonLayout : MonoBehaviour
 {
     public stockMarketInventory StockMarketInventory;
     public stockMarketManager_1850 StockMarketManager_1850;
+    public SkillsPlayer unlockCitySkill; //Förmågan att låsa upp nya städer med bolag
 
     public bool minesActive;
     public bool railroadActive;
@@ -62,7 +63,7 @@ public class allStocksComparisonLayout : MonoBehaviour
         updateNameText_1850();
         UpdatePriceEarningsText();
         //updatePriceEarningsText_1850(); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
-        //updateTrailing12MonthPrice_1850(); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
+        updateTrailing12MonthPrice_1850(); //KOMMENTERADE BORT FÖR ATT BUGGSÖKA DÅ FELMEDDELANDE ANNARS DÖK UPP VID START
     }
 
     public void updateNameText()
@@ -237,6 +238,7 @@ public class allStocksComparisonLayout : MonoBehaviour
 
     public void isPanelActive()
     {
+        /*
         //Debug.Log("Panel Aktiv Script");
         if (minesActive == true)
         {
@@ -276,8 +278,9 @@ public class allStocksComparisonLayout : MonoBehaviour
             PriceEarningsGORailroad.SetActive(false);
             //week52IntervalGO_Railroad.SetActive(false);
         }
-
+        */
     }
+    
 
     //REFACTOR
 
@@ -322,8 +325,11 @@ public class allStocksComparisonLayout : MonoBehaviour
             return;
         }
 
-        for (int i = 0; i < stockList.Count; i++)
-        {
+        int cityAmount = unlockCitySkill.getCurrentLevel()+1;
+        //Debug.Log("Antal städer: " + cityAmount);
+        //for (int i = 0; i < stockList.Count; i++)
+         for (int i = 0; i < cityAmount; i++)
+            {
             var stock = stockList[i];
             var stockComponent = stock.GetComponent<stock>();
             var priceStockComponent = stock.GetComponent<priceStock>();
@@ -333,7 +339,7 @@ public class allStocksComparisonLayout : MonoBehaviour
             {
                 float priceNow = stockComponent.StockPrice[stockComponent.StockPrice.Count-1]; // Senaste priset
                 float epsNow = stockComponent.EPSnow;
-
+               
                 if (epsNow > 0) // Undviker division med 0
                 {
                     uiTextList[i].text = FormatPriceEarnings(priceNow, epsNow);
@@ -362,6 +368,26 @@ public class allStocksComparisonLayout : MonoBehaviour
                 Debug.LogWarning($"Missing components for stock in sector: {sectorName}, index: {i}");
                 uiTextList[i].text = "N/A";
             }
+
+            uiTextList[i].gameObject.SetActive(true);
+            nameMinesList[i].gameObject.SetActive(true);
+            nameRailRoadList[i].gameObject.SetActive(true);
+            nameIndustriList[i].gameObject.SetActive(true);
+            Trailing12MonthPrice_Mines[i].gameObject.SetActive(true);
+            Trailing12MonthPrice_Railroad[i].gameObject.SetActive(true);
+            Trailing12MonthPrice_Índustri[i].gameObject.SetActive(true);
+        }
+
+        //Inaktivera det som inte är upplåst
+        for (int i = 0; i < stockList.Count - cityAmount; i++)
+        {
+            uiTextList[cityAmount + i].gameObject.SetActive(false);
+            nameMinesList[cityAmount + i].gameObject.SetActive(false);
+            nameRailRoadList[cityAmount + i].gameObject.SetActive(false);
+            nameIndustriList[cityAmount + i].gameObject.SetActive(false);
+            Trailing12MonthPrice_Mines[cityAmount + i].gameObject.SetActive(false);
+            Trailing12MonthPrice_Railroad[cityAmount + i].gameObject.SetActive(false);
+            Trailing12MonthPrice_Índustri[cityAmount + i].gameObject.SetActive(false);
         }
 
         //Debug.Log($"{sectorName} updated successfully.");

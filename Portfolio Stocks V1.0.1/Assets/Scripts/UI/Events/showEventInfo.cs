@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class showEventInfo : MonoBehaviour
 {
-    public eventStockManager EventStockManager;
+    public EventStockManager eventStockManager;
     [SerializeField] SkillsManager skillsManager;
     public Text sectorAffectedText;
     public Text companyAffectedText;
@@ -14,16 +14,16 @@ public class showEventInfo : MonoBehaviour
 
     public void updateUI()
     {
-        sectorAffectedText.text = "Sector affected: " + EventStockManager.getSectorAffected(index);
+        sectorAffectedText.text = "Sector affected: " + eventStockManager.getSectorAffected(index);
 
         Debug.Log("Level: " + skillsManager.skillsPlayersList[3].name + "   " + skillsManager.skillsPlayersList[3].getCurrentLevel());
         if (skillsManager.skillsPlayersList[3].getCurrentLevel() > 0)
         {
-            companyAffectedText.text = "Company affected: " + EventStockManager.getCompanyAffected(index);
+            companyAffectedText.text = "Company affected: " + eventStockManager.getCompanyAffected(index);
         }
         if (skillsManager.skillsPlayersList[4].getCurrentLevel() > 0)
         {
-            eventPosOrNegText.text = "Event effect on EPS: " + EventStockManager.getPositiveOrNegativeAffect(index);
+            eventPosOrNegText.text = "Event effect on EPS: " + eventStockManager.getPositiveOrNegativeAffect(index);
         }
         Debug.Log("Index: " + index);
     }

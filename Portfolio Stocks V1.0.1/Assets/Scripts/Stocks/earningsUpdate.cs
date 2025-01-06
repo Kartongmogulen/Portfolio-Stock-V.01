@@ -48,7 +48,7 @@ public class earningsUpdate : MonoBehaviour
         }
 
         //newEPS = Mathf.Round(oldEPS + oldEPS * (EPSGrowthForPreviousYear + earningsMacro) * 100) / 100;
-        Stock.EPSnow = newEPS;
+        Stock.updateEPS(newEPS);
         Stock.EPSHistory.Add(newEPS);
         saveE_P_S_ChangeYoY(Stock);
         //Stock.EPSChangeYoYHistory.Add(changeEPS);  

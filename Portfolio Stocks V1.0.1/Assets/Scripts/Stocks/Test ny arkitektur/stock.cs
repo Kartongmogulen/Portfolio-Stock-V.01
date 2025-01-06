@@ -11,6 +11,7 @@ public class stock : MonoBehaviour, IDividendPayingCompany
 	public bool companyPaysDividend;
 	public float startPayDividendWhenEPS;
 	[SerializeField] private float dividendPerShare;
+	public sectorNameEnum SectorNameEnum;
 	//[SerializeField] private float dividendPerShareStart;
 
 	//[SerializeField] private float dividendPerShare;
@@ -22,9 +23,9 @@ public class stock : MonoBehaviour, IDividendPayingCompany
 		get => dividendPerShare;
 		set => dividendPerShare = Mathf.Clamp(RoundToTwoDecimals(value), 0, divPolicyMaxPayouRatio * EPSnow);
 	}
+	[Header("Earnings")]
 
-	public float EPSnow;
-	public sectorNameEnum SectorNameEnum;
+	public float EPSnow; //{get; private set; }
 	public float EPSGrowthMin;
 	public float EPSGrowthMax;
 
@@ -46,6 +47,11 @@ public class stock : MonoBehaviour, IDividendPayingCompany
 	private PriceCalculator _priceCalculator;
 	private MarketTrendManager _marketTrendManager;
 
+	public void updateEPS(float newEPS)
+	{
+		//Debug.Log("Ny EPS: " + newEPS);
+		EPSnow = newEPS;
+	}
 
 	public void Initialize(PriceCalculator priceCalculator, MarketTrendManager marketTrendManager)
 	{
@@ -129,19 +135,19 @@ public class stock : MonoBehaviour, IDividendPayingCompany
 
 	public void adjustEPSGrowth(bool max, float change)
 	{
-		//Debug.Log("EPS Growth script");
+		Debug.Log("EPS Growth script");
 		if (max == true)
 		{
 			EPSGrowthMax += change;
 			EPSGrowthMin += change;
-			//Debug.Log("EPS growth MAX ändrad med: " + change);
+			Debug.Log("EPS growth MAX ändrad med: " + change);
 		}
 
 		if(max == false)
 		{
 			EPSGrowthMax += change;
 			EPSGrowthMin += change;
-			//Debug.Log("EPS growth MIN ändrad med: " + change);
+			Debug.Log("EPS growth MIN ändrad med: " + change);
 		}
 	}
 

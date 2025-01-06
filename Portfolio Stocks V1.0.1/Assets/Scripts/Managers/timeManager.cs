@@ -50,7 +50,7 @@ public class timeManager : MonoBehaviour
 				endGame();
 			}
 			
-			Debug.Log("Year: " + year);
+			//Debug.Log("Year: " + year);
 		}
 		updateUI();
 

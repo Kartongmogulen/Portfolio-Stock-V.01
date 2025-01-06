@@ -16,7 +16,7 @@ public class trailing12MonthHighLowCalculation : MonoBehaviour
 
     private void Start()
     {
-        //updateDataForStocks_StockComponent(StockMarketManager.GetComponent<stockMarketManager_1850>().StockMarketListGO);
+        updateDataForStocks_StockComponent(StockMarketManager.GetComponent<stockMarketManager_1850>().StockMarketListGO);
     }
 
     public void updateDataForStocks()

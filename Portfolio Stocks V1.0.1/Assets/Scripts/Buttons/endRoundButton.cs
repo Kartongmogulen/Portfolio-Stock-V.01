@@ -36,6 +36,7 @@ public class endRoundButton : MonoBehaviour
 
 	public sendMoneyHome SendMoneyHome;
 	public timeManager TimeManager;
+	public EventStockManager eventStockManager;
 
 	public int globalEcoClimate;
 
@@ -185,7 +186,7 @@ public class endRoundButton : MonoBehaviour
 		}
 		//playerPanelGO.GetComponent<totalCash>().incomeWork();
 		//playerPanelGO.GetComponent<totalCash>().incomeRealEstate();
-		managerScriptsGO.GetComponent<eventStockManager>().doesEventOccur(TimeManager.month);
+		eventStockManager.doesEventOccur(TimeManager.month);
 	}
 
 	public void HandleYearEnd()

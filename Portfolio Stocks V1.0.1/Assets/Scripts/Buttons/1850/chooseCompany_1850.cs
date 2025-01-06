@@ -32,7 +32,7 @@ public class chooseCompany_1850 : MonoBehaviour
 
     private void Start()
     {
-        Invoke("chooseCompany", 0.1f);
+        //Invoke("chooseCompany", 0.2f);
         //chooseCompany();
     }
 
@@ -44,6 +44,7 @@ public class chooseCompany_1850 : MonoBehaviour
 
     public void chooseCompany()
     {
+        
         getCityAndSectorIndex();
 
         if(divDataActive == true)
@@ -57,6 +58,7 @@ public class chooseCompany_1850 : MonoBehaviour
         }
 
         //showHistoricData.updateAllHistoricData(stockMarketSectorActive[cityIndex].GetComponent<stock>());
+        
     }
 
     public void getCityAndSectorIndex()
